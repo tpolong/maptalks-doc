@@ -1,0 +1,317 @@
+/**
+ * maptalks docs — 自定义主题（浅色升级 · mintlify 式文档即产品）
+ *
+ * 原则：
+ *  - 尊重复用 VitePress 主题变量，只覆盖 token，不改组件结构。
+ *  - 白/近黑表面 + 品牌色弱 accent（贴近 maptalks 品牌蓝，避开 AI indigo tell）。
+ *  - 细边框优先于阴影，圆角 8–16px，专注态使用 accent ring。
+ *  - 标题负字距、正文 150% 行高、代码等宽，排版有纪律。
+ */
+
+/* ---------------------------------------------------------------------------
+ * 品牌 token（浅色 + 深色）
+ * ------------------------------------------------------------------------- */
+:root {
+  /* 品牌 accent：贴近 maptalks 品牌蓝，非 AI indigo */
+  --maptalks-accent: #1a6faf;
+  --maptalks-accent-strong: #155d95;
+  --maptalks-accent-soft: rgba(26, 111, 175, 0.10);
+  --maptalks-accent-ring: rgba(26, 111, 175, 0.35);
+
+  /* 表面与文字 */
+  --maptalks-surface: #ffffff;
+  --maptalks-surface-alt: #f7f9fb;
+  --maptalks-text: #14181d;
+  --maptalks-text-muted: #5b6675;
+  --maptalks-text-faint: #8a93a2;
+  --maptalks-border: rgba(20, 30, 45, 0.08);
+  --maptalks-border-strong: rgba(20, 30, 45, 0.14);
+
+  /* 字体 */
+  --maptalks-font-sans: "Inter", "Segoe UI", "PingFang SC", "Microsoft YaHei",
+    system-ui, -apple-system, sans-serif;
+  --maptalks-font-mono: "JetBrains Mono", "SFMono-Regular", "Consolas",
+    "Liberation Mono", ui-monospace, monospace;
+}
+
+/* ---------------------------------------------------------------------------
+ * 映射到 VitePress 主题变量 —— 浅色
+ * ------------------------------------------------------------------------- */
+:root {
+  --vp-c-brand-1: var(--maptalks-accent);
+  --vp-c-brand-2: var(--maptalks-accent-strong);
+  --vp-c-brand-3: var(--maptalks-accent-strong);
+  --vp-c-brand-soft: var(--maptalks-accent-soft);
+
+  --vp-c-tip-1: var(--maptalks-accent);
+  --vp-c-tip-2: var(--maptalks-accent-strong);
+  --vp-c-tip-3: var(--maptalks-accent-strong);
+  --vp-c-tip-soft: var(--maptalks-accent-soft);
+
+  --vp-c-warning-1: #b57a12;
+  --vp-c-warning-2: #9c6a0d;
+  --vp-c-warning-3: #80560c;
+  --vp-c-warning-soft: rgba(181, 122, 18, 0.12);
+
+  --vp-c-danger-1: #c2404d;
+  --vp-c-danger-2: #a73541;
+  --vp-c-danger-3: #8c2c37;
+  --vp-c-danger-soft: rgba(194, 64, 77, 0.12);
+
+  --vp-c-text-1: var(--maptalks-text);
+  --vp-c-text-2: var(--maptalks-text-muted);
+  --vp-c-text-3: var(--maptalks-text-faint);
+
+  --vp-c-bg: var(--maptalks-surface);
+  --vp-c-bg-alt: var(--maptalks-surface-alt);
+  --vp-c-bg-soft: var(--maptalks-surface-alt);
+  --vp-c-bg-elv: var(--maptalks-surface);
+  --vp-c-bg-soft-down: #eef2f6;
+
+  --vp-c-divider: var(--maptalks-border);
+  --vp-c-divider-light: rgba(20, 30, 45, 0.06);
+  --vp-c-gutter: rgba(20, 30, 45, 0.06);
+
+  /* 代码块 */
+  --vp-code-bg: #282c34;
+  --vp-code-color: #abb2bf;
+  --vp-code-line-highlight-color: rgba(255, 255, 255, 0.06);
+
+  /* 边框与圆角 */
+  --vp-border-radius: 8px;
+  --vp-border-radius-small: 6px;
+
+  /* 字体 */
+  --vp-font-family-base: var(--maptalks-font-sans);
+  --vp-font-family-mono: var(--maptalks-font-mono);
+
+  /* 排版纪律：正文行高 */
+  --vp-font-size-base: 15.5px;
+}
+
+/* ---------------------------------------------------------------------------
+ * 深色主题（若用户切暗色）
+ * ------------------------------------------------------------------------- */
+.dark {
+  --vp-c-brand-1: #5aa7d6;
+  --vp-c-brand-2: #7cb8de;
+  --vp-c-brand-3: #9ac8e5;
+  --vp-c-brand-soft: rgba(90, 167, 214, 0.16);
+
+  --vp-c-text-1: #e9edf2;
+  --vp-c-text-2: #a7b0bd;
+  --vp-c-text-3: #78828f;
+
+  --vp-c-bg: #101418;
+  --vp-c-bg-alt: #151a1f;
+  --vp-c-bg-soft: #151a1f;
+  --vp-c-bg-elv: #1a2026;
+  --vp-c-bg-soft-down: #1e252c;
+
+  --vp-c-divider: rgba(255, 255, 255, 0.08);
+  --vp-c-divider-light: rgba(255, 255, 255, 0.05);
+  --vp-c-gutter: rgba(255, 255, 255, 0.05);
+}
+
+/* ---------------------------------------------------------------------------
+ * 排版微调
+ * ------------------------------------------------------------------------- */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3 {
+  font-family: var(--maptalks-font-sans);
+  font-weight: 650;
+  letter-spacing: -0.014em;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.7;
+}
+
+.vp-doc :not(pre) > code {
+  font-family: var(--maptalks-font-mono);
+  font-size: 0.86em;
+  border-radius: 5px;
+  padding: 0.12em 0.38em;
+  background-color: var(--vp-c-bg-soft-down);
+  color: var(--vp-c-brand-2);
+}
+
+/* ---------------------------------------------------------------------------
+ * 按钮：pill + 微阴影 + hover/active/focus 状态
+ * ------------------------------------------------------------------------- */
+.VPButton {
+  border-radius: 9999px;
+  font-weight: 550;
+  transition: background-color 0.18s ease, border-color 0.18s ease,
+    box-shadow 0.18s ease, transform 0.12s ease;
+}
+
+.VPButton.brand {
+  background-color: var(--maptalks-accent);
+  border: 1px solid var(--maptalks-accent);
+  box-shadow: 0 1px 2px rgba(20, 40, 60, 0.12);
+}
+.VPButton.brand:hover {
+  background-color: var(--maptalks-accent-strong);
+  border-color: var(--maptalks-accent-strong);
+}
+.VPButton.alt {
+  background-color: var(--vp-c-bg);
+  border: 1px solid var(--maptalks-border-strong);
+  color: var(--vp-c-text-1);
+}
+.VPButton.alt:hover {
+  border-color: var(--maptalks-accent);
+  color: var(--maptalks-accent);
+}
+.VPButton:active {
+  transform: translateY(1px);
+}
+.VPButton:focus-visible {
+  outline: 2px solid var(--maptalks-accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+ * 首页 features 卡片：mintlify 白底 + 细边框 + 去左色条 + 干净 hover
+ * （VitePress 默认用 --vp-c-bg-soft 灰底、scoped 样式，这里用 !important 覆盖）
+ * ------------------------------------------------------------------------- */
+.VPFeature {
+  background-color: var(--vp-c-bg) !important;
+  border: 1px solid var(--maptalks-border);
+  border-radius: 14px;
+  padding: 22px 22px;
+  box-shadow: 0 1px 3px rgba(20, 40, 60, 0.04);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+.VPFeature:hover {
+  border-color: var(--maptalks-border-strong) !important;
+  box-shadow: 0 6px 20px rgba(20, 40, 60, 0.07);
+  transform: translateY(-2px);
+}
+.VPFeature .box {
+  padding: 0;
+}
+.VPFeature .icon {
+  background-color: var(--maptalks-accent-soft);
+  color: var(--maptalks-accent);
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+.VPFeature .title {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--vp-c-text-1);
+}
+.VPFeature .details {
+  color: var(--vp-c-text-2);
+  line-height: 1.65;
+}
+
+/* 首页 hero 标题：负字距 + 主题色块 */
+.VPHero .name {
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  max-width: 640px; /* 覆盖 VitePress 默认 392px，避免中文标题断字成孤儿 */
+}
+.VPHero .text {
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  max-width: 640px;
+  line-height: 1.12;
+}
+.VPHero .tagline {
+  color: var(--vp-c-text-2);
+  max-width: 600px;
+}
+.VPHero .name,
+.VPHero .text {
+  white-space: normal; /* 允许中文按词换行，而非 pre-wrap 强制 */
+}
+
+/* ---------------------------------------------------------------------------
+ * 导航栏：sticky + 轻 blur + 品牌色 hover
+ * ------------------------------------------------------------------------- */
+.VPNavBar {
+  backdrop-filter: saturate(180%) blur(16px);
+  background-color: color-mix(in srgb, var(--vp-c-bg) 82%, transparent);
+  border-bottom: 1px solid var(--vp-c-divider-light);
+}
+.VPNavBarText:hover,
+.VPNavBarMenuLink:hover {
+  color: var(--maptalks-accent) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * 侧边栏：active 态用品牌色
+ * ------------------------------------------------------------------------- */
+.VPSidebarItem.is-active > .item .link .text {
+  color: var(--maptalks-accent);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+ * 表格：细边框表头 + 斑马纹
+ * ------------------------------------------------------------------------- */
+.vp-doc table {
+  border-collapse: collapse;
+  border: 1px solid var(--maptalks-border);
+  border-radius: 8px;
+}
+.vp-doc th {
+  background-color: var(--vp-c-bg-alt);
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  border-color: var(--maptalks-border);
+}
+.vp-doc td {
+  border-color: var(--maptalks-border-light, rgba(20, 30, 45, 0.06));
+}
+.vp-doc tr:nth-child(2n) td {
+  background-color: var(--vp-c-bg-alt);
+}
+
+/* ---------------------------------------------------------------------------
+ * 示例卡片（示例中心）统一质感
+ * ------------------------------------------------------------------------- */
+.example-card {
+  border-radius: 12px;
+  border-color: var(--maptalks-border);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+.example-card:hover {
+  border-color: var(--maptalks-accent);
+  box-shadow: 0 6px 20px rgba(20, 40, 60, 0.08);
+}
+.example-card-title {
+  color: var(--vp-c-text-1);
+}
+
+/* ---------------------------------------------------------------------------
+ * 无障碍：全局 focus-visible
+ * ------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--maptalks-accent);
+  outline-offset: 2px;
+}
+
+/* 减少动效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
