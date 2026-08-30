@@ -4,6 +4,8 @@ node_modules/
 # VitePress build output & cache
 .vitepress/dist/
 .vitepress/cache/
+# srcDir=docs 时 VitePress 也会生成 docs/.vitepress 缓存
+docs/.vitepress/
 
 # Logs
 *.log
