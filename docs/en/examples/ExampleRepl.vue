@@ -59,15 +59,34 @@ const importMap = {
       "https://unpkg.com/@maptalks/msd-json-loader@0.1.0/dist/MSDJSONLoader.mjs",
     // regl ships CJS/UMD only; local wrapper exposes default + named createREGL
     "@maptalks/regl": "/lib/regl-esm.mjs",
-    // remaining small deps go through esm.sh conversion (pinned to maptalks' versions)
-    "@maptalks/fusiongl": "https://esm.sh/@maptalks/fusiongl@0.6.13",
-    "@maptalks/reshader.gl": "https://esm.sh/@maptalks/reshader.gl@0.97.4",
-    "@maptalks/feature-filter": "https://esm.sh/@maptalks/feature-filter@1.3.0",
-    "@maptalks/function-type": "https://esm.sh/@maptalks/function-type@1.4.1",
-    "@maptalks/gltf-loader": "https://esm.sh/@maptalks/gltf-loader@0.124.4",
-    "@maptalks/tbn-packer": "https://esm.sh/@maptalks/tbn-packer@1.4.5",
-    "@maptalks/vector-packer": "https://esm.sh/@maptalks/vector-packer@0.96.4",
-    "@maptalks/vt-plugin": "https://esm.sh/@maptalks/vt-plugin@0.124.4",
+    // @maptalks sub packages ship native ESM (module field), so point them straight at
+    // unpkg: single request, no esm.sh redirect chain - faster and more reliable.
+    // Their bare imports are resolved through this import map; versions match the
+    // gl-layers dependency tree (same packages/versions esm.sh was serving).
+    "@maptalks/fusiongl":
+      "https://unpkg.com/@maptalks/fusiongl@0.6.13/dist/fusiongl.es.js",
+    "@maptalks/reshader.gl":
+      "https://unpkg.com/@maptalks/reshader.gl@0.97.4/dist/reshadergl.es.js",
+    "@maptalks/feature-filter":
+      "https://unpkg.com/@maptalks/feature-filter@1.3.0/index.js",
+    "@maptalks/function-type":
+      "https://unpkg.com/@maptalks/function-type@1.4.1/index.js",
+    "@maptalks/gltf-loader":
+      "https://unpkg.com/@maptalks/gltf-loader@0.124.4/dist/gltf-loader.es.js",
+    "@maptalks/tbn-packer":
+      "https://unpkg.com/@maptalks/tbn-packer@1.4.5/index.js",
+    "@maptalks/vector-packer":
+      "https://unpkg.com/@maptalks/vector-packer@0.96.4/dist/vector-packer.es.js",
+    "@maptalks/vt-plugin":
+      "https://unpkg.com/@maptalks/vt-plugin@0.124.4/index.js",
+    // vector-packer's deps (resolved as bare specifiers after switching to unpkg):
+    // point-geometry is CJS (needs esm.sh conversion), shelf-pack ships native index.mjs,
+    // quickselect/tinyqueue go through esm.sh
+    "@mapbox/point-geometry": "https://esm.sh/@mapbox/point-geometry@0.1.0",
+    "@mapbox/shelf-pack": "https://unpkg.com/@mapbox/shelf-pack@3.2.0/index.mjs",
+    quickselect: "https://esm.sh/quickselect@1.0.0",
+    tinyqueue: "https://esm.sh/tinyqueue@2.0.3",
+    // remaining small deps go through esm.sh conversion (CJS compat, pinned to maptalks' versions)
     "gl-matrix": "https://esm.sh/gl-matrix@2.6.1",
     "animation-easings": "https://esm.sh/animation-easings",
     color: "https://esm.sh/color",
@@ -160,6 +179,13 @@ function updateExample() {
   // it up and the preview stays blank. Inline index.js as a module script so the
   // example actually runs.
   inlineIndexJs(files);
+  // @vue/repl injects standalone .css files only after the example scripts have
+  // run. Examples typically rely on html/body height:100% to size the map
+  // container, so at `new Map` time the container height is still 0 -> the canvas
+  // becomes 0-height and edit-mode top-element drawing throws drawImage 0-size
+  // errors. Inlining the css as a <style> tag makes it take effect before the
+  // scripts run, together with index.html.
+  inlineCss(files);
   store.setFiles(files, "index.html");
 }
 
@@ -225,6 +251,28 @@ function inlineIndexJs(files: Record<string, string>) {
     files["index.html"] = cleaned.includes("</body>")
       ? cleaned.replace("</body>", inlineTag + "</body>")
       : cleaned + inlineTag;
+  }
+}
+
+/**
+ * Inline the example's index.css into index.html as a <style> tag:
+ * @vue/repl injects standalone .css files into <head> only after the example
+ * scripts have executed. Examples usually rely on html/body height:100% to size
+ * the map container, so at `new Map` time the container height is still 0, the
+ * canvas becomes 0-height, and edit-mode top-element drawing throws drawImage
+ * 0-size errors. Inlining makes the styles take effect before the scripts run.
+ */
+function inlineCss(files: Record<string, string>) {
+  const html = files["index.html"] ?? "";
+  const css = files["index.css"];
+  if (!html || !css) return;
+  const styleTag = `\n<style>\n${css}\n<\/style>`;
+  if (html.includes("</head>")) {
+    files["index.html"] = html.replace("</head>", styleTag + "</head>");
+  } else if (html.includes("</html>")) {
+    files["index.html"] = html.replace("</html>", styleTag + "</html>");
+  } else {
+    files["index.html"] = html + styleTag;
   }
 }
 

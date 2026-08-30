@@ -56,15 +56,32 @@ const importMap = {
       "https://unpkg.com/@maptalks/msd-json-loader@0.1.0/dist/MSDJSONLoader.mjs",
     // regl 官方只有 CJS/UMD，用本地 wrapper 提供 default + createREGL 双导出
     "@maptalks/regl": "/lib/regl-esm.mjs",
-    // 其余依赖走 esm.sh 转换（单个小依赖转换稳定，按 maptalks 依赖版本 pin）
-    "@maptalks/fusiongl": "https://esm.sh/@maptalks/fusiongl@0.6.13",
-    "@maptalks/reshader.gl": "https://esm.sh/@maptalks/reshader.gl@0.97.4",
-    "@maptalks/feature-filter": "https://esm.sh/@maptalks/feature-filter@1.3.0",
-    "@maptalks/function-type": "https://esm.sh/@maptalks/function-type@1.4.1",
-    "@maptalks/gltf-loader": "https://esm.sh/@maptalks/gltf-loader@0.124.4",
-    "@maptalks/tbn-packer": "https://esm.sh/@maptalks/tbn-packer@1.4.5",
-    "@maptalks/vector-packer": "https://esm.sh/@maptalks/vector-packer@0.96.4",
-    "@maptalks/vt-plugin": "https://esm.sh/@maptalks/vt-plugin@0.124.4",
+    // @maptalks 子包在 npm 上有原生 ESM（module 字段），直接 unpkg 直连：
+    // 单请求、无 esm.sh 重定向链，加载更快更稳；内部 import 的裸标识符由本
+    // import map 解析。版本与 gl-layers 依赖树一致（esm.sh 版同源同版本）。
+    "@maptalks/fusiongl":
+      "https://unpkg.com/@maptalks/fusiongl@0.6.13/dist/fusiongl.es.js",
+    "@maptalks/reshader.gl":
+      "https://unpkg.com/@maptalks/reshader.gl@0.97.4/dist/reshadergl.es.js",
+    "@maptalks/feature-filter":
+      "https://unpkg.com/@maptalks/feature-filter@1.3.0/index.js",
+    "@maptalks/function-type":
+      "https://unpkg.com/@maptalks/function-type@1.4.1/index.js",
+    "@maptalks/gltf-loader":
+      "https://unpkg.com/@maptalks/gltf-loader@0.124.4/dist/gltf-loader.es.js",
+    "@maptalks/tbn-packer":
+      "https://unpkg.com/@maptalks/tbn-packer@1.4.5/index.js",
+    "@maptalks/vector-packer":
+      "https://unpkg.com/@maptalks/vector-packer@0.96.4/dist/vector-packer.es.js",
+    "@maptalks/vt-plugin":
+      "https://unpkg.com/@maptalks/vt-plugin@0.124.4/index.js",
+    // vector-packer 的依赖（unpkg 直连后由裸标识符解析）：point-geometry 是 CJS
+    //（需 esm.sh 转换），shelf-pack 有原生 index.mjs，quickselect/tinyqueue 走 esm.sh
+    "@mapbox/point-geometry": "https://esm.sh/@mapbox/point-geometry@0.1.0",
+    "@mapbox/shelf-pack": "https://unpkg.com/@mapbox/shelf-pack@3.2.0/index.mjs",
+    quickselect: "https://esm.sh/quickselect@1.0.0",
+    tinyqueue: "https://esm.sh/tinyqueue@2.0.3",
+    // 其余小依赖走 esm.sh 转换（CJS 兼容转换，按 maptalks 依赖版本 pin）
     "gl-matrix": "https://esm.sh/gl-matrix@2.6.1",
     "animation-easings": "https://esm.sh/animation-easings",
     color: "https://esm.sh/color",
@@ -152,6 +169,11 @@ function updateExample() {
   // 或用 <script src> 引用），@vue/repl 无法识别源码，预览会空白。
   // 把 index.js 内联成一个 module script，让示例真正跑起来。
   inlineIndexJs(files);
+  // @vue/repl 对独立的 index.css 是在示例脚本执行后才注入 <head>；而示例
+  // 普遍用 html/body height:100% 撑满容器，脚本执行（new Map）时容器高度
+  // 仍是 0，canvas 变成 0 高，编辑模式等绘制顶部元素时会报 drawImage 0 尺寸。
+  // 把 css 内联成 <style> 随 index.html 一起先于脚本注入，样式提前生效。
+  inlineCss(files);
   store.setFiles(files, "index.html");
 }
 
@@ -215,6 +237,27 @@ function inlineIndexJs(files: Record<string, string>) {
     files["index.html"] = cleaned.includes("</body>")
       ? cleaned.replace("</body>", inlineTag + "</body>")
       : cleaned + inlineTag;
+  }
+}
+
+/**
+ * 把示例的 index.css 内联成 <style> 放进 index.html：
+ * @vue/repl 对独立 .css 文件是在示例脚本执行之后才注入 <head>，而示例普遍用
+ * html/body height:100% 撑满容器，脚本执行（new Map）时容器高度仍是 0，
+ * canvas 变成 0 高，编辑模式等绘制顶部元素时即报 drawImage 0 尺寸错误。
+ * 内联后样式随 index.html 一起先于脚本注入，容器尺寸在 new Map 时已就绪。
+ */
+function inlineCss(files: Record<string, string>) {
+  const html = files["index.html"] ?? "";
+  const css = files["index.css"];
+  if (!html || !css) return;
+  const styleTag = `\n<style>\n${css}\n<\/style>`;
+  if (html.includes("</head>")) {
+    files["index.html"] = html.replace("</head>", styleTag + "</head>");
+  } else if (html.includes("</html>")) {
+    files["index.html"] = html.replace("</html>", styleTag + "</html>");
+  } else {
+    files["index.html"] = html + styleTag;
   }
 }
 
