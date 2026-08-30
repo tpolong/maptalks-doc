@@ -36,7 +36,9 @@ function replacePlaceholders(src: string): string {
 const importMap = {
   imports: {
     maptalks: "https://unpkg.com/maptalks/dist/maptalks.es.js",
-    draco: "https://maptalks.com/api/transcoders.draco.js",
+    // @maptalks/transcoders.draco is only published as UMD, which fails as an ESM
+    // import; use the local ESM shim (see docs/public/lib/draco.mjs) to register it
+    draco: "/lib/draco.mjs",
     proj4: "https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.11.0/proj4.js",
     "gl-layers": "https://unpkg.com/@maptalks/gl-layers@0.34.1/index.js",
     // gl-layers' ESM entry re-exports the sub packages; map them and all
@@ -77,14 +79,31 @@ const importMap = {
     rbush: "https://esm.sh/rbush@2",
     "simplify-js": "https://esm.sh/simplify-js@1.2.1",
     "mt.gui": "/lib/mt.gui.js",
+    // gl-layers does not export RoutePlayer (6 track examples depend on it); use a local
+    // minimal shim (see route-player.mjs)
+    "route-player": "/lib/route-player.mjs",
+    // Two ui-control examples mount an in-DOM template with a Vue global; the REPL does
+    // not run classic <script src> scripts, so map vue to the full browser build that
+    // ships the template compiler, and shim it to window.Vue in ensureImports
+    // (Vue3 Options API; the examples were migrated from Vue2's new Vue/el API).
+    vue: "https://unpkg.com/vue@3.5.42/dist/vue.esm-browser.js",
     // third-party global libs (some examples rely on a <script src> global that the
     // REPL does not run, so expose them via the import map + a window shim)
     d3: "https://esm.sh/d3@7.9.0",
+    // d3-marker uses d3 v3 (geom.quadtree/svg/scale.identity), d3-proj uses d3 v4
+    // (callback-style d3.json + geoOrthographic); both are incompatible with the default
+    // d3 v7 mapping. esm.sh's d3 v3 conversion has a document-scope issue, so use a local
+    // UMD-inject shim instead.
+    d3v3: "/lib/d3v3.mjs",
+    d3v4: "/lib/d3v4.mjs",
     echarts: "https://esm.sh/echarts@5.5.1",
     "@turf/turf": "https://esm.sh/@turf/turf@6.5.0",
     "topojson-client": "https://esm.sh/topojson-client@3.1.0",
     highcharts: "https://esm.sh/highcharts@11.4.8",
     jquery: "https://esm.sh/jquery@3.7.1",
+    // sunshine uses jQuery-UI's datepicker/slider; the REPL does not run <script src>,
+    // so a local jquery-ui shim (see docs/public/lib/jquery-ui.mjs) extends $.fn
+    "jquery-ui": "/lib/jquery-ui.mjs",
     "dat.gui": "https://esm.sh/dat.gui@0.7.9",
     // esm.sh rewrites the `maptalks` import inside its served sub packages to
     // an absolute esm.sh URL, bypassing the bare-specifier map above and loading
@@ -162,13 +181,14 @@ function ensureImports(code: string): string {
   prepend('import * as maptalks from "maptalks";', /\bmaptalks\.[A-Za-z]/, /\bimport\b[^;]*\bmaptalks\b/);
   prepend('import * as gl from "gl-layers";', /\bgl\.[A-Za-z]/, /\bimport\b[^;]*\bgl-layers\b/);
   prepend('import * as mt from "mt.gui";', /\bmt\.[A-Za-z]/, /\bimport\b[^;]*\bmt\.gui\b/);
-  prepend('import * as d3 from "d3";\nwindow.d3 = d3;', /\bd3\.[A-Za-z]/, /\bimport\b[^;]*\bd3\b/);
+  prepend('import * as d3 from "d3";\nwindow.d3 = d3;', /\bd3\.[A-Za-z]/, /\bimport\b[^;]*\bd3/);
   prepend('import * as echarts from "echarts";\nwindow.echarts = echarts;', /\becharts\b/, /\bimport\b[^;]*\becharts\b/);
   prepend('import * as turf from "@turf/turf";\nwindow.turf = turf;', /\bturf\.[A-Za-z]/, /\bimport\b[^;]*\bturf\b/);
   prepend('import * as topojson from "topojson-client";\nwindow.topojson = topojson;', /\btopojson\b/, /\bimport\b[^;]*\btopojson\b/);
-  prepend('import * as Highcharts from "highcharts";\nwindow.Highcharts = Highcharts;', /\bHighcharts\b/, /\bimport\b[^;]*\bhighcharts\b/);
+  prepend('import Highcharts from "highcharts";\nwindow.Highcharts = Highcharts;', /\bHighcharts\b/, /\bimport\b[^;]*\bhighcharts\b/);
   prepend('import $ from "jquery";\nwindow.$ = $;\nwindow.jQuery = $;', /\b\$\s*\(|\bjQuery\b/, /\bimport\b[^;]*\bjquery\b/);
   prepend('import * as dat from "dat.gui";\nwindow.dat = dat;', /\bdat\.[A-Za-z]/, /\bimport\b[^;]*\bdat\.gui\b/);
+  prepend('import * as Vue from "vue";\nwindow.Vue = Vue;', /\bwindow\.Vue\b|\bnew\s+Vue\b|\bVue\.extend\b/, /\bimport\b[^;]*\bvue\b/);
   return out;
 }
 
@@ -190,10 +210,18 @@ function inlineIndexJs(files: Record<string, string>) {
       `<script type="module">\n${js}\n<\/script>`,
     );
   } else {
+    // If index.html already has an empty inline module script (a module script tag with no content),
+    // remove it (it executes nothing), then append the index.js content before the body close tag.
+    // Keeping the empty module block and also appending another would make @vue/repl wrap every
+    // module block in its own __module__, causing "Identifier '__module__' has already been declared".
+    // Removing the empty block + appending yields a single module block that runs after the #map
+    // container exists (identical to plain stub examples).
+    const emptyModule = /<script[^>]*\btype=["']module["'][^>]*>\s*<\/script>/i;
+    const cleaned = html.replace(emptyModule, "");
     const inlineTag = `\n<script type="module">\n${js}\n<\/script>\n`;
-    files["index.html"] = html.includes("</body>")
-      ? html.replace("</body>", inlineTag + "</body>")
-      : html + inlineTag;
+    files["index.html"] = cleaned.includes("</body>")
+      ? cleaned.replace("</body>", inlineTag + "</body>")
+      : cleaned + inlineTag;
   }
 }
 

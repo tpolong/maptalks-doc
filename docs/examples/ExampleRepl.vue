@@ -34,7 +34,9 @@ function replacePlaceholders(src: string): string {
 const importMap = {
   imports: {
     maptalks: "https://unpkg.com/maptalks/dist/maptalks.es.js",
-    draco: "https://maptalks.com/api/transcoders.draco.js",
+    // @maptalks/transcoders.draco 只有 UMD 发布，作为 ESM 导入会失败；用本地 ESM
+    // shim 包装（见 docs/public/lib/draco.mjs）按副作用注册解码器
+    draco: "/lib/draco.mjs",
     proj4: "https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.11.0/proj4.js",
     "gl-layers": "https://unpkg.com/@maptalks/gl-layers@0.34.1/index.js",
     // gl-layers 的 ESM 入口 re-export 子包，这里把子包与依赖全部映射到浏览器可用 ESM
@@ -74,14 +76,28 @@ const importMap = {
     rbush: "https://esm.sh/rbush@2",
     "simplify-js": "https://esm.sh/simplify-js@1.2.1",
     "mt.gui": "/lib/mt.gui.js",
+    // gl-layers 未导出 RoutePlayer（track 系列 6 例依赖），用本地最小 shim（见 route-player.mjs）
+    "route-player": "/lib/route-player.mjs",
+    // 两个 uicontrol 示例使用 Vue 全局挂载 in-DOM 模板，REPL 不跑 <script src> 经典脚本，
+    // 这里把 vue 映射到含模板编译器的全量浏览器构建，并在 ensureImports 里 shim 成
+    // window.Vue（Vue3 Options API，示例已由 Vue2 迁移到 createApp）
+    vue: "https://unpkg.com/vue@3.5.42/dist/vue.esm-browser.js",
     // 第三方全局库（部分示例用 <script src> 全局，REPL 不走该机制，用 import map
     // + 内联时 shim 成 window 全局）
     d3: "https://esm.sh/d3@7.9.0",
+    // d3-marker 用 d3 v3（geom.quadtree/svg/scale.identity），d3-proj 用 d3 v4（回调式
+    // d3.json + geoOrthographic），两者与 import map 的默认 d3 v7 不兼容，单独映射；
+    // d3v3 的 esm.sh 转换存在 document 作用域问题，改用本地 UMD 注入 shim
+    d3v3: "/lib/d3v3.mjs",
+    d3v4: "/lib/d3v4.mjs",
     echarts: "https://esm.sh/echarts@5.5.1",
     "@turf/turf": "https://esm.sh/@turf/turf@6.5.0",
     "topojson-client": "https://esm.sh/topojson-client@3.1.0",
     highcharts: "https://esm.sh/highcharts@11.4.8",
     jquery: "https://esm.sh/jquery@3.7.1",
+    // sunshine 用 jQuery-UI 的 datepicker/slider；REPL 不跑 <script src>，用本地
+    // jquery-ui shim（见 docs/public/lib/jquery-ui.mjs）扩展 $.fn
+    "jquery-ui": "/lib/jquery-ui.mjs",
     "dat.gui": "https://esm.sh/dat.gui@0.7.9",
     // esm.sh 会把 esm.sh 子包内部对 `maptalks` 的重写为绝对 esm.sh URL，
     // 从而绕开上面的裸标识符映射、加载出第二个 maptalks 实例（重复导入报错）。
@@ -156,13 +172,14 @@ function ensureImports(code: string): string {
   prepend('import * as maptalks from "maptalks";', /\bmaptalks\.[A-Za-z]/, /\bimport\b[^;]*\bmaptalks\b/);
   prepend('import * as gl from "gl-layers";', /\bgl\.[A-Za-z]/, /\bimport\b[^;]*\bgl-layers\b/);
   prepend('import * as mt from "mt.gui";', /\bmt\.[A-Za-z]/, /\bimport\b[^;]*\bmt\.gui\b/);
-  prepend('import * as d3 from "d3";\nwindow.d3 = d3;', /\bd3\.[A-Za-z]/, /\bimport\b[^;]*\bd3\b/);
+  prepend('import * as d3 from "d3";\nwindow.d3 = d3;', /\bd3\.[A-Za-z]/, /\bimport\b[^;]*\bd3/);
   prepend('import * as echarts from "echarts";\nwindow.echarts = echarts;', /\becharts\b/, /\bimport\b[^;]*\becharts\b/);
   prepend('import * as turf from "@turf/turf";\nwindow.turf = turf;', /\bturf\.[A-Za-z]/, /\bimport\b[^;]*\bturf\b/);
   prepend('import * as topojson from "topojson-client";\nwindow.topojson = topojson;', /\btopojson\b/, /\bimport\b[^;]*\btopojson\b/);
-  prepend('import * as Highcharts from "highcharts";\nwindow.Highcharts = Highcharts;', /\bHighcharts\b/, /\bimport\b[^;]*\bhighcharts\b/);
+  prepend('import Highcharts from "highcharts";\nwindow.Highcharts = Highcharts;', /\bHighcharts\b/, /\bimport\b[^;]*\bhighcharts\b/);
   prepend('import $ from "jquery";\nwindow.$ = $;\nwindow.jQuery = $;', /\b\$\s*\(|\bjQuery\b/, /\bimport\b[^;]*\bjquery\b/);
   prepend('import * as dat from "dat.gui";\nwindow.dat = dat;', /\bdat\.[A-Za-z]/, /\bimport\b[^;]*\bdat\.gui\b/);
+  prepend('import * as Vue from "vue";\nwindow.Vue = Vue;', /\bwindow\.Vue\b|\bnew\s+Vue\b|\bVue\.extend\b/, /\bimport\b[^;]*\bvue\b/);
   return out;
 }
 
@@ -184,10 +201,17 @@ function inlineIndexJs(files: Record<string, string>) {
       `<script type="module">\n${js}\n<\/script>`,
     );
   } else {
+    // 若 index.html 原本就有一个空的内联 module script（形如一个空的 module 脚本标签），
+    // 直接把它删掉（它不执行任何逻辑），再在 body 结束标签前追加 index.js 内容。
+    // 若保留空 module 块并再追加一个，@vue/repl 会给每个 module 块都包一层 __module__，
+    // 导致 "Identifier '__module__' has already been declared"。改为"删除空块+追加"可保证
+    // 只有一个 module 块，且脚本在 #map 容器之后执行（与纯 stub 示例一致）。
+    const emptyModule = /<script[^>]*\btype=["']module["'][^>]*>\s*<\/script>/i;
+    let cleaned = html.replace(emptyModule, "");
     const inlineTag = `\n<script type="module">\n${js}\n<\/script>\n`;
-    files["index.html"] = html.includes("</body>")
-      ? html.replace("</body>", inlineTag + "</body>")
-      : html + inlineTag;
+    files["index.html"] = cleaned.includes("</body>")
+      ? cleaned.replace("</body>", inlineTag + "</body>")
+      : cleaned + inlineTag;
   }
 }
 
