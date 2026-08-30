@@ -82,6 +82,9 @@ const importMap = {
     // gl-layers does not export RoutePlayer (6 track examples depend on it); use a local
     // minimal shim (see route-player.mjs)
     "route-player": "/lib/route-player.mjs",
+    // simulated-traffic uses TrafficScene; @maptalks/traffic's npm dist is unpublished, so use
+    // the locally esbuild-built ESM (see lib/maptalks.traffic.es.js)
+    "@maptalks/traffic": "/lib/maptalks.traffic.es.js",
     // Two ui-control examples mount an in-DOM template with a Vue global; the REPL does
     // not run classic <script src> scripts, so map vue to the full browser build that
     // ships the template compiler, and shim it to window.Vue in ensureImports

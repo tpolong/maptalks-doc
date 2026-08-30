@@ -78,6 +78,9 @@ const importMap = {
     "mt.gui": "/lib/mt.gui.js",
     // gl-layers 未导出 RoutePlayer（track 系列 6 例依赖），用本地最小 shim（见 route-player.mjs）
     "route-player": "/lib/route-player.mjs",
+    // simulated-traffic 使用 TrafficScene；@maptalks/traffic 的 npm dist 未发布，用本地
+    // esbuild 构建的 ESM（见 lib/maptalks.traffic.es.js）
+    "@maptalks/traffic": "/lib/maptalks.traffic.es.js",
     // 两个 uicontrol 示例使用 Vue 全局挂载 in-DOM 模板，REPL 不跑 <script src> 经典脚本，
     // 这里把 vue 映射到含模板编译器的全量浏览器构建，并在 ensureImports 里 shim 成
     // window.Vue（Vue3 Options API，示例已由 Vue2 迁移到 createApp）
