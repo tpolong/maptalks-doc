@@ -4,10 +4,10 @@ title: Coordinate Systems and Projections
 
 # Coordinate systems and projections
 
-By default, a maptalks map uses the Web Mercator projection (EPSG:3857, the tile coordinate system used by Google/OSM). Through the `spatialReference` option of `Map`, you can switch to other built-in coordinate systems (such as EPSG:4326), or define custom projections with third-party libraries like proj4js and d3-proj.
+By default, a maptalks map uses the Web Mercator projection (EPSG:3857, the tile coordinate system used by Google/OSM). Through the `spatialReference` option of `Map`, you can switch to other built-in coordinate systems (such as EPSG:4326), or define custom projections with third-party libraries like proj4js.
 
 > [!NOTE] Import notes
-> All capabilities in this article (`Map`, `TileLayer`, `Coordinate`, `GeoJSON`, `VectorLayer`, etc.) come from the core package `maptalks`; proj4js and d3 are third-party libraries that must be installed separately:
+> All capabilities in this article (`Map`, `TileLayer`, `Coordinate`, `GeoJSON`, `VectorLayer`, etc.) come from the core package `maptalks`; proj4js is a third-party library that must be installed separately:
 
 ```js
 import { Map, TileLayer, Coordinate, GeoJSON, VectorLayer } from "maptalks";
@@ -139,62 +139,6 @@ const map = new Map("map", {
 
 A custom projection usually needs `resolutions` and `fullExtent` to be provided as well (they cannot be inferred from the built-in presets).
 
-## Custom projection with d3-proj
-
-The projection object does not have to come from proj4js — any object providing `project` / `unproject` works. The official example ([d3-proj](/en/examples/#basic/tilelayer-projection/d3-proj)) wraps D3's orthographic projection `d3.geoOrthographic()` directly:
-
-```js
-import { Coordinate, Map, GeoJSON, VectorLayer } from "maptalks";
-import * as d3 from "d3-geo";
-
-// D3's Versor Dragging projection
-const projection = d3.geoOrthographic().scale(148).precision(0.1);
-
-// convert to a maptalks projection object
-const proj = {
-  project: function (c) {
-    const pc = projection([c.x, c.y]);
-    return new Coordinate(pc[0], pc[1]);
-  },
-  unproject: function (pc) {
-    const c = projection.invert([pc.x, pc.y]);
-    if (!c || isNaN(c[0]) || isNaN(c[1])) {
-      return null;
-    }
-    return new Coordinate(c);
-  },
-};
-
-const min = proj.project(new Coordinate(-180, -90)),
-  max = proj.project(new Coordinate(180, 90)),
-  fullExtent = {
-    top: max.y,
-    left: min.x,
-    right: max.x,
-    bottom: min.y,
-  };
-
-// initialize the map with the custom projection
-const map = new Map("map", {
-  center: [0, 0],
-  centerCross: true,
-  zoom: 2,
-  spatialReference: {
-    projection: proj,
-    resolutions: (function () {
-      const resolutions = [];
-      for (let i = 0; i < 10; i++) {
-        resolutions[i] = 4 / Math.pow(2, i);
-      }
-      return resolutions;
-    })(),
-    fullExtent: fullExtent,
-  },
-});
-```
-
-Note that `unproject` returns `null` when the projection is not invertible; maptalks skips those coordinates.
-
 ## Other built-in projections: Baidu and planar coordinates
 
 The built-in `BAIDU` preset is used for loading Baidu Map tiles. Baidu tiles define resolutions differently from 3857; in `spatialReference` you only need to declare the projection name, and the resolutions and full extent are taken from the Baidu preset:
@@ -241,7 +185,7 @@ map.config("spatialReference", { projection: "EPSG:4326" });
 
 ## Related examples
 
-- [EPSG:4326 Tianditu](/en/examples/#basic/tilelayer-projection/epsg4326) · [proj4js custom projection](/en/examples/#basic/tilelayer-projection/proj4js) · [d3 custom projection](/en/examples/#basic/tilelayer-projection/d3-proj)
+- [EPSG:4326 Tianditu](/en/examples/#basic/tilelayer-projection/epsg4326) · [proj4js custom projection](/en/examples/#basic/tilelayer-projection/proj4js)
 - [Different projections](/en/examples/#basic/tilelayer-projection/projection) · [Baidu tiles](/en/examples/#basic/tilelayer-projection/baidu) · [Identity](/en/examples/#basic/tilelayer-projection/identity)
 
 ## Related APIs

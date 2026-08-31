@@ -105,11 +105,10 @@ const importMap = {
     // 第三方全局库（部分示例用 <script src> 全局，REPL 不走该机制，用 import map
     // + 内联时 shim 成 window 全局）
     d3: "https://esm.sh/d3@7.9.0",
-    // d3-marker 用 d3 v3（geom.quadtree/svg/scale.identity），d3-proj 用 d3 v4（回调式
-    // d3.json + geoOrthographic），两者与 import map 的默认 d3 v7 不兼容，单独映射；
-    // d3v3 的 esm.sh 转换存在 document 作用域问题，改用本地 UMD 注入 shim
+    // d3-marker 用 d3 v3（geom.quadtree/svg/scale.identity），与 import map 的默认
+    // d3 v7 不兼容，单独映射；d3v3 的 esm.sh 转换存在 document 作用域问题，改用
+    // 本地 UMD 注入 shim
     d3v3: "/lib/d3v3.mjs",
-    d3v4: "/lib/d3v4.mjs",
     echarts: "https://esm.sh/echarts@5.5.1",
     "@turf/turf": "https://esm.sh/@turf/turf@6.5.0",
     "topojson-client": "https://esm.sh/topojson-client@3.1.0",

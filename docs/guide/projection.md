@@ -4,10 +4,10 @@ title: 坐标系与投影
 
 # 坐标系与投影
 
-maptalks 的地图默认使用 Web 墨卡托投影（EPSG:3857，即 Google/OSM 使用的瓦片坐标系）。通过 `Map` 的 `spatialReference` 配置，可以切换到其他内置坐标系（如 EPSG:4326），也可以结合 proj4js、d3-proj 等第三方库自定义投影。
+maptalks 的地图默认使用 Web 墨卡托投影（EPSG:3857，即 Google/OSM 使用的瓦片坐标系）。通过 `Map` 的 `spatialReference` 配置，可以切换到其他内置坐标系（如 EPSG:4326），也可以结合 proj4js 等第三方库自定义投影。
 
 > [!NOTE] 导入说明
-> 本文的能力（`Map`、`TileLayer`、`Coordinate`、`GeoJSON`、`VectorLayer` 等）全部来自核心包 `maptalks`；proj4js、d3 等为第三方库，需单独安装：
+> 本文的能力（`Map`、`TileLayer`、`Coordinate`、`GeoJSON`、`VectorLayer` 等）全部来自核心包 `maptalks`；proj4js 为第三方库，需单独安装：
 
 ```js
 import { Map, TileLayer, Coordinate, GeoJSON, VectorLayer } from "maptalks";
@@ -139,62 +139,6 @@ const map = new Map("map", {
 
 自定义投影通常需要同时提供 `resolutions` 与 `fullExtent`（自定义投影无法从内置预置中推断）。
 
-## 自定义投影：d3-proj
-
-投影对象不一定来自 proj4js，任何提供 `project` / `unproject` 的对象都可以使用。官方示例（[d3-proj](/examples/#basic/tilelayer-projection/d3-proj)）直接包装了 D3 的正交投影 `d3.geoOrthographic()`：
-
-```js
-import { Coordinate, Map, GeoJSON, VectorLayer } from "maptalks";
-import * as d3 from "d3-geo";
-
-// D3 的 Versor Dragging 投影
-const projection = d3.geoOrthographic().scale(148).precision(0.1);
-
-// 转换为 maptalks 的投影对象
-const proj = {
-  project: function (c) {
-    const pc = projection([c.x, c.y]);
-    return new Coordinate(pc[0], pc[1]);
-  },
-  unproject: function (pc) {
-    const c = projection.invert([pc.x, pc.y]);
-    if (!c || isNaN(c[0]) || isNaN(c[1])) {
-      return null;
-    }
-    return new Coordinate(c);
-  },
-};
-
-const min = proj.project(new Coordinate(-180, -90)),
-  max = proj.project(new Coordinate(180, 90)),
-  fullExtent = {
-    top: max.y,
-    left: min.x,
-    right: max.x,
-    bottom: min.y,
-  };
-
-// 用自定义投影初始化地图
-const map = new Map("map", {
-  center: [0, 0],
-  centerCross: true,
-  zoom: 2,
-  spatialReference: {
-    projection: proj,
-    resolutions: (function () {
-      const resolutions = [];
-      for (let i = 0; i < 10; i++) {
-        resolutions[i] = 4 / Math.pow(2, i);
-      }
-      return resolutions;
-    })(),
-    fullExtent: fullExtent,
-  },
-});
-```
-
-注意 `unproject` 在投影不可逆时返回 `null`，maptalks 会跳过这部分坐标。
-
 ## 其他内置投影：百度、平面坐标
 
 内置的 `BAIDU` 预置用于加载百度地图瓦片。百度瓦片的分辨率定义与 3857 不同，`spatialReference` 中只需声明投影名，分辨率与全幅范围会使用百度预置：
@@ -241,7 +185,7 @@ map.config("spatialReference", { projection: "EPSG:4326" });
 
 ## 相关示例
 
-- [EPSG:4326 天地图](/examples/#basic/tilelayer-projection/epsg4326) · [proj4js 自定义投影](/examples/#basic/tilelayer-projection/proj4js) · [d3 自定义投影](/examples/#basic/tilelayer-projection/d3-proj)
+- [EPSG:4326 天地图](/examples/#basic/tilelayer-projection/epsg4326) · [proj4js 自定义投影](/examples/#basic/tilelayer-projection/proj4js)
 - [不同投影对比](/examples/#basic/tilelayer-projection/projection) · [百度瓦片](/examples/#basic/tilelayer-projection/baidu) · [平面坐标](/examples/#basic/tilelayer-projection/identity)
 
 ## 相关 API
