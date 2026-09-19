@@ -581,6 +581,7 @@ export default defineConfig({
         "draco",
         "proj4",
         "maptalks-gl",
+        "suncalc",
       ],
     },
   },

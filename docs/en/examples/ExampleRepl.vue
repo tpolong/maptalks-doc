@@ -40,33 +40,38 @@ const importMap = {
     // import; use the local ESM shim (see docs/public/lib/draco.mjs) to register it
     draco: "/lib/draco.mjs",
     proj4: "https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.11.0/proj4.js",
-    "gl-layers": "https://unpkg.com/@maptalks/gl-layers@0.34.1/index.js",
-    // gl-layers' ESM entry re-exports the sub packages; map them and all
-    // dependencies to browser-usable ESM here
-    "@maptalks/gl": "https://unpkg.com/@maptalks/gl@0.97.4/dist/maptalksgl.es.js",
-    "@maptalks/vt": "https://unpkg.com/@maptalks/vt@0.95.0/dist/maptalks.vt.es.js",
+    // "gl-layers" points at a local barrel entry that merges maptalks-gl (core + gl
+    // extensions) with @maptalks/analysis (spatial analysis classes, no longer part
+    // of the gl package since 0.124.4).
+    "gl-layers": "/lib/gl-layers.mjs",
+    "maptalks-gl": "https://unpkg.com/maptalks-gl@0.124.4/index.js",
+    // maptalks-gl's ESM entry re-exports the maptalks core plus every sub package;
+    // versions track the official CDN bundle (maptalks-gl 0.124.4 + maptalks 1.12.1).
+    // The previous @maptalks/gl-layers@0.34.1 was frozen in 2024-03 with sub packages
+    // stuck on 0.97.4, which behaved differently from the official site (e.g. 3D measure
+    // threw on Tool.addTo, identify produced NaN coordinates).
+    "@maptalks/gl": "https://unpkg.com/@maptalks/gl@0.124.4/dist/maptalksgl.es.js",
+    "@maptalks/vt": "https://unpkg.com/@maptalks/vt@0.124.4/dist/maptalks.vt.es.js",
     "@maptalks/3dtiles":
-      "https://unpkg.com/@maptalks/3dtiles@0.97.4/dist/maptalks.3dtiles.es.js",
+      "https://unpkg.com/@maptalks/3dtiles@0.124.4/dist/maptalks.3dtiles.es.js",
     "@maptalks/gltf-layer":
-      "https://unpkg.com/@maptalks/gltf-layer@0.97.4/dist/maptalks.gltf.es.js",
+      "https://unpkg.com/@maptalks/gltf-layer@0.124.4/dist/maptalks.gltf.es.js",
     "@maptalks/analysis":
-      "https://unpkg.com/@maptalks/analysis@0.97.4/dist/maptalks.analysis.es.js",
+      "https://unpkg.com/@maptalks/analysis@0.124.4/dist/maptalks.analysis.es.js",
     "@maptalks/video-layer":
-      "https://unpkg.com/@maptalks/video-layer@0.97.4/dist/maptalks.video.es.js",
+      "https://unpkg.com/@maptalks/video-layer@0.124.4/dist/maptalks.video.es.js",
     "@maptalks/transform-control":
-      "https://unpkg.com/@maptalks/transform-control@0.97.4/dist/transform-control.es.js",
+      "https://unpkg.com/@maptalks/transform-control@0.124.4/dist/transform-control.es.js",
     "@maptalks/msd-json-loader":
       "https://unpkg.com/@maptalks/msd-json-loader@0.1.0/dist/MSDJSONLoader.mjs",
     // regl ships CJS/UMD only; local wrapper exposes default + named createREGL
     "@maptalks/regl": "/lib/regl-esm.mjs",
     // @maptalks sub packages ship native ESM (module field), so point them straight at
     // unpkg: single request, no esm.sh redirect chain - faster and more reliable.
-    // Their bare imports are resolved through this import map; versions match the
-    // gl-layers dependency tree (same packages/versions esm.sh was serving).
+    // Their bare imports are resolved through this import map; versions aligned with the
+    // 0.124.4 dependency tree (see @maptalks/gl@0.124.4 dependencies).
     "@maptalks/fusiongl":
-      "https://unpkg.com/@maptalks/fusiongl@0.6.13/dist/fusiongl.es.js",
-    "@maptalks/reshader.gl":
-      "https://unpkg.com/@maptalks/reshader.gl@0.97.4/dist/reshadergl.es.js",
+      "https://unpkg.com/@maptalks/fusiongl@0.124.4/dist/fusiongl.es.js",
     "@maptalks/feature-filter":
       "https://unpkg.com/@maptalks/feature-filter@1.3.0/index.js",
     "@maptalks/function-type":
@@ -79,24 +84,39 @@ const importMap = {
       "https://unpkg.com/@maptalks/vector-packer@0.96.4/dist/vector-packer.es.js",
     "@maptalks/vt-plugin":
       "https://unpkg.com/@maptalks/vt-plugin@0.124.4/index.js",
-    // vector-packer's deps (resolved as bare specifiers after switching to unpkg):
+    "@maptalks/martini": "https://esm.sh/@maptalks/martini@0.4.0",
+    "@maptalks/geojson-vt": "https://esm.sh/@maptalks/geojson-vt@3.5.0",
+    "@maptalks/geojson-bbox": "https://esm.sh/@maptalks/geojson-bbox@1.0.4",
+    // vector-packer / vt deps (resolved as bare specifiers after switching to unpkg):
     // point-geometry is CJS (needs esm.sh conversion), shelf-pack ships native index.mjs,
     // quickselect/tinyqueue go through esm.sh
     "@mapbox/point-geometry": "https://esm.sh/@mapbox/point-geometry@0.1.0",
     "@mapbox/shelf-pack": "https://unpkg.com/@mapbox/shelf-pack@3.2.0/index.mjs",
+    "@mapbox/vector-tile": "https://esm.sh/@mapbox/vector-tile@1.3.1",
     quickselect: "https://esm.sh/quickselect@1.0.0",
     tinyqueue: "https://esm.sh/tinyqueue@2.0.3",
-    // remaining small deps go through esm.sh conversion (CJS compat, pinned to maptalks' versions)
-    "gl-matrix": "https://esm.sh/gl-matrix@2.6.1",
+    // remaining small deps go through esm.sh conversion (CJS compat, pinned to the 0.124.4 tree)
+    "gl-matrix": "https://esm.sh/gl-matrix@3.4.0",
     "animation-easings": "https://esm.sh/animation-easings",
-    color: "https://esm.sh/color",
+    color: "https://esm.sh/color@3.0.0",
     colorin: "https://esm.sh/colorin@0.6.0",
-    earcut: "https://esm.sh/earcut",
-    "fast-deep-equal": "https://esm.sh/fast-deep-equal",
-    "frustum-intersects": "https://esm.sh/frustum-intersects@0.2.0",
+    earcut: "https://esm.sh/earcut@3.0.1",
+    "fast-deep-equal": "https://esm.sh/fast-deep-equal@2.0.1",
+    "frustum-intersects": "https://esm.sh/frustum-intersects@0.2.4",
     lineclip: "https://esm.sh/lineclip@1.1.5",
-    rbush: "https://esm.sh/rbush@2",
+    rbush: "https://esm.sh/rbush@3.0.1",
     "simplify-js": "https://esm.sh/simplify-js@1.2.1",
+    pbf: "https://esm.sh/pbf@3.2.1",
+    "vt-pbf": "https://esm.sh/vt-pbf@3.1.0",
+    "robust-predicates": "https://esm.sh/robust-predicates@2.0.4",
+    "point-in-polygon": "https://esm.sh/point-in-polygon@1.1.0",
+    "parse-dds": "https://esm.sh/parse-dds@1.2.1",
+    pako: "https://esm.sh/pako@2.0.4",
+    wgsl_reflect: "https://esm.sh/wgsl_reflect@1.0.16",
+    "@turf/along": "https://esm.sh/@turf/along@6.5.0",
+    "@turf/buffer": "https://esm.sh/@turf/buffer@6.5.0",
+    "@turf/helpers": "https://esm.sh/@turf/helpers@6.5.0",
+    "@turf/distance": "https://esm.sh/@turf/distance@6.5.0",
     "mt.gui": "/lib/mt.gui.js",
     // gl-layers does not export RoutePlayer (6 track examples depend on it); use a local
     // minimal shim (see route-player.mjs)
@@ -125,6 +145,7 @@ const importMap = {
     // so a local jquery-ui shim (see docs/public/lib/jquery-ui.mjs) extends $.fn
     "jquery-ui": "/lib/jquery-ui.mjs",
     "dat.gui": "https://esm.sh/dat.gui@0.7.9",
+    "suncalc": "https://esm.sh/suncalc@1.9.0",
     // esm.sh rewrites the `maptalks` import inside its served sub packages to
     // an absolute esm.sh URL, bypassing the bare-specifier map above and loading
     // a second maptalks instance (duplicate-import error). Remap those absolute
@@ -145,6 +166,13 @@ const { isDark } = useData();
 
 /** Current example path, e.g. "3d/3dtiles/load" */
 const path = ref("");
+
+/**
+ * Preview-first: hide the code editor by default so the example fills the
+ * available width. Preview width drives the 3D camera view, so a narrow preview
+ * makes draw/measure results differ from the official example site.
+ */
+const previewOnly = ref(true);
 
 /**
  * Path of the example already loaded.
@@ -281,29 +309,38 @@ function closeRepl() {
 </script>
 
 <template>
-  <div class="examples-repl-page">
+  <div class="examples-repl-page" :class="{ 'is-preview-only': previewOnly }">
     <div class="examples-repl-head">
       <span class="examples-repl-path">
         <span class="examples-repl-live" aria-hidden="true"></span>
         {{ path }}
       </span>
-      <button type="button" class="examples-repl-close" @click="closeRepl">
-        <svg
-          class="examples-repl-close-icon"
-          viewBox="0 0 16 16"
-          width="15"
-          height="15"
-          aria-hidden="true"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+      <div class="examples-repl-actions">
+        <button
+          type="button"
+          class="examples-repl-toggle"
+          @click="previewOnly = !previewOnly"
         >
-          <path d="M3.2 3.2l9.6 9.6M12.8 3.2L3.2 12.8" />
-        </svg>
-        <span>Close</span>
-      </button>
+          {{ previewOnly ? "View source" : "Back to preview" }}
+        </button>
+        <button type="button" class="examples-repl-close" @click="closeRepl">
+          <svg
+            class="examples-repl-close-icon"
+            viewBox="0 0 16 16"
+            width="15"
+            height="15"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3.2 3.2l9.6 9.6M12.8 3.2L3.2 12.8" />
+          </svg>
+          <span>Close</span>
+        </button>
+      </div>
     </div>
     <Repl
       :editor="CodeMirror"
@@ -329,6 +366,62 @@ function closeRepl() {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.examples-repl-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.examples-repl-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 9999px;
+  padding: 5px 14px;
+  background-color: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+  font-family: var(--vp-font-family-base);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.18s ease, color 0.18s ease,
+    background-color 0.18s ease, transform 0.12s ease;
+}
+
+.examples-repl-toggle:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}
+
+.examples-repl-toggle:active {
+  transform: translateY(1px);
+}
+
+.examples-repl-toggle:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
+
+/**
+ * Preview-first: hide the left code editor and splitter so the example fills
+ * the available width. Preview width drives the 3D camera view — a narrow
+ * preview makes draw/measure results differ from the official example site.
+ */
+.examples-repl-page.is-preview-only .split-pane > .left {
+  display: none !important;
+}
+
+.examples-repl-page.is-preview-only .split-pane > .right {
+  flex: 1 1 100% !important;
+  width: 100% !important;
 }
 
 .examples-repl-path {

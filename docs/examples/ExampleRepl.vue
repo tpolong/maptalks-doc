@@ -38,31 +38,35 @@ const importMap = {
     // shim 包装（见 docs/public/lib/draco.mjs）按副作用注册解码器
     draco: "/lib/draco.mjs",
     proj4: "https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.11.0/proj4.js",
-    "gl-layers": "https://unpkg.com/@maptalks/gl-layers@0.34.1/index.js",
-    // gl-layers 的 ESM 入口 re-export 子包，这里把子包与依赖全部映射到浏览器可用 ESM
-    "@maptalks/gl": "https://unpkg.com/@maptalks/gl@0.97.4/dist/maptalksgl.es.js",
-    "@maptalks/vt": "https://unpkg.com/@maptalks/vt@0.95.0/dist/maptalks.vt.es.js",
+    // REPL 里 "gl-layers" 统一指向本地汇总入口：合并 maptalks-gl（核心 + gl 扩展）
+    // 与 @maptalks/analysis（空间分析类）。0.124.4 起分析类不再包含在 gl 包里。
+    "gl-layers": "/lib/gl-layers.mjs",
+    "maptalks-gl": "https://unpkg.com/maptalks-gl@0.124.4/index.js",
+    // maptalks-gl 的 ESM 入口 re-export maptalks 核心与全部子包；版本对齐官方 CDN
+    // 打包版（maptalks-gl 0.124.4 + maptalks 1.12.1）。
+    // 原先用的 @maptalks/gl-layers@0.34.1 停更于 2024-03，其子包依赖停留在 0.97.4，
+    // 与官网（0.124.4）行为不一致（例：3D 测量工具 Tool.addTo 报错、拾取出 NaN 坐标）。
+    "@maptalks/gl": "https://unpkg.com/@maptalks/gl@0.124.4/dist/maptalksgl.es.js",
+    "@maptalks/vt": "https://unpkg.com/@maptalks/vt@0.124.4/dist/maptalks.vt.es.js",
     "@maptalks/3dtiles":
-      "https://unpkg.com/@maptalks/3dtiles@0.97.4/dist/maptalks.3dtiles.es.js",
+      "https://unpkg.com/@maptalks/3dtiles@0.124.4/dist/maptalks.3dtiles.es.js",
     "@maptalks/gltf-layer":
-      "https://unpkg.com/@maptalks/gltf-layer@0.97.4/dist/maptalks.gltf.es.js",
+      "https://unpkg.com/@maptalks/gltf-layer@0.124.4/dist/maptalks.gltf.es.js",
     "@maptalks/analysis":
-      "https://unpkg.com/@maptalks/analysis@0.97.4/dist/maptalks.analysis.es.js",
+      "https://unpkg.com/@maptalks/analysis@0.124.4/dist/maptalks.analysis.es.js",
     "@maptalks/video-layer":
-      "https://unpkg.com/@maptalks/video-layer@0.97.4/dist/maptalks.video.es.js",
+      "https://unpkg.com/@maptalks/video-layer@0.124.4/dist/maptalks.video.es.js",
     "@maptalks/transform-control":
-      "https://unpkg.com/@maptalks/transform-control@0.97.4/dist/transform-control.es.js",
+      "https://unpkg.com/@maptalks/transform-control@0.124.4/dist/transform-control.es.js",
     "@maptalks/msd-json-loader":
       "https://unpkg.com/@maptalks/msd-json-loader@0.1.0/dist/MSDJSONLoader.mjs",
     // regl 官方只有 CJS/UMD，用本地 wrapper 提供 default + createREGL 双导出
     "@maptalks/regl": "/lib/regl-esm.mjs",
     // @maptalks 子包在 npm 上有原生 ESM（module 字段），直接 unpkg 直连：
     // 单请求、无 esm.sh 重定向链，加载更快更稳；内部 import 的裸标识符由本
-    // import map 解析。版本与 gl-layers 依赖树一致（esm.sh 版同源同版本）。
+    // import map 解析。版本按 0.124.4 依赖树（gl@0.124.4 的 dependencies）对齐。
     "@maptalks/fusiongl":
-      "https://unpkg.com/@maptalks/fusiongl@0.6.13/dist/fusiongl.es.js",
-    "@maptalks/reshader.gl":
-      "https://unpkg.com/@maptalks/reshader.gl@0.97.4/dist/reshadergl.es.js",
+      "https://unpkg.com/@maptalks/fusiongl@0.124.4/dist/fusiongl.es.js",
     "@maptalks/feature-filter":
       "https://unpkg.com/@maptalks/feature-filter@1.3.0/index.js",
     "@maptalks/function-type":
@@ -75,23 +79,38 @@ const importMap = {
       "https://unpkg.com/@maptalks/vector-packer@0.96.4/dist/vector-packer.es.js",
     "@maptalks/vt-plugin":
       "https://unpkg.com/@maptalks/vt-plugin@0.124.4/index.js",
-    // vector-packer 的依赖（unpkg 直连后由裸标识符解析）：point-geometry 是 CJS
-    //（需 esm.sh 转换），shelf-pack 有原生 index.mjs，quickselect/tinyqueue 走 esm.sh
+    "@maptalks/martini": "https://esm.sh/@maptalks/martini@0.4.0",
+    "@maptalks/geojson-vt": "https://esm.sh/@maptalks/geojson-vt@3.5.0",
+    "@maptalks/geojson-bbox": "https://esm.sh/@maptalks/geojson-bbox@1.0.4",
+    // vector-packer / vt 的依赖（unpkg 直连后由裸标识符解析）：point-geometry 是 CJS
+    //（需 esm.sh 转换），shelf-pack 有原生 index.mjs
     "@mapbox/point-geometry": "https://esm.sh/@mapbox/point-geometry@0.1.0",
     "@mapbox/shelf-pack": "https://unpkg.com/@mapbox/shelf-pack@3.2.0/index.mjs",
+    "@mapbox/vector-tile": "https://esm.sh/@mapbox/vector-tile@1.3.1",
     quickselect: "https://esm.sh/quickselect@1.0.0",
     tinyqueue: "https://esm.sh/tinyqueue@2.0.3",
-    // 其余小依赖走 esm.sh 转换（CJS 兼容转换，按 maptalks 依赖版本 pin）
-    "gl-matrix": "https://esm.sh/gl-matrix@2.6.1",
+    // 其余小依赖走 esm.sh 转换（CJS 兼容转换，按 0.124.4 依赖版本 pin）
+    "gl-matrix": "https://esm.sh/gl-matrix@3.4.0",
     "animation-easings": "https://esm.sh/animation-easings",
-    color: "https://esm.sh/color",
+    color: "https://esm.sh/color@3.0.0",
     colorin: "https://esm.sh/colorin@0.6.0",
-    earcut: "https://esm.sh/earcut",
-    "fast-deep-equal": "https://esm.sh/fast-deep-equal",
-    "frustum-intersects": "https://esm.sh/frustum-intersects@0.2.0",
+    earcut: "https://esm.sh/earcut@3.0.1",
+    "fast-deep-equal": "https://esm.sh/fast-deep-equal@2.0.1",
+    "frustum-intersects": "https://esm.sh/frustum-intersects@0.2.4",
     lineclip: "https://esm.sh/lineclip@1.1.5",
-    rbush: "https://esm.sh/rbush@2",
+    rbush: "https://esm.sh/rbush@3.0.1",
     "simplify-js": "https://esm.sh/simplify-js@1.2.1",
+    pbf: "https://esm.sh/pbf@3.2.1",
+    "vt-pbf": "https://esm.sh/vt-pbf@3.1.0",
+    "robust-predicates": "https://esm.sh/robust-predicates@2.0.4",
+    "point-in-polygon": "https://esm.sh/point-in-polygon@1.1.0",
+    "parse-dds": "https://esm.sh/parse-dds@1.2.1",
+    pako: "https://esm.sh/pako@2.0.4",
+    wgsl_reflect: "https://esm.sh/wgsl_reflect@1.0.16",
+    "@turf/along": "https://esm.sh/@turf/along@6.5.0",
+    "@turf/buffer": "https://esm.sh/@turf/buffer@6.5.0",
+    "@turf/helpers": "https://esm.sh/@turf/helpers@6.5.0",
+    "@turf/distance": "https://esm.sh/@turf/distance@6.5.0",
     "mt.gui": "/lib/mt.gui.js",
     // gl-layers 未导出 RoutePlayer（track 系列 6 例依赖），用本地最小 shim（见 route-player.mjs）
     "route-player": "/lib/route-player.mjs",
@@ -118,6 +137,7 @@ const importMap = {
     // jquery-ui shim（见 docs/public/lib/jquery-ui.mjs）扩展 $.fn
     "jquery-ui": "/lib/jquery-ui.mjs",
     "dat.gui": "https://esm.sh/dat.gui@0.7.9",
+    "suncalc": "https://esm.sh/suncalc@1.9.0",
     // esm.sh 会把 esm.sh 子包内部对 `maptalks` 的重写为绝对 esm.sh URL，
     // 从而绕开上面的裸标识符映射、加载出第二个 maptalks 实例（重复导入报错）。
     // 这里把那些绝对 URL 统一重映射到同一个 unpkg 实例。
@@ -137,6 +157,13 @@ const { isDark } = useData();
 
 /** 当前示例路径，如 "3d/3dtiles/load" */
 const path = ref("");
+
+/**
+ * 预览优先：默认隐藏代码编辑器，让示例占满可用宽度。
+ * 预览区宽度直接决定 3D 示例的相机视野（例：压平、测量等交互类示例），
+ * 窄预览区下画出的区域与官网示例站（预览占满）不一致。
+ */
+const previewOnly = ref(true);
 
 /**
  * 已加载的示例路径。
@@ -267,29 +294,38 @@ function closeRepl() {
 </script>
 
 <template>
-  <div class="examples-repl-page">
+  <div class="examples-repl-page" :class="{ 'is-preview-only': previewOnly }">
     <div class="examples-repl-head">
       <span class="examples-repl-path">
         <span class="examples-repl-live" aria-hidden="true"></span>
         {{ path }}
       </span>
-      <button type="button" class="examples-repl-close" @click="closeRepl">
-        <svg
-          class="examples-repl-close-icon"
-          viewBox="0 0 16 16"
-          width="15"
-          height="15"
-          aria-hidden="true"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+      <div class="examples-repl-actions">
+        <button
+          type="button"
+          class="examples-repl-toggle"
+          @click="previewOnly = !previewOnly"
         >
-          <path d="M3.2 3.2l9.6 9.6M12.8 3.2L3.2 12.8" />
-        </svg>
-        <span>关闭</span>
-      </button>
+          {{ previewOnly ? "查看源码" : "返回预览" }}
+        </button>
+        <button type="button" class="examples-repl-close" @click="closeRepl">
+          <svg
+            class="examples-repl-close-icon"
+            viewBox="0 0 16 16"
+            width="15"
+            height="15"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3.2 3.2l9.6 9.6M12.8 3.2L3.2 12.8" />
+          </svg>
+          <span>关闭</span>
+        </button>
+      </div>
     </div>
     <Repl
       :editor="CodeMirror"
@@ -315,6 +351,62 @@ function closeRepl() {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.examples-repl-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.examples-repl-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 9999px;
+  padding: 5px 14px;
+  background-color: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+  font-family: var(--vp-font-family-base);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.18s ease, color 0.18s ease,
+    background-color 0.18s ease, transform 0.12s ease;
+}
+
+.examples-repl-toggle:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}
+
+.examples-repl-toggle:active {
+  transform: translateY(1px);
+}
+
+.examples-repl-toggle:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
+
+/**
+ * 预览优先：默认隐藏左侧代码编辑器与分隔条，让示例占满可用宽度。
+ * 预览区宽度直接决定 3D 示例的相机视野——窄预览下绘制/测量的结果会与
+ * 官网示例站（预览占满）不一致；需要看代码时点「查看源码」切回。
+ */
+.examples-repl-page.is-preview-only .split-pane > .left {
+  display: none !important;
+}
+
+.examples-repl-page.is-preview-only .split-pane > .right {
+  flex: 1 1 100% !important;
+  width: 100% !important;
 }
 
 .examples-repl-path {
