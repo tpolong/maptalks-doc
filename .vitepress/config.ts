@@ -62,34 +62,28 @@ const zhSidebarGuide = [
 ];
 
 const zhSidebarApi = [
+  { text: "API 参考概览", link: "/api/" },
   {
-    text: "核心类",
+    text: "地图",
     collapsed: false,
-    items: [
-      { text: "Map", link: "/api/map" },
-      { text: "Layer", link: "/api/layer" },
-      { text: "TileLayer", link: "/api/tile-layer" },
-      { text: "OverlayLayer", link: "/api/overlay-layer" },
-      { text: "VectorLayer", link: "/api/vector-layer" },
-      { text: "Geometry", link: "/api/geometry" },
-      { text: "Marker", link: "/api/marker" },
-      { text: "Coordinate", link: "/api/coordinate" },
-    ],
+    items: [{ text: "Map", link: "/api/map" }],
   },
   {
     text: "几何",
     collapsed: false,
     items: [
+      { text: "Geometry", link: "/api/geometry" },
+      { text: "Marker", link: "/api/marker" },
       { text: "Point", link: "/api/point" },
+      { text: "MultiPoint", link: "/api/multi-point" },
       { text: "LineString", link: "/api/line-string" },
+      { text: "MultiLineString", link: "/api/multi-line-string" },
       { text: "Polygon", link: "/api/polygon" },
+      { text: "MultiPolygon", link: "/api/multi-polygon" },
       { text: "Ellipse", link: "/api/ellipse" },
       { text: "Rectangle", link: "/api/rectangle" },
       { text: "Sector", link: "/api/sector" },
       { text: "Circle", link: "/api/circle" },
-      { text: "MultiPoint", link: "/api/multi-point" },
-      { text: "MultiLineString", link: "/api/multi-line-string" },
-      { text: "MultiPolygon", link: "/api/multi-polygon" },
       { text: "MultiGeometry", link: "/api/multi-geometry" },
       { text: "GeometryCollection", link: "/api/geometry-collection" },
       { text: "Path", link: "/api/path" },
@@ -100,24 +94,24 @@ const zhSidebarApi = [
       { text: "ConnectorLine", link: "/api/connector-line" },
       { text: "ArcConnectorLine", link: "/api/arc-connector-line" },
       { text: "TextMarker", link: "/api/text-marker" },
-      { text: "TextBox", link: "/api/text-box" },
       { text: "Label", link: "/api/label" },
-      { text: "GeoJSON", link: "/api/geojson" },
-      { text: "CenterMixin", link: "/api/center-mixin" },
-      { text: "GeometryEditor", link: "/api/geometry-editor" },
+      { text: "TextBox", link: "/api/text-box" },
     ],
   },
   {
     text: "图层",
-    collapsed: true,
+    collapsed: false,
     items: [
-      { text: "CanvasLayer", link: "/api/canvas-layer" },
-      { text: "ImageLayer", link: "/api/image-layer" },
-      { text: "ParticleLayer", link: "/api/particle-layer" },
-      { text: "DrawToolLayer", link: "/api/draw-tool-layer" },
-      { text: "GroupTileLayer", link: "/api/group-tile-layer" },
+      { text: "Layer", link: "/api/layer" },
+      { text: "TileLayer", link: "/api/tile-layer" },
       { text: "WMSTileLayer", link: "/api/wms-tile-layer" },
-      { text: "TileSystem", link: "/api/tile-system" },
+      { text: "GroupTileLayer", link: "/api/group-tile-layer" },
+      { text: "OverlayLayer", link: "/api/overlay-layer" },
+      { text: "VectorLayer", link: "/api/vector-layer" },
+      { text: "DrawToolLayer", link: "/api/draw-tool-layer" },
+      { text: "CanvasLayer", link: "/api/canvas-layer" },
+      { text: "ParticleLayer", link: "/api/particle-layer" },
+      { text: "ImageLayer", link: "/api/image-layer" },
     ],
   },
   {
@@ -131,15 +125,17 @@ const zhSidebarApi = [
       { text: "Handlerable", link: "/api/handlerable" },
       { text: "Renderable", link: "/api/renderable" },
       { text: "Ajax", link: "/api/ajax" },
+      { text: "CenterMixin", link: "/api/center-mixin" },
     ],
   },
   {
     text: "Geo 值类型",
     collapsed: true,
     items: [
+      { text: "Position", link: "/api/position" },
+      { text: "Coordinate", link: "/api/coordinate" },
       { text: "Extent", link: "/api/extent" },
       { text: "PointExtent", link: "/api/point-extent" },
-      { text: "Position", link: "/api/position" },
       { text: "Size", link: "/api/size" },
       { text: "CRS", link: "/api/crs" },
       { text: "Transformation", link: "/api/transformation" },
@@ -153,6 +149,7 @@ const zhSidebarApi = [
       { text: "DrawTool", link: "/api/draw-tool" },
       { text: "AreaTool", link: "/api/area-tool" },
       { text: "DistanceTool", link: "/api/distance-tool" },
+      { text: "GeometryEditor", link: "/api/geometry-editor" },
     ],
   },
   {
@@ -232,6 +229,8 @@ const zhSidebarApi = [
       { text: "Util", link: "/api/util" },
       { text: "DomUtil", link: "/api/dom-util" },
       { text: "StringUtil", link: "/api/string-util" },
+      { text: "GeoJSON", link: "/api/geojson" },
+      { text: "TileSystem", link: "/api/tile-system" },
     ],
   },
   {
@@ -240,6 +239,12 @@ const zhSidebarApi = [
     items: [
       { text: "VectorTileLayer", link: "/api/vector-tile-layer" },
       { text: "GeoJSONVectorTileLayer", link: "/api/geojson-vector-tile-layer" },
+    ],
+  },
+  {
+    text: "WebGL 矢量图层",
+    collapsed: false,
+    items: [
       { text: "PointLayer", link: "/api/point-layer" },
       { text: "LineStringLayer", link: "/api/line-string-layer" },
       { text: "PolygonLayer", link: "/api/polygon-layer" },
@@ -247,7 +252,7 @@ const zhSidebarApi = [
     ],
   },
   {
-    text: "三维场景与模型",
+    text: "三维图层与模型",
     collapsed: false,
     items: [
       { text: "GroupGLLayer", link: "/api/group-gl-layer" },
@@ -345,34 +350,28 @@ const enSidebarGuide = [
 ];
 
 const enSidebarApi = [
+  { text: "API Overview", link: "/en/api/" },
   {
-    text: "Core Classes",
+    text: "Map",
     collapsed: false,
-    items: [
-      { text: "Map", link: "/en/api/map" },
-      { text: "Layer", link: "/en/api/layer" },
-      { text: "TileLayer", link: "/en/api/tile-layer" },
-      { text: "OverlayLayer", link: "/en/api/overlay-layer" },
-      { text: "VectorLayer", link: "/en/api/vector-layer" },
-      { text: "Geometry", link: "/en/api/geometry" },
-      { text: "Marker", link: "/en/api/marker" },
-      { text: "Coordinate", link: "/en/api/coordinate" },
-    ],
+    items: [{ text: "Map", link: "/en/api/map" }],
   },
   {
     text: "Geometry",
     collapsed: false,
     items: [
+      { text: "Geometry", link: "/en/api/geometry" },
+      { text: "Marker", link: "/en/api/marker" },
       { text: "Point", link: "/en/api/point" },
+      { text: "MultiPoint", link: "/en/api/multi-point" },
       { text: "LineString", link: "/en/api/line-string" },
+      { text: "MultiLineString", link: "/en/api/multi-line-string" },
       { text: "Polygon", link: "/en/api/polygon" },
+      { text: "MultiPolygon", link: "/en/api/multi-polygon" },
       { text: "Ellipse", link: "/en/api/ellipse" },
       { text: "Rectangle", link: "/en/api/rectangle" },
       { text: "Sector", link: "/en/api/sector" },
       { text: "Circle", link: "/en/api/circle" },
-      { text: "MultiPoint", link: "/en/api/multi-point" },
-      { text: "MultiLineString", link: "/en/api/multi-line-string" },
-      { text: "MultiPolygon", link: "/en/api/multi-polygon" },
       { text: "MultiGeometry", link: "/en/api/multi-geometry" },
       { text: "GeometryCollection", link: "/en/api/geometry-collection" },
       { text: "Path", link: "/en/api/path" },
@@ -383,24 +382,24 @@ const enSidebarApi = [
       { text: "ConnectorLine", link: "/en/api/connector-line" },
       { text: "ArcConnectorLine", link: "/en/api/arc-connector-line" },
       { text: "TextMarker", link: "/en/api/text-marker" },
-      { text: "TextBox", link: "/en/api/text-box" },
       { text: "Label", link: "/en/api/label" },
-      { text: "GeoJSON", link: "/en/api/geojson" },
-      { text: "CenterMixin", link: "/en/api/center-mixin" },
-      { text: "GeometryEditor", link: "/en/api/geometry-editor" },
+      { text: "TextBox", link: "/en/api/text-box" },
     ],
   },
   {
     text: "Layers",
-    collapsed: true,
+    collapsed: false,
     items: [
-      { text: "CanvasLayer", link: "/en/api/canvas-layer" },
-      { text: "ImageLayer", link: "/en/api/image-layer" },
-      { text: "ParticleLayer", link: "/en/api/particle-layer" },
-      { text: "DrawToolLayer", link: "/en/api/draw-tool-layer" },
-      { text: "GroupTileLayer", link: "/en/api/group-tile-layer" },
+      { text: "Layer", link: "/en/api/layer" },
+      { text: "TileLayer", link: "/en/api/tile-layer" },
       { text: "WMSTileLayer", link: "/en/api/wms-tile-layer" },
-      { text: "TileSystem", link: "/en/api/tile-system" },
+      { text: "GroupTileLayer", link: "/en/api/group-tile-layer" },
+      { text: "OverlayLayer", link: "/en/api/overlay-layer" },
+      { text: "VectorLayer", link: "/en/api/vector-layer" },
+      { text: "DrawToolLayer", link: "/en/api/draw-tool-layer" },
+      { text: "CanvasLayer", link: "/en/api/canvas-layer" },
+      { text: "ParticleLayer", link: "/en/api/particle-layer" },
+      { text: "ImageLayer", link: "/en/api/image-layer" },
     ],
   },
   {
@@ -414,15 +413,17 @@ const enSidebarApi = [
       { text: "Handlerable", link: "/en/api/handlerable" },
       { text: "Renderable", link: "/en/api/renderable" },
       { text: "Ajax", link: "/en/api/ajax" },
+      { text: "CenterMixin", link: "/en/api/center-mixin" },
     ],
   },
   {
     text: "Geo Types",
     collapsed: true,
     items: [
+      { text: "Position", link: "/en/api/position" },
+      { text: "Coordinate", link: "/en/api/coordinate" },
       { text: "Extent", link: "/en/api/extent" },
       { text: "PointExtent", link: "/en/api/point-extent" },
-      { text: "Position", link: "/en/api/position" },
       { text: "Size", link: "/en/api/size" },
       { text: "CRS", link: "/en/api/crs" },
       { text: "Transformation", link: "/en/api/transformation" },
@@ -436,6 +437,7 @@ const enSidebarApi = [
       { text: "DrawTool", link: "/en/api/draw-tool" },
       { text: "AreaTool", link: "/en/api/area-tool" },
       { text: "DistanceTool", link: "/en/api/distance-tool" },
+      { text: "GeometryEditor", link: "/en/api/geometry-editor" },
     ],
   },
   {
@@ -515,6 +517,8 @@ const enSidebarApi = [
       { text: "Util", link: "/en/api/util" },
       { text: "DomUtil", link: "/en/api/dom-util" },
       { text: "StringUtil", link: "/en/api/string-util" },
+      { text: "GeoJSON", link: "/en/api/geojson" },
+      { text: "TileSystem", link: "/en/api/tile-system" },
     ],
   },
   {
@@ -523,6 +527,12 @@ const enSidebarApi = [
     items: [
       { text: "VectorTileLayer", link: "/en/api/vector-tile-layer" },
       { text: "GeoJSONVectorTileLayer", link: "/en/api/geojson-vector-tile-layer" },
+    ],
+  },
+  {
+    text: "WebGL Vector Layers",
+    collapsed: false,
+    items: [
       { text: "PointLayer", link: "/en/api/point-layer" },
       { text: "LineStringLayer", link: "/en/api/line-string-layer" },
       { text: "PolygonLayer", link: "/en/api/polygon-layer" },
@@ -530,7 +540,7 @@ const enSidebarApi = [
     ],
   },
   {
-    text: "3D Scenes & Models",
+    text: "3D Layers & Models",
     collapsed: false,
     items: [
       { text: "GroupGLLayer", link: "/en/api/group-gl-layer" },
@@ -593,7 +603,7 @@ export default defineConfig({
         nav: [
           { text: "首页", link: "/" },
           { text: "指南", link: "/guide/intro" },
-          { text: "API", link: "/api/vector-tile-layer" },
+          { text: "API", link: "/api/" },
           { text: "示例", link: "/examples/" },
         ],
         sidebar: {
@@ -609,7 +619,7 @@ export default defineConfig({
         nav: [
           { text: "Home", link: "/en/" },
           { text: "Guide", link: "/en/guide/intro" },
-          { text: "API", link: "/en/api/vector-tile-layer" },
+          { text: "API", link: "/en/api/" },
           { text: "Examples", link: "/en/examples/" },
         ],
         sidebar: {
