@@ -7,6 +7,8 @@ sidebar: false
 <script setup>
 import { defineAsyncComponent, onMounted, ref } from "vue";
 import { onHashChange } from "./utils";
+// 兼容目录重组前的旧深链（如 #3d/3dtiles/load -> #scene3d/tiles3d/load）
+import { readExampleHash } from "./legacy-paths";
 import ExampleList from "./ExampleList.vue";
 
 // REPL 依赖 @vue/repl + CodeMirror，体积较大，仅在存在 hash 时异步加载
@@ -16,11 +18,11 @@ const ExampleRepl = defineAsyncComponent(() => import("./ExampleRepl.vue"));
 const hash = ref("");
 
 onMounted(() => {
-  hash.value = location.hash.slice(1);
+  hash.value = readExampleHash();
 });
 
 onHashChange(() => {
-  hash.value = location.hash.slice(1);
+  hash.value = readExampleHash();
 });
 </script>
 

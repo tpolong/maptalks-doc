@@ -7,6 +7,9 @@ sidebar: false
 <script setup>
 import { defineAsyncComponent, onMounted, ref } from "vue";
 import { onHashChange } from "./utils";
+// Back-compat for deep links shared before the directory reorganisation
+// (e.g. #3d/3dtiles/load -> #scene3d/tiles3d/load)
+import { readExampleHash } from "../../examples/legacy-paths";
 import ExampleList from "./ExampleList.vue";
 
 // The REPL depends on @vue/repl + CodeMirror and is heavy,
@@ -18,11 +21,11 @@ const ExampleRepl = defineAsyncComponent(() => import("./ExampleRepl.vue"));
 const hash = ref("");
 
 onMounted(() => {
-  hash.value = location.hash.slice(1);
+  hash.value = readExampleHash();
 });
 
 onHashChange(() => {
-  hash.value = location.hash.slice(1);
+  hash.value = readExampleHash();
 });
 </script>
 
