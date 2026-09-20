@@ -43,8 +43,7 @@ const map = new Map("map", {
     projection: "EPSG:4326",
   },
   baseLayer: new TileLayer("base", {
-    urlTemplate: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-    subdomains: ["a", "b", "c", "d"],
+    urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
   }),
 });
 ```
@@ -130,8 +129,7 @@ const map = new Map("map", {
     },
   },
   baseLayer: new TileLayer("base", {
-    urlTemplate: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-    subdomains: ["a", "b", "c", "d"],
+    urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution: "&copy; OpenStreetMap contributors, &copy; CARTO",
   }),
 });

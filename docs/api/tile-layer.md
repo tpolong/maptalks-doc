@@ -11,8 +11,7 @@ import { Map, TileLayer } from "maptalks";
 
 const map = new Map("map", { center: [0, 0], zoom: 2 });
 const layer = new TileLayer("base", {
-  urlTemplate: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-  subdomains: ["a", "b", "c", "d"],
+  urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
 }).addTo(map);
 ```
 

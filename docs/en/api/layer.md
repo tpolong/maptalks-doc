@@ -14,8 +14,7 @@ The inheritance chain is `Layer → JSONAble(Eventable(Renderable(Class)))`, giv
 import { TileLayer } from "maptalks";
 
 const layer = new TileLayer("base", {
-  urlTemplate: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-  subdomains: ["a", "b", "c", "d"],
+  urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
 }).addTo(map);
 ```
 

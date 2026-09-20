@@ -24,8 +24,7 @@ const map = new Map("map", {
   center: [-0.113049, 51.498568],
   zoom: 14,
   baseLayer: new TileLayer("base", {
-    urlTemplate: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-    subdomains: ["a", "b", "c", "d"],
+    urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
       "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
@@ -82,8 +81,7 @@ const map = new Map("map", {
   center: [-0.113049, 51.498568],
   zoom: 14,
   baseLayer: new TileLayer("base", {
-    urlTemplate: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-    subdomains: ["a", "b", "c", "d"],
+    urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
       "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
@@ -136,8 +134,7 @@ const map = new Map("map", {
   center: c,
   zoom: 13,
   baseLayer: new TileLayer("base", {
-    urlTemplate: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-    subdomains: ["a", "b", "c", "d"],
+    urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
   }),
   layers: [new VectorLayer("v0", [new Marker(c)])],
 });
@@ -146,8 +143,7 @@ const map1 = new Map("map1", {
   center: c,
   zoom: 13,
   baseLayer: new TileLayer("base1", {
-    urlTemplate: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-    subdomains: ["a", "b", "c", "d"],
+    urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
   }),
 });
 

@@ -15,8 +15,7 @@ const map = new Map("map", {
   center: [121.47, 31.23],
   zoom: 14,
   baseLayer: new TileLayer("base", {
-    urlTemplate: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-    subdomains: ["a", "b", "c", "d"],
+    urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
   }),
 });
 ```
