@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useData } from "vitepress";
 import { data as examples, type ExampleItem } from "./examples.data";
+import { CATEGORIES, SUBCATEGORIES, resolveTaxonomy } from "./taxonomy";
 
 /**
  * 示例中心（模仿 examples.maptalks.com）
@@ -10,71 +12,19 @@ import { data as examples, type ExampleItem } from "./examples.data";
  *  - 右栏：按子分类分组的缩略图卡片网格，点击卡片进入 REPL 运行
  *
  * 数据由 .data 加载器在构建时内联，SSR 可直接渲染，无需 <ClientOnly>。
- * 缩略图存放于 public/thumbnails/{cat}_{sub}_{name}.webp。
+ * 缩略图存放于 public/thumbnails/{物理cat}_{物理sub}_{name}.webp。
+ *
+ * 分组来自 ./taxonomy（物理路径 -> 展示分类），因此树的组织与物理目录解耦，
+ * 而缩略图名与 `#物理路径` 深链仍按物理目录拼，二者互不影响。
  */
 
-/** 四大分类的展示名（参考站顶级分类） */
-const CATEGORY_LABELS: Record<string, string> = {
-  "3d": "三维功能",
-  basic: "基础功能",
-  gltf: "GLTF模型",
-  vector: "矢量瓦片及点线面图层",
-};
-const CATEGORY_ORDER = ["basic", "vector", "gltf", "3d"];
-
-/** 子分类目录名 -> 参考站节标题中文名 */
-const SUBCATEGORY_LABELS: Record<string, Record<string, string>> = {
-  basic: {
-    map: "地图",
-    "tilelayer-projection": "瓦片图层与地理投影",
-    geometry: "图形",
-    "3d": "三维",
-    style: "图形样式",
-    layer: "图层",
-    utils: "工具/全局功能",
-    interaction: "交互",
-    animation: "动画",
-    "ui-control": "空间与UI组件",
-    json: "JSON序列化",
-    "plugin-develop": "插件开发示例",
-    hellolayer: "图层开发示例",
-  },
-  vector: {
-    vtlayer: "矢量瓦片图层",
-    "vt-visual": "矢量瓦片图层可视化",
-    geo: "GeoJSONVectorTileLayer",
-    operation: "样式操作",
-    interactive: "图层交互",
-    pointstyle: "点类型数据样式",
-    linestyle: "线类型数据样式",
-    polygonstyle: "面类型数据样式",
-    pointlayer: "点图层",
-    linelayer: "线图层",
-    polygonlayer: "面图层",
-    style: "样式操作",
-  },
-  gltf: {
-    "gltf-marker": "GLTFMarker",
-    "gltf-layer": "GLTFLayer",
-    "multi-gltf-marker": "MultiGLTFMarker",
-    "gltf-linestring": "GLTFLineString",
-    "transform-control": "TransformControl",
-  },
-  "3d": {
-    "line-3d-style": "线数据三维样式",
-    "polygon-3d-style": "三维白模样式",
-    waterstyle: "水体渲染",
-    terrain: "地形",
-    traffic: "交通",
-    "post-process": "后处理特效",
-    "3dtiles": "3dtiles功能示例",
-    pipeline: "管线",
-    "spatial-analysis": "空间分析",
-    track: "轨迹路线",
-    video: "视频图层",
-    weather: "天气系统",
-  },
-};
+/**
+ * 展示语言：分类树的一级/二级名称由 taxonomy 提供中英两套，
+ * 中文站取 zh、英文站取 en。
+ */
+const lang = computed<"zh" | "en">(() =>
+  (useData().lang.value || "").toLowerCase().startsWith("en") ? "en" : "zh",
+);
 
 /** 把目录名人性化为卡片标题：custom-monomer -> Custom monomer */
 function humanizeName(name: string): string {
@@ -86,9 +36,9 @@ interface ViewExample extends ExampleItem {
 }
 
 interface SubcategoryGroup {
-  key: string; // "3d/3dtiles"
-  name: string; // 目录名
-  label: string; // 中文节标题
+  key: string; // 展示锚点，如 "vt/pick"
+  name: string; // 展示二级 key
+  label: string; // 节标题（按站点语言取中/英）
   examples: ViewExample[];
 }
 
@@ -98,29 +48,70 @@ interface CategoryGroup {
   subcategories: SubcategoryGroup[];
 }
 
+/** 合并多个物理来源后按路径排序，保证卡片顺序稳定 */
+function sortByPath(list: ViewExample[]): ViewExample[] {
+  return [...list].sort((a, b) => a.path.localeCompare(b.path));
+}
+
 const allGroups = computed<CategoryGroup[]>(() => {
-  const categoryOrder = [...CATEGORY_ORDER];
-  const subByCategory = new Map<string, Map<string, ViewExample[]>>();
+  // 按 taxonomy 把示例桶化到「展示一级 -> 展示二级」
+  const buckets = new Map<string, Map<string, ViewExample[]>>();
   for (const ex of examples) {
-    if (!subByCategory.has(ex.category)) subByCategory.set(ex.category, new Map());
-    const subs = subByCategory.get(ex.category)!;
-    if (!subs.has(ex.subcategory)) subs.set(ex.subcategory, []);
-    subs.get(ex.subcategory)!.push({ ...ex, title: humanizeName(ex.name) });
+    const { cat, sub } = resolveTaxonomy(ex.category, ex.subcategory, ex.path);
+    if (!buckets.has(cat)) buckets.set(cat, new Map());
+    const subs = buckets.get(cat)!;
+    if (!subs.has(sub)) subs.set(sub, []);
+    subs.get(sub)!.push({ ...ex, title: humanizeName(ex.name) });
   }
-  return categoryOrder
-    .filter((cat) => subByCategory.has(cat))
-    .map((category) => {
-      const subs = subByCategory.get(category)!;
-      const subcategories: SubcategoryGroup[] = [...subs.keys()].map((name) => ({
-        key: `${category}/${name}`,
-        name,
-        label:
-          SUBCATEGORY_LABELS[category]?.[name] ??
-          humanizeName(name),
-        examples: subs.get(name) ?? [],
-      }));
-      return { category, label: CATEGORY_LABELS[category] ?? category, subcategories };
+
+  const groups: CategoryGroup[] = [];
+  for (const cat of CATEGORIES) {
+    const subs = buckets.get(cat.key);
+    if (!subs) continue;
+    const subcategories: SubcategoryGroup[] = [];
+    // 已登记的二级：按 taxonomy 定义的顺序输出
+    for (const def of SUBCATEGORIES) {
+      if (def.cat !== cat.key) continue;
+      const list = subs.get(def.sub);
+      if (!list) continue;
+      subcategories.push({
+        key: `${def.cat}/${def.sub}`,
+        name: def.sub,
+        label: lang.value === "en" ? def.en : def.zh,
+        examples: sortByPath(list),
+      });
+      subs.delete(def.sub);
+    }
+    // 未登记的（新增示例漏登记 taxonomy）也照常展示，不丢内容
+    for (const [sub, list] of subs) {
+      subcategories.push({
+        key: `${cat.key}/${sub}`,
+        name: sub,
+        label: humanizeName(sub),
+        examples: sortByPath(list),
+      });
+    }
+    groups.push({
+      category: cat.key,
+      label: lang.value === "en" ? cat.en : cat.zh,
+      subcategories,
     });
+  }
+  // 完全未知的一级分类兜底
+  for (const [cat, subs] of buckets) {
+    if (CATEGORIES.some((c) => c.key === cat)) continue;
+    groups.push({
+      category: cat,
+      label: humanizeName(cat),
+      subcategories: [...subs].map(([sub, list]) => ({
+        key: `${cat}/${sub}`,
+        name: sub,
+        label: humanizeName(sub),
+        examples: sortByPath(list),
+      })),
+    });
+  }
+  return groups;
 });
 
 /** 搜索过滤：按卡片标题/目录名匹配 */

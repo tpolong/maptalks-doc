@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useData } from "vitepress";
 import { data as examples, type ExampleItem } from "./examples.data";
+// Shared taxonomy lives with the Chinese component so both locales stay in sync.
+import { CATEGORIES, SUBCATEGORIES, resolveTaxonomy } from "../../examples/taxonomy";
 
 /**
  * Example center (modeled after examples.maptalks.com)
@@ -10,71 +13,20 @@ import { data as examples, type ExampleItem } from "./examples.data";
  *  - Right column: grouped thumbnail card grid; clicking a card opens the REPL
  *
  * Data is inlined at build time by the .data loader, so it renders during SSR
- * without <ClientOnly>. Thumbnails live in public/thumbnails/{cat}_{sub}_{name}.webp.
+ * without <ClientOnly>. Thumbnails live in public/thumbnails/{physical cat}_{physical sub}_{name}.webp.
+ *
+ * Grouping comes from ../../examples/taxonomy (physical path -> display category), so the tree
+ * is decoupled from the physical folders while thumbnail names and `#physical/path` deep links
+ * keep using them.
  */
 
-/** Top-level category display labels (reference site's top-level categories) */
-const CATEGORY_LABELS: Record<string, string> = {
-  "3d": "3D Features",
-  basic: "Basics",
-  gltf: "GLTF Models",
-  vector: "Vector Tiles & Layers",
-};
-const CATEGORY_ORDER = ["basic", "vector", "gltf", "3d"];
-
-/** Subcategory dir name -> reference section title (EN) */
-const SUBCATEGORY_LABELS: Record<string, Record<string, string>> = {
-  basic: {
-    map: "Map",
-    "tilelayer-projection": "Tile Layers & Projection",
-    geometry: "Geometry",
-    "3d": "3D",
-    style: "Symbols & Styles",
-    layer: "Layers",
-    utils: "Utilities / Global",
-    interaction: "Interaction",
-    animation: "Animation",
-    "ui-control": "Spatial & UI Components",
-    json: "JSON Serialization",
-    "plugin-develop": "Plugin Development",
-    hellolayer: "Layer Development",
-  },
-  vector: {
-    vtlayer: "Vector Tile Layer",
-    "vt-visual": "Vector Tile Visual",
-    geo: "GeoJSONVectorTileLayer",
-    operation: "Styling Operations",
-    interactive: "Layer Interaction",
-    pointstyle: "Point Data Styles",
-    linestyle: "Line Data Styles",
-    polygonstyle: "Polygon Data Styles",
-    pointlayer: "Point Layers",
-    linelayer: "Line Layers",
-    polygonlayer: "Polygon Layers",
-    style: "Styling Operations",
-  },
-  gltf: {
-    "gltf-marker": "GLTFMarker",
-    "gltf-layer": "GLTFLayer",
-    "multi-gltf-marker": "MultiGLTFMarker",
-    "gltf-linestring": "GLTFLineString",
-    "transform-control": "TransformControl",
-  },
-  "3d": {
-    "line-3d-style": "3D Line Styles",
-    "polygon-3d-style": "3D White-model Styles",
-    waterstyle: "Water Rendering",
-    terrain: "Terrain",
-    traffic: "Traffic",
-    "post-process": "Post-processing Effects",
-    "3dtiles": "3D Tiles Examples",
-    pipeline: "Pipelines",
-    "spatial-analysis": "Spatial Analysis",
-    track: "Track & Route",
-    video: "Video Layers",
-    weather: "Weather System",
-  },
-};
+/**
+ * Display language: category / subcategory names come from the shared taxonomy,
+ * which carries both zh and en labels. English site -> "en".
+ */
+const lang = computed<"zh" | "en">(() =>
+  (useData().lang.value || "").toLowerCase().startsWith("en") ? "en" : "zh",
+);
 
 /** Humanize a directory name into a card title: custom-monomer -> Custom monomer */
 function humanizeName(name: string): string {
@@ -86,9 +38,9 @@ interface ViewExample extends ExampleItem {
 }
 
 interface SubcategoryGroup {
-  key: string; // "3d/3dtiles"
-  name: string; // dir name
-  label: string; // section title
+  key: string; // display anchor, e.g. "vt/pick"
+  name: string; // display subcategory key
+  label: string; // section title, in the site's language
   examples: ViewExample[];
 }
 
@@ -98,27 +50,70 @@ interface CategoryGroup {
   subcategories: SubcategoryGroup[];
 }
 
+/** Sort by path so the card order stays stable when physical sources merge */
+function sortByPath(list: ViewExample[]): ViewExample[] {
+  return [...list].sort((a, b) => a.path.localeCompare(b.path));
+}
+
 const allGroups = computed<CategoryGroup[]>(() => {
-  const categoryOrder = [...CATEGORY_ORDER];
-  const subByCategory = new Map<string, Map<string, ViewExample[]>>();
+  // Bucket examples into "display category -> display subcategory" via the taxonomy
+  const buckets = new Map<string, Map<string, ViewExample[]>>();
   for (const ex of examples) {
-    if (!subByCategory.has(ex.category)) subByCategory.set(ex.category, new Map());
-    const subs = subByCategory.get(ex.category)!;
-    if (!subs.has(ex.subcategory)) subs.set(ex.subcategory, []);
-    subs.get(ex.subcategory)!.push({ ...ex, title: humanizeName(ex.name) });
+    const { cat, sub } = resolveTaxonomy(ex.category, ex.subcategory, ex.path);
+    if (!buckets.has(cat)) buckets.set(cat, new Map());
+    const subs = buckets.get(cat)!;
+    if (!subs.has(sub)) subs.set(sub, []);
+    subs.get(sub)!.push({ ...ex, title: humanizeName(ex.name) });
   }
-  return categoryOrder
-    .filter((cat) => subByCategory.has(cat))
-    .map((category) => {
-      const subs = subByCategory.get(category)!;
-      const subcategories: SubcategoryGroup[] = [...subs.keys()].map((name) => ({
-        key: `${category}/${name}`,
-        name,
-        label: SUBCATEGORY_LABELS[category]?.[name] ?? humanizeName(name),
-        examples: subs.get(name) ?? [],
-      }));
-      return { category, label: CATEGORY_LABELS[category] ?? category, subcategories };
+
+  const groups: CategoryGroup[] = [];
+  for (const cat of CATEGORIES) {
+    const subs = buckets.get(cat.key);
+    if (!subs) continue;
+    const subcategories: SubcategoryGroup[] = [];
+    // Registered subcategories, in the order declared by the taxonomy
+    for (const def of SUBCATEGORIES) {
+      if (def.cat !== cat.key) continue;
+      const list = subs.get(def.sub);
+      if (!list) continue;
+      subcategories.push({
+        key: `${def.cat}/${def.sub}`,
+        name: def.sub,
+        label: lang.value === "en" ? def.en : def.zh,
+        examples: sortByPath(list),
+      });
+      subs.delete(def.sub);
+    }
+    // Anything not registered in the taxonomy still shows up instead of vanishing
+    for (const [sub, list] of subs) {
+      subcategories.push({
+        key: `${cat.key}/${sub}`,
+        name: sub,
+        label: humanizeName(sub),
+        examples: sortByPath(list),
+      });
+    }
+    groups.push({
+      category: cat.key,
+      label: lang.value === "en" ? cat.en : cat.zh,
+      subcategories,
     });
+  }
+  // Fallback for a completely unknown top-level category
+  for (const [cat, subs] of buckets) {
+    if (CATEGORIES.some((c) => c.key === cat)) continue;
+    groups.push({
+      category: cat,
+      label: humanizeName(cat),
+      subcategories: [...subs].map(([sub, list]) => ({
+        key: `${cat}/${sub}`,
+        name: sub,
+        label: humanizeName(sub),
+        examples: sortByPath(list),
+      })),
+    });
+  }
+  return groups;
 });
 
 /** Search filter: by card title / dir name / path */
