@@ -12,9 +12,9 @@ import { Map, WMSTileLayer } from "maptalks";
 const map = new Map("map", { center: [0, 0], zoom: 2 });
 
 const layer = new WMSTileLayer("wms", {
-  urlTemplate: "https://demo.boundlessgeo.com/geoserver/ows",
+  urlTemplate: "https://maps4.geosolutionsgroup.com/geoserver/osm/wms",
   crs: "EPSG:3857",
-  layers: "ne:ne",
+  layers: "osm",
   styles: "",
   version: "1.3.0",
   format: "image/png",
