@@ -6,7 +6,7 @@ title: 快速开始
 
 ## maptalks 是什么
 
-[maptalks](https://maptalks.org) 是一个开源的 Web 地图引擎，使用 [MIT 协议](https://github.com/maptalks/maptalks.js/blob/master/LICENSE)，同时支持二维地图与三维场景：
+[maptalks](https://maptalks.org) 是一个开源的 Web 地图引擎，使用 [MIT 协议](https://github.com/maptalks/maptalks.js/blob/master/packages/maptalks/LICENSE)，同时支持二维地图与三维场景：
 
 - **二维**：提供地图（Map）、瓦片图层（TileLayer）、矢量图层（VectorLayer）、几何图形、控件等完整的地图渲染与交互能力。
 - **三维**：基于 WebGL 渲染，提供矢量瓦片、gltf 模型、3dtiles、视频、地形、空间分析等三维图层能力。

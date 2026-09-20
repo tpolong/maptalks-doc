@@ -20,7 +20,10 @@ import { data as examples } from "./examples.data";
  */
 
 /** 站点级占位符的默认替换值（对应参考站填充的默认底图/版权） */
-const DEFAULT_URL_TEMPLATE = "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png";
+// 注意：必须使用不带 {s} 子域的 basemaps.cartocdn.com。
+// 实测 a.basemaps.cartocdn.com（带子域）在国内网络不可达，且返回带
+// "API KEY REQUIRED" 水印的图；无子域域名可直接拿到正常瓦片且无需 apiKey。
+const DEFAULT_URL_TEMPLATE = "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png";
 const DEFAULT_ATTRIBUTION =
   "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>";
 

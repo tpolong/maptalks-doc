@@ -6,7 +6,7 @@ title: Quick Start
 
 ## What is maptalks
 
-[maptalks](https://maptalks.org) is an open-source Web map engine released under the [MIT license](https://github.com/maptalks/maptalks.js/blob/master/LICENSE), supporting both 2D maps and 3D scenes:
+[maptalks](https://maptalks.org) is an open-source Web map engine released under the [MIT license](https://github.com/maptalks/maptalks.js/blob/master/packages/maptalks/LICENSE), supporting both 2D maps and 3D scenes:
 
 - **2D**: full map rendering and interaction capabilities, including Map, TileLayer, VectorLayer, geometries, controls and more.
 - **3D**: WebGL-based rendering with 3D layer capabilities such as vector tiles, gltf models, 3dtiles, video, terrain and spatial analysis.
