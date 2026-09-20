@@ -427,6 +427,32 @@ function closeRepl() {
 .examples-repl-page.is-preview-only .split-pane > .right {
   flex: 1 1 100% !important;
   width: 100% !important;
+  /*
+   * Below 720px @vue/repl stacks the two panes with absolute positioning and pushes
+   * .right (the preview) to z-index:-1 + pointer-events:none, showing .left (the editor)
+   * by default. We already hide the editor, so the preview must be restored to the
+   * visible, interactive layer — otherwise it is painted behind the container background
+   * and mobile users see a blank area.
+   */
+  z-index: 1 !important;
+  pointer-events: all !important;
+}
+
+/* In preview-only mode @vue/repl's own mobile pane toggler duplicates our "view source" button */
+.examples-repl-page.is-preview-only .split-pane .toggler {
+  display: none !important;
+}
+
+/*
+ * Phones: use svh (small viewport height) so the mobile URL bar does not inflate 100vh,
+ * and relax the minimum height so the preview is not pushed off-screen on short viewports.
+ */
+@media (max-width: 720px) {
+  .vue-repl {
+    height: calc(100vh - 180px);
+    height: calc(100svh - 180px);
+    min-height: 360px;
+  }
 }
 
 .examples-repl-path {

@@ -411,6 +411,31 @@ function closeRepl() {
 .examples-repl-page.is-preview-only .split-pane > .right {
   flex: 1 1 100% !important;
   width: 100% !important;
+  /*
+   * ≤720px 时 @vue/repl 把两个窗格绝对定位重叠，并把 .right（预览）压到
+   * z-index:-1 + pointer-events:none，默认露出的是 .left（编辑器）。
+   * 我们已把编辑器 display:none，必须同时把预览提回可见且可交互，
+   * 否则预览会被画到容器背景之后——手机上表现为整块空白。
+   */
+  z-index: 1 !important;
+  pointer-events: all !important;
+}
+
+/* 预览优先时不需要 @vue/repl 自带的移动端窗格切换按钮（与「查看源码」重复） */
+.examples-repl-page.is-preview-only .split-pane .toggler {
+  display: none !important;
+}
+
+/*
+ * 手机：用 svh（小视口高度）避开移动端地址栏导致 100vh 偏高的问题，
+ * 并放宽最小高度，避免小屏横屏时预览区被撑出屏幕。
+ */
+@media (max-width: 720px) {
+  .vue-repl {
+    height: calc(100vh - 180px);
+    height: calc(100svh - 180px);
+    min-height: 360px;
+  }
 }
 
 .examples-repl-path {
