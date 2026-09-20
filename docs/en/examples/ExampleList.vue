@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useData } from "vitepress";
 import { data as examples, type ExampleItem } from "./examples.data";
 // Shared taxonomy lives with the Chinese component so both locales stay in sync.
@@ -176,6 +176,69 @@ function scrollToSub(key: string) {
     block: "start",
   });
 }
+
+/**
+ * Selected state for the tree, matching the site sidebar: highlight the section
+ * currently scrolled into view. We pick the last section whose top has crossed a
+ * line just below the nav bar.
+ */
+const activeSub = ref("");
+let subTops: { key: string; top: number }[] = [];
+let rafId = 0;
+
+function measureSubTops() {
+  subTops = [];
+  for (const group of filteredGroups.value) {
+    for (const sub of group.subcategories) {
+      const el = document.getElementById(`sub-${sub.key.replace(/\//g, "-")}`);
+      if (!el) continue;
+      // getBoundingClientRect + scrollY = absolute document offset, offsetParent-proof
+      subTops.push({ key: sub.key, top: el.getBoundingClientRect().top + window.scrollY });
+    }
+  }
+}
+
+function updateActiveSub() {
+  if (!subTops.length) measureSubTops();
+  const line = window.scrollY + 140;
+  let current = subTops[0]?.key ?? "";
+  for (const item of subTops) {
+    if (item.top <= line) current = item.key;
+    else break;
+  }
+  activeSub.value = current;
+}
+
+function scheduleActiveSub() {
+  if (rafId) return;
+  rafId = requestAnimationFrame(() => {
+    rafId = 0;
+    updateActiveSub();
+  });
+}
+
+onMounted(() => {
+  measureSubTops();
+  updateActiveSub();
+  window.addEventListener("scroll", scheduleActiveSub, { passive: true });
+  window.addEventListener("resize", scheduleActiveSub, { passive: true });
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", scheduleActiveSub);
+  window.removeEventListener("resize", scheduleActiveSub);
+  if (rafId) cancelAnimationFrame(rafId);
+});
+
+// Search filtering changes the section list and their offsets; re-measure after the DOM updates
+watch(
+  filteredGroups,
+  () => {
+    measureSubTops();
+    updateActiveSub();
+  },
+  { flush: "post" },
+);
 </script>
 
 <template>
@@ -202,25 +265,52 @@ function scrollToSub(key: string) {
         </div>
 
         <ul class="example-tree">
-          <li v-for="group in filteredGroups" :key="group.category" class="example-tree-category">
+          <li
+            v-for="group in filteredGroups"
+            :key="group.category"
+            class="example-tree-category"
+            :class="{ 'is-collapsed': isCollapsed(group.category) }"
+          >
             <button
               type="button"
               class="example-tree-cat-head"
               :aria-expanded="!isCollapsed(group.category)"
               @click="toggleTree(group.category)"
             >
-              <span class="example-chevron" :class="{ open: !isCollapsed(group.category) }">▸</span>
               <span class="example-tree-cat-name">{{ group.label }}</span>
+              <span class="example-caret" :class="{ collapsed: isCollapsed(group.category) }">
+                <svg
+                  class="example-caret-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M9 5l7 7-7 7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
             </button>
 
             <ul v-if="!isCollapsed(group.category)" class="example-tree-subcats">
-              <li v-for="sub in group.subcategories" :key="sub.key" class="example-tree-subcat">
+              <li
+                v-for="sub in group.subcategories"
+                :key="sub.key"
+                class="example-tree-subcat"
+                :class="{ 'is-active': activeSub === sub.key }"
+              >
+                <span class="example-indicator" aria-hidden="true"></span>
                 <button
                   type="button"
                   class="example-tree-subcat-link"
                   @click="scrollToSub(sub.key)"
                 >
-                  {{ sub.label }}
+                  <span class="example-tree-subcat-text">{{ sub.label }}</span>
                   <span class="example-tree-count">{{ sub.examples.length }}</span>
                 </button>
               </li>
@@ -301,7 +391,7 @@ function scrollToSub(key: string) {
   margin: 0 auto;
 }
 
-/* ---------------- Left column (same width as site sidebar) ---------------- */
+/* ---------------- Left column: same width / position / scrolling as the site sidebar ---------------- */
 .example-sidebar {
   flex: 0 0 var(--vp-sidebar-width, 272px);
   position: sticky;
@@ -312,9 +402,63 @@ function scrollToSub(key: string) {
   padding-bottom: 16px;
 }
 
+/*
+ * On wide screens the column becomes fixed to the left of the viewport, matching the
+ * native .VPSidebar used by the API / guide pages: same top, width, padding and
+ * independent scrolling; the right column gets an equal left padding.
+ */
+@media (min-width: 960px) {
+  .example-center {
+    padding: 0;
+  }
+  .example-layout {
+    display: block;
+    gap: 0;
+    max-width: none;
+  }
+  .example-sidebar {
+    position: fixed;
+    top: var(--vp-nav-height, 64px);
+    bottom: 0;
+    left: 0;
+    z-index: var(--vp-z-index-sidebar, 60);
+    width: var(--vp-sidebar-width, 272px);
+    max-height: none;
+    padding: 32px 32px 96px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .example-main {
+    padding: 0 24px;
+  }
+}
+
+/* Ultra-wide: reuse the exact centring formulas of .VPSidebar / .VPContent.has-sidebar */
+@media (min-width: 1440px) {
+  .example-sidebar {
+    padding-left: max(
+      32px,
+      calc((100vw - (var(--vp-layout-max-width, 1440px) - 64px)) / 2)
+    );
+    width: calc(
+      (100vw - (var(--vp-layout-max-width, 1440px) - 64px)) / 2 +
+        var(--vp-sidebar-width, 272px) - 32px
+    );
+  }
+  .example-main {
+    padding-left: calc(
+      (100vw - var(--vp-layout-max-width, 1440px)) / 2 +
+        var(--vp-sidebar-width, 272px)
+    );
+    padding-right: calc((100vw - var(--vp-layout-max-width, 1440px)) / 2);
+  }
+}
+
+/* The column is ~208px wide (native 32px padding), so stack the tools instead of squeezing them */
 .example-sidebar-tools {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
 }
@@ -344,6 +488,7 @@ function scrollToSub(key: string) {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   border: 1px solid var(--maptalks-border-strong, var(--vp-c-divider));
   color: var(--vp-c-text-1);
@@ -361,88 +506,11 @@ function scrollToSub(key: string) {
   color: var(--vp-c-brand-1);
 }
 
-.example-tree {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.example-tree-category {
-  margin-bottom: 2px;
-}
-
-.example-tree-cat-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  padding: 10px 6px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-  color: var(--vp-c-text-1);
-  text-align: left;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-.example-tree-cat-head:hover {
-  color: var(--vp-c-brand-1);
-}
-
-.example-tree-cat-name {
-  font-size: 14px;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-}
-
-.example-chevron {
-  display: inline-block;
-  font-size: 11px;
-  color: var(--vp-c-text-3);
-  transition: transform 0.2s;
-}
-.example-chevron.open {
-  transform: rotate(90deg);
-}
-
-.example-tree-subcats {
-  list-style: none;
-  margin: 0;
-  padding: 4px 0 4px 10px;
-}
-
-.example-tree-subcat {
-  margin: 0;
-}
-
-.example-tree-subcat-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  width: 100%;
-  padding: 5px 6px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-  text-align: left;
-  border-radius: 5px;
-}
-.example-tree-subcat-link:hover {
-  background-color: var(--vp-c-bg-soft-down);
-  color: var(--vp-c-text-1);
-}
-
-.example-tree-count {
-  font-size: 11px;
-  color: var(--vp-c-text-3);
-  background-color: var(--vp-c-bg-soft-down);
-  border-radius: 999px;
-  padding: 0 7px;
-}
+/*
+ * The tree's appearance (group title / item / caret / active indicator / count) lives in
+ * .vitepress/theme/custom.css, aligned rule-by-rule with VitePress's native VPSidebarItem.
+ * Both ExampleList.vue files share that single copy, so it is not repeated here.
+ */
 
 /* ---------------- Right column ---------------- */
 .example-main {

@@ -298,6 +298,145 @@
 }
 
 /* ---------------------------------------------------------------------------
+ * 示例中心左栏：与全站侧边栏（VPSidebarItem）保持同一套外观
+ *
+ * 数值逐条取自 VitePress 默认主题的 VPSidebarItem 组件样式：
+ *  - 组标题 14px / 700 / text-1，条目 14px / 500 / text-2，行高 24px，行内 padding 4px 0
+ *  - 组间距：展开 24px、收起 10px（原生用间距而非分隔线）
+ *  - 二级列表：左侧 1px 竖线 + 16px 缩进
+ *  - 选中项：左侧 2px 品牌色指示条 + 品牌色文字（原生 is-active）
+ *  - 折叠 caret：右侧 32×32 热区，图标 18px，展开转 90°、收起转 0°
+ *  - hover 变品牌色文字，而不是灰底药丸
+ * 颜色一律走 --vp-c-* token，换肤时自动跟随。
+ * 中英两个 ExampleList.vue 共用这些类名，所以样式放在主题里只维护一份。
+ * ------------------------------------------------------------------------- */
+.example-tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.example-tree-category {
+  padding-bottom: 24px;
+}
+.example-tree-category.is-collapsed {
+  padding-bottom: 10px;
+}
+
+.example-tree-cat-head {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.example-tree-cat-name {
+  flex-grow: 1;
+  padding: 4px 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--vp-c-text-1);
+  transition: color 0.25s;
+}
+.example-tree-cat-head:hover .example-tree-cat-name {
+  color: var(--vp-c-brand-1);
+}
+
+.example-caret {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  margin-right: -7px;
+  color: var(--vp-c-text-3);
+  transition: color 0.25s;
+}
+.example-tree-cat-head:hover .example-caret {
+  color: var(--vp-c-text-2);
+}
+.example-caret:hover {
+  color: var(--vp-c-text-1);
+}
+.example-caret-icon {
+  width: 18px;
+  height: 18px;
+  transform: rotate(90deg);
+  transition: transform 0.25s;
+}
+.example-caret.collapsed .example-caret-icon {
+  transform: rotate(0deg);
+}
+
+.example-tree-subcats {
+  list-style: none;
+  margin: 0;
+  padding-left: 16px;
+  border-left: 1px solid var(--vp-c-divider);
+}
+
+.example-tree-subcat {
+  position: relative;
+}
+
+.example-indicator {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: -17px;
+  width: 2px;
+  border-radius: 2px;
+  background-color: transparent;
+  transition: background-color 0.25s;
+}
+.example-tree-subcat.is-active .example-indicator {
+  background-color: var(--vp-c-brand-1);
+}
+
+.example-tree-subcat-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.example-tree-subcat-text {
+  flex-grow: 1;
+  padding: 4px 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--vp-c-text-2);
+  transition: color 0.25s;
+}
+.example-tree-subcat-link:hover .example-tree-subcat-text {
+  color: var(--vp-c-brand-1);
+}
+.example-tree-subcat.is-active .example-tree-subcat-text {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* 条目数：原生侧栏没有计数，这里保留但压到最弱，不抢层级 */
+.example-tree-count {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+}
+
+/* ---------------------------------------------------------------------------
  * 无障碍：全局 focus-visible
  * ------------------------------------------------------------------------- */
 :focus-visible {
