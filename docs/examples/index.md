@@ -24,6 +24,6 @@ onHashChange(() => {
 });
 </script>
 
-<!-- 有 hash（如 #3d/3dtiles/load）显示可运行 REPL，否则显示静态列表 -->
+<!-- 有 hash（如 #scene3d/tiles3d/load）显示可运行 REPL，否则显示静态列表 -->
 <ExampleRepl v-if="hash.includes('/')" />
 <ExampleList v-else />

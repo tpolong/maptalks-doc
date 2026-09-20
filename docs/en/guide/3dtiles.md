@@ -77,6 +77,6 @@ const groupLayer = new GroupGLLayer("group", [tilesLayer, vt]).addTo(map);
 
 ## Reference
 
-- [Load 3dtiles example](/en/examples/#3d/3dtiles/load)
-- [Rotate 3dtiles example](/en/examples/#3d/3dtiles/rotate)
-- [View 3dtiles data example](/en/examples/#3d/3dtiles/view)
+- [Load 3dtiles example](/en/examples/#scene3d/tiles3d/load)
+- [Rotate 3dtiles example](/en/examples/#scene3d/tiles3d/rotate)
+- [View 3dtiles data example](/en/examples/#scene3d/tiles3d/view)

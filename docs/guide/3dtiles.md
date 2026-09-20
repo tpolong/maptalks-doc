@@ -77,6 +77,6 @@ const groupLayer = new GroupGLLayer("group", [tilesLayer, vt]).addTo(map);
 
 ## 参考
 
-- [加载 3dtiles 示例](/examples/#3d/3dtiles/load)
-- [旋转 3dtiles 示例](/examples/#3d/3dtiles/rotate)
-- [3dtiles 数据查看示例](/examples/#3d/3dtiles/view)
+- [加载 3dtiles 示例](/examples/#scene3d/tiles3d/load)
+- [旋转 3dtiles 示例](/examples/#scene3d/tiles3d/rotate)
+- [3dtiles 数据查看示例](/examples/#scene3d/tiles3d/view)

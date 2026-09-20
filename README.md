@@ -41,7 +41,7 @@ maptalks-docs/
 ├─ docs/                       # 内容源（srcDir）
 │  ├─ guide/                   # SDK 指南 + 样式指南（zh）
 │  ├─ api/                     # API 参考 + includes 共享片段
-│  ├─ examples/                # 示例中心（ExampleList / ExampleRepl）+ index.md
+│  ├─ examples/                # 示例中心：taxonomy.ts（分组顺序 + 中英标签）/ ExampleList / ExampleRepl
 │  ├─ public/examples/         # 约 390 个示例源码 + 示例资源（textures / models）
 │  ├─ public/lib/              # 本地 ESM 库（如 regl wrapper）
 │  ├─ public/thumbnails/       # 示例缩略图
@@ -57,7 +57,7 @@ maptalks-docs/
 
 ## 可运行示例
 
-- 示例源码位于 `docs/public/examples/<分类>/<子类>/<示例>/`，每个示例含 `index.html` / `index.js` / `index.css` 等。
+- 示例源码位于 `docs/public/examples/<一级分类>/<二级分类>/<示例>/`（目录结构即示例中心的分类树），每个示例含 `index.html` / `index.js` / `index.css` 等。
 - 示例中心支持搜索、分类树、缩略图卡片，点击卡片即通过 `@vue/repl` 在线运行。
 - 部分示例依赖外部瓦片 / 数据服务（Mapbox、MapTiler、高德、dvgis 等）与云端资源；示例代码中可能包含**公开的测试 token**，正式使用请替换为你自己的 token。
 

@@ -50,7 +50,7 @@ const map = new Map("map", {
 
 ## EPSG:4326 example
 
-With EPSG:4326, the tile coordinate system becomes a lng/lat grid. Services such as Tianditu also require a matching `tileSystem` setting. Here is the official example ([epsg4326](/en/examples/#basic/tilelayer-projection/epsg4326)):
+With EPSG:4326, the tile coordinate system becomes a lng/lat grid. Services such as Tianditu also require a matching `tileSystem` setting. Here is the official example ([epsg4326](/en/examples/#tile/tiles/epsg4326)):
 
 ```js
 import { Map, TileLayer } from "maptalks";
@@ -77,7 +77,7 @@ Here `tileSystem: [1, -1, -180, 90]` means the tile origin is at top-left lng/la
 
 ## Custom projection with proj4js
 
-When the built-in presets are not enough, you can pass a custom projection object. It must provide `project` (lng/lat to planar coordinates) and `unproject` (planar coordinates to lng/lat), both returning a `Coordinate`; `measure` declares how distance/area is measured (use `"identity"` for planar Cartesian coordinates). The official example ([proj4js](/en/examples/#basic/tilelayer-projection/proj4js)) defines a custom projection equivalent to EPSG:3857 with proj4:
+When the built-in presets are not enough, you can pass a custom projection object. It must provide `project` (lng/lat to planar coordinates) and `unproject` (planar coordinates to lng/lat), both returning a `Coordinate`; `measure` declares how distance/area is measured (use `"identity"` for planar Cartesian coordinates). The official example ([proj4js](/en/examples/#tile/tiles/proj4js)) defines a custom projection equivalent to EPSG:3857 with proj4:
 
 ```js
 import { Coordinate, Map, TileLayer } from "maptalks";
@@ -183,8 +183,8 @@ map.config("spatialReference", { projection: "EPSG:4326" });
 
 ## Related examples
 
-- [EPSG:4326 Tianditu](/en/examples/#basic/tilelayer-projection/epsg4326) · [proj4js custom projection](/en/examples/#basic/tilelayer-projection/proj4js)
-- [Different projections](/en/examples/#basic/tilelayer-projection/projection) · [Baidu tiles](/en/examples/#basic/tilelayer-projection/baidu) · [Identity](/en/examples/#basic/tilelayer-projection/identity)
+- [EPSG:4326 Tianditu](/en/examples/#tile/tiles/epsg4326) · [proj4js custom projection](/en/examples/#tile/tiles/proj4js)
+- [Different projections](/en/examples/#tile/tiles/projection) · [Baidu tiles](/en/examples/#tile/tiles/baidu) · [Identity](/en/examples/#tile/tiles/identity)
 
 ## Related APIs
 

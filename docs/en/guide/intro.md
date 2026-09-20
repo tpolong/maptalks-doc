@@ -92,7 +92,7 @@ const groupLayer = new GroupGLLayer("group", [vt]).addTo(map);
 
 `VectorTileLayer` is the most commonly used layer in 3D scenes; it loads vector tile data in [mvt](https://github.com/mapbox/vector-tile-spec) format. Its `style` option is optional: once a style is set, the layer renders the vector data in the tiles in real time against the style, and style changes do not require regenerating tiles. Styles use the [plugin-style definition](/en/guide/vector-tile#style), composed of `renderPlugin`, `filter` and `symbol`. A style can be an array of styles, a single style object, or a style JSON file (style files also support `background`, `featureStyle`, `sprites` and other configurations). Note that maptalks' vector tile style format differs from mapbox style (`sources`/`layers`/`sprite`/`glyphs`) and is not compatible with mapbox style JSON. See [VectorTileLayer API](/en/api/vector-tile-layer) for details.
 
-For a more realistic 3D scene, you usually also configure `lights` and `sceneConfig` on the `Map`. See the [3D examples](/en/examples/#3d/track/auto-roaming) and [gltf examples](/en/examples/#gltf/gltf-marker/add-marker) for complete configuration examples.
+For a more realistic 3D scene, you usually also configure `lights` and `sceneConfig` on the `Map`. See the [3D examples](/en/examples/#scene3d/track/auto-roaming) and [gltf examples](/en/examples/#gltf/marker/add-marker) for complete configuration examples.
 
 ## Next steps
 

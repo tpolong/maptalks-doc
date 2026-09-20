@@ -88,7 +88,7 @@ cutAnalysis.addTo(groupGLLayer);
 cutAnalysis.reset();
 ```
 
-API：[Analysis](../api/analysis) · 示例：[剖切分析](/examples/#3d/spatial-analysis/cut)
+API：[Analysis](../api/analysis) · 示例：[剖切分析](/examples/#analysis/cut/cut)
 
 ## 挖方 Excavate
 
@@ -144,7 +144,7 @@ excavateAnalysis.excavate(gltfLayer);
 excavateAnalysis.addTo(groupGLLayer);
 ```
 
-API：[Analysis](../api/analysis) · 示例：[挖方分析](/examples/#3d/spatial-analysis/excavate)（交互式绘制边界并调整挖方高度与底面/侧边纹理）
+API：[Analysis](../api/analysis) · 示例：[挖方分析](/examples/#analysis/excavate/excavate)（交互式绘制边界并调整挖方高度与底面/侧边纹理）
 
 ## 淹没 Flood
 
@@ -200,7 +200,7 @@ floodAnalysis.update("boundary", coordinates); // coordinates 为新的淹没范
 floodAnalysis.disable();
 ```
 
-API：[FloodAnalysis](../api/flood-analysis) · 示例：[水淹分析](/examples/#3d/spatial-analysis/flood)
+API：[FloodAnalysis](../api/flood-analysis) · 示例：[水淹分析](/examples/#analysis/flood/flood)
 
 ## 限高 HeightLimit
 
@@ -228,7 +228,7 @@ heightLimitAnalysis.update("limitHeight", 50);
 heightLimitAnalysis.update("limitColor", [1, 0, 0]);
 ```
 
-API：[Analysis](../api/analysis)（`HeightLimitAnalysis` 未提供独立 API 页） · 示例：[限高分析](/examples/#3d/spatial-analysis/height-limit)
+API：[Analysis](../api/analysis)（`HeightLimitAnalysis` 未提供独立 API 页） · 示例：[限高分析](/examples/#analysis/heightlimit/height-limit)
 
 ## 通视 InSight
 
@@ -272,7 +272,7 @@ insightAnalysis.update("lines", [
 ]);
 ```
 
-API：[Analysis](../api/analysis)（`InSightAnalysis` 未提供独立 API 页） · 示例：[通视分析](/examples/#3d/spatial-analysis/insight)
+API：[Analysis](../api/analysis)（`InSightAnalysis` 未提供独立 API 页） · 示例：[通视分析](/examples/#analysis/insight/insight)
 
 ## 天际线 Skyline
 
@@ -304,7 +304,7 @@ const url = skylineAnalysis.exportSkylineMap({});
 // options.save 设为 true 时弹出下载，options.filename 指定文件名（默认 'export'）
 ```
 
-API：[SkylineAnalysis](../api/skyline-analysis) · 示例：[天际线分析](/examples/#3d/spatial-analysis/skyline)
+API：[SkylineAnalysis](../api/skyline-analysis) · 示例：[天际线分析](/examples/#analysis/skyline/skyline)
 
 ## 可视域 Viewshed
 
@@ -342,12 +342,12 @@ viewshedAnalysis.update("verticalAngle", 45);
 
 `getVertexCoordinates()` 可获取可视域棱锥的 4 个顶点坐标。
 
-API：[ViewshedAnalysis](../api/viewshed-analysis) · 示例：[可视域分析](/examples/#3d/spatial-analysis/viewshed)
+API：[ViewshedAnalysis](../api/viewshed-analysis) · 示例：[可视域分析](/examples/#analysis/viewshed/viewshed)
 
 ## 相关能力
 
-- **三维测量**：`Distance3DTool` / `Area3DTool` / `Height3DTool` 提供三维空间中的距离、面积、高度测量，见[测量示例](/examples/#3d/spatial-analysis/measure)。
-- **射线检测**：`RayCaster` 可对模型网格做射线检测并返回交点坐标（`InSightAnalysis` 内部的遮挡判断也基于它），见[射线检测示例](/examples/#3d/spatial-analysis/raycaster)。
+- **三维测量**：`Distance3DTool` / `Area3DTool` / `Height3DTool` 提供三维空间中的距离、面积、高度测量，见[测量示例](/examples/#analysis/measure/measure)。
+- **射线检测**：`RayCaster` 可对模型网格做射线检测并返回交点坐标（`InSightAnalysis` 内部的遮挡判断也基于它），见[射线检测示例](/examples/#analysis/raycaster/raycaster)。
 
 ## 参考
 
@@ -357,12 +357,12 @@ API：[ViewshedAnalysis](../api/viewshed-analysis) · 示例：[可视域分析]
   - [SkylineAnalysis](../api/skyline-analysis)
   - [ViewshedAnalysis](../api/viewshed-analysis)
 - 相关示例
-  - [剖切分析](/examples/#3d/spatial-analysis/cut)
-  - [挖方分析](/examples/#3d/spatial-analysis/excavate)
-  - [水淹分析](/examples/#3d/spatial-analysis/flood)
-  - [限高分析](/examples/#3d/spatial-analysis/height-limit)
-  - [通视分析](/examples/#3d/spatial-analysis/insight)
-  - [天际线分析](/examples/#3d/spatial-analysis/skyline)
-  - [可视域分析](/examples/#3d/spatial-analysis/viewshed)
-  - [测量](/examples/#3d/spatial-analysis/measure)
-  - [射线检测](/examples/#3d/spatial-analysis/raycaster)
+  - [剖切分析](/examples/#analysis/cut/cut)
+  - [挖方分析](/examples/#analysis/excavate/excavate)
+  - [水淹分析](/examples/#analysis/flood/flood)
+  - [限高分析](/examples/#analysis/heightlimit/height-limit)
+  - [通视分析](/examples/#analysis/insight/insight)
+  - [天际线分析](/examples/#analysis/skyline/skyline)
+  - [可视域分析](/examples/#analysis/viewshed/viewshed)
+  - [测量](/examples/#analysis/measure/measure)
+  - [射线检测](/examples/#analysis/raycaster/raycaster)

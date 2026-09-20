@@ -121,7 +121,7 @@ gltfLayer.on("modelload", () => {
 
 ## 参考
 
-- [添加模型示例](/examples/#gltf/gltf-marker/add-marker)
-- [模型交互示例](/examples/#gltf/gltf-marker/mouse-event)
-- [模型拾取示例](/examples/#gltf/gltf-layer/identify)
-- [动画模型示例](/examples/#gltf/gltf-marker/animation-model)
+- [添加模型示例](/examples/#gltf/marker/add-marker)
+- [模型交互示例](/examples/#gltf/marker/mouse-event)
+- [模型拾取示例](/examples/#gltf/layer/identify)
+- [动画模型示例](/examples/#gltf/marker/animation-model)

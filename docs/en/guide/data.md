@@ -68,7 +68,7 @@ GeoJSON.toGeometryAsync(featureCollection, null, 2000).then((geos) => {
 });
 ```
 
-Related example: [GeoJSON to geometry](/en/examples/#basic/json/geojson-to-geometry).
+Related example: [GeoJSON to geometry](/en/examples/#vector2d/json/geojson-to-geometry).
 
 ## Exporting geometries to GeoJSON
 
@@ -98,7 +98,7 @@ const marker = new Marker([-0.113049, 51.498568], {
 const geojson = marker.toGeoJSON();
 ```
 
-Related example: [Geometry to GeoJSON](/en/examples/#basic/json/geometry-to-geojson).
+Related example: [Geometry to GeoJSON](/en/examples/#vector2d/json/geometry-to-geojson).
 
 ## Adding geometries to a layer
 
@@ -122,7 +122,7 @@ layer.addGeometry(featureCollection);
 layer.addGeometry(new Marker(c), true);
 ```
 
-The second argument `fitView` of `addGeometry` can also be an object to configure the view animation (`easing`, `duration`, etc.). Related example: [Geometry JSON](/en/examples/#basic/json/geometry-json).
+The second argument `fitView` of `addGeometry` can also be an object to configure the view animation (`easing`, `duration`, etc.). Related example: [Geometry JSON](/en/examples/#vector2d/json/geometry-json).
 
 ## Layer JSON serialization
 
@@ -151,7 +151,7 @@ const map1 = new Map("map1", {
 Layer.fromJSON(map.getLayer("v0").toJSON()).addTo(map1);
 ```
 
-The result of `toJSON()` contains the layer's type, id, options and the geometries array. `VectorLayer.toJSON(options)` can also pass arguments through `options.geometries` to each geometry's `toJSON`. Related example: [Layer JSON](/en/examples/#basic/json/layer-json).
+The result of `toJSON()` contains the layer's type, id, options and the geometries array. `VectorLayer.toJSON(options)` can also pass arguments through `options.geometries` to each geometry's `toJSON`. Related example: [Layer JSON](/en/examples/#vector2d/json/layer-json).
 
 ## Geometry JSON serialization
 
@@ -165,7 +165,7 @@ const newLayer = new VectorLayer("v").addTo(map1);
 Geometry.fromJSON(rect.toJSON()).addTo(newLayer);
 ```
 
-Related example: [Geometry JSON](/en/examples/#basic/json/geometry-json).
+Related example: [Geometry JSON](/en/examples/#vector2d/json/geometry-json).
 
 ## Map JSON serialization
 
@@ -219,7 +219,7 @@ const mapJSON = {
 Map.fromJSON("map", mapJSON);
 ```
 
-Related examples: [Map to JSON](/en/examples/#basic/json/map-to-json), [JSON to map](/en/examples/#basic/json/json-to-map).
+Related examples: [Map to JSON](/en/examples/#vector2d/json/map-to-json), [JSON to map](/en/examples/#vector2d/json/json-to-map).
 
 ## Related APIs
 

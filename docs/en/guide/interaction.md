@@ -125,7 +125,7 @@ gltfMarker.on("dblclick", () => {
 > [!NOTE] Event binding API
 > All event objects provide `on(type, fn)` to listen, `once(type, fn)` to listen only once (auto-removed after being triggered), and `off(type, fn)` to unbind. Multiple event types are bound space-separated.
 
-Related examples: [Map click events](/en/examples/#basic/map/map-events), [Map status](/en/examples/#basic/map/status), [Geometry hover highlight](/en/examples/#basic/interaction/mouse-highlight), [GLTFMarker mouse events](/en/examples/#gltf/gltf-marker/mouse-event)
+Related examples: [Map click events](/en/examples/#map/view/map-events), [Map status](/en/examples/#map/view/status), [Geometry hover highlight](/en/examples/#vector2d/interaction/mouse-highlight), [GLTFMarker mouse events](/en/examples/#gltf/marker/mouse-event)
 
 ## Identify
 
@@ -218,7 +218,7 @@ map.on("click", (e) => {
 - `options.childLayers` limits the child layers participating in the identify; `options.orderByCamera: true` sorts the results by camera distance, so `[0]` is the hit nearest the viewpoint
 - Each result `picks[i].data` is the hit feature object (e.g. `GLTFMarker`)
 
-Related examples: [2D identify](/en/examples/#basic/interaction/mouse-identify), [Vector tile identify](/en/examples/#vector/interactive/identify), [GLTF model identify](/en/examples/#gltf/transform-control/trs)
+Related examples: [2D identify](/en/examples/#vector2d/interaction/mouse-identify), [Vector tile identify](/en/examples/#vt/pick/identify), [GLTF model identify](/en/examples/#gltf/transform/trs)
 
 ## Highlight
 
@@ -314,7 +314,7 @@ const groupLayer = new GroupGLLayer("group", [layer], {
 groupLayer.addTo(map);
 ```
 
-Related examples: [Vector tile highlight](/en/examples/#vector/interactive/highlight), [Polygon layer outline](/en/examples/#vector/polygonlayer/highlight)
+Related examples: [Vector tile highlight](/en/examples/#vt/pick/highlight), [Polygon layer outline](/en/examples/#glvec/polygon/highlight)
 
 ## Draw tool (DrawTool)
 
@@ -348,7 +348,7 @@ The following draw modes are supported by default:
 
 Completed geometries can be added directly to a layer with `addGeometry`, entering the normal event and identify flow.
 
-Related example: [Draw tool](/en/examples/#basic/interaction/draw-tool), API reference: [DrawTool](https://maptalks.org/maptalks.js/api/0.x/DrawTool.html)
+Related example: [Draw tool](/en/examples/#vector2d/interaction/draw-tool), API reference: [DrawTool](https://maptalks.org/maptalks.js/api/0.x/DrawTool.html)
 
 ## Measurement tools (DistanceTool / AreaTool)
 
@@ -452,7 +452,7 @@ const areaTool = new AreaTool({
 }).addTo(map);
 ```
 
-Related examples: [Distance measurement](/en/examples/#basic/interaction/distance-tool), [Area measurement](/en/examples/#basic/interaction/area-tool), API reference: [DistanceTool](https://maptalks.org/maptalks.js/api/0.x/DistanceTool.html) · [AreaTool](https://maptalks.org/maptalks.js/api/0.x/AreaTool.html)
+Related examples: [Distance measurement](/en/examples/#vector2d/interaction/distance-tool), [Area measurement](/en/examples/#vector2d/interaction/area-tool), API reference: [DistanceTool](https://maptalks.org/maptalks.js/api/0.x/DistanceTool.html) · [AreaTool](https://maptalks.org/maptalks.js/api/0.x/AreaTool.html)
 
 ## Model transform (TransformControl)
 
@@ -543,7 +543,7 @@ transformControl.on("positionchange", (e) => {
 > [!NOTE] Combining identify and transform
 > In model editing scenarios, identify is usually combined to determine whether the click hits a model: when a model is hit, call `enable()` and `transform()` to bind the target; when nothing is hit but the click is on a handle, keep editing (check with `transformControl.picked(e.coordinate)`); otherwise call `disable()` to end editing.
 
-Related examples: [Model transform (trs)](/en/examples/#gltf/transform-control/trs), [Transform in raycast analysis](/en/examples/#3d/spatial-analysis/raycaster)
+Related examples: [Model transform (trs)](/en/examples/#gltf/transform/trs), [Transform in raycast analysis](/en/examples/#analysis/raycaster/raycaster)
 
 ## Related APIs
 

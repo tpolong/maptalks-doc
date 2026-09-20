@@ -123,6 +123,6 @@ const groupLayer = new GroupGLLayer("gl", [vt], {
 
 - [Vector tiles](/en/guide/vector-tile): the most commonly used base layer in 3D scenes
 - [WebGPU rendering](/en/guide/webgpu): the WebGPU rendering path for 3D scenes
-- [gltf model example](/en/examples/#gltf/gltf-marker/add-marker): complete lighting and environment configuration
-- [3dtiles example](/en/examples/#3d/3dtiles/load): oblique photography model loading
-- [Auto-roaming example](/en/examples/#3d/track/auto-roaming): 3D viewpoint animation
+- [gltf model example](/en/examples/#gltf/marker/add-marker): complete lighting and environment configuration
+- [3dtiles example](/en/examples/#scene3d/tiles3d/load): oblique photography model loading
+- [Auto-roaming example](/en/examples/#scene3d/track/auto-roaming): 3D viewpoint animation

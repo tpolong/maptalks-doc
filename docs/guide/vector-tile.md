@@ -44,7 +44,7 @@ const vt = new VectorTileLayer("vt", {
 });
 ```
 
-如果瓦片数据使用 EPSG:4326 坐标系（而不是默认的 web mercator），需要在地图上指定 `spatialReference`，例如[加载 maptiler 4326 瓦片](/examples/#vector/vtlayer/load-maptiler-4326)示例：
+如果瓦片数据使用 EPSG:4326 坐标系（而不是默认的 web mercator），需要在地图上指定 `spatialReference`，例如[加载 maptiler 4326 瓦片](/examples/#vt/load/load-maptiler-4326)示例：
 
 ```js
 const map = new Map("map", {
@@ -58,7 +58,7 @@ const map = new Map("map", {
 
 `VectorTileLayer` 的 `style` 配置是可选的，不设置时图层只做基础渲染。设置样式后，图层会按样式实时渲染瓦片中的矢量数据。
 
-样式可以是一个**插件式样式数组**，直接写在代码里，或存放为独立的 json 文件后用路径引用。以[道路样式示例](/examples/#vector/vt-visual/road)使用的样式文件为例，它的结构是：
+样式可以是一个**插件式样式数组**，直接写在代码里，或存放为独立的 json 文件后用路径引用。以[道路样式示例](/examples/#vt/visual/road)使用的样式文件为例，它的结构是：
 
 ```json
 [
@@ -172,7 +172,7 @@ const groupLayer = new GroupGLLayer("gl", [vt], {
 
 ## 参考
 
-- [矢量瓦片相关示例](/examples/#vector/vtlayer/load-mapbox)
-- [道路样式示例](/examples/#vector/vt-visual/road)
+- [矢量瓦片相关示例](/examples/#vt/load/load-mapbox)
+- [道路样式示例](/examples/#vt/visual/road)
 - [VectorTileLayer API](/api/vector-tile-layer)
 - [什么是矢量瓦片](/guide/vector-tile)

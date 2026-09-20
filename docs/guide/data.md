@@ -68,7 +68,7 @@ GeoJSON.toGeometryAsync(featureCollection, null, 2000).then((geos) => {
 });
 ```
 
-相关示例：[GeoJSON 转几何](/examples/#basic/json/geojson-to-geometry)。
+相关示例：[GeoJSON 转几何](/examples/#vector2d/json/geojson-to-geometry)。
 
 ## 几何导出为 GeoJSON
 
@@ -98,7 +98,7 @@ const marker = new Marker([-0.113049, 51.498568], {
 const geojson = marker.toGeoJSON();
 ```
 
-相关示例：[几何转 GeoJSON](/examples/#basic/json/geometry-to-geojson)。
+相关示例：[几何转 GeoJSON](/examples/#vector2d/json/geometry-to-geojson)。
 
 ## 向图层添加几何
 
@@ -122,7 +122,7 @@ layer.addGeometry(featureCollection);
 layer.addGeometry(new Marker(c), true);
 ```
 
-`addGeometry` 的第二个参数 `fitView` 还可以是一个对象，用于配置视口动画（`easing`、`duration` 等）。相关示例：[几何 JSON](/examples/#basic/json/geometry-json)。
+`addGeometry` 的第二个参数 `fitView` 还可以是一个对象，用于配置视口动画（`easing`、`duration` 等）。相关示例：[几何 JSON](/examples/#vector2d/json/geometry-json)。
 
 ## 图层 JSON 序列化
 
@@ -151,7 +151,7 @@ const map1 = new Map("map1", {
 Layer.fromJSON(map.getLayer("v0").toJSON()).addTo(map1);
 ```
 
-`toJSON()` 的结果包含图层的类型、id、配置与几何数组；`VectorLayer.toJSON(options)` 还可以通过 `options.geometries` 透传参数给每个几何的 `toJSON`。相关示例：[图层 JSON](/examples/#basic/json/layer-json)。
+`toJSON()` 的结果包含图层的类型、id、配置与几何数组；`VectorLayer.toJSON(options)` 还可以通过 `options.geometries` 透传参数给每个几何的 `toJSON`。相关示例：[图层 JSON](/examples/#vector2d/json/layer-json)。
 
 ## 几何 JSON 序列化
 
@@ -165,7 +165,7 @@ const newLayer = new VectorLayer("v").addTo(map1);
 Geometry.fromJSON(rect.toJSON()).addTo(newLayer);
 ```
 
-相关示例：[几何 JSON](/examples/#basic/json/geometry-json)。
+相关示例：[几何 JSON](/examples/#vector2d/json/geometry-json)。
 
 ## 地图 JSON 序列化
 
@@ -219,7 +219,7 @@ const mapJSON = {
 Map.fromJSON("map", mapJSON);
 ```
 
-相关示例：[地图转 JSON](/examples/#basic/json/map-to-json)、[JSON 转地图](/examples/#basic/json/json-to-map)。
+相关示例：[地图转 JSON](/examples/#vector2d/json/map-to-json)、[JSON 转地图](/examples/#vector2d/json/json-to-map)。
 
 ## 相关 API
 

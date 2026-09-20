@@ -88,7 +88,7 @@ cutAnalysis.addTo(groupGLLayer);
 cutAnalysis.reset();
 ```
 
-API: [Analysis](../api/analysis) · Example: [Cut analysis](/en/examples/#3d/spatial-analysis/cut)
+API: [Analysis](../api/analysis) · Example: [Cut analysis](/en/examples/#analysis/cut/cut)
 
 ## Excavate
 
@@ -144,7 +144,7 @@ excavateAnalysis.excavate(gltfLayer);
 excavateAnalysis.addTo(groupGLLayer);
 ```
 
-API: [Analysis](../api/analysis) · Example: [Excavate analysis](/en/examples/#3d/spatial-analysis/excavate) (interactively draw the boundary and adjust the excavation height and bottom/side textures)
+API: [Analysis](../api/analysis) · Example: [Excavate analysis](/en/examples/#analysis/excavate/excavate) (interactively draw the boundary and adjust the excavation height and bottom/side textures)
 
 ## Flood
 
@@ -200,7 +200,7 @@ floodAnalysis.update("boundary", coordinates); // coordinates 为新的淹没范
 floodAnalysis.disable();
 ```
 
-API: [FloodAnalysis](../api/flood-analysis) · Example: [Flood analysis](/en/examples/#3d/spatial-analysis/flood)
+API: [FloodAnalysis](../api/flood-analysis) · Example: [Flood analysis](/en/examples/#analysis/flood/flood)
 
 ## HeightLimit
 
@@ -228,7 +228,7 @@ heightLimitAnalysis.update("limitHeight", 50);
 heightLimitAnalysis.update("limitColor", [1, 0, 0]);
 ```
 
-API: [Analysis](../api/analysis) (`HeightLimitAnalysis` has no dedicated API page) · Example: [Height limit analysis](/en/examples/#3d/spatial-analysis/height-limit)
+API: [Analysis](../api/analysis) (`HeightLimitAnalysis` has no dedicated API page) · Example: [Height limit analysis](/en/examples/#analysis/heightlimit/height-limit)
 
 ## InSight
 
@@ -272,7 +272,7 @@ insightAnalysis.update("lines", [
 ]);
 ```
 
-API: [Analysis](../api/analysis) (`InSightAnalysis` has no dedicated API page) · Example: [InSight analysis](/en/examples/#3d/spatial-analysis/insight)
+API: [Analysis](../api/analysis) (`InSightAnalysis` has no dedicated API page) · Example: [InSight analysis](/en/examples/#analysis/insight/insight)
 
 ## Skyline
 
@@ -304,7 +304,7 @@ const url = skylineAnalysis.exportSkylineMap({});
 // options.save 设为 true 时弹出下载，options.filename 指定文件名（默认 'export'）
 ```
 
-API: [SkylineAnalysis](../api/skyline-analysis) · Example: [Skyline analysis](/en/examples/#3d/spatial-analysis/skyline)
+API: [SkylineAnalysis](../api/skyline-analysis) · Example: [Skyline analysis](/en/examples/#analysis/skyline/skyline)
 
 ## Viewshed
 
@@ -342,12 +342,12 @@ viewshedAnalysis.update("verticalAngle", 45);
 
 `getVertexCoordinates()` returns the 4 vertex coordinates of the viewshed pyramid.
 
-API: [ViewshedAnalysis](../api/viewshed-analysis) · Example: [Viewshed analysis](/en/examples/#3d/spatial-analysis/viewshed)
+API: [ViewshedAnalysis](../api/viewshed-analysis) · Example: [Viewshed analysis](/en/examples/#analysis/viewshed/viewshed)
 
 ## Related capabilities
 
-- **3D measurement**: `Distance3DTool` / `Area3DTool` / `Height3DTool` provide distance, area and height measurement in 3D space — see the [measurement example](/en/examples/#3d/spatial-analysis/measure).
-- **Ray casting**: `RayCaster` performs ray casting against model meshes and returns intersection coordinates (the occlusion judgment inside `InSightAnalysis` is also based on it) — see the [ray casting example](/en/examples/#3d/spatial-analysis/raycaster).
+- **3D measurement**: `Distance3DTool` / `Area3DTool` / `Height3DTool` provide distance, area and height measurement in 3D space — see the [measurement example](/en/examples/#analysis/measure/measure).
+- **Ray casting**: `RayCaster` performs ray casting against model meshes and returns intersection coordinates (the occlusion judgment inside `InSightAnalysis` is also based on it) — see the [ray casting example](/en/examples/#analysis/raycaster/raycaster).
 
 ## Reference
 
@@ -357,12 +357,12 @@ API: [ViewshedAnalysis](../api/viewshed-analysis) · Example: [Viewshed analysis
   - [SkylineAnalysis](../api/skyline-analysis)
   - [ViewshedAnalysis](../api/viewshed-analysis)
 - Related examples
-  - [Cut analysis](/en/examples/#3d/spatial-analysis/cut)
-  - [Excavate analysis](/en/examples/#3d/spatial-analysis/excavate)
-  - [Flood analysis](/en/examples/#3d/spatial-analysis/flood)
-  - [Height limit analysis](/en/examples/#3d/spatial-analysis/height-limit)
-  - [InSight analysis](/en/examples/#3d/spatial-analysis/insight)
-  - [Skyline analysis](/en/examples/#3d/spatial-analysis/skyline)
-  - [Viewshed analysis](/en/examples/#3d/spatial-analysis/viewshed)
-  - [Measure](/en/examples/#3d/spatial-analysis/measure)
-  - [Ray casting](/en/examples/#3d/spatial-analysis/raycaster)
+  - [Cut analysis](/en/examples/#analysis/cut/cut)
+  - [Excavate analysis](/en/examples/#analysis/excavate/excavate)
+  - [Flood analysis](/en/examples/#analysis/flood/flood)
+  - [Height limit analysis](/en/examples/#analysis/heightlimit/height-limit)
+  - [InSight analysis](/en/examples/#analysis/insight/insight)
+  - [Skyline analysis](/en/examples/#analysis/skyline/skyline)
+  - [Viewshed analysis](/en/examples/#analysis/viewshed/viewshed)
+  - [Measure](/en/examples/#analysis/measure/measure)
+  - [Ray casting](/en/examples/#analysis/raycaster/raycaster)

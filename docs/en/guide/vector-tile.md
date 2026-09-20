@@ -44,7 +44,7 @@ const vt = new VectorTileLayer("vt", {
 });
 ```
 
-If the tile data uses the EPSG:4326 coordinate system (instead of the default web mercator), you need to specify `spatialReference` on the map — see the [load maptiler 4326 tiles](/en/examples/#vector/vtlayer/load-maptiler-4326) example:
+If the tile data uses the EPSG:4326 coordinate system (instead of the default web mercator), you need to specify `spatialReference` on the map — see the [load maptiler 4326 tiles](/en/examples/#vt/load/load-maptiler-4326) example:
 
 ```js
 const map = new Map("map", {
@@ -58,7 +58,7 @@ const map = new Map("map", {
 
 The `style` option of `VectorTileLayer` is optional — without it the layer only does basic rendering. With a style set, the layer renders the vector data in the tiles in real time against the style.
 
-The style can be a **plugin-style array**, written directly in code, or stored as a standalone json file and referenced by path. Take the style file used in the [road style example](/en/examples/#vector/vt-visual/road); its structure is:
+The style can be a **plugin-style array**, written directly in code, or stored as a standalone json file and referenced by path. Take the style file used in the [road style example](/en/examples/#vt/visual/road); its structure is:
 
 ```json
 [
@@ -172,7 +172,7 @@ const groupLayer = new GroupGLLayer("gl", [vt], {
 
 ## Reference
 
-- [Vector tile examples](/en/examples/#vector/vtlayer/load-mapbox)
-- [Road style example](/en/examples/#vector/vt-visual/road)
+- [Vector tile examples](/en/examples/#vt/load/load-mapbox)
+- [Road style example](/en/examples/#vt/visual/road)
 - [VectorTileLayer API](/en/api/vector-tile-layer)
 - [What are vector tiles](/en/guide/vector-tile)

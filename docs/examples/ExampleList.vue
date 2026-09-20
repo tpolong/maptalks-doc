@@ -2,7 +2,7 @@
 import { computed, ref } from "vue";
 import { useData } from "vitepress";
 import { data as examples, type ExampleItem } from "./examples.data";
-import { CATEGORIES, SUBCATEGORIES, resolveTaxonomy } from "./taxonomy";
+import { CATEGORIES, SUBCATEGORIES } from "./taxonomy";
 
 /**
  * 示例中心（模仿 examples.maptalks.com）
@@ -48,16 +48,17 @@ interface CategoryGroup {
   subcategories: SubcategoryGroup[];
 }
 
-/** 合并多个物理来源后按路径排序，保证卡片顺序稳定 */
+/** 按路径排序，保证同一小节内的卡片顺序稳定 */
 function sortByPath(list: ViewExample[]): ViewExample[] {
   return [...list].sort((a, b) => a.path.localeCompare(b.path));
 }
 
 const allGroups = computed<CategoryGroup[]>(() => {
-  // 按 taxonomy 把示例桶化到「展示一级 -> 展示二级」
+  // 物理目录即展示分类，按 category / subcategory 桶化
   const buckets = new Map<string, Map<string, ViewExample[]>>();
   for (const ex of examples) {
-    const { cat, sub } = resolveTaxonomy(ex.category, ex.subcategory, ex.path);
+    const cat = ex.category;
+    const sub = ex.subcategory;
     if (!buckets.has(cat)) buckets.set(cat, new Map());
     const subs = buckets.get(cat)!;
     if (!subs.has(sub)) subs.set(sub, []);

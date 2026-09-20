@@ -215,7 +215,7 @@ The following example loads a video patch into a 3D scene and controls play/paus
 
 After running, the video is displayed as a texture in the 3D scene: click "播放" (Play) to start playback, and "暂停" (Pause) to stop it.
 
-The full interaction (including the sound toggle and the GLTF model scene) can be found in the example: [Video layer example](/en/examples/#3d/video/add).
+The full interaction (including the sound toggle and the GLTF model scene) can be found in the example: [Video layer example](/en/examples/#scene3d/video/add).
 
 ## Notes
 

@@ -125,7 +125,7 @@ gltfMarker.on("dblclick", () => {
 > [!NOTE] 事件绑定 API
 > 所有事件对象都提供 `on(type, fn)` 监听、`once(type, fn)` 仅监听一次（触发后自动移除）、`off(type, fn)` 解绑监听，多个事件类型用空格分隔绑定。
 
-相关示例：[地图点击事件](/examples/#basic/map/map-events)、[地图状态](/examples/#basic/map/status)、[几何悬停高亮](/examples/#basic/interaction/mouse-highlight)、[GLTFMarker 鼠标事件](/examples/#gltf/gltf-marker/mouse-event)
+相关示例：[地图点击事件](/examples/#map/view/map-events)、[地图状态](/examples/#map/view/status)、[几何悬停高亮](/examples/#vector2d/interaction/mouse-highlight)、[GLTFMarker 鼠标事件](/examples/#gltf/marker/mouse-event)
 
 ## 拾取（identify）
 
@@ -218,7 +218,7 @@ map.on("click", (e) => {
 - `options.childLayers` 限定参与拾取的子图层；`options.orderByCamera: true` 使结果按相机距离排序，`[0]` 即最近视点的命中
 - 结果 `picks[i].data` 为命中的要素对象（如 `GLTFMarker`）
 
-相关示例：[二维拾取](/examples/#basic/interaction/mouse-identify)、[矢量瓦片拾取](/examples/#vector/interactive/identify)、[GLTF 模型拾取](/examples/#gltf/transform-control/trs)
+相关示例：[二维拾取](/examples/#vector2d/interaction/mouse-identify)、[矢量瓦片拾取](/examples/#vt/pick/identify)、[GLTF 模型拾取](/examples/#gltf/transform/trs)
 
 ## 高亮
 
@@ -314,7 +314,7 @@ const groupLayer = new GroupGLLayer("group", [layer], {
 groupLayer.addTo(map);
 ```
 
-相关示例：[矢量瓦片高亮](/examples/#vector/interactive/highlight)、[面图层描边](/examples/#vector/polygonlayer/highlight)
+相关示例：[矢量瓦片高亮](/examples/#vt/pick/highlight)、[面图层描边](/examples/#glvec/polygon/highlight)
 
 ## 绘制工具（DrawTool）
 
@@ -348,7 +348,7 @@ drawTool.disable();
 
 绘制完成的几何可以直接 `addGeometry` 到图层，进入正常的事件、拾取流程。
 
-相关示例：[绘制工具](/examples/#basic/interaction/draw-tool)，API 参考：[DrawTool](https://maptalks.org/maptalks.js/api/0.x/DrawTool.html)
+相关示例：[绘制工具](/examples/#vector2d/interaction/draw-tool)，API 参考：[DrawTool](https://maptalks.org/maptalks.js/api/0.x/DrawTool.html)
 
 ## 测量工具（DistanceTool / AreaTool）
 
@@ -452,7 +452,7 @@ const areaTool = new AreaTool({
 }).addTo(map);
 ```
 
-相关示例：[距离测量](/examples/#basic/interaction/distance-tool)、[面积测量](/examples/#basic/interaction/area-tool)，API 参考：[DistanceTool](https://maptalks.org/maptalks.js/api/0.x/DistanceTool.html) · [AreaTool](https://maptalks.org/maptalks.js/api/0.x/AreaTool.html)
+相关示例：[距离测量](/examples/#vector2d/interaction/distance-tool)、[面积测量](/examples/#vector2d/interaction/area-tool)，API 参考：[DistanceTool](https://maptalks.org/maptalks.js/api/0.x/DistanceTool.html) · [AreaTool](https://maptalks.org/maptalks.js/api/0.x/AreaTool.html)
 
 ## 模型变换（TransformControl）
 
@@ -543,7 +543,7 @@ transformControl.on("positionchange", (e) => {
 > [!NOTE] 拾取与变换的配合
 > 在模型编辑场景中，通常需要结合拾取来判断点击是否命中模型：命中模型时 `enable()` 并 `transform()` 绑定目标；未命中但点击在手柄上时保持编辑状态（可用 `transformControl.picked(e.coordinate)` 判断），否则 `disable()` 结束编辑。
 
-相关示例：[模型变换（trs）](/examples/#gltf/transform-control/trs)、[射线分析中的变换联动](/examples/#3d/spatial-analysis/raycaster)
+相关示例：[模型变换（trs）](/examples/#gltf/transform/trs)、[射线分析中的变换联动](/examples/#analysis/raycaster/raycaster)
 
 ## 相关 API
 

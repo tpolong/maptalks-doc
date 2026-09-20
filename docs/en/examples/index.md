@@ -26,6 +26,6 @@ onHashChange(() => {
 });
 </script>
 
-<!-- Show the runnable REPL when a hash is present (e.g. #3d/3dtiles/load), otherwise the static list -->
+<!-- Show the runnable REPL when a hash is present (e.g. #scene3d/tiles3d/load), otherwise the static list -->
 <ExampleRepl v-if="hash.includes('/')" />
 <ExampleList v-else />

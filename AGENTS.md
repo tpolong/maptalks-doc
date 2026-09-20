@@ -31,11 +31,12 @@ maptalks-docs/
 │  │  └─ style/                # 样式指南（symbols/material/filter/function-type + 17 个 plugin-*.md）
 │  ├─ api/                     # API 参考 + includes/ 共享片段（通过 <!--@include:--> 引用）
 │  ├─ examples/                # 示例中心
+│  │  ├─ taxonomy.ts           # 分类树的一级/二级分组顺序与中英标签（唯一数据源）
 │  │  ├─ examples.data.ts      # 扫描 docs/public/examples 的加载器
 │  │  ├─ ExampleList.vue       # 列表视图（搜索 / 分类树 / 卡片）
 │  │  ├─ ExampleRepl.vue       # REPL 在线运行（import map 核心）
 │  │  └─ index.md              # 示例中心页
-│  ├─ public/examples/         # 示例源码 + 资源（3 级目录：分类/子类/示例）
+│  ├─ public/examples/         # 示例源码 + 资源（3 级目录：一级分类/二级分类/示例）
 │  ├─ public/lib/              # 本地 ESM 库（regl-esm.mjs、mt.gui.js）
 │  ├─ public/thumbnails/       # 示例缩略图
 │  └─ en/                      # 英文镜像（结构与 docs/ 完全对应）
@@ -55,11 +56,12 @@ maptalks-docs/
 
 ## 示例与 REPL（重要，改示例前必读）
 
-- 示例位于 `docs/public/examples/<分类>/<子类>/<示例>/`，要求目录下**必须有 `index.html`**。分类：`3d` / `basic` / `gltf` / `vector`（加载器按目录自动遍历）。
+- 示例位于 `docs/public/examples/<一级分类>/<二级分类>/<示例>/`，要求目录下**必须有 `index.html`**。**目录结构即示例中心的分类树**，一级分类 8 个：`map` / `tile` / `vector2d` / `vt` / `glvec` / `gltf` / `scene3d` / `analysis`（加载器按目录自动遍历）。
+- 分类树的分组顺序与中英标签在 `docs/examples/taxonomy.ts`：新增示例目录后到那里补一条二级记录；漏补也会按目录名兜底显示，不会丢示例。
 - `docs/examples/examples.data.ts` 扫描并为每个示例生成 `{ path, category, subcategory, name, html, description, files }`：
   - `description` 取自 `readme-cn.md` → `index_cn.md` → `readme.md` → `index_en.md`（优先中文）。
   - `files` 仅收集该目录下**单层文件**（不含子目录），供 REPL 使用。
-- `docs/examples/index.md` frontmatter 固定为 `layout: page` + `sidebar: false` + `aside: false`；带 hash（如 `#3d/3dtiles/load`）时渲染 REPL，否则渲染列表。
+- `docs/examples/index.md` frontmatter 固定为 `layout: page` + `sidebar: false` + `aside: false`；带 hash（如 `#scene3d/tiles3d/load`）时渲染 REPL，否则渲染列表。
 - **REPL import map 三段式**（在 `ExampleRepl.vue` 内）：
   1. maptalks 系大包走 **unpkg 原生 ESM**（`maptalks`、`@maptalks/gl-layers`、`@maptalks/gl`、vt / 3dtiles / gltf / analysis / video 等，版本已 pin）。
   2. 小依赖走 **esm.sh**（`gl-matrix`、`earcut`、`color` 等）。

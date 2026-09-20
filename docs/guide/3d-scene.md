@@ -123,6 +123,6 @@ const groupLayer = new GroupGLLayer("gl", [vt], {
 
 - [矢量瓦片](/guide/vector-tile)：三维场景中最常用的底图图层
 - [WebGPU 渲染](/guide/webgpu)：三维场景的 WebGPU 渲染路径
-- [gltf 模型示例](/examples/#gltf/gltf-marker/add-marker)：完整的光照与环境配置
-- [3dtiles 示例](/examples/#3d/3dtiles/load)：倾斜摄影模型加载
-- [自动巡航示例](/examples/#3d/track/auto-roaming)：三维视角动画
+- [gltf 模型示例](/examples/#gltf/marker/add-marker)：完整的光照与环境配置
+- [3dtiles 示例](/examples/#scene3d/tiles3d/load)：倾斜摄影模型加载
+- [自动巡航示例](/examples/#scene3d/track/auto-roaming)：三维视角动画

@@ -3,7 +3,7 @@ import { computed, ref } from "vue";
 import { useData } from "vitepress";
 import { data as examples, type ExampleItem } from "./examples.data";
 // Shared taxonomy lives with the Chinese component so both locales stay in sync.
-import { CATEGORIES, SUBCATEGORIES, resolveTaxonomy } from "../../examples/taxonomy";
+import { CATEGORIES, SUBCATEGORIES } from "../../examples/taxonomy";
 
 /**
  * Example center (modeled after examples.maptalks.com)
@@ -50,16 +50,17 @@ interface CategoryGroup {
   subcategories: SubcategoryGroup[];
 }
 
-/** Sort by path so the card order stays stable when physical sources merge */
+/** Sort by path so the card order inside a section stays stable */
 function sortByPath(list: ViewExample[]): ViewExample[] {
   return [...list].sort((a, b) => a.path.localeCompare(b.path));
 }
 
 const allGroups = computed<CategoryGroup[]>(() => {
-  // Bucket examples into "display category -> display subcategory" via the taxonomy
+  // Physical folders are the display categories: bucket by category / subcategory
   const buckets = new Map<string, Map<string, ViewExample[]>>();
   for (const ex of examples) {
-    const { cat, sub } = resolveTaxonomy(ex.category, ex.subcategory, ex.path);
+    const cat = ex.category;
+    const sub = ex.subcategory;
     if (!buckets.has(cat)) buckets.set(cat, new Map());
     const subs = buckets.get(cat)!;
     if (!subs.has(sub)) subs.set(sub, []);

@@ -50,7 +50,7 @@ const map = new Map("map", {
 
 ## EPSG:4326 示例
 
-使用 EPSG:4326 时，瓦片坐标系也相应变为经纬度网格，天地图等瓦片服务需要同时配合 `tileSystem` 设置。以官方示例（[epsg4326](/examples/#basic/tilelayer-projection/epsg4326)）为例：
+使用 EPSG:4326 时，瓦片坐标系也相应变为经纬度网格，天地图等瓦片服务需要同时配合 `tileSystem` 设置。以官方示例（[epsg4326](/examples/#tile/tiles/epsg4326)）为例：
 
 ```js
 import { Map, TileLayer } from "maptalks";
@@ -77,7 +77,7 @@ const map = new Map("map", {
 
 ## 自定义投影：proj4js
 
-当地图不满足内置预置时，可以传入自定义的投影对象。投影对象需要提供 `project`（经纬度转平面坐标）与 `unproject`（平面坐标转经纬度）两个方法，返回 `Coordinate`；`measure` 用于声明距离/面积测量方式（平面直角坐标用 `"identity"`）。官方示例（[proj4js](/examples/#basic/tilelayer-projection/proj4js)）用 proj4 定义了一个与 EPSG:3857 等效的自定义投影：
+当地图不满足内置预置时，可以传入自定义的投影对象。投影对象需要提供 `project`（经纬度转平面坐标）与 `unproject`（平面坐标转经纬度）两个方法，返回 `Coordinate`；`measure` 用于声明距离/面积测量方式（平面直角坐标用 `"identity"`）。官方示例（[proj4js](/examples/#tile/tiles/proj4js)）用 proj4 定义了一个与 EPSG:3857 等效的自定义投影：
 
 ```js
 import { Coordinate, Map, TileLayer } from "maptalks";
@@ -183,8 +183,8 @@ map.config("spatialReference", { projection: "EPSG:4326" });
 
 ## 相关示例
 
-- [EPSG:4326 天地图](/examples/#basic/tilelayer-projection/epsg4326) · [proj4js 自定义投影](/examples/#basic/tilelayer-projection/proj4js)
-- [不同投影对比](/examples/#basic/tilelayer-projection/projection) · [百度瓦片](/examples/#basic/tilelayer-projection/baidu) · [平面坐标](/examples/#basic/tilelayer-projection/identity)
+- [EPSG:4326 天地图](/examples/#tile/tiles/epsg4326) · [proj4js 自定义投影](/examples/#tile/tiles/proj4js)
+- [不同投影对比](/examples/#tile/tiles/projection) · [百度瓦片](/examples/#tile/tiles/baidu) · [平面坐标](/examples/#tile/tiles/identity)
 
 ## 相关 API
 

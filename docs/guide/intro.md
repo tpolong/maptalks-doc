@@ -92,7 +92,7 @@ const groupLayer = new GroupGLLayer("group", [vt]).addTo(map);
 
 `VectorTileLayer` 是三维场景中最常用的图层，负责加载 [mvt](https://github.com/mapbox/vector-tile-spec) 格式的矢量瓦片数据。它的 `style` 配置是可选的：设置 style 后，图层会按样式实时渲染瓦片中的矢量数据，样式的修改不需要重新生成瓦片。样式采用[插件式样式定义](/guide/vector-tile#样式)：由 `renderPlugin`、`filter`、`symbol` 三项组成，可以是一个样式数组、单个样式对象，或一个样式 json 文件（样式文件还支持 `background`、`featureStyle`、`sprites` 等配置）。注意 maptalks 的矢量瓦片样式格式与 mapbox style（sources/layers/sprite/glyphs）不同，不兼容 mapbox 的 style json。具体说明见 [VectorTileLayer API](/api/vector-tile-layer)。
 
-为了让三维场景更真实，通常还会给 `Map` 配置光照（`lights`）与场景（`sceneConfig`），完整的配置示例可以参考[三维示例](/examples/#3d/track/auto-roaming)和[gltf 示例](/examples/#gltf/gltf-marker/add-marker)。
+为了让三维场景更真实，通常还会给 `Map` 配置光照（`lights`）与场景（`sceneConfig`），完整的配置示例可以参考[三维示例](/examples/#scene3d/track/auto-roaming)和[gltf 示例](/examples/#gltf/marker/add-marker)。
 
 ## 下一步
 
