@@ -22,10 +22,11 @@ import { data as examples } from "./examples.data";
  */
 
 /** Default values for site-level placeholders (the reference site's default basemap/attribution) */
-// Use basemaps.cartocdn.com WITHOUT the {s} subdomain: the subdomain form
-// (a.basemaps.cartocdn.com) is unreachable on some networks and returns tiles
-// stamped with "API KEY REQUIRED"; the bare domain serves normal tiles and
-// needs no apiKey.
+// Use basemaps.cartocdn.com WITHOUT the {s} subdomain: a.basemaps.cartocdn.com is
+// DNS-poisoned on some networks (resolving to a bogus 2001::737e:64a0 address)
+// and fails to connect, while the bare domain serves normal tiles directly and
+// avoids subdomain-round-robin retries. No apiKey is needed either way: the b/c/d
+// subdomains and the bare domain return byte-identical tiles.
 const DEFAULT_URL_TEMPLATE = "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png";
 const DEFAULT_ATTRIBUTION =
   "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>";

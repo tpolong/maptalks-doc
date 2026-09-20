@@ -20,9 +20,10 @@ import { data as examples } from "./examples.data";
  */
 
 /** 站点级占位符的默认替换值（对应参考站填充的默认底图/版权） */
-// 注意：必须使用不带 {s} 子域的 basemaps.cartocdn.com。
-// 实测 a.basemaps.cartocdn.com（带子域）在国内网络不可达，且返回带
-// "API KEY REQUIRED" 水印的图；无子域域名可直接拿到正常瓦片且无需 apiKey。
+// 注意：使用不带 {s} 子域的 basemaps.cartocdn.com。
+// 实测 a.basemaps.cartocdn.com 存在 DNS 污染（解析到 2001::737e:64a0 假地址），
+// 国内网络下请求失败；无子域域名可直接命中正常瓦片，避免依赖子域轮询重试。
+// 瓦片服务本身无需 apiKey，b/c/d 子域与无子域返回的瓦片字节完全相同。
 const DEFAULT_URL_TEMPLATE = "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png";
 const DEFAULT_ATTRIBUTION =
   "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>";
