@@ -131,6 +131,22 @@ Numeric parameters in `symbol` support interpolation by zoom level. For example,
 }
 ```
 
+### Rendering MapLibre / Mapbox base layer styles
+
+maptalks vector tile styles and Mapbox / MapLibre style json (sources / layers / sprite / glyphs) are different formats and cannot be used interchangeably, but base layer styles can be converted and then rendered. Take the free [OpenFreeMap](https://openfreemap.org/quick_start/) base maps as an example:
+
+- [Liberty base map example](/en/examples/#vt/load/load-openfreemap-liberty)
+- [Dark base map example](/en/examples/#vt/load/load-openfreemap-dark)
+
+The style files of these two examples are converted from the MapLibre styles with `scripts/convert-maplibre-style.mjs`:
+
+```bash
+node scripts/convert-maplibre-style.mjs https://tiles.openfreemap.org/styles/liberty \
+  docs/public/examples/resources/styles/openfreemap/liberty.json --no-sprites
+```
+
+The conversion keeps each layer's visible zoom range (written into `minZoom`/`maxZoom` of `renderPlugin.sceneConfig`), its data filter (converted into a maptalks feature-filter) and the `interpolate`/`step`/`match` expressions that vary with zoom or feature attributes (converted into [function-type](/en/guide/style/function-type)). Text is rendered with system fonts, so no glyph service is needed; sprite icons and raster layers (such as the Natural Earth shaded relief) are out of scope.
+
 ## Vector tiles in 3D scenes
 
 Vector tiles join a 3D scene through `GroupGLLayer`. Because the vector data in the tiles is rendered in real time on the browser side, it can be seamlessly overlaid with other 3D layers (gltf models, 3dtiles, etc.), and combined with scene configuration (lighting, environment, shadow) for more realistic 3D results. A complete example:

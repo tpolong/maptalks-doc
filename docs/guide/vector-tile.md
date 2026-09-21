@@ -131,6 +131,22 @@ const map = new Map("map", {
 }
 ```
 
+### 渲染 MapLibre / Mapbox 底图样式
+
+maptalks 的矢量瓦片样式与 Mapbox / MapLibre 的 style json（sources / layers / sprite / glyphs）不是同一套格式，不能直接互用，但底图类样式可以转换后再渲染。以自由底图 [OpenFreeMap](https://openfreemap.org/quick_start/) 为例：
+
+- [Liberty 底图示例](/examples/#vt/load/load-openfreemap-liberty)
+- [Dark 底图示例](/examples/#vt/load/load-openfreemap-dark)
+
+这两个示例的样式文件由 `scripts/convert-maplibre-style.mjs` 从 MapLibre 样式转换得到：
+
+```bash
+node scripts/convert-maplibre-style.mjs https://tiles.openfreemap.org/styles/liberty \
+  docs/public/examples/resources/styles/openfreemap/liberty.json --no-sprites
+```
+
+转换会保留图层的可见 zoom 范围（写入 `renderPlugin.sceneConfig` 的 `minZoom`/`maxZoom`）、数据过滤条件（转成 maptalks 的 feature-filter）以及随 zoom 或属性变化的 `interpolate`/`step`/`match` 表达式（转成 [function-type](/guide/style/function-type)）。文字用系统字体渲染，所以不需要 glyphs 服务；sprite 图标与栅格图层（如 Natural Earth 晕渲）不在此转换范围内。
+
 ## 三维场景中的矢量瓦片
 
 矢量瓦片通过 `GroupGLLayer` 加入三维场景。因为瓦片中的矢量数据在浏览器端实时渲染，可以与其他三维图层（gltf 模型、3dtiles 等）无缝叠加，也可以结合场景配置（光照、环境、阴影）获得更真实的三维效果。一个完整的示例：
