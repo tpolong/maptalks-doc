@@ -595,6 +595,41 @@ export default defineConfig({
       ],
     },
   },
+  /**
+   * 站内搜索：VitePress 内置 localSearch —— 构建期生成纯本地索引，无外部服务依赖。
+   * 必须挂在**顶层 themeConfig**（localSearch 插件只读顶层配置），
+   * 放进 locales.*.themeConfig 不会生效；各语言文案用 options.locales 覆盖。
+   */
+  themeConfig: {
+    search: {
+      provider: "local",
+      options: {
+        locales: {
+          root: {
+            translations: {
+              button: { buttonText: "搜索", buttonAriaLabel: "搜索文档" },
+              modal: {
+                displayDetails: "显示详情",
+                resetButtonTitle: "清除查询条件",
+                backButtonTitle: "返回",
+                noResultsText: "未找到相关结果",
+                footer: {
+                  selectText: "选择",
+                  selectKeyAriaLabel: "回车",
+                  navigateText: "切换",
+                  navigateUpKeyAriaLabel: "上箭头",
+                  navigateDownKeyAriaLabel: "下箭头",
+                  closeText: "关闭",
+                  closeKeyAriaLabel: "Esc",
+                },
+              },
+            },
+          },
+          // en 使用 VitePress 默认英文文案，无需覆盖
+        },
+      },
+    },
+  },
   locales: {
     root: {
       label: "简体中文",
