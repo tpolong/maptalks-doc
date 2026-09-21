@@ -76,9 +76,9 @@ const LEGACY_SUBCATEGORIES: Record<string, string> = {
 
 /** 旧示例全路径（`旧一级/旧二级/示例名`）-> 新示例全路径 */
 const LEGACY_EXAMPLES: Record<string, string> = {
-  // basic/layer 中真正演示栅格/画布绘制的 5 例
+  // basic/layer 中真正演示栅格/画布绘制的 4 例
+  // （原 canvastilelayer 依赖已停运的 tile.mapzen.com，该示例已下线，故不再保留映射）
   "basic/layer/canvaslayer": "tile/draw/canvaslayer",
-  "basic/layer/canvastilelayer": "tile/draw/canvastilelayer",
   "basic/layer/imagelayer": "tile/draw/imagelayer",
   "basic/layer/particlelayer": "tile/draw/particlelayer",
   // swipe 演示的是两个 TileLayer 的渲染器画布卷帘合成
