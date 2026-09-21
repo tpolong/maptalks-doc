@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Repl, useStore } from "@vue/repl";
 import CodeMirror from "@vue/repl/codemirror-editor";
-import { watchEffect, toRef, ref } from "vue";
+import { watchEffect, toRef, ref, watch, nextTick } from "vue";
 import { useData } from "vitepress";
 import { onHashChange } from "./utils";
-import { data as examples } from "./examples.data";
+import { data as examples, type ExampleItem } from "./examples.data";
 
 /**
  * Runnable example component (@vue/repl integration)
@@ -187,37 +187,113 @@ const previewOnly = ref(true);
  */
 let loadedPath = "";
 
+/*
+ * The state below MUST be declared before watchEffect:
+ * watchEffect runs updateExample **synchronously** during setup and it reads these
+ * variables immediately; declaring them later hits the temporal dead zone
+ * (ReferenceError: Cannot access … before initialization) and breaks example loading
+ * entirely, leaving the code panel empty.
+ */
+/** Runtime cache of example sources: re-entering the same example does not refetch */
+const fileCache = new Map<string, Record<string, string>>();
+/** Load token: when switching quickly, only the latest request may win */
+let loadToken = 0;
+const loading = ref(false);
+const loadError = ref("");
+
 watchEffect(updateExample);
 
 onHashChange(updateExample);
 
-/** Find the example from the hash and load its full file set into the REPL */
-function updateExample() {
+/**
+ * Switching from the preview back to the source view must re-measure CodeMirror.
+ *
+ * The editor mounts while the left pane is display:none (preview-first layout), so
+ * CodeMirror 5 measures a zero-height viewport and renders **no lines for the first
+ * file (index.html)** — the user sees "clicked view source, the html tab is blank".
+ * Clicking another file tab forces a redraw, which is why only the initial file looks
+ * empty. refresh() is the standard CodeMirror 5 remedy.
+ */
+watch(previewOnly, (only) => {
+  if (only) return;
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      const el = document.querySelector(".examples-repl-page .CodeMirror") as
+        | (HTMLElement & { CodeMirror?: { refresh(): void } })
+        | null;
+      el?.CodeMirror?.refresh();
+    });
+  });
+});
+
+/**
+ * Fetch the example's files on demand.
+ * The build-time data keeps file names only; sources are read from
+ * /examples/<path>/<file>, so the first-screen chunk no longer inlines all 391 examples.
+ */
+async function fetchExampleFiles(example: ExampleItem): Promise<Record<string, string>> {
+  const cached = fileCache.get(example.path);
+  if (cached) return { ...cached };
+  const base = `/examples/${example.path}/`;
+  const entries = await Promise.all(
+    example.files.map(async (filename) => {
+      const response = await fetch(base + filename);
+      if (!response.ok) {
+        throw new Error(`${base}${filename} → ${response.status} ${response.statusText}`);
+      }
+      return [filename, await response.text()] as const;
+    }),
+  );
+  const files = Object.fromEntries(entries);
+  fileCache.set(example.path, files);
+  return { ...files };
+}
+
+/** Find the example from the hash, fetch its files and load them into the REPL */
+async function updateExample() {
   const hash = location.hash.slice(1);
   if (hash === loadedPath) return;
   const example = examples.find((item) => item.path === hash);
   if (!example) return;
-  loadedPath = hash;
+  const token = ++loadToken;
   path.value = hash;
-  // Replace site-level placeholders: {res} resource dir, {urlTemplate}/{attribution}
-  // default basemap, applied to all files (html/css/js etc.)
-  const files: Record<string, string> = {};
-  for (const [filename, content] of Object.entries(example.files)) {
-    files[filename] = replacePlaceholders(content);
+  // Claim the path up front: store.setFiles writes reactive store state and re-triggers
+  // the watchEffect, so it must already look loaded, otherwise a second setFiles re-runs
+  // the example scripts in the preview ("Container is already loaded with another map instance").
+  loadedPath = hash;
+  loading.value = true;
+  loadError.value = "";
+  try {
+    const raw = await fetchExampleFiles(example);
+    if (token !== loadToken) return; // superseded by a later selection
+    // Replace site-level placeholders: {res} resource dir, {urlTemplate}/{attribution}
+    // default basemap, applied to all files (html/css/js etc.)
+    const files: Record<string, string> = {};
+    for (const [filename, content] of Object.entries(raw)) {
+      files[filename] = replacePlaceholders(content);
+    }
+    // If index.html has no inline <script type="module"> (e.g. the JS lives in a
+    // separate index.js or is referenced via <script src>), @vue/repl can't pick
+    // it up and the preview stays blank. Inline index.js as a module script so the
+    // example actually runs.
+    inlineIndexJs(files);
+    // @vue/repl injects standalone .css files only after the example scripts have
+    // run. Examples typically rely on html/body height:100% to size the map
+    // container, so at `new Map` time the container height is still 0 -> the canvas
+    // becomes 0-height and edit-mode top-element drawing throws drawImage 0-size
+    // errors. Inlining the css as a <style> tag makes it take effect before the
+    // scripts run, together with index.html.
+    inlineCss(files);
+    store.setFiles(files, "index.html");
+  } catch (err) {
+    if (token !== loadToken) return;
+    loadedPath = ""; // release the claim on failure so it can be retried
+    loadError.value = `Failed to load example files: ${example.path} (${
+      err instanceof Error ? err.message : String(err)
+    })`;
+  } finally {
+    if (token === loadToken) loading.value = false;
   }
-  // If index.html has no inline <script type="module"> (e.g. the JS lives in a
-  // separate index.js or is referenced via <script src>), @vue/repl can't pick
-  // it up and the preview stays blank. Inline index.js as a module script so the
-  // example actually runs.
-  inlineIndexJs(files);
-  // @vue/repl injects standalone .css files only after the example scripts have
-  // run. Examples typically rely on html/body height:100% to size the map
-  // container, so at `new Map` time the container height is still 0 -> the canvas
-  // becomes 0-height and edit-mode top-element drawing throws drawImage 0-size
-  // errors. Inlining the css as a <style> tag makes it take effect before the
-  // scripts run, together with index.html.
-  inlineCss(files);
-  store.setFiles(files, "index.html");
 }
 
 /**
@@ -317,8 +393,13 @@ function closeRepl() {
   <div class="examples-repl-page" :class="{ 'is-preview-only': previewOnly }">
     <div class="examples-repl-head">
       <span class="examples-repl-path">
-        <span class="examples-repl-live" aria-hidden="true"></span>
+        <span
+          class="examples-repl-live"
+          :class="{ 'is-loading': loading }"
+          aria-hidden="true"
+        ></span>
         {{ path }}
+        <span v-if="loading" class="examples-repl-loading">Loading…</span>
       </span>
       <div class="examples-repl-actions">
         <button
@@ -347,6 +428,7 @@ function closeRepl() {
         </button>
       </div>
     </div>
+    <p v-if="loadError" class="examples-repl-error">{{ loadError }}</p>
     <Repl
       :editor="CodeMirror"
       :store="store"
@@ -480,6 +562,37 @@ function closeRepl() {
   background-color: var(--vp-c-brand-1);
   flex-shrink: 0;
   box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+}
+
+/* Let the dot pulse while the example sources are being fetched */
+.examples-repl-live.is-loading {
+  animation: examples-repl-pulse 1s ease-in-out infinite;
+}
+@keyframes examples-repl-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.examples-repl-loading {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+}
+
+.examples-repl-error {
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--vp-c-danger-1);
+  border-radius: 8px;
+  background-color: var(--vp-c-danger-soft);
+  color: var(--vp-c-danger-1);
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .examples-repl-close {

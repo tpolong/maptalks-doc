@@ -58,9 +58,9 @@ maptalks-docs/
 
 - 示例位于 `docs/public/examples/<一级分类>/<二级分类>/<示例>/`，要求目录下**必须有 `index.html`**。**目录结构即示例中心的分类树**，一级分类 8 个：`map` / `tile` / `vector2d` / `vt` / `glvec` / `gltf` / `scene3d` / `analysis`（加载器按目录自动遍历）。
 - 分类树的分组顺序与中英标签在 `docs/examples/taxonomy.ts`：新增示例目录后到那里补一条二级记录；漏补也会按目录名兜底显示，不会丢示例。
-- `docs/examples/examples.data.ts` 扫描并为每个示例生成 `{ path, category, subcategory, name, html, description, files }`：
-  - `description` 取自 `readme-cn.md` → `index_cn.md` → `readme.md` → `index_en.md`（优先中文）。
-  - `files` 仅收集该目录下**单层文件**（不含子目录），供 REPL 使用。
+- `docs/examples/examples.data.ts` 只产出**元数据** `{ path, category, subcategory, name, files }`，其中 `files` 是该目录下的**单层文件名数组**（不含子目录、**不含文件内容**）。
+  - 示例源码由 REPL 在运行时按 `/examples/<path>/<文件名>` 按需 fetch（带内存缓存）。
+  - **不要把文件内容写回 data**：一旦内联，首屏 chunk `examples_index.md.*.js` 会从 61KB 涨回 2MB。
 - `docs/examples/index.md` frontmatter 固定为 `layout: page` + `sidebar: false` + `aside: false`；带 hash（如 `#scene3d/tiles3d/load`）时渲染 REPL，否则渲染列表。
 - **REPL import map 三段式**（在 `ExampleRepl.vue` 内）：
   1. maptalks 系大包走 **unpkg 原生 ESM**（`maptalks`、`@maptalks/gl-layers`、`@maptalks/gl`、vt / 3dtiles / gltf / analysis / video 等，版本已 pin）。

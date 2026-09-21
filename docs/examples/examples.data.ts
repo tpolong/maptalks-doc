@@ -1,44 +1,35 @@
-import { existsSync, readFileSync, readdirSync, statSync } from "fs";
+import { existsSync, readdirSync, statSync } from "fs";
 import { join } from "path";
 import { fileURLToPath } from "url";
 
 /**
- * 示例数据加载器（VitePress .data.ts）
+ * 示例元数据加载器（VitePress .data.ts）
  *
- * 扫描 docs/public/examples/（391 个示例），为每个示例（叶子目录）返回：
- *  - path：示例相对路径，如 "3d/3dtiles/load"
- *  - index.html 源码
- *  - 描述：优先 readme-cn.md / index_cn.md，其次 readme.md / index_en.md，再没有则为空
- *  - files：示例目录下所有文件内容（index.html / index.css / index.js / readme 等，
- *    不含子目录；resources 目录在顶层已排除），供 REPL 在线运行使用
+ * 只产出**元数据**（路径、分类、文件名列表），不再内联任何文件内容：
+ * 源码本来就在 docs/public/examples/ 下，REPL 运行时按需 fetch 即可。
  *
- * 参考官方文档站 docs/src/examples/components/examples.data.ts 的读取逻辑。
+ * 背景：此前把 391 个示例的全部文件内容（html/css/js/readme）都塞进 data，
+ * 导致首屏 chunk `examples_index.md.*.js` 达到 2016KB（gzip 234KB），
+ * 是全站第二大 chunk 的 18 倍。改为元数据后降到几十 KB。
  */
 
 export interface ExampleItem {
-  /** 示例相对路径，如 "3d/3dtiles/load" */
+  /** 示例相对路径，如 "scene3d/tiles3d/load" */
   path: string;
-  /** 四大分类：3d / basic / gltf / vector */
+  /** 一级分类目录名，如 "scene3d" */
   category: string;
-  /** 子分类目录名，如 "3dtiles" */
+  /** 二级分类目录名，如 "tiles3d" */
   subcategory: string;
   /** 叶子目录名（展示用），如 "load" */
   name: string;
-  /** index.html 完整源码 */
-  html: string;
-  /** 描述文本（markdown 原文，截断在展示层处理） */
-  description: string;
-  /** 示例目录下所有文件的完整内容，key 为文件名（如 index.html / index.css / index.js） */
-  files: Record<string, string>;
+  /** 示例目录下的文件名列表（已排序；内容由 REPL 运行时按需 fetch） */
+  files: string[];
 }
 
 export declare const data: ExampleItem[];
 
 // 数据文件位于 docs/examples/，示例位于 docs/public/examples/
 const EXAMPLES_DIR = fileURLToPath(new URL("../public/examples", import.meta.url));
-
-// 描述文件优先级：中文优先，其次英文
-const DESCRIPTION_FILES = ["readme-cn.md", "index_cn.md", "readme.md", "index_en.md"];
 
 export default {
   // 相对路径会基于本文件所在目录（docs/examples/）解析
@@ -54,16 +45,13 @@ export default {
         for (const name of readdirSync(subDir)) {
           const dir = join(subDir, name);
           if (!statSync(dir).isDirectory()) continue;
-          const indexHtml = join(dir, "index.html");
-          if (!existsSync(indexHtml)) continue;
+          if (!existsSync(join(dir, "index.html"))) continue;
           items.push({
             path: `${category}/${subcategory}/${name}`,
             category,
             subcategory,
             name,
-            html: readFileSync(indexHtml, "utf-8"),
-            description: readDescription(dir),
-            files: readExampleFiles(dir),
+            files: readFileNames(dir),
           });
         }
       }
@@ -72,26 +60,12 @@ export default {
   },
 };
 
-function readDescription(dir: string): string {
-  for (const filename of DESCRIPTION_FILES) {
-    const file = join(dir, filename);
-    if (existsSync(file)) {
-      return readFileSync(file, "utf-8");
-    }
-  }
-  return "";
-}
-
 /**
- * 读取示例目录下所有文件内容（跳过子目录）。
- * 与官方 readExample 的递归实现等价：当前示例目录均为单层文件。
+ * 列出示例目录下的文件名（跳过子目录）。
+ * 排序让产物可复现，也让 REPL 的文件选择器顺序稳定。
  */
-function readExampleFiles(dir: string): Record<string, string> {
-  const files: Record<string, string> = {};
-  for (const filename of readdirSync(dir)) {
-    const fullPath = join(dir, filename);
-    if (statSync(fullPath).isDirectory()) continue;
-    files[filename] = readFileSync(fullPath, "utf-8");
-  }
-  return files;
+function readFileNames(dir: string): string[] {
+  return readdirSync(dir)
+    .filter((filename) => !statSync(join(dir, filename)).isDirectory())
+    .sort();
 }

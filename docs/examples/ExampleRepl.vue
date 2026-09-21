@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Repl, useStore } from "@vue/repl";
 import CodeMirror from "@vue/repl/codemirror-editor";
-import { watchEffect, toRef, ref } from "vue";
+import { watchEffect, toRef, ref, watch, nextTick } from "vue";
 import { useData } from "vitepress";
 import { onHashChange } from "./utils";
-import { data as examples } from "./examples.data";
+import { data as examples, type ExampleItem } from "./examples.data";
 
 /**
  * 可运行示例组件（@vue/repl 集成）
@@ -177,34 +177,108 @@ const previewOnly = ref(true);
  */
 let loadedPath = "";
 
+/**
+ * 以下状态必须在 watchEffect 之前声明：
+ * watchEffect 会在 setup 阶段**同步**执行 updateExample，而它一上来就读这些变量；
+ * 若声明在后，会触发暂时性死区（ReferenceError: Cannot access … before initialization），
+ * 表现为示例加载整条链路中断、代码面板空白。
+ */
+/** 示例源码缓存：同一示例再次进入不必重复抓取 */
+const fileCache = new Map<string, Record<string, string>>();
+/** 加载令牌：切换过快时只接受最后一次请求的结果，避免旧响应覆盖新示例 */
+let loadToken = 0;
+const loading = ref(false);
+const loadError = ref("");
+
 watchEffect(updateExample);
 
 onHashChange(updateExample);
 
-/** 根据 hash 找到示例，将其完整文件集加载到 REPL */
-function updateExample() {
+/**
+ * 从「预览」切回「源码」时，必须让 CodeMirror 重新测量一次。
+ *
+ * 编辑器是在左侧窗格 display:none 的状态下挂载的（预览优先布局），CodeMirror 5
+ * 会把视口高度量成 0，于是**首个文件（index.html）一行都不渲染**——表现为
+ * 「点了查看源码，html 标签里是空白」；切到其它文件标签会触发重绘，所以只有
+ * 初始那个文件看着是空的。CM5 的标准解法是 refresh() 重新测量。
+ */
+watch(previewOnly, (only) => {
+  if (only) return;
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      const el = document.querySelector(".examples-repl-page .CodeMirror") as
+        | (HTMLElement & { CodeMirror?: { refresh(): void } })
+        | null;
+      el?.CodeMirror?.refresh();
+    });
+  });
+});
+
+/**
+ * 按需抓取示例目录下的文件。
+ * 构建期 data 里只保留文件名，源码通过 /examples/<path>/<file> 直接取，
+ * 这样首屏 chunk 不必再内联 391 个示例的全部源码。
+ */
+async function fetchExampleFiles(example: ExampleItem): Promise<Record<string, string>> {
+  const cached = fileCache.get(example.path);
+  if (cached) return { ...cached };
+  const base = `/examples/${example.path}/`;
+  const entries = await Promise.all(
+    example.files.map(async (filename) => {
+      const response = await fetch(base + filename);
+      if (!response.ok) {
+        throw new Error(`${base}${filename} → ${response.status} ${response.statusText}`);
+      }
+      return [filename, await response.text()] as const;
+    }),
+  );
+  const files = Object.fromEntries(entries);
+  fileCache.set(example.path, files);
+  return { ...files };
+}
+
+/** 根据 hash 找到示例，抓取文件集并加载到 REPL */
+async function updateExample() {
   const hash = location.hash.slice(1);
   if (hash === loadedPath) return;
   const example = examples.find((item) => item.path === hash);
   if (!example) return;
-  loadedPath = hash;
+  const token = ++loadToken;
   path.value = hash;
-  // 替换站点级占位符：{res} 资源目录、{urlTemplate}/{attribution} 默认底图，
-  // 同时作用于 html/css/js 等所有文件
-  const files: Record<string, string> = {};
-  for (const [filename, content] of Object.entries(example.files)) {
-    files[filename] = replacePlaceholders(content);
+  // 先占位：store.setFiles 会写入 store 的响应式状态并触发 watchEffect 重入，
+  // 必须在调用前就标记为已加载，否则会二次 setFiles、预览里二次执行脚本
+  //（表现为 "Container is already loaded with another map instance"）。
+  loadedPath = hash;
+  loading.value = true;
+  loadError.value = "";
+  try {
+    const raw = await fetchExampleFiles(example);
+    if (token !== loadToken) return; // 已被更晚的选择取代
+    // 替换站点级占位符：{res} 资源目录、{urlTemplate}/{attribution} 默认底图，
+    // 同时作用于 html/css/js 等所有文件
+    const files: Record<string, string> = {};
+    for (const [filename, content] of Object.entries(raw)) {
+      files[filename] = replacePlaceholders(content);
+    }
+    // 若 index.html 没有内联 <script type="module">（例如 JS 拆到独立 index.js、
+    // 或用 <script src> 引用），@vue/repl 无法识别源码，预览会空白。
+    // 把 index.js 内联成一个 module script，让示例真正跑起来。
+    inlineIndexJs(files);
+    // @vue/repl 对独立的 index.css 是在示例脚本执行后才注入 <head>；而示例
+    // 普遍用 html/body height:100% 撑满容器，脚本执行（new Map）时容器高度
+    // 仍是 0，canvas 变成 0 高，编辑模式等绘制顶部元素时会报 drawImage 0 尺寸。
+    // 把 css 内联成 <style> 随 index.html 一起先于脚本注入，样式提前生效。
+    inlineCss(files);
+    store.setFiles(files, "index.html");
+  } catch (err) {
+    if (token !== loadToken) return;
+    loadedPath = ""; // 失败时释放占位，允许重试
+    loadError.value = `示例文件加载失败：${example.path}（${
+      err instanceof Error ? err.message : String(err)
+    }）`;
+  } finally {
+    if (token === loadToken) loading.value = false;
   }
-  // 若 index.html 没有内联 <script type="module">（例如 JS 拆到独立 index.js、
-  // 或用 <script src> 引用），@vue/repl 无法识别源码，预览会空白。
-  // 把 index.js 内联成一个 module script，让示例真正跑起来。
-  inlineIndexJs(files);
-  // @vue/repl 对独立的 index.css 是在示例脚本执行后才注入 <head>；而示例
-  // 普遍用 html/body height:100% 撑满容器，脚本执行（new Map）时容器高度
-  // 仍是 0，canvas 变成 0 高，编辑模式等绘制顶部元素时会报 drawImage 0 尺寸。
-  // 把 css 内联成 <style> 随 index.html 一起先于脚本注入，样式提前生效。
-  inlineCss(files);
-  store.setFiles(files, "index.html");
 }
 
 /**
@@ -301,8 +375,13 @@ function closeRepl() {
   <div class="examples-repl-page" :class="{ 'is-preview-only': previewOnly }">
     <div class="examples-repl-head">
       <span class="examples-repl-path">
-        <span class="examples-repl-live" aria-hidden="true"></span>
+        <span
+          class="examples-repl-live"
+          :class="{ 'is-loading': loading }"
+          aria-hidden="true"
+        ></span>
         {{ path }}
+        <span v-if="loading" class="examples-repl-loading">加载中…</span>
       </span>
       <div class="examples-repl-actions">
         <button
@@ -331,6 +410,7 @@ function closeRepl() {
         </button>
       </div>
     </div>
+    <p v-if="loadError" class="examples-repl-error">{{ loadError }}</p>
     <Repl
       :editor="CodeMirror"
       :store="store"
@@ -463,6 +543,37 @@ function closeRepl() {
   background-color: var(--vp-c-brand-1);
   flex-shrink: 0;
   box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+}
+
+/* 抓取示例源码期间让指示点呼吸，避免看起来像卡住 */
+.examples-repl-live.is-loading {
+  animation: examples-repl-pulse 1s ease-in-out infinite;
+}
+@keyframes examples-repl-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.examples-repl-loading {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+}
+
+.examples-repl-error {
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--vp-c-danger-1);
+  border-radius: 8px;
+  background-color: var(--vp-c-danger-soft);
+  color: var(--vp-c-danger-1);
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .examples-repl-close {
