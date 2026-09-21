@@ -84,6 +84,28 @@ maptalks-docs/
 - `.gitignore` 忽略 `node_modules/`、`.vitepress/dist/`、`.vitepress/cache/`、`docs/.vitepress/`（`srcDir` 产生的缓存）、日志与 IDE/OS 杂项。`dist` 与依赖不要提交。
 - 提交信息用简洁中文（如 `docs: ...`、`fix: ...`、`chore: ...`）。
 
+## 交接文档（每次操作必做）
+
+**每一次操作（改内容、修 bug、迁移、部署）结束前，都必须在归档目录落一份交接文档**，供下一会话直接接手。
+
+标准流程：`pnpm build` 通过 → 提交并推送源码 → `robocopy` 镜像 `dist` 到产物仓库并推送 `master` → 线上核对 → **写交接文档**。
+
+- **位置**：`D:\code\maptalks\repo\progress\handoffs\`（在**工作区之外**，写入需要提权）。
+  不要放在本仓库根目录——历史上根目录的中文名文档曾让 `git_changes.py` 崩溃（`OSError: Errno 22`），
+  且会污染 `git status`。归档目录**不进 git**。
+- **命名**：`YYYY-MM-DD-HHMM-<英文-kebab-主题>.md`，
+  例如 `2026-09-21-1315-local-search-and-example-chunk-optimization.md`。
+- **结构**（沿用既有文件的骨架，按需增删小节）：
+  `Task` → `Repository State` →（按主题分节写改动）→ `Changed Files` → `Verification` →
+  `Risks And Blockers` → `Open Questions` → `Key Files` → `Decisions Already Made` →
+  `Resume Order` → `Next Action` → `Notes For The Next Session`。
+- **内容底线**：
+  - 写清**根因与依据**（源码事实、页面自述、命令输出、对照数据），不要只给结论。
+  - 验证要有**可复现的命令与数字**；**没跑的必须显式写"未跑"**，不要含糊。
+  - 踩过的坑写进 `Notes For The Next Session` —— 下一会话最容易重复的就是这些。
+  - 涉及外部服务可用性的判断，先做字节/像素级验证再落笔。
+  - **运行时问题要用真实浏览器验证**（CDP Chrome 在 `127.0.0.1:9223`）；构建产物层面的断言看不出来。
+
 ## 参考
 
 - 源码为主：`maptalks.js` 源码位于父目录 `D:\code\maptalks\maptalks.js\packages`（只读，API 事实来源）。
