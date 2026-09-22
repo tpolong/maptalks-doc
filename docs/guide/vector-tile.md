@@ -147,6 +147,21 @@ node scripts/convert-maplibre-style.mjs https://tiles.openfreemap.org/styles/lib
 
 转换会保留图层的可见 zoom 范围（写入 `renderPlugin.sceneConfig` 的 `minZoom`/`maxZoom`）、数据过滤条件（转成 maptalks 的 feature-filter）以及随 zoom 或属性变化的 `interpolate`/`step`/`match` 表达式（转成 [function-type](/guide/style/function-type)）。文字用系统字体渲染，所以不需要 glyphs 服务；sprite 图标与栅格图层（如 Natural Earth 晕渲）不在此转换范围内。
 
+Mapbox 官方底图样式同样可以移植（样式里 `mapbox://` 协议的源与 sprite 需要换成对应的 https 地址）：
+
+- [Mapbox Streets v12 示例](/examples/#vt/load/load-mapbox-streets)（`mapbox://styles/mapbox/streets-v12`）
+- [Mapbox Dark v11 示例](/examples/#vt/load/load-mapbox-dark)（`mapbox://styles/mapbox/dark-v11`）
+
+```bash
+curl -s "https://api.mapbox.com/styles/v1/mapbox/streets-v12?access_token=$TOKEN" -o streets-v12.json
+node scripts/convert-maplibre-style.mjs streets-v12.json \
+  docs/public/examples/resources/styles/mapbox/streets-v12.json --no-sprites
+# 瓦片地址取样式里 composite 源的第一项（Mapbox 会打印出来）：
+# https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=$TOKEN
+```
+
+streets-v12 / outdoors-v12 / light-v11 / dark-v11 / navigation-day-v1 这类经典 v8 样式都能转换；**Mapbox Standard（`mapbox://styles/mapbox/standard`）不能转换**，它用到 v3 的 `slot`、`model`、`raster-array` 等特性，maptalks 矢量瓦片样式没有对应能力。
+
 ## 三维场景中的矢量瓦片
 
 矢量瓦片通过 `GroupGLLayer` 加入三维场景。因为瓦片中的矢量数据在浏览器端实时渲染，可以与其他三维图层（gltf 模型、3dtiles 等）无缝叠加，也可以结合场景配置（光照、环境、阴影）获得更真实的三维效果。一个完整的示例：

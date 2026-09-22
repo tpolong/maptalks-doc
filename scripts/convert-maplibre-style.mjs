@@ -143,6 +143,24 @@ const COLOR_PROPS = new Set([
   'markerFill', 'markerLineColor', 'textFill', 'textHaloFill', 'waterBaseColor',
 ]);
 const ARRAY_PROPS = new Set(['lineDasharray', 'markerLineDasharray']);
+// 字符串属性：表达式原样保留是安全的（maptalks 会按 string 编译）
+const STRING_PROPS = new Set([
+  'textName', 'markerFile', 'markerPlacement', 'markerType', 'markerTextFit', 'mergeOnProperty',
+  'markerHorizontalAlignment', 'markerVerticalAlignment', 'markerRotationAlignment', 'markerPitchAlignment',
+  'textPlacement', 'textFaceName', 'textStyle', 'textWeight', 'textHorizontalAlignment',
+  'textVerticalAlignment', 'textRotationAlignment', 'textPitchAlignment',
+  'lineJoin', 'lineCap', 'linePatternFile', 'polygonPatternFile',
+]);
+// 数值属性：maptalks 只对 Filter.js interpolatedSymbols 里的属性按 number 编译表达式，
+// 其余属性上的表达式会被当成 color 解析并抛错，所以这里必须转成 function-type 或退化成静态值
+const NUMBER_PROPS = new Set([
+  'lineWidth', 'lineOpacity', 'lineStrokeWidth', 'lineDx', 'lineDy', 'linePatternAnimSpeed', 'linePatternGap',
+  'polygonOpacity', 'uvScale', 'uvOffset',
+  'markerWidth', 'markerHeight', 'markerOpacity', 'markerDx', 'markerDy', 'markerRotation', 'markerSpacing',
+  'markerLineWidth', 'markerLineOpacity', 'markerFillOpacity', 'markerLineDasharray',
+  'textSize', 'textOpacity', 'textDx', 'textDy', 'textRotation', 'textWrapWidth', 'textSpacing',
+  'textHaloRadius', 'textHaloOpacity', 'textHaloBlur', 'textPerspectiveRatio',
+]);
 
 /* ------------------------------------------------------------------ *
  * 值转换：mapbox 表达式 → maptalks function-type
@@ -222,14 +240,50 @@ function convertExpression(prop, expr) {
   return undefined;
 }
 
-/** 转换任意样式值：表达式能转就转，转不了原样保留（maptalks 的 symbol 支持 mapbox 表达式） */
+/** 从表达式里退回一个静态值（取最后一个能用的分支，如 case/match 的兜底分支） */
+function fallbackStatic(prop, expr) {
+  if (!Array.isArray(expr)) return convertPlain(prop, expr);
+  for (let i = expr.length - 1; i >= 1; i--) {
+    const v = expr[i];
+    if (COLOR_PROPS.has(prop) && typeof v === 'string' && parseColor(v)) return v;
+    if (NUMBER_PROPS.has(prop) && typeof v === 'number') return v;
+    if (ARRAY_PROPS.has(prop) && Array.isArray(v) && v.every((n) => typeof n === 'number')) return toDash4(v);
+    if (Array.isArray(v)) {
+      const nested = fallbackStatic(prop, v);
+      if (nested !== undefined) return nested;
+    }
+  }
+  return undefined;
+}
+
+/**
+ * 转换任意样式值。
+ *
+ * maptalks 对 symbol 上的 mapbox 表达式是按属性名分类型的（见 vt/packer/style/Filter.js
+ * 的 STRING_TYPES / interpolatedSymbols / ARRAY_TYPES，其余一律当 color），
+ * 所以「转不了就原样保留」只在字符串属性和 textName 上安全：
+ *   - 数值属性（如 markerLineWidth）保留数值表达式 → 被当 color 解析 → 报
+ *     “Expected color but found number” 并让整个瓦片解析失败；
+ *   - 颜色属性遇到 case/image 这类转不了的表达式 → 也只退化成静态色。
+ * 因此这里：能转 function-type 就转；转不了则字符串原样保留，其余取一个静态兜底值，取不到就丢弃。
+ */
 function convertValue(prop, value) {
   if (value == null) return value;
   if (isExpression(value)) {
     const fn = convertExpression(prop, value);
-    return fn === undefined ? value : fn;
+    if (fn !== undefined) return fn;
+    if (STRING_PROPS.has(prop)) return value;
+    return fallbackStatic(prop, value);
   }
   return convertPlain(prop, value);
+}
+
+/** 丢掉值为 undefined 的 symbol 字段（表达式转换失败且没有静态兜底时） */
+function stripUndefined(symbol) {
+  for (const k of Object.keys(symbol)) {
+    if (symbol[k] === undefined) delete symbol[k];
+  }
+  return symbol;
 }
 
 /** function-type / 数值中取一个“代表值”（用于换算 em → px 这类静态量） */
@@ -247,20 +301,45 @@ function representativeNumber(value, zoom = 16) {
   return undefined;
 }
 
+/**
+ * 背景色专用：maptalks 的 background.color 只接受静态颜色，
+ * Mapbox 官方样式常写成按 zoom 插值的表达式，这里取最高档位的颜色。
+ */
+function staticColor(value) {
+  if (!isExpression(value)) return value;
+  const fn = convertExpression('polygonFill', value);
+  if (fn && Array.isArray(fn.stops) && fn.stops.length) return fn.stops[fn.stops.length - 1][1];
+  if (fn && fn.default !== undefined) return fn.default;
+  if (Array.isArray(value) && value[0] === 'get') return '#000';
+  return value;
+}
+
 /* ------------------------------------------------------------------ *
  * 字体 / 对齐
  * ------------------------------------------------------------------ */
+
+/**
+ * Mapbox 官方样式里用的字体（DIN Pro / Arial Unicode MS / Open Sans）在普通机器上通常没有，
+ * 映射到一份通用字体栈；其余字体沿用原名字 + sans-serif 兜底。
+ */
+const FONT_FALLBACK = 'Arial, Helvetica, Noto Sans, sans-serif';
+function mapboxFontStack(face) {
+  if (/^din(\s|$)|^din\b/i.test(face)) return FONT_FALLBACK;
+  if (/arial unicode ms/i.test(face)) return FONT_FALLBACK;
+  if (/open sans|noto sans/i.test(face)) return `${face}, ${FONT_FALLBACK}`;
+  return `${face}, sans-serif`;
+}
 
 function convertFont(fonts) {
   const raw = Array.isArray(fonts) ? fonts[0] : fonts;
   const name = typeof raw === 'string' && raw ? raw : 'Noto Sans Regular';
   const style = /italic/i.test(name) ? 'italic' : 'normal';
-  const weight = /bold/i.test(name) ? 'bold' : 'normal';
+  const weight = /bold|semibold|black|heavy/i.test(name) ? 'bold' : 'normal';
   let face = name
     .replace(/\b(regular|italic|bold|medium|light|semibold|semi|extrabold|extra|black|thin|book|heavy)\b/gi, '')
     .replace(/\s+/g, ' ').trim();
   if (!face) face = 'Noto Sans';
-  return { textFaceName: `${face}, sans-serif`, textWeight: weight, textStyle: style };
+  return { textFaceName: mapboxFontStack(face), textWeight: weight, textStyle: style };
 }
 
 const H_ALIGN = { left: 'left', center: 'middle', right: 'right' };
@@ -403,7 +482,7 @@ function fillEntry(layer, ctx) {
   const entries = [{
     name: layer.id,
     renderPlugin: { type: 'fill', dataConfig: { type: 'fill', only2D: true }, sceneConfig: SCENE_ZOOM(layer) },
-    symbol,
+    symbol: stripUndefined(symbol),
     filter: baseFilter(layer),
   }];
   // fill-outline-color：maptalks 的 fill 插件没有描边属性，用一条同数据的 line 样式画多边形轮廓
@@ -431,9 +510,11 @@ function lineEntry(layer) {
     lineColor: paint['line-color'] == null ? '#fff' : convertValue('lineColor', paint['line-color']),
     lineWidth: paint['line-width'] == null ? 1 : convertValue('lineWidth', paint['line-width']),
     lineOpacity: paint['line-opacity'] == null ? 1 : convertValue('lineOpacity', paint['line-opacity']),
-    lineDasharray: paint['line-dasharray'] == null ? [0, 0, 0, 0] : toDash4(paint['line-dasharray']),
-    lineJoin: layout['line-join'] == null ? 'miter' : layout['line-join'],
-    lineCap: layout['line-cap'] == null ? 'butt' : layout['line-cap'],
+    // Mapbox 常把 dasharray / join / cap 写成 ["step", ["zoom"], ...]，必须一起走 convertValue，
+    // 否则 toDash4 会把表达式数组切成四段垃圾
+    lineDasharray: paint['line-dasharray'] == null ? [0, 0, 0, 0] : convertValue('lineDasharray', paint['line-dasharray']),
+    lineJoin: layout['line-join'] == null ? 'miter' : convertValue('lineJoin', layout['line-join']),
+    lineCap: layout['line-cap'] == null ? 'butt' : convertValue('lineCap', layout['line-cap']),
   };
   // line-gap-width 没有对应属性，近似为描边宽度（隧道线看起来会更接近原样式）
   if (paint['line-gap-width'] != null) {
@@ -443,7 +524,7 @@ function lineEntry(layer) {
   return [{
     name: layer.id,
     renderPlugin: { type: 'line', dataConfig: { type: 'line', only2D: true }, sceneConfig: SCENE_ZOOM(layer) },
-    symbol,
+    symbol: stripUndefined(symbol),
     filter: baseFilter(layer),
   }];
 }
@@ -497,7 +578,7 @@ function symbolEntry(layer, ctx) {
     if (layout['icon-pitch-alignment'] === 'map') symbol.markerPitchAlignment = 'map';
     if (layout['symbol-placement'] === 'line') {
       symbol.markerPlacement = 'line';
-      if (layout['symbol-spacing'] != null) symbol.markerSpacing = layout['symbol-spacing'];
+      if (layout['symbol-spacing'] != null) symbol.markerSpacing = convertValue('markerSpacing', layout['symbol-spacing']);
     }
   }
 
@@ -521,7 +602,7 @@ function symbolEntry(layer, ctx) {
     if (layout['text-ignore-placement'] != null) symbol.textIgnorePlacement = !!layout['text-ignore-placement'];
     if (layout['text-max-width'] != null && sizePx) symbol.textWrapWidth = layout['text-max-width'] * sizePx;
     if (layout['symbol-placement'] === 'line' && layout['symbol-spacing'] != null) {
-      symbol.textSpacing = layout['symbol-spacing'];
+      symbol.textSpacing = convertValue('textSpacing', layout['symbol-spacing']);
     }
     // text-offset 单位是 em（1em = text-size），换算成像素偏移
     const offset = layout['text-offset'];
@@ -546,7 +627,7 @@ function symbolEntry(layer, ctx) {
       dataConfig: { type: 'point', only2D: true },
       sceneConfig,
     },
-    symbol,
+    symbol: stripUndefined(symbol),
     filter: baseFilter(layer),
   }];
 }
@@ -562,7 +643,7 @@ function circleEntry(layer) {
   return [{
     name: layer.id,
     renderPlugin: { type: 'icon', dataConfig: { type: 'point', only2D: true }, sceneConfig: { collision: true, ...SCENE_ZOOM(layer) } },
-    symbol: {
+    symbol: stripUndefined({
       visible: true,
       markerType: 'ellipse',
       markerWidth: radius * 2,
@@ -570,8 +651,9 @@ function circleEntry(layer) {
       markerFill: paint['circle-color'] == null ? '#000' : convertValue('markerFill', paint['circle-color']),
       markerFillOpacity: paint['circle-opacity'] == null ? 1 : convertValue('markerFillOpacity', paint['circle-opacity']),
       markerLineColor: paint['circle-stroke-color'] == null ? '#000' : convertValue('markerLineColor', paint['circle-stroke-color']),
-      markerLineWidth: paint['circle-stroke-width'] == null ? 0 : paint['circle-stroke-width'],
-    },
+      markerLineWidth: paint['circle-stroke-width'] == null ? 0 : convertValue('markerLineWidth', paint['circle-stroke-width']),
+      markerOpacity: paint['circle-opacity'] == null ? 1 : convertValue('markerOpacity', paint['circle-opacity']),
+    }),
     filter: baseFilter(layer),
   }];
 }
@@ -593,7 +675,9 @@ export async function convertStyle(style, options = {}) {
   }
   let sprite = null;
   const spritePrefix = options.spritePrefix == null ? 'ofm' : options.spritePrefix;
-  if (spriteUrl && !options.noSprites) {
+  if (spriteUrl && spriteUrl.startsWith('mapbox://')) {
+    warnings.push(`sprite 是 mapbox:// 协议，需自行换成 https://api.mapbox.com/styles/v1/... 的 sprite 地址（已跳过图标）：${spriteUrl}`);
+  } else if (spriteUrl && !options.noSprites) {
     sprite = await loadSprite(spriteUrl);
     if (!sprite) warnings.push(`sprite 加载失败：${spriteUrl}`);
   }
@@ -605,7 +689,9 @@ export async function convertStyle(style, options = {}) {
     switch (layer.type) {
       case 'background': {
         const color = (layer.paint || {})['background-color'];
-        background = { enable: true, color: toRgba(color == null ? '#fff' : color), opacity: 1 };
+        // 背景色只接受静态颜色（maptalks 的 background.color 不支持 function-type），
+        // Mapbox 官方样式常写成按 zoom 插值，这里取最高档位的颜色作为静态值
+        background = { enable: true, color: toRgba(staticColor(color == null ? '#fff' : color)), opacity: 1 };
         break;
       }
       case 'fill':
@@ -656,6 +742,19 @@ export async function resolveTileInfo(style) {
     if (Array.isArray(source.tiles) && source.tiles.length) {
       return { id, urlTemplate: source.tiles[0], minzoom: source.minzoom, maxzoom: source.maxzoom };
     }
+    if (source.url && source.url.startsWith('mapbox://')) {
+      // Mapbox 的 mapbox://<tileset>[,<tileset>...]：复合源（composite）通常把 mapbox-streets-v8 放在第一位，
+      // 街道类图层的 source-layer 都来自它，因此取第一个 tileset 作为瓦片地址
+      const tilesets = source.url.slice('mapbox://'.length).split(',').map((s) => s.trim());
+      return {
+        id,
+        tilesets,
+        urlTemplate: `https://api.mapbox.com/v4/${tilesets[0]}/{z}/{x}/{y}.vector.pbf?access_token={token}`,
+        minzoom: source.minzoom,
+        maxzoom: source.maxzoom,
+        mapbox: true,
+      };
+    }
     if (source.url) {
       try {
         const res = await fetch(source.url);
@@ -704,6 +803,9 @@ async function main() {
   console.log(`  背景色: ${converted.background ? JSON.stringify(converted.background.color) : '无'}`);
   console.log(`  sprite: ${converted.sprites ? converted.sprites[0].jsonUrl : '无'}`);
   console.log(`  矢量源: ${info.id || '未知'} ${info.urlTemplate || ''} maxzoom=${info.maxzoom}`);
+  if (info.mapbox) {
+    console.log(`  Mapbox 复合源 tilesets: ${info.tilesets.join(', ')}（{token} 换成自己的 access token）`);
+  }
   if (warnings.length) {
     console.log('  警告:');
     for (const w of warnings) console.log('   - ' + w);

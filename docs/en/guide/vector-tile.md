@@ -147,6 +147,21 @@ node scripts/convert-maplibre-style.mjs https://tiles.openfreemap.org/styles/lib
 
 The conversion keeps each layer's visible zoom range (written into `minZoom`/`maxZoom` of `renderPlugin.sceneConfig`), its data filter (converted into a maptalks feature-filter) and the `interpolate`/`step`/`match` expressions that vary with zoom or feature attributes (converted into [function-type](/en/guide/style/function-type)). Text is rendered with system fonts, so no glyph service is needed; sprite icons and raster layers (such as the Natural Earth shaded relief) are out of scope.
 
+Mapbox's official base layer styles can be ported the same way (the `mapbox://` sources and sprite URLs have to be replaced with their https equivalents):
+
+- [Mapbox Streets v12 example](/en/examples/#vt/load/load-mapbox-streets) (`mapbox://styles/mapbox/streets-v12`)
+- [Mapbox Dark v11 example](/en/examples/#vt/load/load-mapbox-dark) (`mapbox://styles/mapbox/dark-v11`)
+
+```bash
+curl -s "https://api.mapbox.com/styles/v1/mapbox/streets-v12?access_token=$TOKEN" -o streets-v12.json
+node scripts/convert-maplibre-style.mjs streets-v12.json \
+  docs/public/examples/resources/styles/mapbox/streets-v12.json --no-sprites
+# the tile template is the first tileset of the style's composite source (the script prints it):
+# https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=$TOKEN
+```
+
+Classic v8 styles such as streets-v12 / outdoors-v12 / light-v11 / dark-v11 / navigation-day-v1 all convert; **Mapbox Standard (`mapbox://styles/mapbox/standard`) does not** — it relies on v3 features such as `slot`, `model` and `raster-array` that the maptalks vector tile style has no equivalent for.
+
 ## Vector tiles in 3D scenes
 
 Vector tiles join a 3D scene through `GroupGLLayer`. Because the vector data in the tiles is rendered in real time on the browser side, it can be seamlessly overlaid with other 3D layers (gltf models, 3dtiles, etc.), and combined with scene configuration (lighting, environment, shadow) for more realistic 3D results. A complete example:
