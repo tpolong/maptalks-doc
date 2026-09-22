@@ -142,12 +142,29 @@ maptalks 的矢量瓦片样式与 Mapbox / MapLibre 的 style json（sources / l
 
 ```bash
 node scripts/convert-maplibre-style.mjs https://tiles.openfreemap.org/styles/liberty \
-  docs/public/examples/resources/styles/openfreemap/liberty.json --no-sprites
+  docs/public/examples/resources/styles/openfreemap/liberty.json
 ```
 
-转换会保留图层的可见 zoom 范围（写入 `renderPlugin.sceneConfig` 的 `minZoom`/`maxZoom`）、数据过滤条件（转成 maptalks 的 feature-filter）以及随 zoom 或属性变化的 `interpolate`/`step`/`match` 表达式（转成 [function-type](/guide/style/function-type)）。文字用系统字体渲染，所以不需要 glyphs 服务；sprite 图标与栅格图层（如 Natural Earth 晕渲）不在此转换范围内。
+转换会保留图层的可见 zoom 范围（写入 `renderPlugin.sceneConfig` 的 `minZoom`/`maxZoom`）、数据过滤条件（转成 maptalks 的 feature-filter）以及随 zoom 或属性变化的 `interpolate`/`step`/`match` 表达式（转成 [function-type](/guide/style/function-type)）。文字用系统字体渲染，所以不需要 glyphs 服务；栅格图层（如 Natural Earth 晕渲）不在转换范围内。
 
-Mapbox 官方底图样式同样可以移植（样式里 `mapbox://` 协议的源与 sprite 需要换成对应的 https 地址）：
+#### sprite 图标
+
+转换器会把样式的 sprite 图集写进 `sprites` 字段，并把 `icon-image` 映射成 `markerFile: "$<前缀><图标名>"`（前缀按样式来源自动取 `ofm` / `mb`，再用 `sourceName` 把图集注册到 maptalks 的 `ResourceProxy`）：
+
+```js
+const style = await fetch("{res}/styles/mapbox/streets-v12.json").then((r) => r.json());
+// 当前 CDN 版本（maptalks-gl 0.124.4）还不会自动读取 style.sprites，
+// 手动把图集注入 ResourceProxy，$<前缀><名字> 才能取到图标；更新的版本会自动处理
+await Promise.all(style.sprites.map((sprite) => maptalks.ResourceProxy.loadSprite(sprite)));
+new VectorTileLayer("vt", { urlTemplate, style }).addTo(map);
+```
+
+两点注意：
+
+- **动态图标名用 function-type 表达**：转换器把 `["get","maki"]`、`["concat","road_",["get","ref_length"]]`、`["step",["zoom"],…]`、`["match",["get","class"],…]` 转成 categorical / interval，并按 sprite 里每个图标的真实尺寸给出 `markerWidth`/`markerHeight`。之所以不直接写 mapbox 表达式：`markerFile` 上的表达式会被当前版本当作颜色解析（`Could not parse color from value …`）并让整块瓦片解析失败。
+- 解析不出来的图标名（`case`/`image`、含多个动态片段的 `concat` 等）会被跳过，只保留文字；没有 sprite 的纯 pattern 填色图层也会跳过。
+
+Mapbox 官方底图样式同样可以移植（样式里 `mapbox://` 协议的源与 sprite 会自动换成对应的 https 地址，sprite 需带 token）：
 
 - [Mapbox Streets v12 示例](/examples/#vt/load/load-mapbox-streets)（`mapbox://styles/mapbox/streets-v12`）
 - [Mapbox Dark v11 示例](/examples/#vt/load/load-mapbox-dark)（`mapbox://styles/mapbox/dark-v11`）
@@ -155,7 +172,7 @@ Mapbox 官方底图样式同样可以移植（样式里 `mapbox://` 协议的源
 ```bash
 curl -s "https://api.mapbox.com/styles/v1/mapbox/streets-v12?access_token=$TOKEN" -o streets-v12.json
 node scripts/convert-maplibre-style.mjs streets-v12.json \
-  docs/public/examples/resources/styles/mapbox/streets-v12.json --no-sprites
+  docs/public/examples/resources/styles/mapbox/streets-v12.json --token $TOKEN
 # 瓦片地址取样式里 composite 源的第一项（Mapbox 会打印出来）：
 # https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=$TOKEN
 ```

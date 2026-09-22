@@ -360,13 +360,15 @@ function convertAnchor(anchor, hKey, vKey) {
  * sprite
  * ------------------------------------------------------------------ */
 
-async function loadSprite(spriteUrl) {
+async function loadSprite(spriteUrl, token) {
+  const query = token ? `${spriteUrl.includes('?') ? '&' : '?'}access_token=${token}` : '';
   for (const suffix of ['@2x', '']) {
     try {
-      const res = await fetch(`${spriteUrl}${suffix}.json`);
+      const jsonUrl = `${spriteUrl}${suffix}.json${query}`;
+      const res = await fetch(jsonUrl);
       if (!res.ok) continue;
       const json = await res.json();
-      return { suffix, json, imgUrl: `${spriteUrl}${suffix}.png`, jsonUrl: `${spriteUrl}${suffix}.json` };
+      return { suffix, json, imgUrl: `${spriteUrl}${suffix}.png${query}`, jsonUrl };
     } catch {
       // 试下一个后缀
     }
@@ -374,11 +376,165 @@ async function loadSprite(spriteUrl) {
   return null;
 }
 
+/** mapbox://sprites/<owner>/<style> → 样式 API 的 sprite 基址（token 由 loadSprite 追加） */
+function toMapboxSpriteUrl(mapboxSpriteUrl) {
+  const m = /^mapbox:\/\/sprites\/([^/]+)\/(.+)$/.exec(mapboxSpriteUrl);
+  if (!m) return null;
+  return `https://api.mapbox.com/styles/v1/${m[1]}/${m[2]}/sprite`;
+}
+
+/** 资源名前缀：sprite 资源在 ResourceProxy 里以 <prefix><图标名> 命名 */
+function inferSpritePrefix(spriteUrl, styleName) {
+  const url = spriteUrl || '';
+  if (url.includes('openfreemap')) return 'ofm';
+  if (url.startsWith('mapbox://') || url.includes('api.mapbox.com')) return 'mb';
+  const base = String(styleName || url).replace(/[?#].*$/, '').split(/[\\/]/).filter(Boolean).pop() || 'icon';
+  return base.replace(/\.json$/i, '').replace(/[^a-zA-Z0-9]/g, '').toLowerCase().slice(0, 12) || 'icon';
+}
+
 function spriteSize(sprite, name) {
   const item = sprite && sprite.json && sprite.json[name];
   if (!item) return null;
   const ratio = item.pixelRatio || 1;
   return [item.width / ratio, item.height / ratio];
+}
+
+/** sprite 里所有可用图标名 */
+function spriteNames(sprite) {
+  return sprite && sprite.json ? Object.keys(sprite.json).filter((n) => spriteSize(sprite, n)) : [];
+}
+
+/** 一组图标的中位尺寸（动态图标名枚举太大时用它当固定尺寸） */
+function medianSize(sprite, names) {
+  const list = (names && names.length ? names : spriteNames(sprite)).map((n) => spriteSize(sprite, n)).filter(Boolean);
+  if (!list.length) return [15, 15];
+  const mid = (arr) => {
+    const sorted = [...arr].sort((a, b) => a - b);
+    return sorted[Math.floor(sorted.length / 2)];
+  };
+  return [mid(list.map((s) => s[0])), mid(list.map((s) => s[1]))];
+}
+
+/**
+ * 把 icon-image 解析成 maptalks 的 markerFile / markerWidth / markerHeight。
+ *
+ * 为什么要用 function-type 而不是原样保留 mapbox 表达式：
+ * 本站 CDN 上的 @maptalks/vt 0.124.4 没有 markerFile 的字符串类型表，
+ * `markerFile: ["step", ["zoom"], "arrow-small", 18, "arrow-large"]` 会被当 color 解析并报
+ * “Could not parse color from value …”，整块瓦片解析失败；而 function-type 走的是
+ * @maptalks/function-type 引擎，不受这套类型表限制（已实测 categorical/interval 都能出图标）。
+ *
+ * 支持的形态：
+ *   - 静态字符串（含 icon-image 的字符串数组 fallback）→ "$<prefix><name>"
+ *   - ["get", p] / ["to-string", ["get", p]] → 以 sprite 全部图标名建 categorical
+ *   - ["concat", 静态前缀, 动态值, 静态后缀] → 用 sprite 里匹配的名字反推 stops（如 road_1…road_6）
+ *   - ["step", ["zoom"], 静态, z1, 静态] → interval（按 zoom）
+ *   - ["match", ["get", p], k1, 静态, …, 兜底] → categorical（按属性）
+ * 解析不出来的（如 case/image、多个动态部分的 concat）返回 null，调用方只保留文字。
+ *
+ * 返回 { file, width, height }，三个值都可能是数字/字符串，或带 stops 的 function-type。
+ */
+function buildIcon(value, sprite, prefix) {
+  const dollar = `$${prefix}`;
+  const names = spriteNames(sprite);
+  const isGet = (v) => Array.isArray(v) && v[0] === 'get' && typeof v[1] === 'string';
+  const isZoom = (v) => Array.isArray(v) && v[0] === 'zoom';
+
+  const resolve = (v) => {
+    // 空字符串在 mapbox 里表示“该分支没有图标”，用 null 让 maptalks 跳过绘制
+    if (typeof v === 'string') {
+      if (!v) return { file: null, width: 0, height: 0 };
+      const size = spriteSize(sprite, v);
+      if (!size) return null;
+      return { file: dollar + v, width: size[0], height: size[1] };
+    }
+    if (!Array.isArray(v)) return null;
+    const op = v[0];
+    if (op === 'literal') return resolve(v[1]);
+    if (op === 'image') return resolve(v[1]);
+    if (op === 'get' || (op === 'to-string' && isGet(v[1]))) {
+      const prop = op === 'get' ? v[1] : v[1][1];
+      // 属性值可能是 sprite 里的任意图标名，只能把全部名字列成 stops；
+      // 这种枚举很大，尺寸就不逐个列了，用所有图标的中位尺寸（否则单个样例样式能到几百 KB）
+      const median = medianSize(sprite, names);
+      return {
+        file: { type: 'categorical', property: prop, stops: names.map((n) => [n, dollar + n]), default: null },
+        width: median[0],
+        height: median[1],
+      };
+    }
+    if (op === 'concat') {
+      const parts = v.slice(1);
+      const dynamic = parts.map((p, i) => [i, p]).filter(([, p]) => typeof p !== 'string');
+      if (dynamic.length !== 1) return null;
+      const [dynIndex, dynValue] = dynamic[0];
+      const prop = isGet(dynValue)
+        ? dynValue[1]
+        : (Array.isArray(dynValue) && dynValue[0] === 'to-string' && isGet(dynValue[1]) ? dynValue[1][1] : null);
+      if (!prop) return null;
+      const head = parts.slice(0, dynIndex).join('');
+      const tail = parts.slice(dynIndex + 1).join('');
+      const stops = [];
+      for (const n of names) {
+        if (!n.startsWith(head) || (tail && !n.endsWith(tail))) continue;
+        const mid = tail ? n.slice(head.length, n.length - tail.length) : n.slice(head.length);
+        if (!mid) continue;
+        stops.push([/^-?\d+(\.\d+)?$/.test(mid) ? Number(mid) : mid, n]);
+      }
+      if (!stops.length) return null;
+      const mk = (val) => ({ type: 'categorical', property: prop, stops: stops.map(([k, n]) => [k, val(n)]), default: null });
+      return {
+        file: mk((n) => dollar + n),
+        width: mk((n) => spriteSize(sprite, n)[0]),
+        height: mk((n) => spriteSize(sprite, n)[1]),
+      };
+    }
+    if (op === 'step' && isZoom(v[1])) {
+      const first = resolve(v[2]);
+      if (!first) return null;
+      const stops = [];
+      for (let i = 3; i + 1 < v.length; i += 2) {
+        const out = resolve(v[i + 1]);
+        if (!out) return null;
+        stops.push([v[i], out]);
+      }
+      const mk = (key) => ({ type: 'interval', stops: stops.map(([z, out]) => [z, out[key]]), default: first[key] });
+      return { file: mk('file'), width: mk('width'), height: mk('height') };
+    }
+    if (op === 'match' && isGet(v[1])) {
+      const prop = v[1][1];
+      const rest = v.slice(2);
+      const fallback = resolve(rest[rest.length - 1]);
+      if (!fallback) return null;
+      const pairs = [];
+      for (let i = 0; i + 1 < rest.length - 1; i += 2) {
+        const out = resolve(rest[i + 1]);
+        if (!out) return null;
+        const keys = Array.isArray(rest[i]) ? rest[i] : [rest[i]];
+        for (const k of keys) pairs.push([k, out]);
+      }
+      if (!pairs.length) return null;
+      const mk = (key) => ({ type: 'categorical', property: prop, stops: pairs.map(([k, out]) => [k, out[key]]), default: fallback[key] });
+      return { file: mk('file'), width: mk('width'), height: mk('height') };
+    }
+    return null;
+  };
+
+  return resolve(value);
+}
+
+/** 把 markerWidth/Height 按 icon-size 缩放（两者都可能是 function-type） */
+function scaleSize(sizeValue, iconSize) {
+  const scaleStops = (fn, factor) => ({ ...fn, stops: fn.stops.map(([k, v]) => [k, typeof v === 'number' ? v * factor : v]), default: typeof fn.default === 'number' ? fn.default * factor : fn.default });
+  if (typeof iconSize === 'number') {
+    if (typeof sizeValue === 'number') return sizeValue * iconSize;
+    if (sizeValue && Array.isArray(sizeValue.stops)) return scaleStops(sizeValue, iconSize);
+    return sizeValue;
+  }
+  const factor = representativeNumber(iconSize, 16) || 1;
+  if (typeof sizeValue === 'number') return sizeValue * factor;
+  if (sizeValue && Array.isArray(sizeValue.stops)) return scaleStops(sizeValue, factor);
+  return sizeValue;
 }
 
 /* ------------------------------------------------------------------ *
@@ -477,7 +633,12 @@ function fillEntry(layer, ctx) {
   };
   if (paint['fill-pattern'] && ctx.sprite) {
     const name = Array.isArray(paint['fill-pattern']) ? paint['fill-pattern'][0] : paint['fill-pattern'];
-    symbol.polygonPatternFile = `$${ctx.spritePrefix}${name}`;
+    // 名字不在 sprite 里就别写（否则运行时按 $名字 取不到资源，会刷 failed loading icon 警告）
+    if (spriteSize(ctx.sprite, name)) {
+      symbol.polygonPatternFile = `$${ctx.spritePrefix}${name}`;
+      // 贴图是拿来做纹理的：没有 fill-color 时底色要给白色，否则纹理会乘成黑色
+      if (paint['fill-color'] == null) symbol.polygonFill = [1, 1, 1, 1];
+    }
   }
   const entries = [{
     name: layer.id,
@@ -533,15 +694,10 @@ function symbolEntry(layer, ctx) {
   const layout = layer.layout || {};
   const paint = layer.paint || {};
   const hasText = layout['text-field'] != null;
-  const iconImage = layout['icon-image'];
-  // 只处理静态字符串图标（动态表达式图标无法静态算出 sprite 尺寸，跳过图标、保留文字）
-  let iconName = null;
-  if (typeof iconImage === 'string') iconName = iconImage;
-  else if (Array.isArray(iconImage) && iconImage.length && iconImage.every((i) => typeof i === 'string')) {
-    iconName = iconImage[0];
-  }
-  const size = iconName ? spriteSize(ctx.sprite, iconName) : null;
-  const hasIcon = !!(iconName && size);
+  // icon-image（静态名 / get / concat / step / match）→ markerFile: "$<spritePrefix><名字>"，
+  // 动态名字用 function-type 表达；解析不出来就只保留文字
+  const icon = ctx.sprite ? buildIcon(layout['icon-image'], ctx.sprite, ctx.spritePrefix) : null;
+  const hasIcon = !!icon;
 
   if (!hasText && !hasIcon) return [];
 
@@ -549,26 +705,9 @@ function symbolEntry(layer, ctx) {
 
   if (hasIcon) {
     const iconSize = layout['icon-size'] == null ? 1 : convertValue('iconSize', layout['icon-size']);
-    const scale = (v) => {
-      const r = representativeNumber(v, 16);
-      return r == null ? 1 : r;
-    };
-    symbol.markerFile = `$${ctx.spritePrefix}${iconName}`;
-    if (typeof iconSize === 'number') {
-      symbol.markerWidth = size[0] * iconSize;
-      symbol.markerHeight = size[1] * iconSize;
-    } else if (iconSize && Array.isArray(iconSize.stops)) {
-      // icon-size 是 zoom 函数：把宽高一起按每档 s 值缩放
-      const scaleStops = (idx) => ({
-        ...iconSize,
-        stops: iconSize.stops.map(([z, v]) => [z, size[idx] * (typeof v === 'number' ? v : 1)]),
-      });
-      symbol.markerWidth = scaleStops(0);
-      symbol.markerHeight = scaleStops(1);
-    } else {
-      symbol.markerWidth = size[0] * scale(iconSize);
-      symbol.markerHeight = size[1] * scale(iconSize);
-    }
+    symbol.markerFile = icon.file;
+    symbol.markerWidth = scaleSize(icon.width, iconSize);
+    symbol.markerHeight = scaleSize(icon.height, iconSize);
     Object.assign(symbol, convertAnchor(layout['icon-anchor'] || 'center',
       'markerHorizontalAlignment', 'markerVerticalAlignment'));
     if (layout['icon-rotate'] != null) symbol.markerRotation = convertValue('markerRotation', layout['icon-rotate']);
@@ -674,11 +813,26 @@ export async function convertStyle(style, options = {}) {
     spriteUrl = typeof s === 'string' ? s : (s && s.default) || null;
   }
   let sprite = null;
-  const spritePrefix = options.spritePrefix == null ? 'ofm' : options.spritePrefix;
+  const spritePrefix = options.spritePrefix == null ? inferSpritePrefix(spriteUrl, options.name) : options.spritePrefix;
   if (spriteUrl && spriteUrl.startsWith('mapbox://')) {
-    warnings.push(`sprite 是 mapbox:// 协议，需自行换成 https://api.mapbox.com/styles/v1/... 的 sprite 地址（已跳过图标）：${spriteUrl}`);
-  } else if (spriteUrl && !options.noSprites) {
-    sprite = await loadSprite(spriteUrl);
+    // Mapbox 官方样式的 sprite 是 mapbox:// 协议，换成样式 API 的 https 端点（token 走查询串）
+    spriteUrl = toMapboxSpriteUrl(spriteUrl);
+    if (!spriteUrl) warnings.push('无法解析 mapbox:// sprite 地址，已跳过图标');
+  }
+  if (spriteUrl && !options.noSprites) {
+    if (options.spritesJson) {
+      // 离线/受限网络下用本地 sprite JSON（浏览器或别处抓下来的）来取图标名与尺寸
+      const json = JSON.parse(fs.readFileSync(options.spritesJson, 'utf8'));
+      const query = options.token ? `${spriteUrl.includes('?') ? '&' : '?'}access_token=${options.token}` : '';
+      sprite = {
+        suffix: '@2x',
+        json,
+        imgUrl: `${spriteUrl}@2x.png${query}`,
+        jsonUrl: `${spriteUrl}@2x.json${query}`,
+      };
+    } else {
+      sprite = await loadSprite(spriteUrl, options.token);
+    }
     if (!sprite) warnings.push(`sprite 加载失败：${spriteUrl}`);
   }
 
@@ -694,15 +848,20 @@ export async function convertStyle(style, options = {}) {
         background = { enable: true, color: toRgba(staticColor(color == null ? '#fff' : color)), opacity: 1 };
         break;
       }
-      case 'fill':
-        // 只有 fill-pattern 没有 fill-color 的图层（如 Liberty 的湿地、步行区）：没有 sprite 可画，
-        // 直接跳过，否则会退化成默认的黑色填充
-        if ((layer.paint || {})['fill-pattern'] && (layer.paint || {})['fill-color'] == null) {
-          warnings.push(`跳过纯 pattern 填色图层 ${layer.id}（fill-pattern 需要 sprite，未启用 sprite）`);
-          break;
+      case 'fill': {
+        // 只有 fill-pattern 没有 fill-color 的图层（如 Liberty 的湿地、步行区）：
+        // 有 sprite 且 pattern 名在 sprite 里才画纹理，否则跳过（不然会退化成默认黑填充）
+        const pattern = (layer.paint || {})['fill-pattern'];
+        if (pattern && (layer.paint || {})['fill-color'] == null) {
+          const patternName = Array.isArray(pattern) ? pattern[0] : pattern;
+          if (!sprite || !spriteSize(sprite, patternName)) {
+            warnings.push(`跳过纯 pattern 填色图层 ${layer.id}（sprite 里没有 ${patternName}）`);
+            break;
+          }
         }
         converted = fillEntry(layer, ctx);
         break;
+      }
       case 'line':
         converted = lineEntry(layer);
         break;
@@ -777,7 +936,7 @@ async function main() {
   const flags = args.filter((a) => a.startsWith('--'));
   const [input, output] = positional;
   if (!input || !output) {
-    console.error('用法: node scripts/convert-maplibre-style.mjs <styleUrl 或本地路径> <输出文件> [--no-sprites] [--sprites <url>]');
+    console.error('用法: node scripts/convert-maplibre-style.mjs <styleUrl 或本地路径> <输出文件> [--no-sprites] [--sprites <url>] [--sprite-prefix <前缀>] [--sprites-json <本地 sprite json>] [--token <mapbox token>]');
     process.exit(1);
   }
   const getFlagValue = (name) => {
@@ -792,16 +951,24 @@ async function main() {
   const { style: converted, warnings } = await convertStyle(style, {
     noSprites: flags.includes('--no-sprites'),
     spriteUrl: getFlagValue('--sprites'),
+    spritePrefix: getFlagValue('--sprite-prefix'),
+    spritesJson: getFlagValue('--sprites-json'),
+    token: getFlagValue('--token'),
+    name: input,
   });
 
   fs.mkdirSync(path.dirname(path.resolve(output)), { recursive: true });
-  fs.writeFileSync(output, JSON.stringify(converted, null, 2) + '\n', 'utf8');
+  // 样式文件是生成的产物（图标枚举会很大），写成紧凑 JSON，别用缩进
+  fs.writeFileSync(output, JSON.stringify(converted) + '\n', 'utf8');
 
   const info = await resolveTileInfo(style);
   console.log(`已写入 ${output}`);
   console.log(`  样式条目: ${converted.style.length}`);
   console.log(`  背景色: ${converted.background ? JSON.stringify(converted.background.color) : '无'}`);
   console.log(`  sprite: ${converted.sprites ? converted.sprites[0].jsonUrl : '无'}`);
+  const iconCount = converted.style.filter((e) => e.symbol && e.symbol.markerFile).length;
+  const patternCount = converted.style.filter((e) => e.symbol && e.symbol.polygonPatternFile).length;
+  if (iconCount || patternCount) console.log(`  图标样式条目: ${iconCount}（其中 pattern: ${patternCount}）`);
   console.log(`  矢量源: ${info.id || '未知'} ${info.urlTemplate || ''} maxzoom=${info.maxzoom}`);
   if (info.mapbox) {
     console.log(`  Mapbox 复合源 tilesets: ${info.tilesets.join(', ')}（{token} 换成自己的 access token）`);

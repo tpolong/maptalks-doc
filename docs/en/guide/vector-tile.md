@@ -142,12 +142,29 @@ The style files of these two examples are converted from the MapLibre styles wit
 
 ```bash
 node scripts/convert-maplibre-style.mjs https://tiles.openfreemap.org/styles/liberty \
-  docs/public/examples/resources/styles/openfreemap/liberty.json --no-sprites
+  docs/public/examples/resources/styles/openfreemap/liberty.json
 ```
 
-The conversion keeps each layer's visible zoom range (written into `minZoom`/`maxZoom` of `renderPlugin.sceneConfig`), its data filter (converted into a maptalks feature-filter) and the `interpolate`/`step`/`match` expressions that vary with zoom or feature attributes (converted into [function-type](/en/guide/style/function-type)). Text is rendered with system fonts, so no glyph service is needed; sprite icons and raster layers (such as the Natural Earth shaded relief) are out of scope.
+The conversion keeps each layer's visible zoom range (written into `minZoom`/`maxZoom` of `renderPlugin.sceneConfig`), its data filter (converted into a maptalks feature-filter) and the `interpolate`/`step`/`match` expressions that vary with zoom or feature attributes (converted into [function-type](/en/guide/style/function-type)). Text is rendered with system fonts, so no glyph service is needed; raster layers (such as the Natural Earth shaded relief) are out of scope.
 
-Mapbox's official base layer styles can be ported the same way (the `mapbox://` sources and sprite URLs have to be replaced with their https equivalents):
+#### Sprite icons
+
+The converter writes the style's sprite atlas into `sprites` and maps `icon-image` to `markerFile: "$<prefix><icon name>"` (the prefix is inferred from the style source — `ofm` / `mb` — and `sourceName` registers the atlas in maptalks' `ResourceProxy`):
+
+```js
+const style = await fetch("{res}/styles/mapbox/streets-v12.json").then((r) => r.json());
+// the CDN build (maptalks-gl 0.124.4) does not read style.sprites automatically yet,
+// so register the atlas into ResourceProxy yourself; newer builds do it for you
+await Promise.all(style.sprites.map((sprite) => maptalks.ResourceProxy.loadSprite(sprite)));
+new VectorTileLayer("vt", { urlTemplate, style }).addTo(map);
+```
+
+Two things to keep in mind:
+
+- **Dynamic icon names are expressed as function-types**: `["get","maki"]`, `["concat","road_",["get","ref_length"]]`, `["step",["zoom"],…]` and `["match",["get","class"],…]` become categorical / interval functions, and `markerWidth`/`markerHeight` come from each icon's real size in the sprite. Mapbox expressions are not used here because the current build parses `markerFile` expressions as colors (`Could not parse color from value …`) and fails the whole tile.
+- Icon names the converter cannot resolve (`case`/`image`, `concat` with several dynamic parts, …) are skipped and only the label is kept; pattern-only fills without a sprite are skipped too.
+
+Mapbox's official base layer styles can be ported the same way (the `mapbox://` sources and sprite URLs are converted to their https equivalents automatically; the sprite needs the token):
 
 - [Mapbox Streets v12 example](/en/examples/#vt/load/load-mapbox-streets) (`mapbox://styles/mapbox/streets-v12`)
 - [Mapbox Dark v11 example](/en/examples/#vt/load/load-mapbox-dark) (`mapbox://styles/mapbox/dark-v11`)
@@ -155,7 +172,7 @@ Mapbox's official base layer styles can be ported the same way (the `mapbox://` 
 ```bash
 curl -s "https://api.mapbox.com/styles/v1/mapbox/streets-v12?access_token=$TOKEN" -o streets-v12.json
 node scripts/convert-maplibre-style.mjs streets-v12.json \
-  docs/public/examples/resources/styles/mapbox/streets-v12.json --no-sprites
+  docs/public/examples/resources/styles/mapbox/streets-v12.json --token $TOKEN
 # the tile template is the first tileset of the style's composite source (the script prints it):
 # https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=$TOKEN
 ```
