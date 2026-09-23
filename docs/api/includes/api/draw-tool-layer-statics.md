@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+设置 DrawToolLayer 绘制 marker、line、polygon 所用的子 layer 类
 
 参数：
 

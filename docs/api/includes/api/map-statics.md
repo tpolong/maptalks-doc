@@ -2,8 +2,7 @@
 <div>
 <br/>
 
-Add hooks for additional codes when map's loading complete, useful for plugin developping.
-Note that it can only be called before the map is created.
+注册 map 加载完成后执行的回调，只能在 map 创建之前调用
 
 参数：
 
@@ -16,7 +15,7 @@ Note that it can only be called before the map is created.
 <div>
 <br/>
 
-Reproduce a map from map's profile JSON.
+由 profile JSON 重建 map，可选择是否导入 baseLayer 与 layers
 
 参数：
 

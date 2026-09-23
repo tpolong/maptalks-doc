@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+设置改写资源加载 url 的修饰函数并返回图层
 
 参数：
 
@@ -15,7 +15,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+获取改写资源加载 url 的修饰函数
 
 </div>
 </details>
@@ -24,7 +24,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+返回图层监听的事件映射，含空间参考变化事件
 
 </div>
 </details>
@@ -33,7 +33,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+配置项更新时的回调，把 bloom 开关同步给 renderer
 
 参数：
 
@@ -46,7 +46,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+把 symbol 属性合并进样式数组第 idx 项并刷新图层样式
 
 参数：
 
@@ -80,7 +80,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+设置图层 polygonOffset 及全局总数供 GroupGLLayer 统一管理
 
 参数：
 
@@ -94,7 +94,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+获取 GroupGLLayer 分配的 polygonOffset 总数
 
 </div>
 </details>
@@ -103,7 +103,7 @@
 <div>
 <br/>
 
-Identify the geometries on the given coordinate
+查询给定 coordinate 处命中的 geometry 数组
 
 参数：
 
@@ -123,7 +123,7 @@ Identify the geometries on the given coordinate
 <div>
 <br/>
 
-Identify the geometries on the given container point
+查询给定容器坐标点命中的 geometry，可设容差与数量
 
 参数：
 
@@ -143,7 +143,7 @@ Identify the geometries on the given container point
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+获取图层计算后样式并以 style 字段返回
 
 </div>
 </details>
@@ -152,7 +152,7 @@ Identify the geometries on the given container point
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+为图层内全部 geometry 添加描边高亮
 
 </div>
 </details>
@@ -161,7 +161,7 @@ Identify the geometries on the given container point
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+为指定 id 数组的 geometry 添加描边高亮
 
 参数：
 
@@ -174,7 +174,7 @@ Identify the geometries on the given container point
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+取消图层内 geometry 的描边高亮
 
 </div>
 </details>
@@ -183,7 +183,7 @@ Identify the geometries on the given container point
 <div>
 <br/>
 
-Export the Layer's JSON. <br/>
+导出图层的 JSON，含 type id options 与全部 geometry
 
 返回：
 
@@ -196,7 +196,7 @@ Export the Layer's JSON. <br/>
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+返回 painter 内部使用的默认 tile 尺寸 1x1
 
 </div>
 </details>

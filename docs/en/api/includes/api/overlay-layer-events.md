@@ -2,8 +2,6 @@
 <div>
 <br/>
 
-addgeo 事件
-
 addgeo event.
 
 Event properties:

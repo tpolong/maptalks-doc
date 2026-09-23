@@ -4,8 +4,6 @@
 
 addgeo 事件
 
-addgeo event.
-
 参数属性：
 
 | 属性名 | 类型 | 值 |

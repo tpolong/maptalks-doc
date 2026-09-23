@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+注册 GLTFLayer 内置的 phong、pbr、depth、wireframe 等默认 shader
 
 </div>
 </details>
@@ -11,7 +11,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+由 layer JSON 反序列化出 GLTFLayer，并还原其 options、geometries 与 style
 
 参数：
 

@@ -15,7 +15,6 @@ Returns:
 <div>
 <br/>
 
-设置椭圆的宽度
 Set new width to ellipse
 
 Parameters:

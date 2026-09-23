@@ -2,8 +2,7 @@
 <div>
 <br/>
 
-Escape special characters from string.
-Including: \b \t \r \v \f
+去掉字符串中的退格制表回车等特殊控制字符
 
 参数：
 
@@ -16,7 +15,7 @@ Including: \b \t \r \v \f
 <div>
 <br/>
 
-Gets size in pixel of the text with a certain font.
+测量文本宽度并返回 Size，高度取传入字号或默认字号
 
 参数：
 
@@ -35,7 +34,7 @@ Gets size in pixel of the text with a certain font.
 <div>
 <br/>
 
-Generate text descriptors according to symbols
+按 symbol 拆出文本行描述，并用 textMaxHeight 限制高度
 
 参数：
 
@@ -53,7 +52,7 @@ Generate text descriptors according to symbols
 <div>
 <br/>
 
-Gets text's align point according to the horizontalAlignment and verticalAlignment
+按水平与垂直对齐方式算出文本的对齐锚点 Point
 
 参数：
 
@@ -72,7 +71,7 @@ Gets text's align point according to the horizontalAlignment and verticalAlignme
 <div>
 <br/>
 
-Split a text to multiple rows according to the style.
+按 textWrapWidth 与换行字符把文本拆成多行并返回行与整体尺寸
 
 参数：
 

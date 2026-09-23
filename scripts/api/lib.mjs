@@ -190,6 +190,17 @@ export function parseDoc(raw) {
   // 没有 @english 分隔时按 CJK 判定语种
   if (!en && zh && !hasCJK(zh)) { en = zh; zh = ''; }
   else if (zh && en && !hasCJK(zh)) { en = `${zh}\n${en}`.trim(); zh = ''; }
+  else if (!en && zh) {
+    // 中英写在同一段、又没有 @english 标记（如 Geometry.setProperties）：按行分流，
+    // 否则中文页里会混进一整句英文。只认"像英文散文"的行，避免把 `<br/>`、代码片段搬走。
+    const lines = zh.split('\n');
+    const isProse = (l) => /^[A-Za-z][A-Za-z0-9 ,.'’()/:-]{12,}$/.test(l.trim());
+    const enPart = lines.filter(isProse);
+    if (enPart.length && enPart.length < lines.filter((l) => l.trim()).length) {
+      zh = lines.filter((l) => !isProse(l)).join('\n').trim();
+      en = enPart.join('\n').trim();
+    }
+  }
   const get = (t) => tags.filter((x) => x.tag === t).map((x) => x.text);
   const has = (t) => tags.some((x) => x.tag === t);
   return {

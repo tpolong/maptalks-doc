@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+由 content、坐标与 options 反序列化出 Label，并还原 id、properties 与 symbol
 
 参数：
 

@@ -36,7 +36,6 @@ Fires:
 <div>
 <br/>
 
-给几何图形设置新的属性
 Set a new properties to geometry.
 
 Parameters:

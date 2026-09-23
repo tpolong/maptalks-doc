@@ -16,7 +16,6 @@
 <br/>
 
 设置椭圆的宽度
-Set new width to ellipse
 
 参数：
 

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+由 coordinates、width、height 与 options 反序列化出 Rectangle
 
 参数：
 

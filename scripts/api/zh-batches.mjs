@@ -8,10 +8,20 @@
  */
 import { mkdirSync, rmSync, readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { CACHE, writeJson, log } from './lib.mjs';
+import { CACHE, ROOT, writeJson, log } from './lib.mjs';
 
 const BATCH = Number(process.argv[2] || 20);
-const items = JSON.parse(readFileSync(join(CACHE, 'zh-todo.json'), 'utf8'));
+const ONLY_MISSING = process.argv.includes('--missing');
+let items = JSON.parse(readFileSync(join(CACHE, 'zh-todo.json'), 'utf8'));
+
+// 只处理 zh-overrides.json 里还没有的（避免重做已补写过的条目）
+if (ONLY_MISSING) {
+  const ovPath = join(ROOT, 'scripts', 'api', 'zh-overrides.json');
+  const ov = existsSync(ovPath) ? JSON.parse(readFileSync(ovPath, 'utf8')) : {};
+  const before = items.length;
+  items = items.filter((x) => ov[x.key] === undefined);
+  log(`过滤已有中文：${before} → ${items.length} 条`);
+}
 
 // 按实体分组，尽量让同一批里的成员来自同一批文件（子代理读文件更集中）
 const byEntity = new Map();

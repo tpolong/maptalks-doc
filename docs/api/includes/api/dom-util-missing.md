@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-Create a html element on the specified container
+创建 html 元素并设置 css 样式，挂载到指定容器上
 
 参数：
 
@@ -17,7 +17,7 @@ Create a html element on the specified container
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+移除 dom 元素上指定事件类型的监听回调
 
 参数：
 
@@ -31,7 +31,7 @@ Create a html element on the specified container
 <div>
 <br/>
 
-Check if event type of the dom is listened by the handler
+检查 dom 是否已注册该事件类型的监听函数，返回索引，未注册返回 -1
 
 参数：
 
@@ -50,7 +50,7 @@ Check if event type of the dom is listened by the handler
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+禁止 dom 元素的文本选中与拖拽选择
 
 参数：
 
@@ -63,7 +63,7 @@ Check if event type of the dom is listened by the handler
 <div>
 <br/>
 
-Get event's position from the top-left corner of the dom container
+把鼠标或触摸事件坐标换算成 dom 容器内的点
 
 参数：
 
@@ -77,7 +77,7 @@ Get event's position from the top-left corner of the dom container
 <div>
 <br/>
 
-Get dom's css class
+获取 dom 元素的 css class 字符串
 
 参数：
 
@@ -94,7 +94,7 @@ Get dom's css class
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+把矩阵文本写入 dom 的 css transform，相同则跳过
 
 参数：
 
@@ -108,7 +108,7 @@ Get dom's css class
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+清除 dom 元素上已设置的 css transform
 
 参数：
 
@@ -121,7 +121,7 @@ Get dom's css class
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+是否为含标签的 HTML 字符串
 
 参数：
 
@@ -134,7 +134,7 @@ Get dom's css class
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+创建一个位于屏幕外的隐藏元素作为测量标尺
 
 参数：
 
@@ -147,7 +147,7 @@ Get dom's css class
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+是否为移动类事件，即 mousemove 或 touchmove
 
 参数：
 
@@ -160,7 +160,7 @@ Get dom's css class
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+是否为需忽略的 mousemove，按节流时间判断并记录时间
 
 参数：
 

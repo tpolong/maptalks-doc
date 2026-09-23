@@ -71,8 +71,6 @@ Returns:
 <div>
 <br/>
 
-获取 geometries 个数
-
 Get count of the geometries
 
 Returns:

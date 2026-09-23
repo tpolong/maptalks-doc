@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+获取该 layer 使用的 Painter 类
 
 </div>
 </details>
@@ -11,7 +11,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+获取该 layer 使用的 CollectionPainter 类
 
 </div>
 </details>

@@ -33,7 +33,6 @@
 <br/>
 
 获取标注的文本样式
-Get label's text symbol
 
 返回：
 

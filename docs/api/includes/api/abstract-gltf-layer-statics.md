@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+注册自定义 shader 到 gltf layer 的 shader 表
 
 参数：
 
@@ -18,7 +18,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+从 gltf layer 的 shader 表中移除指定名字的 shader
 
 参数：
 
@@ -31,7 +31,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+获取所有已注册 shader 的名字与 uniforms 列表
 
 </div>
 </details>
@@ -40,7 +40,7 @@
 <div>
 <br/>
 
-源码未提供文字说明，参数与返回类型取自类型签名。
+获取 shader 名字到 shader 配置的映射表
 
 </div>
 </details>

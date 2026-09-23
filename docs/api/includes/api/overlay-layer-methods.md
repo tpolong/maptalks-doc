@@ -73,8 +73,6 @@
 
 获取 geometries 个数
 
-Get count of the geometries
-
 返回：
 
 * `Any` count
