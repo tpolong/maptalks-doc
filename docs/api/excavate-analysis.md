@@ -180,6 +180,10 @@ ExcavateAnalysis 继承 [ExtrudePolygonLayer](./extrude-polygon-layer)（进而�
 ## 事件
 
 <!-- api-gen:start -->
+### 继承自 Vector3DLayer 的事件
+
+<!--@include: ./includes/api/vector3-d-layer-events.md-->
+
 ### 继承自 OverlayLayer 的事件
 
 <!--@include: ./includes/api/overlay-layer-events.md-->

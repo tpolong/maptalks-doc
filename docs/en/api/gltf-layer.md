@@ -151,6 +151,12 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 > This document has been verified against the 2026 source code of @maptalks/gl-layers (api-notes-others.md)
 
 <!-- api-gen:start -->
+### Other Events of GLTFLayer
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/gltf-layer-events-missing.md-->
+
 ### Events Inherited from AbstractGLTFLayer
 
 <!--@include: ./includes/api/abstract-gltf-layer-events.md-->

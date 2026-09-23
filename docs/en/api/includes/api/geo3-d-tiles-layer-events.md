@@ -50,3 +50,39 @@ Fired when a tileset is loaded and parsed, carrying tileset, index and url.
 
 </div>
 </details>
+
+<details><summary>drawtiles</summary>
+<div>
+<br/>
+
+Fired after the tiles are drawn each frame, carrying the drawn tile count.
+
+</div>
+</details>
+
+<details><summary>canvasisdirty</summary>
+<div>
+<br/>
+
+Fired when 3dtiles tiles are drawn in the frame and the canvas becomes dirty.
+
+</div>
+</details>
+
+<details><summary>contextcreate</summary>
+<div>
+<br/>
+
+Fired when the webgl rendering context of the layer is created.
+
+</div>
+</details>
+
+<details><summary>workerready</summary>
+<div>
+<br/>
+
+Fired when the layer worker connection is ready.
+
+</div>
+</details>

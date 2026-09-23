@@ -179,6 +179,10 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
 
 <!-- api-gen:start -->
+### Events Inherited from Vector3DLayer
+
+<!--@include: ./includes/api/vector3-d-layer-events.md-->
+
 ### Events Inherited from OverlayLayer
 
 <!--@include: ./includes/api/overlay-layer-events.md-->

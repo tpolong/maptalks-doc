@@ -179,6 +179,10 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
 
 <!-- api-gen:start -->
+### 继承自 Vector3DLayer 的事件
+
+<!--@include: ./includes/api/vector3-d-layer-events.md-->
+
 ### 继承自 OverlayLayer 的事件
 
 <!--@include: ./includes/api/overlay-layer-events.md-->

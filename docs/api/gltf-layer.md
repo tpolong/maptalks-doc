@@ -151,6 +151,12 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
 
 <!-- api-gen:start -->
+### GLTFLayer 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/gltf-layer-events-missing.md-->
+
 ### 继承自 AbstractGLTFLayer 的事件
 
 <!--@include: ./includes/api/abstract-gltf-layer-events.md-->

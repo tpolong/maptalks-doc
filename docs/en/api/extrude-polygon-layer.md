@@ -150,6 +150,10 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 ## Events
 
 <!-- api-gen:start -->
+### Events Inherited from Vector3DLayer
+
+<!--@include: ./includes/api/vector3-d-layer-events.md-->
+
 ### Events Inherited from OverlayLayer
 
 <!--@include: ./includes/api/overlay-layer-events.md-->

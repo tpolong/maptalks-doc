@@ -85,6 +85,10 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 Common layer events (`show`/`hide`, `setopacity`, `add`/`remove`, etc.) — see [CanvasLayer](/en/api/canvas-layer) / [Layer](/en/api/layer).
 
 <!-- api-gen:start -->
+### Events Inherited from CanvasLayer
+
+<!--@include: ./includes/api/canvas-layer-events.md-->
+
 ### Events Inherited from Layer
 
 <!--@include: ./includes/api/layer-events.md-->

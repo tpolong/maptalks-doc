@@ -85,6 +85,10 @@ new ParticleLayer(id, options?)
 图层通用事件（`show`/`hide`、`setopacity`、`add`/`remove` 等）见 [CanvasLayer](/api/canvas-layer) / [Layer](/api/layer)。
 
 <!-- api-gen:start -->
+### 继承自 CanvasLayer 的事件
+
+<!--@include: ./includes/api/canvas-layer-events.md-->
+
 ### 继承自 Layer 的事件
 
 <!--@include: ./includes/api/layer-events.md-->

@@ -458,6 +458,25 @@ export function buildModel(raw) {
     }
   }
 
+  // ---- 渲染器触发的事件在用户侧属于"图层事件"：
+  // 渲染器文件里 `this.layer.fire('contextcreate')` 之类的事件，用户是 `layer.on('contextcreate')` 订阅的，
+  // 因此若存在对应图层类（`XRenderer` → `X` 或 `XLayer`），把事件同时登记到图层上。
+  for (const ev of [...events.values()]) {
+    // 贪婪匹配：`PolygonLayerRenderer` 要拆成 `PolygonLayer`（图层），
+    // 用懒惰匹配会拆成 `Polygon`（几何类）并造出幻影事件
+    const m = /^(?:Abstract)?(.+)(?:Renderer|LayerRenderer)$/.exec(ev.owner);
+    if (!m) continue;
+    const base = m[1];
+    for (const cand of [base, `${base}Layer`]) {
+      const target = byName.get(cand);
+      if (!target || cand === ev.owner) continue;
+      const k = `${cand}#${ev.name}`;
+      if (!events.has(k)) {
+        events.set(k, { ...ev, owner: cand, file: target.rel, fromRenderer: ev.owner });
+      }
+    }
+  }
+
   // ---- 独立导出函数（按文件归组，供 util / DomUtil / StringUtil 这类函数集合页使用）
   const functions = new Map();   // file -> [{name, ...}]
   for (const j of raw.funcs || []) {

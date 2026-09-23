@@ -69,6 +69,42 @@ layer 级 style 的 symbol 更新后触发
 </div>
 </details>
 
+<details><summary>workerready</summary>
+<div>
+<br/>
+
+图层 worker 连接就绪时触发
+
+</div>
+</details>
+
+<details><summary>datareceived</summary>
+<div>
+<br/>
+
+worker 返回的瓦片数据收到并解析完成时触发
+
+</div>
+</details>
+
+<details><summary>canvasisdirty</summary>
+<div>
+<br/>
+
+渲染插件绘制出内容时触发
+
+</div>
+</details>
+
+<details><summary>pluginsinited</summary>
+<div>
+<br/>
+
+图层与要素样式的渲染插件初始化完成时触发
+
+</div>
+</details>
+
 <details><summary>clear</summary>
 <div>
 <br/>

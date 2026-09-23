@@ -69,6 +69,42 @@ Fired after the symbol of a feature style is updated.
 </div>
 </details>
 
+<details><summary>workerready</summary>
+<div>
+<br/>
+
+Fired when the layer worker connection is ready.
+
+</div>
+</details>
+
+<details><summary>datareceived</summary>
+<div>
+<br/>
+
+Fired when tile data returned by the worker is received and parsed, carrying the url.
+
+</div>
+</details>
+
+<details><summary>canvasisdirty</summary>
+<div>
+<br/>
+
+Fired when a render plugin draws content and marks the canvas dirty.
+
+</div>
+</details>
+
+<details><summary>pluginsinited</summary>
+<div>
+<br/>
+
+Fired after the render plugins of the layer and feature styles are initialized.
+
+</div>
+</details>
+
 <details><summary>clear</summary>
 <div>
 <br/>

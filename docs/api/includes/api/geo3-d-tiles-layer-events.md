@@ -50,3 +50,39 @@ tileset 加载并解析成瓦片树后触发
 
 </div>
 </details>
+
+<details><summary>drawtiles</summary>
+<div>
+<br/>
+
+每帧绘制完瓦片时触发
+
+</div>
+</details>
+
+<details><summary>canvasisdirty</summary>
+<div>
+<br/>
+
+本帧绘制出 3dtiles 瓦片时触发
+
+</div>
+</details>
+
+<details><summary>contextcreate</summary>
+<div>
+<br/>
+
+图层 webgl 渲染上下文创建完成时触发
+
+</div>
+</details>
+
+<details><summary>workerready</summary>
+<div>
+<br/>
+
+图层 worker 连接就绪时触发
+
+</div>
+</details>
