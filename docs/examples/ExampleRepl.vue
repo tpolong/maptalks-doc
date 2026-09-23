@@ -428,6 +428,13 @@ function closeRepl() {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  /*
+   * 铺满到浏览器底部：此前 .vue-repl 写死 calc(100vh - 210px)，而导航栏 + 头部实际只占 114px，
+   * 于是底部白白留了 96px 空白。改为让容器占满「视口 - 导航栏」，剩余高度由 flex 交给预览区，
+   * 这样头部在窄屏换行时也能自动适配。dvh 兼顾移动端地址栏。
+   */
+  min-height: calc(100vh - var(--vp-nav-height, 64px));
+  min-height: calc(100dvh - var(--vp-nav-height, 64px));
 }
 
 .examples-repl-head {
@@ -507,13 +514,11 @@ function closeRepl() {
 }
 
 /*
- * 手机：用 svh（小视口高度）避开移动端地址栏导致 100vh 偏高的问题，
- * 并放宽最小高度，避免小屏横屏时预览区被撑出屏幕。
+ * 手机：只放宽最小高度，避免小屏 / 横屏时预览被撑出屏幕。
+ * 高度本身由 .examples-repl-page 的 min-height + flex 决定（见文件末尾），不再写死 calc(100vh - Npx)。
  */
 @media (max-width: 720px) {
   .vue-repl {
-    height: calc(100vh - 180px);
-    height: calc(100svh - 180px);
     min-height: 360px;
   }
 }
@@ -616,11 +621,36 @@ function closeRepl() {
 }
 
 .vue-repl {
-  height: calc(100vh - 210px);
+  /* 高度交给 flex：撑满 .examples-repl-page 里除头部以外的空间，直抵浏览器底部 */
+  flex: 1 1 auto;
   min-height: 480px;
+  /* 自身作为 flex 容器，内部的 .split-pane 才能吃到这个高度（见下一条规则） */
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(20, 40, 60, 0.04);
+}
+
+/*
+ * @vue/repl 给 .split-pane 设的是 height:100%，但当父级 .vue-repl 的高度来自 flex 时，
+ * 这条百分比链解析不出具体值，.split-pane 会退回"内容高度"（实测只剩 188px，
+ * 于是在 REPL 框内部又空出一大块）。改成让它作为 flex 子项吃掉剩余高度。
+ */
+.vue-repl > .split-pane {
+  flex: 1 1 auto !important;
+  height: auto !important;
+  min-height: 0;
+}
+
+/*
+ * 同理，@vue/repl 的 .left/.right 也是 height:100%；父级改成 flex 撑高后百分比同样解析不出来，
+ * 桌面端预览只剩 150px（移动端有它自己的绝对定位兜底，所以只在 >720px 暴露）。
+ * 这里把高度交回 flex 的默认 stretch。
+ */
+.vue-repl > .split-pane > .left,
+.vue-repl > .split-pane > .right {
+  height: auto !important;
 }
 </style>

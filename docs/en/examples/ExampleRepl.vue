@@ -446,6 +446,14 @@ function closeRepl() {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  /*
+   * Fill down to the bottom of the browser: .vue-repl used to hardcode calc(100vh - 210px)
+   * while the navbar + header only take 114px, leaving a 96px gap. The container now fills
+   * "viewport - navbar" and flex hands the remaining height to the preview, which also adapts
+   * when the header wraps on narrow screens. dvh covers the mobile URL bar.
+   */
+  min-height: calc(100vh - var(--vp-nav-height, 64px));
+  min-height: calc(100dvh - var(--vp-nav-height, 64px));
 }
 
 .examples-repl-head {
@@ -526,13 +534,11 @@ function closeRepl() {
 }
 
 /*
- * Phones: use svh (small viewport height) so the mobile URL bar does not inflate 100vh,
- * and relax the minimum height so the preview is not pushed off-screen on short viewports.
+ * Phones: only relax the minimum height so the preview is not pushed off-screen on short or
+ * landscape viewports. The height itself comes from .examples-repl-page's min-height + flex.
  */
 @media (max-width: 720px) {
   .vue-repl {
-    height: calc(100vh - 180px);
-    height: calc(100svh - 180px);
     min-height: 360px;
   }
 }
@@ -635,11 +641,38 @@ function closeRepl() {
 }
 
 .vue-repl {
-  height: calc(100vh - 210px);
+  /* Height comes from flex: fill everything below the header inside .examples-repl-page */
+  flex: 1 1 auto;
   min-height: 480px;
+  /* Become a flex container so the inner .split-pane can claim that height (next rule) */
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(20, 40, 60, 0.04);
+}
+
+/*
+ * @vue/repl sets .split-pane { height: 100% }, but when the parent .vue-repl gets its height
+ * from flex, that percentage chain has no definite value and .split-pane falls back to its
+ * content height (measured 188px, leaving a large empty area inside the REPL box).
+ * Let it stretch as a flex item instead.
+ */
+.vue-repl > .split-pane {
+  flex: 1 1 auto !important;
+  height: auto !important;
+  min-height: 0;
+}
+
+/*
+ * Same story for @vue/repl's .left/.right, which are also height:100%: once the parent is
+ * stretched by flex that percentage no longer resolves and the desktop preview collapses to
+ * 150px (mobile is saved by @vue/repl's own absolute positioning, so it only shows above 720px).
+ * Hand the height back to flex's default stretch.
+ */
+.vue-repl > .split-pane > .left,
+.vue-repl > .split-pane > .right {
+  height: auto !important;
 }
 </style>
