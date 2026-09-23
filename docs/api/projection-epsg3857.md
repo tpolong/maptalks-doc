@@ -20,6 +20,12 @@ console.log(p.x, p.y); // 米制投影坐标
 - `metersPerDegree` — 每度对应的米数，`6378137 * Math.PI / 180`。
 - `rad: number` — 弧度转换系数，`Math.PI / 180`。
 
+<!-- api-gen:start -->
+### EPSG3857Projection 的其他公开方法
+
+<!--@include: ./includes/api/projection-epsg3857-missing.md-->
+<!-- api-gen:end -->
+
 ## 方法
 
 - `project(lnglat, out?): Coordinate` — Web 墨卡托投影，将经纬度转换为米制投影坐标。

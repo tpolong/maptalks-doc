@@ -20,6 +20,12 @@ console.log(p.x, p.y); // meter-based projected coordinates
 - `metersPerDegree` — Meters per degree, `6378137 * Math.PI / 180`.
 - `rad: number` — The radian conversion factor, `Math.PI / 180`.
 
+<!-- api-gen:start -->
+### Other Public Methods of EPSG3857Projection
+
+<!--@include: ./includes/api/projection-epsg3857-missing.md-->
+<!-- api-gen:end -->
+
 ## Methods
 
 - `project(lnglat, out?): Coordinate` — Web Mercator projection, converting lng/lat into meter-based projected coordinates.

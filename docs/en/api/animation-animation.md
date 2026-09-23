@@ -23,6 +23,14 @@ player.play();
 
 - `Animation.speed: Object` — The preset animation speed constants: `{ slow: 2000, normal: 1000, fast: 500 }`.
 
+## Methods
+
+<!-- api-gen:start -->
+### Other Public Methods of Animation
+
+<!--@include: ./includes/api/animation-animation-missing.md-->
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `animate(styles, options, step, target): Player` — Creates an animation Player. `styles` are the styles to interpolate (keyframes), `options` are animation options (duration, easing, etc.), `step` is the per-frame callback, and `target` is the target object.

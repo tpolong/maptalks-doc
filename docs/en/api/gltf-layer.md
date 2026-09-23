@@ -52,6 +52,24 @@ GLTFLayer-specific options (supplemented from 2026 source code):
 
 <!--@include: ./includes/layer-methods.md-->
 
+## Methods
+
+<!-- api-gen:start -->
+### Other Public Methods of GLTFLayer
+
+<!--@include: ./includes/api/gltf-layer-missing.md-->
+
+### Methods Inherited from AbstractGLTFLayer
+
+The following methods are provided by the parent class AbstractGLTFLayer and are available on instances of this class.
+
+<!--@include: ./includes/api/abstract-gltf-layer-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 <details><summary>fromJSON(json)</summary>

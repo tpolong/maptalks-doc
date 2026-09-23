@@ -250,6 +250,22 @@ pickingId是用identify或identifyAtPoint方法选取出的数据中，标识数
 > - `getCenter()`：所有实例坐标的平均中心
 > - `toJSON()` / `static fromJSON(json)`：JSON 序列化 / 反序列化
 
+<!-- api-gen:start -->
+### MultiGLTFMarker 的其他公开方法
+
+<!--@include: ./includes/api/multi-gltf-marker-missing.md-->
+
+### 继承自 Marker 的方法
+
+下列方法由父类 [Marker](/api/marker) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/marker-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[CenterMixin](/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)；[Menuable](/api/menuable)。
+<!-- api-gen:end -->
+
 ## 继承自GLTFMarker的方法
 
 <!--@include: ./includes/gltf-marker-methods.md-->

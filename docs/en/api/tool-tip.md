@@ -44,3 +44,27 @@ Parameters:
 - `setStyle(style): ToolTip` — Sets the style of the hint bubble.
 - `getStyle(): string` — Gets the style of the hint bubble.
 - `getContent(): String` — Gets the hint content.
+
+<!-- api-gen:start -->
+### Other Public Methods of ToolTip
+
+<!--@include: ./includes/api/tool-tip-missing.md-->
+
+### Methods Inherited from UIComponent
+
+The following methods are provided by the parent class [UIComponent](/en/api/ui-component) and are available on instances of this class.
+
+<!--@include: ./includes/api/ui-component-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
+## Events
+
+<!-- api-gen:start -->
+### Events Inherited from UIComponent
+
+<!--@include: ./includes/api/ui-component-events.md-->
+<!-- api-gen:end -->

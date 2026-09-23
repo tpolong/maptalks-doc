@@ -18,6 +18,12 @@ m.measureLenBetween([116.39, 39.9], [121.47, 31.23]); // 球面距离
 - `measure: string` — 测量器代码，`'EPSG:4326'`。
 - `sphere: Sphere` — 底层球体测量器，半径 `6378137`。
 
+<!-- api-gen:start -->
+### wgs84 的其他公开方法
+
+<!--@include: ./includes/api/measurer-wgs84sphere-missing.md-->
+<!-- api-gen:end -->
+
 ## 方法
 
 - `measureLenBetween(c1, c2): number` — 球面大圆距离（米）。

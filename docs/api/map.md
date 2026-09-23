@@ -219,6 +219,16 @@ Map的完整配置项可通过 `map.config()` 动态更新。常用配置如下�
 - `requestFullScreen(dom?): Map` — 请求全屏
 - `cancelFullScreen(): Map` — 取消全屏
 
+<!-- api-gen:start -->
+### Map 的其他公开方法
+
+<!--@include: ./includes/api/map-missing.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Handlerable](/api/handlerable)；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)；[Menuable](/api/menuable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `Map.VERSION` — 版本号

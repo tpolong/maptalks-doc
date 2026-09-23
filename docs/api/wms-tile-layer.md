@@ -60,6 +60,29 @@ new WMSTileLayer(id, options)
 
 - `getTileUrl(x, y, z): string` — 获取瓦片 `(x,y,z)` 的 WMS 请求 URL
 
+
+<!-- api-gen:start -->
+### TileLayer 的其他公开方法
+
+<!--@include: ./includes/api/wms-tile-layer-missing.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 事件
 
 瓦片事件与图层通用事件见 [TileLayer](/api/tile-layer) / [Layer](/api/layer)。
+
+<!-- api-gen:start -->
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

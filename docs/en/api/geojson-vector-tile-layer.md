@@ -56,7 +56,6 @@ Parameters:
 </div>
 </details>
 
-
 ## Methods
 
 <details><summary>getData()</summary>
@@ -78,7 +77,6 @@ Returns:
 
 </div>
 </details>
-
 
 <details><summary>setData(data)</summary>
 <div>
@@ -103,7 +101,6 @@ Returns:
 </div>
 </details>
 
-
 <details><summary>getExtent()</summary>
 <div>
 <br/>
@@ -123,7 +120,6 @@ Returns:
 
 </div>
 </details>
-
 
 <details><summary>getFeature(id)</summary>
 <div>
@@ -169,6 +165,17 @@ Returns:
 </div>
 </details>
 
+<!-- api-gen:start -->
+### Methods Inherited from VectorTileLayer
+
+The following methods are provided by the parent class [VectorTileLayer](/en/api/vector-tile-layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/vector-tile-layer-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
 
 ## Methods Inherited from VectorTileLayer
 
@@ -201,7 +208,6 @@ Returns:
 </div>
 </details>
 
-
 <details><summary>registerPlugin(Plugin)</summary>
 <div>
 <br/>
@@ -219,7 +225,6 @@ Parameters:
 </div>
 </details>
 
-
 <details><summary>getPlugins()</summary>
 <div>
 <br/>
@@ -236,7 +241,6 @@ Returns:
 
 </div>
 </details>
-
 
 <details><summary>fromJSON(json)</summary>
 <div>
@@ -256,7 +260,6 @@ Returns:
 
 </div>
 </details>
-
 
 ## Events
 
@@ -281,7 +284,6 @@ Properties:
 </div>
 </details>
 
-
 <details><summary>dataerror</summary>
 <div>
 <br/>
@@ -299,7 +301,6 @@ Properties:
 </div>
 </details>
 
-
 ### Events Inherited from VectorTileLayer
 
 <!--@include: ./includes/vtlayer-events.md-->
@@ -313,3 +314,9 @@ Properties:
 <!--@include: ./includes/layer-events.md-->
 
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+
+<!-- api-gen:start -->
+### Events Inherited from VectorTileLayer
+
+<!--@include: ./includes/api/vector-tile-layer-events.md-->
+<!-- api-gen:end -->

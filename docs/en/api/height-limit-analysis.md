@@ -45,3 +45,17 @@ HeightLimitAnalysis inherits from [FloodAnalysis](./flood-analysis) (including o
 <!--@include: ./includes/analysis-methods.md-->
 
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+
+## Methods
+
+<!-- api-gen:start -->
+### Methods Inherited from FloodAnalysis
+
+The following methods are provided by the parent class [FloodAnalysis](/en/api/flood-analysis) and are available on instances of this class.
+
+<!--@include: ./includes/api/flood-analysis-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable).
+<!-- api-gen:end -->

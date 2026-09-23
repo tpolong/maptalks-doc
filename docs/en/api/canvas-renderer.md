@@ -37,6 +37,18 @@ CanvasRenderer has no standalone options; rendering-related configuration is con
 - `prepareCanvas(): PointExtent` — Prepare the canvas for rendering: create the canvas on first use or reset/clear the existing one, and return the mask's 2D extent.
 - `onResize(param): void` — On map resize, drop the extent cache, resize the canvas, and redraw.
 
+<!-- api-gen:start -->
+### Other Public Methods of CanvasRenderer
+
+<!--@include: ./includes/api/canvas-renderer-missing.md-->
+
+### Methods Inherited from TileLayerCanvasRenderer
+
+The following methods are provided by the parent class TileLayerCanvasRenderer and are available on instances of this class.
+
+<!--@include: ./includes/api/tile-layer-canvas-renderer-methods.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 The renderer fires the following layer events via `layer.fire`:

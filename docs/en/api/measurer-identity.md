@@ -17,6 +17,12 @@ m.measureLenBetween([0, 0], [3, 4]); // 5
 
 - `measure: string` — The measurer code, `'IDENTITY'`.
 
+<!-- api-gen:start -->
+### Other Public Methods of identity
+
+<!--@include: ./includes/api/measurer-identity-missing.md-->
+<!-- api-gen:end -->
+
 ## Methods
 
 - `measureLenBetween(c1, c2, ignoreAltitude?): number` — Euclidean distance between two planar coordinates.

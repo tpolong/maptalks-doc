@@ -84,6 +84,30 @@ ExtrudePolygonLayer 在 Vector3DLayer 的选项基础上追加以下配置：
 </div>
 </details>
 
+<!-- api-gen:start -->
+### 继承自 Vector3DLayer 的方法
+
+下列方法由父类 Vector3DLayer 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/vector3-d-layer-methods.md-->
+
+### 继承自 OverlayLayer 的方法
+
+下列方法由父类 [OverlayLayer](/api/overlay-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/overlay-layer-methods.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## Symbol 样式
 
 ExtrudePolygonLayer 支持的 symbol 属性：
@@ -98,3 +122,15 @@ ExtrudePolygonLayer 支持的 symbol 属性：
 对 Circle、Ellipse、Sector、Rectangle 等特殊几何，图层会自动计算最小外接矩形（OMBB）并转换为多边形后拉伸。
 
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+
+## 事件
+
+<!-- api-gen:start -->
+### 继承自 OverlayLayer 的事件
+
+<!--@include: ./includes/api/overlay-layer-events.md-->
+
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

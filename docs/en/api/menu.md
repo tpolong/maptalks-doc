@@ -49,3 +49,23 @@ Parameters:
 - `addTo(owner): Menu` — Attaches the menu to `owner`.
 - `getOffset(): Point` — Gets the menu offset.
 - `getTransformOrigin(): String` — Gets the transform origin of the menu.
+
+<!-- api-gen:start -->
+### Methods Inherited from UIComponent
+
+The following methods are provided by the parent class [UIComponent](/en/api/ui-component) and are available on instances of this class.
+
+<!--@include: ./includes/api/ui-component-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
+## Events
+
+<!-- api-gen:start -->
+### Events Inherited from UIComponent
+
+<!--@include: ./includes/api/ui-component-events.md-->
+<!-- api-gen:end -->

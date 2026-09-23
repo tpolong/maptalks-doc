@@ -30,3 +30,11 @@ Parameters:
 - `styles: Object` — The style values of this frame.
 - `playState: String` — The play state.
 - `symbol: Object` — The symbol of the frame.
+
+## Methods
+
+<!-- api-gen:start -->
+### Other Public Methods of Frame
+
+<!--@include: ./includes/api/animation-frame-missing.md-->
+<!-- api-gen:end -->

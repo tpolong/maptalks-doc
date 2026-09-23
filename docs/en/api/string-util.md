@@ -23,3 +23,9 @@ console.log(StringUtil.replaceVariable("{foo} is awesome", { foo: "John" })); //
 - `splitContent(content, font, wrapWidth, textWidth): Object[]` — Split text into multiple lines by width.
 - `replaceVariable(str, props): string` — Replace `{foo}`-style variables with values from `props`.
 - `getFont(style): string` — Generate a CSS font string from a text-style symbol.
+
+<!-- api-gen:start -->
+### Other Public Methods of strings
+
+<!--@include: ./includes/api/string-util-missing.md-->
+<!-- api-gen:end -->

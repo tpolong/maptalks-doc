@@ -22,6 +22,12 @@ console.log(proj.code); // "EPSG:3857"
 - `sphere` — The sphere measurer, indicating whether the projection is spherical (e.g. `WGS84Sphere`).
 - `extent` — Cached sphere extent (`Extent`).
 
+<!-- api-gen:start -->
+### Other Public Methods of CommonProjection
+
+<!--@include: ./includes/api/projection-common-missing.md-->
+<!-- api-gen:end -->
+
 ## Methods
 
 - `is(code): boolean` — Whether the projection code or one of its aliases equals the passed `code`.

@@ -6,7 +6,13 @@
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
-    "preview": "vitepress preview"
+    "preview": "vitepress preview",
+    "api:inventory": "node scripts/api/inventory.mjs",
+    "api:gen": "node scripts/api/gen-includes.mjs",
+    "api:wire": "node scripts/api/wire-pages.mjs",
+    "api:verify": "node scripts/api/verify.mjs",
+    "api:check": "node scripts/api/check-render.mjs",
+    "api:sync": "node scripts/api/gen-includes.mjs && node scripts/api/wire-pages.mjs && node scripts/api/verify.mjs && node scripts/api/check-render.mjs"
   },
   "dependencies": {
     "@vue/repl": "^4.7.2",

@@ -97,6 +97,12 @@ layer.identifyAtPoint([400, 300], { tolerance: 2 });
 
 <!--@include: ./includes/layer-methods.md-->
 
+<!-- api-gen:start -->
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 <details><summary>fromJSON(json)</summary>

@@ -28,6 +28,12 @@ Mixin, no independent options. Options are provided by the host geometry class.
 - `getCoordinates(): Coordinate` — Gets the center coordinate of the geometry.
 - `setCoordinates(coordinates): this` — Sets a new center, updating the projected coordinates and firing the `positionchange` event. The argument can be a `Coordinate` or an `[x, y, z]` array.
 
+<!-- api-gen:start -->
+### Other Public Methods of CenterMixin
+
+<!--@include: ./includes/api/center-mixin-missing.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 - `positionchange` — Fired when the center position changes.

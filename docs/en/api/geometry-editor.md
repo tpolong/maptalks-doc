@@ -54,6 +54,16 @@ Parameters:
 - `undo(): any` — Undoes the last edit.
 - `redo(): any` — Redoes the next edit.
 
+<!-- api-gen:start -->
+### Other Public Methods of GeometryEditor
+
+<!--@include: ./includes/api/geometry-editor-missing.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Events
 
 - `remove` — (fired by the editor) when `stop()` is called.

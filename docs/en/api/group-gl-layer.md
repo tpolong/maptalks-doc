@@ -459,7 +459,6 @@ Returns:
 </div>
 </details>
 
-
 <details><summary>identifyAtPoint(containerPoint, options)</summary>
 <div>
 <br/>
@@ -512,8 +511,17 @@ Returns:
 </div>
 </details>
 
-
 <!--@include: ./includes/layer-methods.md-->
+
+<!-- api-gen:start -->
+### Other Public Methods of GroupGLLayer
+
+<!--@include: ./includes/api/group-gl-layer-missing.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
 
 ## Static Methods
 

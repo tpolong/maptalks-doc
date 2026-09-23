@@ -29,3 +29,9 @@ GeoJSON.fetch("https://abc.com/file.geojson", 2000).then(geojson => {
   console.log(geojson);
 });
 ```
+
+<!-- api-gen:start -->
+### GeoJSON 的其他公开方法
+
+<!--@include: ./includes/api/geojson-missing.md-->
+<!-- api-gen:end -->

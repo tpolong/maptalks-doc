@@ -250,7 +250,6 @@ By default, 3dtiles rendering produces a lot of aliasing; you can enable anti-al
     groupLayer.addTo(map);
 ```
 
-
 ## Constructor
 
 ```js
@@ -364,7 +363,6 @@ Returns:
 <br/>
 
 Gets all 3dtiles tiles.
-
 
 Returns:
 
@@ -646,8 +644,17 @@ Returns:
 </div>
 </details>
 
-
 <!--@include: ./includes/layer-methods.md-->
+
+<!-- api-gen:start -->
+### Other Public Methods of Geo3DTilesLayer
+
+<!--@include: ./includes/api/geo-3dtiles-layer-missing.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
 
 ## Static Methods
 
@@ -747,7 +754,6 @@ Properties:
 
 </div>
 </details>
-
 
 <details><summary>tileerror</summary>
 <div>

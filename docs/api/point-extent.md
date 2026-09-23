@@ -33,6 +33,14 @@ PointExtent 没有特有的成员方法，它完全复用 `Extent` 的全部方�
 - `getMin()`、`getMax()`、`getCenter()`、`toArray()` 等返回 `Point` 而不是 `Coordinate`。
 - 其余方法（`getWidth`、`getHeight`、`contains`、`intersects`、`within`、`combine`、`expand`、`copy`、`toJSON`、`toBBOX` 等）行为与 `Extent` 一致，见 [Extent](/api/extent)。
 
+<!-- api-gen:start -->
+### 继承自 Extent 的方法
+
+下列方法由父类 [Extent](/api/extent) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/extent-methods.md-->
+<!-- api-gen:end -->
+
 ## 静态方法
 
 PointExtent 没有静态方法。

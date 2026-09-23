@@ -50,6 +50,34 @@ Parameters:
 - `clear(): this` — clear
 - `bringToFront(): this` — bring the child layers to front
 
+<!-- api-gen:start -->
+### Methods Inherited from OverlayLayer
+
+The following methods are provided by the parent class [OverlayLayer](/en/api/overlay-layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/overlay-layer-methods.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
+
 ## Events
 
 Common layer events (`show`/`hide`, `setopacity`, `add`/`remove`, etc.) — see [OverlayLayer](/en/api/overlay-layer) / [Layer](/en/api/layer).
+
+<!-- api-gen:start -->
+### Events Inherited from OverlayLayer
+
+<!--@include: ./includes/api/overlay-layer-events.md-->
+
+### Events Inherited from Layer
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

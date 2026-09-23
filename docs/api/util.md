@@ -30,3 +30,9 @@ console.log(Util.clamp(10, 0, 5)); // 5
 - `flash(interval, count, cb, ctx): void` — 闪烁效果包装。
 - `isURL(url): boolean` — 判断字符串是否为 URL。
 - `extractCssUrl(str): string` — 从 CSS 的 `url(...)` 中提取地址。
+
+<!-- api-gen:start -->
+### util 的其他公开方法
+
+<!--@include: ./includes/api/util-missing.md-->
+<!-- api-gen:end -->

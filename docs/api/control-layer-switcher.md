@@ -35,6 +35,30 @@ new LayerSwitcher(options)
 | `excludeLayers` | `Array` | 需要排除的图层列表 | `[]` |
 | `containerClass` | `String` | 容器 CSS 类名 | `'maptalks-layer-switcher'` |
 
+## 成员方法
+
+<!-- api-gen:start -->
+### LayerSwitcher 的其他公开方法
+
+<!--@include: ./includes/api/control-layer-switcher-missing.md-->
+
+### 继承自 Control 的方法
+
+下列方法由父类 [Control](/api/control) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/control-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 事件
 
 - `layerchange` — 图层可见性改变时触发。
+
+<!-- api-gen:start -->
+### 继承自 Control 的事件
+
+<!--@include: ./includes/api/control-events.md-->
+<!-- api-gen:end -->

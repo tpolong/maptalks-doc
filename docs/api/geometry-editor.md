@@ -54,6 +54,16 @@ new GeometryEditor(geometry, options?)
 - `undo(): any` — 撤销上一步编辑。
 - `redo(): any` — 重做下一步编辑。
 
+<!-- api-gen:start -->
+### GeometryEditor 的其他公开方法
+
+<!--@include: ./includes/api/geometry-editor-missing.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 事件
 
 - `remove` —（编辑器触发）当 `stop()` 停止编辑时 fired。

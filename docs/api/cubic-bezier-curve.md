@@ -32,6 +32,30 @@ CubicBezierCurve 无特有 options，继承自 Curve。
 
 无特有方法，继承自 Curve。
 
+<!-- api-gen:start -->
+### 继承自 LineString 的方法
+
+下列方法由父类 [LineString](/api/line-string) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/line-string-methods.md-->
+
+### 继承自 Path 的方法
+
+下列方法由父类 [Path](/api/path) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/path-methods.md-->
+
+### 继承自 Geometry 的方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)；[Menuable](/api/menuable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `CubicBezierCurve.fromJSON(json): CubicBezierCurve` — 从 JSON 对象创建 CubicBezierCurve 实例。
@@ -39,3 +63,13 @@ CubicBezierCurve 无特有 options，继承自 Curve。
 ## 事件
 
 无特有事件。
+
+<!-- api-gen:start -->
+### 继承自 LineString 的事件
+
+<!--@include: ./includes/api/line-string-events.md-->
+
+### 继承自 Geometry 的事件
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

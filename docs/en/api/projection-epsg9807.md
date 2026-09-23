@@ -29,6 +29,12 @@ const proj = projection.EPSG9807.create({
   - `latitudeOfOrigin` — Latitude of origin (degrees).
   - `startLongtitude` / `startLatitude` — Starting longitude / latitude.
 
+<!-- api-gen:start -->
+### Other Public Methods of EPSG9807Projection
+
+<!--@include: ./includes/api/projection-epsg9807-missing.md-->
+<!-- api-gen:end -->
+
 ## Methods
 
 - `project(p, out?): Coordinate` — Project lng/lat into Transverse Mercator coordinates (meters).

@@ -66,6 +66,14 @@ new Coordinate(coordinate)
 
 - `set(x, y, z?): this` — 直接设置坐标（修改原数据并返回this）
 
+<!-- api-gen:start -->
+### 继承自 Position 的方法
+
+下列方法由父类 [Position](/api/position) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/position-methods.md-->
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `Coordinate.toNumberArrays(coordinates)` — 将Coordinate转换为GeoJSON风格坐标数组（递归）

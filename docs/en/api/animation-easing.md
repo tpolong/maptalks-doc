@@ -26,3 +26,11 @@ const player = Animation.animate(
 - `Easing.inAndOut: Function` — Accelerating then decelerating easing.
 - `Easing.linear: Function` — Linear easing.
 - `Easing.upAndDown: Function` — Bouncing up-and-down easing.
+
+## Methods
+
+<!-- api-gen:start -->
+### Other Public Methods of Easing
+
+<!--@include: ./includes/api/animation-easing-missing.md-->
+<!-- api-gen:end -->

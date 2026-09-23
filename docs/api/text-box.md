@@ -67,6 +67,34 @@ new TextBox(content, coordinates, width, height, options?)
 - `startEdit(opts): this` — 开始编辑，宽高为函数类型时先解析为固定像素。
 - `endEdit(): this` — 结束编辑，恢复函数类型的宽高定义。
 
+<!-- api-gen:start -->
+### TextBox 的其他公开方法
+
+<!--@include: ./includes/api/text-box-missing.md-->
+
+### 继承自 TextMarker 的方法
+
+下列方法由父类 [TextMarker](/api/text-marker) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/text-marker-methods.md-->
+
+### 继承自 Marker 的方法
+
+下列方法由父类 [Marker](/api/marker) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/marker-methods.md-->
+
+### 继承自 Geometry 的方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[CenterMixin](/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)；[Menuable](/api/menuable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `fromJSON(json): TextBox` — 从 JSON 对象创建 TextBox 实例。
@@ -74,3 +102,13 @@ new TextBox(content, coordinates, width, height, options?)
 ## 事件
 
 - `contentchange` — 文本内容改变时触发（继承自 [TextMarker](/api/text-marker)）。
+
+<!-- api-gen:start -->
+### 继承自 TextMarker 的事件
+
+<!--@include: ./includes/api/text-marker-events.md-->
+
+### 继承自 Geometry 的事件
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

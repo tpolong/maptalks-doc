@@ -29,3 +29,9 @@ GeoJSON.fetch("https://abc.com/file.geojson", 2000).then(geojson => {
   console.log(geojson);
 });
 ```
+
+<!-- api-gen:start -->
+### Other Public Methods of GeoJSON
+
+<!--@include: ./includes/api/geojson-missing.md-->
+<!-- api-gen:end -->

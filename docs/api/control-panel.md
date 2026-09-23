@@ -42,6 +42,22 @@ new Panel(options)
 - `getContent(): String` — 获取面板内容。
 - `update()` — 更新面板。
 
+<!-- api-gen:start -->
+### Panel 的其他公开方法
+
+<!--@include: ./includes/api/control-panel-missing.md-->
+
+### 继承自 Control 的方法
+
+下列方法由父类 [Control](/api/control) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/control-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 事件
 
 - `contentchange` — 面板内容改变时触发。
@@ -49,3 +65,9 @@ new Panel(options)
 - `dragging` — 拖动过程中触发。
 - `dragend` — 拖动结束时触发。
 - `close` — 面板被关闭时触发。
+
+<!-- api-gen:start -->
+### 继承自 Control 的事件
+
+<!--@include: ./includes/api/control-events.md-->
+<!-- api-gen:end -->

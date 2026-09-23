@@ -33,6 +33,22 @@ Path is an abstract base class; its constructor is called by its subclasses.
 
 - `animateShow(options, cb): Player` — Shows the geometry with an animation, returning the animation Player; `cb` is the completion callback.
 
+<!-- api-gen:start -->
+### Other Public Methods of Path
+
+<!--@include: ./includes/api/path-missing.md-->
+
+### Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable)；[Menuable](/en/api/menuable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 No class-specific static methods.
@@ -40,3 +56,9 @@ No class-specific static methods.
 ## Events
 
 No class-specific events.
+
+<!-- api-gen:start -->
+### Events Inherited from Geometry
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

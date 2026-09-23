@@ -30,3 +30,9 @@ DomUtil.addClass(el, "active");
 - `preventDefault(event): void` — 阻止默认行为。
 - `stopPropagation(e): void` — 阻止事件冒泡。
 - `measureDom(parentTag, dom): Size` — 在指定父标签下测量 dom 的尺寸。
+
+<!-- api-gen:start -->
+### dom 的其他公开方法
+
+<!--@include: ./includes/api/dom-util-missing.md-->
+<!-- api-gen:end -->

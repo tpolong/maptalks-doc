@@ -60,6 +60,29 @@ Other tile options (`urlTemplate`, `tileSize`, `spatialReference`, etc.) — see
 
 - `getTileUrl(x, y, z): string` — get the WMS request URL for tile `(x,y,z)`
 
+
+<!-- api-gen:start -->
+### Other Public Methods of TileLayer
+
+<!--@include: ./includes/api/wms-tile-layer-missing.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
+
 ## Events
 
 Tile events and common layer events — see [TileLayer](/en/api/tile-layer) / [Layer](/en/api/layer).
+
+<!-- api-gen:start -->
+### Events Inherited from Layer
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

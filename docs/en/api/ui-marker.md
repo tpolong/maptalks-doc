@@ -52,6 +52,22 @@ Parameters:
 - `flash(interval, count, cb, ctx): UIMarker` — Flashes the marker for a given number of times. `interval` is the flash interval, `count` is the times, `cb` is the per-frame callback, `ctx` is the callback context.
 - `isDragging(): boolean` — Whether the marker is being dragged.
 
+<!-- api-gen:start -->
+### Other Public Methods of UIMarker
+
+<!--@include: ./includes/api/ui-marker-missing.md-->
+
+### Methods Inherited from UIComponent
+
+The following methods are provided by the parent class [UIComponent](/en/api/ui-component) and are available on instances of this class.
+
+<!--@include: ./includes/api/ui-component-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Handlerable](/en/api/handlerable)；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Events
 
 - `positionchange` — Fired when the marker position changes.
@@ -59,3 +75,9 @@ Parameters:
 - `dragstart` — Fired when dragging starts.
 - `dragging` — Fired while dragging.
 - `dragend` — Fired when dragging ends.
+
+<!-- api-gen:start -->
+### Events Inherited from UIComponent
+
+<!--@include: ./includes/api/ui-component-events.md-->
+<!-- api-gen:end -->

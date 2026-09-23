@@ -52,6 +52,22 @@ new UIMarker(coordinate, options)
 - `flash(interval, count, cb, ctx): UIMarker` — 让标记闪烁指定次数，`interval` 为闪烁间隔、`count` 为次数、`cb` 为每帧回调、`ctx` 为回调上下文。
 - `isDragging(): boolean` — 判断标记是否正在被拖拽。
 
+<!-- api-gen:start -->
+### UIMarker 的其他公开方法
+
+<!--@include: ./includes/api/ui-marker-missing.md-->
+
+### 继承自 UIComponent 的方法
+
+下列方法由父类 [UIComponent](/api/ui-component) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/ui-component-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Handlerable](/api/handlerable)；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 事件
 
 - `positionchange` — 标记位置改变时触发。
@@ -59,3 +75,9 @@ new UIMarker(coordinate, options)
 - `dragstart` — 开始拖拽时触发。
 - `dragging` — 拖拽过程中触发。
 - `dragend` — 拖拽结束时触发。
+
+<!-- api-gen:start -->
+### 继承自 UIComponent 的事件
+
+<!--@include: ./includes/api/ui-component-events.md-->
+<!-- api-gen:end -->

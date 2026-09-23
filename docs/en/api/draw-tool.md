@@ -54,6 +54,22 @@ Parameters:
 - `addCoordinate(coordinate): DrawTool` — Adds a coordinate to the current drawing.
 - `setLayerZIndex(z): DrawTool` — Sets the z-index of the tool's layer.
 
+<!-- api-gen:start -->
+### Other Public Methods of DrawTool
+
+<!--@include: ./includes/api/draw-tool-missing.md-->
+
+### Methods Inherited from MapTool
+
+The following methods are provided by the parent class [MapTool](/en/api/map-tool) and are available on instances of this class.
+
+<!--@include: ./includes/api/map-tool-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `registerMode(name, modeAction)` — Registers a custom drawing mode.
@@ -67,3 +83,9 @@ Parameters:
 - `drawvertex` — Fired when a new vertex is added while drawing.
 - `drawend` — Fired when drawing finishes.
 - `mousemove` — Fired when the mouse moves while drawing.
+
+<!-- api-gen:start -->
+### Events Inherited from MapTool
+
+<!--@include: ./includes/api/map-tool-events.md-->
+<!-- api-gen:end -->

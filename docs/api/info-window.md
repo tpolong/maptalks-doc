@@ -52,6 +52,24 @@ new InfoWindow(options)
 - `getOffset(): Point` — 获取气泡偏移。
 - `getTransformOrigin(): String` — 获取气泡的变换原点。
 
+<!-- api-gen:start -->
+### 继承自 UIComponent 的方法
+
+下列方法由父类 [UIComponent](/api/ui-component) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/ui-component-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 事件
 
 - `contentchange` — 气泡内容改变时触发。
+
+<!-- api-gen:start -->
+### 继承自 UIComponent 的事件
+
+<!--@include: ./includes/api/ui-component-events.md-->
+<!-- api-gen:end -->

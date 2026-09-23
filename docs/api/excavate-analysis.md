@@ -117,8 +117,50 @@ excavateAnalysis.addTo(groupGLLayer);
 </div>
 </details>
 
+<!-- api-gen:start -->
+### 继承自 ExtrudePolygonLayer 的方法
+
+下列方法由父类 [ExtrudePolygonLayer](/api/extrude-polygon-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/extrude-polygon-layer-methods.md-->
+
+### 继承自 Vector3DLayer 的方法
+
+下列方法由父类 Vector3DLayer 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/vector3-d-layer-methods.md-->
+
+### 继承自 OverlayLayer 的方法
+
+下列方法由父类 [OverlayLayer](/api/overlay-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/overlay-layer-methods.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 继承自ExtrudePolygonLayer的方法
 
 ExcavateAnalysis 继承 [ExtrudePolygonLayer](./extrude-polygon-layer)（进而继承 [PolygonLayer](./polygon-layer)）的所有图层方法与选项。
 
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+
+## 事件
+
+<!-- api-gen:start -->
+### 继承自 OverlayLayer 的事件
+
+<!--@include: ./includes/api/overlay-layer-events.md-->
+
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

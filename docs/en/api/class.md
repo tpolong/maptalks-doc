@@ -40,6 +40,12 @@ Parameters:
 - `proxyOptions()` — Wraps `options` in a Proxy so key writes route through `config`.
 - `onConfig(conf)` — Callback hook invoked when config changes; subclasses may override it.
 
+<!-- api-gen:start -->
+### Other Public Methods of Class
+
+<!--@include: ./includes/api/class-missing.md-->
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `Class.addInitHook(fn, ...args)` — Register an initialization hook (`fn`) invoked with `args` during construction.

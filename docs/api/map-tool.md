@@ -32,6 +32,16 @@ new MapTool(options)
 - `isEnabled(): boolean` — 判断工具当前是否已启用。
 - `remove()` — 从地图上移除工具。
 
+<!-- api-gen:start -->
+### MapTool 的其他公开方法
+
+<!--@include: ./includes/api/map-tool-missing.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 事件
 
 - `add` — 工具添加到地图时触发。

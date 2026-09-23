@@ -40,3 +40,11 @@ floodAnalysis.addTo(groupGLLayer);
 <!--@include: ./includes/analysis-methods.md-->
 
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+
+## 成员方法
+
+<!-- api-gen:start -->
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)。
+<!-- api-gen:end -->

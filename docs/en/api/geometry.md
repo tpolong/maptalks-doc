@@ -103,6 +103,16 @@ Parameters:
 - `toGeoJSON(opts?): Object` — export a GeoJSON Feature
 - `toJSON(options?): Object` — export a profile json
 
+<!-- api-gen:start -->
+### Other Public Methods of Geometry
+
+<!--@include: ./includes/api/geometry-missing.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable)；[Menuable](/en/api/menuable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `Geometry.fromJSON(json): Geometry | Geometry[]` — restore geometry from JSON

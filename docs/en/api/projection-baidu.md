@@ -18,6 +18,12 @@ const p = projection.BAIDU.project([116.404, 39.915]); // Baidu Mercator coordin
 - `EARTHRADIUS` — The Earth radius, `6370996.81`.
 - `MCBAND` / `LLBAND` / `MC2LL` / `LL2MC` — Coefficient tables used for Baidu coordinate conversion.
 
+<!-- api-gen:start -->
+### Other Public Methods of BAIDUProjection
+
+<!--@include: ./includes/api/projection-baidu-missing.md-->
+<!-- api-gen:end -->
+
 ## Methods
 
 - `project(p, out?): Coordinate` — Convert lng/lat into Baidu Mercator coordinates (internally calls `convertLL2MC`).

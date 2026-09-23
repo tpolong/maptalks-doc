@@ -30,3 +30,9 @@ DomUtil.addClass(el, "active");
 - `preventDefault(event): void` — Prevent the default behavior.
 - `stopPropagation(e): void` — Stop event propagation.
 - `measureDom(parentTag, dom): Size` — Measure the dom's size under the given parent tag.
+
+<!-- api-gen:start -->
+### Other Public Methods of dom
+
+<!--@include: ./includes/api/dom-util-missing.md-->
+<!-- api-gen:end -->

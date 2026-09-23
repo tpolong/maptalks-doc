@@ -40,6 +40,12 @@ new Class(options?)
 - `proxyOptions()` — 将 `options` 用 Proxy 包裹，使写入键时自动走 `config`。
 - `onConfig(conf)` — 配置变化时的回调钩子，子类可覆写；`conf` 为发生变化的配置项。
 
+<!-- api-gen:start -->
+### Class 的其他公开方法
+
+<!--@include: ./includes/api/class-missing.md-->
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `Class.addInitHook(fn, ...args)` — 在类初始化时注册一个钩子（`fn`），构造时会以 `args` 为参数调用。

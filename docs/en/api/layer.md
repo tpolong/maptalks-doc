@@ -112,6 +112,16 @@ Parameters:
 
 - `toJSON(options?): Object` — export layer JSON
 
+<!-- api-gen:start -->
+### Other Public Methods of Layer
+
+<!--@include: ./includes/api/layer-missing.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `Layer.fromJSON(layerJSON): Layer | null` — restore a layer from JSON

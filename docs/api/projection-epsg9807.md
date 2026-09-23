@@ -29,6 +29,12 @@ const proj = projection.EPSG9807.create({
   - `latitudeOfOrigin` — 原点纬度（度）。
   - `startLongtitude` / `startLatitude` — 起始经度 / 起始纬度。
 
+<!-- api-gen:start -->
+### EPSG9807Projection 的其他公开方法
+
+<!--@include: ./includes/api/projection-epsg9807-missing.md-->
+<!-- api-gen:end -->
+
 ## 方法
 
 - `project(p, out?): Coordinate` — 将经纬度投影为横轴墨卡托坐标（米）。

@@ -32,6 +32,16 @@ Parameters:
 - `isEnabled(): boolean` — Whether the tool is currently enabled.
 - `remove()` — Removes the tool from the map.
 
+<!-- api-gen:start -->
+### Other Public Methods of MapTool
+
+<!--@include: ./includes/api/map-tool-missing.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Events
 
 - `add` — Fired when the tool is added to a map.

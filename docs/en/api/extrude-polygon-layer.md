@@ -84,6 +84,30 @@ Returns:
 </div>
 </details>
 
+<!-- api-gen:start -->
+### Methods Inherited from Vector3DLayer
+
+The following methods are provided by the parent class Vector3DLayer and are available on instances of this class.
+
+<!--@include: ./includes/api/vector3-d-layer-methods.md-->
+
+### Methods Inherited from OverlayLayer
+
+The following methods are provided by the parent class [OverlayLayer](/en/api/overlay-layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/overlay-layer-methods.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
+
 ## Symbol Styles
 
 Symbol properties supported by ExtrudePolygonLayer:
@@ -98,3 +122,15 @@ Symbol properties supported by ExtrudePolygonLayer:
 For special geometries such as Circle, Ellipse, Sector and Rectangle, the layer automatically computes the oriented minimum bounding box (OMBB), converts them to polygons, and then extrudes them.
 
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+
+## Events
+
+<!-- api-gen:start -->
+### Events Inherited from OverlayLayer
+
+<!--@include: ./includes/api/overlay-layer-events.md-->
+
+### Events Inherited from Layer
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

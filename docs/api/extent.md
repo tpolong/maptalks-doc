@@ -57,6 +57,12 @@ new Extent(extent)
 - `isValid(): boolean` — 判断区域是否有效（四个边界值均非空）。
 - `equals(ext2): boolean` — 判断与另一个区域是否相等。
 
+<!-- api-gen:start -->
+### Extent 的其他公开方法
+
+<!--@include: ./includes/api/extent-missing.md-->
+<!-- api-gen:end -->
+
 ## 静态方法
 
 Extent 没有静态方法。

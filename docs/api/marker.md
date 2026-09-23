@@ -73,6 +73,18 @@ new Marker(coordinates, options?)
 
 其余方法（`getCenter`、`getExtent`、`getSymbol`/`setSymbol`、`getProperties`/`setProperties`、`getId`/`setId`、`show`/`hide`、`translate`、`addTo`/`remove`、`toGeoJSON`/`toJSON` 等）继承自 [Geometry](/api/geometry)。
 
+<!-- api-gen:start -->
+### 继承自 Geometry 的方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[CenterMixin](/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)；[Menuable](/api/menuable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `Marker.mergeOptions(options): this` — 合并默认配置
@@ -87,3 +99,9 @@ marker.on("positionchange", () => {
   console.log("marker at", marker.getCoordinates());
 });
 ```
+
+<!-- api-gen:start -->
+### 继承自 Geometry 的事件
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

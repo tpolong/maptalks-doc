@@ -17,6 +17,12 @@ console.log(p.x, p.y); // 100, 200
 
 - `code: string` — 投影代码，`'IDENTITY'`。
 
+<!-- api-gen:start -->
+### IdentityProjection 的其他公开方法
+
+<!--@include: ./includes/api/projection-identity-missing.md-->
+<!-- api-gen:end -->
+
 ## 方法
 
 - `project(p, out?): Coordinate` — 恒等投影，复制 x/y/z。

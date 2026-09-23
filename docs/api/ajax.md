@@ -35,6 +35,12 @@ Ajax.get("https://example.com/data.txt", { mimeType: "text/plain" }, (text) => {
 - `Ajax.getImage(img, url, options?)` — 将 `url` 处的图片加载到给定的 `img`（HTMLImageElement）中，加载成功或失败时触发图片自身的 `onload`/`onerror`。
 - `Ajax.jsonp(url, callback)` — 发起 JSONP 请求，`callback` 为全局回调，用于跨域数据获取。
 
+<!-- api-gen:start -->
+### Ajax 的其他公开方法
+
+<!--@include: ./includes/api/ajax-missing.md-->
+<!-- api-gen:end -->
+
 ## 静态方法
 
 `Ajax` 的方法本身即静态方法（见上方成员方法）。

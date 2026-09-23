@@ -64,6 +64,30 @@ Other options are inherited from [Marker](/en/api/marker) (e.g. `draggable`, `zI
 - `getTextSymbol(): object` / `setTextSymbol(symbol): this` — Gets/sets the text symbol.
 - `_canEdit(): boolean` — Whether the label can be edited; Label always returns `false` (text labels do not support handle resizing).
 
+<!-- api-gen:start -->
+### Methods Inherited from TextMarker
+
+The following methods are provided by the parent class [TextMarker](/en/api/text-marker) and are available on instances of this class.
+
+<!--@include: ./includes/api/text-marker-methods.md-->
+
+### Methods Inherited from Marker
+
+The following methods are provided by the parent class [Marker](/en/api/marker) and are available on instances of this class.
+
+<!--@include: ./includes/api/marker-methods.md-->
+
+### Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [CenterMixin](/en/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable)；[Menuable](/en/api/menuable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `fromJSON(json): Label` — Creates a Label instance from a JSON object.
@@ -71,3 +95,13 @@ Other options are inherited from [Marker](/en/api/marker) (e.g. `draggable`, `zI
 ## Events
 
 - `contentchange` — Fired when the text content changes (inherited from [TextMarker](/en/api/text-marker)).
+
+<!-- api-gen:start -->
+### Events Inherited from TextMarker
+
+<!--@include: ./includes/api/text-marker-events.md-->
+
+### Events Inherited from Geometry
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

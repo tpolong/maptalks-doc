@@ -23,6 +23,12 @@ const utm = projection.UTM.create({ zone: 50, south: false });
 
 `create` computes `centralMeridian = (zone + 0.5) * 6 - 180`, `scaleFactor = 0.9996`, `falseEasting = 500000`, and reuses `projection.EPSG9807.create`'s Transverse Mercator projection.
 
+<!-- api-gen:start -->
+### Other Public Methods of UTMProjection
+
+<!--@include: ./includes/api/projection-utm-missing.md-->
+<!-- api-gen:end -->
+
 ## Methods
 
 - `project(p, out?): Coordinate` — Project lng/lat into UTM coordinates (meters).

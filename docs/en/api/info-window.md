@@ -52,6 +52,24 @@ Parameters:
 - `getOffset(): Point` — Gets the bubble offset.
 - `getTransformOrigin(): String` — Gets the transform origin of the bubble.
 
+<!-- api-gen:start -->
+### Methods Inherited from UIComponent
+
+The following methods are provided by the parent class [UIComponent](/en/api/ui-component) and are available on instances of this class.
+
+<!--@include: ./includes/api/ui-component-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Events
 
 - `contentchange` — Fired when the bubble content changes.
+
+<!-- api-gen:start -->
+### Events Inherited from UIComponent
+
+<!--@include: ./includes/api/ui-component-events.md-->
+<!-- api-gen:end -->

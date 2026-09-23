@@ -51,6 +51,18 @@ Point 没有 options 配置项。
 - `multi(ratio): Point` — 返回当前点按 `ratio` 比例缩放后的点。
 - `equals(c): boolean` — 判断当前点是否与点 `c` 相等。
 
+<!-- api-gen:start -->
+### Point 的其他公开方法
+
+<!--@include: ./includes/api/point-missing.md-->
+
+### 继承自 Position 的方法
+
+下列方法由父类 [Position](/api/position) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/position-methods.md-->
+<!-- api-gen:end -->
+
 ## 静态方法
 
 Point 没有静态方法。

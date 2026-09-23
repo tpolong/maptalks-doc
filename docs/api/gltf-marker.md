@@ -71,6 +71,22 @@ GLTFMarker的options.symbol中包含以下的设置和属性。
 > - `isLoaded()`：模型是否加载完成
 > - `copy()` / `remove()`：深拷贝 / 移除并释放模型资源（mesh、纹理、jointTexture）
 
+<!-- api-gen:start -->
+### GLTFMarker 的其他公开方法
+
+<!--@include: ./includes/api/gltf-marker-missing.md-->
+
+### 继承自 Marker 的方法
+
+下列方法由父类 [Marker](/api/marker) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/marker-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[CenterMixin](/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)；[Menuable](/api/menuable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 <!--@include: ./includes/geometry-static-methods.md-->

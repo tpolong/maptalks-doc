@@ -49,6 +49,22 @@ GeometryCollection has no class-specific options; it inherits the options of Geo
 - `startEdit` / `endEdit` / `isEditing` — Starts editing / ends editing / returns whether editing is in progress.
 - `undoEdit` / `redoEdit` — Undoes / redoes the last edit.
 
+<!-- api-gen:start -->
+### Other Public Methods of GeometryCollection
+
+<!--@include: ./includes/api/geometry-collection-missing.md-->
+
+### Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable)；[Menuable](/en/api/menuable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `GeometryCollection.fromJSON(json): GeometryCollection` — Creates a GeometryCollection instance from a JSON object.
@@ -59,3 +75,9 @@ GeometryCollection has no class-specific options; it inherits the options of Geo
 - `removestart` / `remove` / `removeend` — Fired when a removal starts, progresses, and ends.
 - `show` / `hide` — Fired when the collection is shown / hidden.
 - `editstart` / `editend` — Fired when editing starts / ends.
+
+<!-- api-gen:start -->
+### Events Inherited from Geometry
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

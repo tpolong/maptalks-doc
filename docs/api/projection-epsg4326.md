@@ -18,6 +18,12 @@ console.log(p.x, p.y); // 116.39, 39.9
 - `code: string` — 投影代码，`'EPSG:4326'`。
 - `aliases: string[]` — 别名列表，`['EPSG:4490']`。
 
+<!-- api-gen:start -->
+### EPSG4326Projection 的其他公开方法
+
+<!--@include: ./includes/api/projection-epsg4326-missing.md-->
+<!-- api-gen:end -->
+
 ## 方法
 
 - `project(p, out?): Coordinate` — 恒等投影，复制 x/y/z。

@@ -51,6 +51,18 @@ Point has no options.
 - `multi(ratio): Point` — Returns the point after scaling the current point by `ratio`.
 - `equals(c): boolean` — Returns whether the current point equals point `c`.
 
+<!-- api-gen:start -->
+### Other Public Methods of Point
+
+<!--@include: ./includes/api/point-missing.md-->
+
+### Methods Inherited from Position
+
+The following methods are provided by the parent class [Position](/en/api/position) and are available on instances of this class.
+
+<!--@include: ./includes/api/position-methods.md-->
+<!-- api-gen:end -->
+
 ## Static Methods
 
 Point has no static methods.

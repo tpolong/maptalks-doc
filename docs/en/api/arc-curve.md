@@ -34,6 +34,30 @@ Parameters:
 
 No class-specific methods; it inherits the methods of Curve.
 
+<!-- api-gen:start -->
+### Methods Inherited from LineString
+
+The following methods are provided by the parent class [LineString](/en/api/line-string) and are available on instances of this class.
+
+<!--@include: ./includes/api/line-string-methods.md-->
+
+### Methods Inherited from Path
+
+The following methods are provided by the parent class [Path](/en/api/path) and are available on instances of this class.
+
+<!--@include: ./includes/api/path-methods.md-->
+
+### Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable)；[Menuable](/en/api/menuable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `ArcCurve.fromJSON(json): ArcCurve` — Creates an ArcCurve instance from a JSON object.
@@ -41,3 +65,13 @@ No class-specific methods; it inherits the methods of Curve.
 ## Events
 
 No class-specific events.
+
+<!-- api-gen:start -->
+### Events Inherited from LineString
+
+<!--@include: ./includes/api/line-string-events.md-->
+
+### Events Inherited from Geometry
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

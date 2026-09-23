@@ -52,6 +52,34 @@ new GroupTileLayer(id, layers, options?)
 - `toJSON(): Object` — 导出图层 JSON
 - `getTiles(z, parentLayer): TilesType` — 按 zoom 聚合子图层的瓦片
 
+<!-- api-gen:start -->
+### 继承自 TileLayer 的方法
+
+下列方法由父类 [TileLayer](/api/wms-tile-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/tile-layer-methods.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 事件
 
 瓦片事件与图层通用事件见 [TileLayer](/api/tile-layer) / [Layer](/api/layer)。
+
+<!-- api-gen:start -->
+### 继承自 TileLayer 的事件
+
+<!--@include: ./includes/api/tile-layer-events.md-->
+
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

@@ -18,6 +18,12 @@ const p = projection.BAIDU.project([116.404, 39.915]); // 百度墨卡托坐标
 - `EARTHRADIUS` — 地球半径，`6370996.81`。
 - `MCBAND` / `LLBAND` / `MC2LL` / `LL2MC` — 百度坐标转换的系数表。
 
+<!-- api-gen:start -->
+### BAIDUProjection 的其他公开方法
+
+<!--@include: ./includes/api/projection-baidu-missing.md-->
+<!-- api-gen:end -->
+
 ## 方法
 
 - `project(p, out?): Coordinate` — 经纬度转百度墨卡托坐标（内部调用 `convertLL2MC`）。

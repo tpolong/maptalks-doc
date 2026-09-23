@@ -37,6 +37,18 @@ CanvasRenderer 自身没有独立的配置项，渲染相关配置通过所渲�
 - `prepareCanvas(): PointExtent` — 为渲染做准备：首次创建 canvas 或重置/清空现有 canvas，并返回遮罩的 2D 范围。
 - `onResize(param): void` — 地图尺寸变化时删除范围缓存、调整 canvas 大小并重绘。
 
+<!-- api-gen:start -->
+### CanvasRenderer 的其他公开方法
+
+<!--@include: ./includes/api/canvas-renderer-missing.md-->
+
+### 继承自 TileLayerCanvasRenderer 的方法
+
+下列方法由父类 TileLayerCanvasRenderer 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/tile-layer-canvas-renderer-methods.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 渲染器通过 `layer.fire` 触发以下图层事件：

@@ -52,6 +52,16 @@ Parameters:
 - `getPosition(): Point` — Gets the component's current position.
 - `getOwner(): Object` — Gets the component's host object.
 
+<!-- api-gen:start -->
+### Other Public Methods of UIComponent
+
+<!--@include: ./includes/api/ui-component-missing.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `isSupport(owner): boolean` — Whether `owner` supports hosting a UI component.

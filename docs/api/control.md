@@ -44,6 +44,16 @@ new Control(options)
 - `isVisible(): boolean` — 判断控件是否可见。
 - `remove(): Control` — 从地图上移除控件。
 
+<!-- api-gen:start -->
+### Control 的其他公开方法
+
+<!--@include: ./includes/api/control-missing.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `positions: Object` — 控件定位位置的对象映射，键为 `top-left`/`top-right`/`bottom-left`/`bottom-right`，值为定位对象（如 `{ top: 20, left: 20 }`）。

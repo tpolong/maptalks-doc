@@ -26,3 +26,11 @@ const player = Animation.animate(
 - `Easing.inAndOut: Function` — 先加速后减速缓动。
 - `Easing.linear: Function` — 线性缓动。
 - `Easing.upAndDown: Function` — 上下往返缓动。
+
+## 成员方法
+
+<!-- api-gen:start -->
+### Easing 的其他公开方法
+
+<!--@include: ./includes/api/animation-easing-missing.md-->
+<!-- api-gen:end -->

@@ -35,6 +35,12 @@ No independent configuration options. Each method accepts request options (such 
 - `Ajax.getImage(img, url, options?)` — Load the image at `url` into the given `img` (an `HTMLImageElement`); the image's `onload`/`onerror` fire on success or failure.
 - `Ajax.jsonp(url, callback)` — Issue a JSONP request with `callback` as the global callback, for cross-origin data retrieval.
 
+<!-- api-gen:start -->
+### Other Public Methods of Ajax
+
+<!--@include: ./includes/api/ajax-missing.md-->
+<!-- api-gen:end -->
+
 ## Static Methods
 
 `Ajax` methods are themselves static (see the Methods above).

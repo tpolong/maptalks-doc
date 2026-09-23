@@ -459,7 +459,6 @@ layer.identify([121.23, 39.34], { tolerance: 2 })
 </div>
 </details>
 
-
 <details><summary>identifyAtPoint(containerPoint, options)</summary>
 <div>
 <br/>
@@ -512,8 +511,17 @@ const copiedLayer = maptalks.Layer.fromJSON(json);
 </div>
 </details>
 
-
 <!--@include: ./includes/layer-methods.md-->
+
+<!-- api-gen:start -->
+### GroupGLLayer 的其他公开方法
+
+<!--@include: ./includes/api/group-gl-layer-missing.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
 
 ## 静态方法
 

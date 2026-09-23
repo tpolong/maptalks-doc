@@ -54,6 +54,22 @@ new DrawTool(options)
 - `addCoordinate(coordinate): DrawTool` — 向当前绘制添加一个坐标。
 - `setLayerZIndex(z): DrawTool` — 设置工具所在图层的层级。
 
+<!-- api-gen:start -->
+### DrawTool 的其他公开方法
+
+<!--@include: ./includes/api/draw-tool-missing.md-->
+
+### 继承自 MapTool 的方法
+
+下列方法由父类 [MapTool](/api/map-tool) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/map-tool-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `registerMode(name, modeAction)` — 注册一个自定义绘图模式。
@@ -67,3 +83,9 @@ new DrawTool(options)
 - `drawvertex` — 绘制过程中新增顶点时触发。
 - `drawend` — 绘制完成时触发。
 - `mousemove` — 绘制过程中鼠标移动时触发。
+
+<!-- api-gen:start -->
+### 继承自 MapTool 的事件
+
+<!--@include: ./includes/api/map-tool-events.md-->
+<!-- api-gen:end -->

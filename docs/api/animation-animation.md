@@ -23,6 +23,14 @@ player.play();
 
 - `Animation.speed: Object` — 预设动画速度常量对象：`{ slow: 2000, normal: 1000, fast: 500 }`。
 
+## 成员方法
+
+<!-- api-gen:start -->
+### Animation 的其他公开方法
+
+<!--@include: ./includes/api/animation-animation-missing.md-->
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `animate(styles, options, step, target): Player` — 创建一个动画 Player。`styles` 为要插值的样式（关键帧），`options` 为动画配置项（如时长、缓动），`step` 为每帧回调，`target` 为目标对象。

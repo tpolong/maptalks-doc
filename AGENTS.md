@@ -54,6 +54,30 @@ maptalks-docs/
 - **样式指南**：`docs/guide/style/`，渲染插件每页一个 `plugin-*.md`。
 - **链接**：站内用绝对路径（`/guide/intro`、`/api/vector-tile-layer`），示例页路由为 `/examples/`。
 
+## API 文档生成流水线（改 API 页前必读）
+
+API 页的**继承成员与方法/事件清单由源码自动生成**，不要手写、也不要手工复制片段。
+
+- 权威内容源是 `D:\code\maptalks\maptalks.js\packages\**\src` 的 JSDoc：方法注释多为「中文 → `@english` → 英文」双语，另有 `@extends` / `@mixes` / `@category` / `@event` / `@fires`；`@internal` 一律排除。
+- 脚本（`scripts/api/`）：
+
+  | 命令 | 作用 |
+  | --- | --- |
+  | `npm run api:inventory` | ast-grep 抽取源码结构 → `.vitepress/cache/api/api-model.json` + 覆盖报告 |
+  | `npm run api:gen` | 由模型生成片段 `docs/api/includes/api/<实体>-{methods,statics,events,missing}.md`（中英各一份） |
+  | `npm run api:wire` | 把片段接进 117 个 API 页（幂等，标记块 `<!-- api-gen:start/end -->` 之间） |
+  | `npm run api:verify` | 死链 / include 缺失 / 成员双向一致性 / 中英缺页 |
+  | `npm run api:check` | 逐页 markdown→Vue 解析门禁（秒级，**构建前必跑**） |
+  | `npm run api:sync` | 上面四步串起来 |
+
+- `scripts/api/page-map.json` 是「页面 → 源码实体」的**权威映射表**（117 条，人工确认过）；新增 API 页时先 `node scripts/api/init-page-map.mjs --write` 再手工修正。
+- 中文说明优先取 `scripts/api/zh-overrides.json`（批量补写的成果，键为 `实体.成员`），其次源码中文注释，再退化为英文原文。
+- **两个必须遵守的转义规则**（否则整站构建失败）：
+  - 生成的文本里 `<` 必须转义（未转义会被 Vue 当成未闭合标签：`Element is missing end tag`）；类型用反引号包住即可。
+  - `{` `}` 必须转义成 `&#123;` / `&#125;`（否则 VitePress 的属性语法会把 `{"top":100}` 解析成标签属性：`Duplicate attribute`）。
+- 片段里**不带标题**，标题由引用它的页面提供——同一个父类片段才能被所有子类页复用。
+- 改完跑 `npm run api:sync`，再 `npm run build`。
+
 ## 示例与 REPL（重要，改示例前必读）
 
 - 示例位于 `docs/public/examples/<一级分类>/<二级分类>/<示例>/`，要求目录下**必须有 `index.html`**。**目录结构即示例中心的分类树**，一级分类 8 个：`map` / `tile` / `vector2d` / `vt` / `glvec` / `gltf` / `scene3d` / `analysis`（加载器按目录自动遍历）。

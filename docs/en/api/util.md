@@ -30,3 +30,9 @@ console.log(Util.clamp(10, 0, 5)); // 5
 - `flash(interval, count, cb, ctx): void` — Flash-effect wrapper.
 - `isURL(url): boolean` — Whether the string is a URL.
 - `extractCssUrl(str): string` — Extract the address from a CSS `url(...)`.
+
+<!-- api-gen:start -->
+### Other Public Methods of util
+
+<!--@include: ./includes/api/util-missing.md-->
+<!-- api-gen:end -->

@@ -48,6 +48,12 @@ new Handler(target)
 - `addHooks()` — 启用时执行，注册所需的交互事件监听。
 - `removeHooks()` — 停用时执行，移除已注册的交互事件监听。
 
+<!-- api-gen:start -->
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 无。

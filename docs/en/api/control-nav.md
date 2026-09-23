@@ -36,6 +36,24 @@ Common options inherited from [control.Control](/en/api/control) also apply.
 
 - `buildOn(): null` — Build the control DOM; currently returns `null` (renders nothing).
 
+<!-- api-gen:start -->
+### Methods Inherited from Control
+
+The following methods are provided by the parent class [Control](/en/api/control) and are available on instances of this class.
+
+<!--@include: ./includes/api/control-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Events
 
 No specific events (inherits from [control.Control](/en/api/control)).
+
+<!-- api-gen:start -->
+### Events Inherited from Control
+
+<!--@include: ./includes/api/control-events.md-->
+<!-- api-gen:end -->

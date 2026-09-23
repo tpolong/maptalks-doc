@@ -206,6 +206,16 @@ The map uses the first available renderer in the `renderer` list, in order. The 
 - `requestFullScreen(dom?): Map` — request fullscreen
 - `cancelFullScreen(): Map` — cancel fullscreen
 
+<!-- api-gen:start -->
+### Other Public Methods of Map
+
+<!--@include: ./includes/api/map-missing.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Handlerable](/en/api/handlerable)；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable)；[Menuable](/en/api/menuable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `Map.VERSION` — version number

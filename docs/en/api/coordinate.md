@@ -66,6 +66,14 @@ Array `[x, y]`, JSON object `{x, y}`, and another `Coordinate` are also accepted
 
 - `set(x, y, z?): this` — set the coordinates (mutates and returns this)
 
+<!-- api-gen:start -->
+### Methods Inherited from Position
+
+The following methods are provided by the parent class [Position](/en/api/position) and are available on instances of this class.
+
+<!--@include: ./includes/api/position-methods.md-->
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `Coordinate.toNumberArrays(coordinates)` — convert Coordinates to GeoJSON-style coordinate arrays (recursive)

@@ -52,6 +52,16 @@ new UIComponent(options)
 - `getPosition(): Point` — 获取组件当前位置。
 - `getOwner(): Object` — 获取组件的宿主对象。
 
+<!-- api-gen:start -->
+### UIComponent 的其他公开方法
+
+<!--@include: ./includes/api/ui-component-missing.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `isSupport(owner): boolean` — 判断 `owner` 是否支持挂载 UI 组件。

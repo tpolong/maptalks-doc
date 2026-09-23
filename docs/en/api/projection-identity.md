@@ -17,6 +17,12 @@ console.log(p.x, p.y); // 100, 200
 
 - `code: string` — The projection code, `'IDENTITY'`.
 
+<!-- api-gen:start -->
+### Other Public Methods of IdentityProjection
+
+<!--@include: ./includes/api/projection-identity-missing.md-->
+<!-- api-gen:end -->
+
 ## Methods
 
 - `project(p, out?): Coordinate` — Identity projection, copying x/y/z.

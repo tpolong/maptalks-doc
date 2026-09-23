@@ -23,3 +23,9 @@ console.log(StringUtil.replaceVariable("{foo} is awesome", { foo: "John" })); //
 - `splitContent(content, font, wrapWidth, textWidth): Object[]` — 按宽度将文本拆成多行。
 - `replaceVariable(str, props): string` — 用 `props` 值替换 `{foo}` 形式的变量。
 - `getFont(style): string` — 从文本样式 symbol 生成 CSS font 字符串。
+
+<!-- api-gen:start -->
+### strings 的其他公开方法
+
+<!--@include: ./includes/api/string-util-missing.md-->
+<!-- api-gen:end -->

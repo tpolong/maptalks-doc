@@ -52,6 +52,24 @@ GLTFLayer 特有的配置项（2026 源码补充）：
 
 <!--@include: ./includes/layer-methods.md-->
 
+## 成员方法
+
+<!-- api-gen:start -->
+### GLTFLayer 的其他公开方法
+
+<!--@include: ./includes/api/gltf-layer-missing.md-->
+
+### 继承自 AbstractGLTFLayer 的方法
+
+下列方法由父类 AbstractGLTFLayer 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/abstract-gltf-layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 <details><summary>fromJSON(json)</summary>

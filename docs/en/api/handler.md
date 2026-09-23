@@ -48,6 +48,12 @@ Parameters:
 - `addHooks()` — Executed on enable; register the required interaction event listeners.
 - `removeHooks()` — Executed on disable; remove the registered interaction event listeners.
 
+<!-- api-gen:start -->
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Static Methods
 
 None.

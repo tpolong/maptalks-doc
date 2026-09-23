@@ -81,6 +81,22 @@ new TileLayer(id, options)
 - `clear(): this` — 清空图层
 - `toJSON(): Object` — 导出图层JSON
 
+<!-- api-gen:start -->
+### TileLayer 的其他公开方法
+
+<!--@include: ./includes/api/tile-layer-missing.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `TileLayer.fromJSON(layerJSON): TileLayer | null` — 从JSON还原图层
@@ -96,6 +112,12 @@ new TileLayer(id, options)
 | `clear` | 清空图层 |
 
 图层通用事件（`idchange`、`setopacity`、`show`/`hide`、`layerload`、`add`/`remove` 等）见 [Layer](/api/layer)。
+
+<!-- api-gen:start -->
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->
 
 ## TileSystem
 

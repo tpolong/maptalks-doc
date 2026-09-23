@@ -57,6 +57,12 @@ Parameters:
 - `isValid(): boolean` — Whether the extent is valid (all four boundary values are not null).
 - `equals(ext2): boolean` — Whether it equals another extent.
 
+<!-- api-gen:start -->
+### Other Public Methods of Extent
+
+<!--@include: ./includes/api/extent-missing.md-->
+<!-- api-gen:end -->
+
 ## Static Methods
 
 Extent has no static methods.

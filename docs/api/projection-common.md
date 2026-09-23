@@ -22,6 +22,12 @@ console.log(proj.code); // "EPSG:3857"
 - `sphere` — 球面测量器，声明投影是否为球面（球面投影如 `WGS84Sphere`）。
 - `extent` — 球面范围缓存（`Extent`）。
 
+<!-- api-gen:start -->
+### CommonProjection 的其他公开方法
+
+<!--@include: ./includes/api/projection-common-missing.md-->
+<!-- api-gen:end -->
+
 ## 方法
 
 - `is(code): boolean` — 判断投影代码或别名是否等于传入的 `code`。

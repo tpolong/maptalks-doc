@@ -35,6 +35,28 @@ TextMarker has no options of its own; configuration is inherited from [Marker](/
 - `toJSON()` — Serializes to a JSON object, removing the default `symbol` field from the base class.
 - `setSymbol(symbol): this` — Sets the symbol, splitting properties beginning with `text*` into the text symbol and the rest into the box symbol.
 
+<!-- api-gen:start -->
+### Other Public Methods of TextMarker
+
+<!--@include: ./includes/api/text-marker-missing.md-->
+
+### Methods Inherited from Marker
+
+The following methods are provided by the parent class [Marker](/en/api/marker) and are available on instances of this class.
+
+<!--@include: ./includes/api/marker-methods.md-->
+
+### Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [CenterMixin](/en/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable)；[Menuable](/en/api/menuable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 TextMarker has no static methods of its own.
@@ -42,3 +64,9 @@ TextMarker has no static methods of its own.
 ## Events
 
 - `contentchange` — Fired when the text content changes; the event object carries `old` and `new` fields.
+
+<!-- api-gen:start -->
+### Events Inherited from Geometry
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

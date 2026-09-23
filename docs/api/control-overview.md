@@ -41,6 +41,28 @@ new Overview(options)
 - `minimize(): Overview` — 最小化鹰眼控件。
 - `getOverviewMap(): Map` — 获取鹰眼地图对象。
 
+<!-- api-gen:start -->
+### Overview 的其他公开方法
+
+<!--@include: ./includes/api/control-overview-missing.md-->
+
+### 继承自 Control 的方法
+
+下列方法由父类 [Control](/api/control) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/control-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 事件
 
 - `load` — 鹰眼地图加载完成时触发。
+
+<!-- api-gen:start -->
+### 继承自 Control 的事件
+
+<!--@include: ./includes/api/control-events.md-->
+<!-- api-gen:end -->

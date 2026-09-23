@@ -18,6 +18,12 @@ console.log(p.x, p.y); // 116.39, 39.9
 - `code: string` — The projection code, `'EPSG:4326'`.
 - `aliases: string[]` — Alias list, `['EPSG:4490']`.
 
+<!-- api-gen:start -->
+### Other Public Methods of EPSG4326Projection
+
+<!--@include: ./includes/api/projection-epsg4326-missing.md-->
+<!-- api-gen:end -->
+
 ## Methods
 
 - `project(p, out?): Coordinate` — Identity projection, copying x/y/z.

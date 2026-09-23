@@ -58,6 +58,12 @@ crosscutAnalysis.addTo(groupGLLayer);
 </div>
 </details>
 
+<!-- api-gen:start -->
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)。
+<!-- api-gen:end -->
+
 ## 继承自Analysis的方法
 
 <!--@include: ./includes/analysis-methods.md-->

@@ -42,9 +42,27 @@ new control.Reset(options?)
 
 > 重置按钮为 `<div class="maptalks-reset">`，点击调用 `map.setView(this._view)` 恢复视图。
 
+<!-- api-gen:start -->
+### 继承自 Control 的方法
+
+下列方法由父类 [Control](/api/control) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/control-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
 ## 事件
 
 无特有事件（继承自 [control.Control](/api/control) 的 `add`、`remove`、`positionchange`）。
+
+<!-- api-gen:start -->
+### 继承自 Control 的事件
+
+<!--@include: ./includes/api/control-events.md-->
+<!-- api-gen:end -->
 
 ## 使用说明
 

@@ -44,6 +44,30 @@ new ParticleLayer(id, options?)
 - `getParticles(t?): {point, color?, r?}[]` — 获取 `t` 时刻粒子位置的接口（覆写）
 - `draw(context, view): void` — 在当前视图上绘制粒子
 
+<!-- api-gen:start -->
+### 继承自 CanvasLayer 的方法
+
+下列方法由父类 [CanvasLayer](/api/canvas-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/canvas-layer-methods.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 事件
 
 图层通用事件（`show`/`hide`、`setopacity`、`add`/`remove` 等）见 [CanvasLayer](/api/canvas-layer) / [Layer](/api/layer)。
+
+<!-- api-gen:start -->
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

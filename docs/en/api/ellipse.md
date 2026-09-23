@@ -41,6 +41,30 @@ Parameters:
 - `getHoles()` — Gets the inner rings of the ellipse.
 - `animateShow()` — Shows the ellipse with an animation.
 
+<!-- api-gen:start -->
+### Methods Inherited from Polygon
+
+The following methods are provided by the parent class [Polygon](/en/api/polygon) and are available on instances of this class.
+
+<!--@include: ./includes/api/polygon-methods.md-->
+
+### Methods Inherited from Path
+
+The following methods are provided by the parent class [Path](/en/api/path) and are available on instances of this class.
+
+<!--@include: ./includes/api/path-methods.md-->
+
+### Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [CenterMixin](/en/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable)；[Menuable](/en/api/menuable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `fromJSON(json)` — Creates an Ellipse from a JSON object.
@@ -48,3 +72,13 @@ Parameters:
 ## Events
 
 - `shapechange` — Fired when the shape of the ellipse changes.
+
+<!-- api-gen:start -->
+### Events Inherited from Polygon
+
+<!--@include: ./includes/api/polygon-events.md-->
+
+### Events Inherited from Geometry
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

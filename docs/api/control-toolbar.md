@@ -35,3 +35,29 @@ new Toolbar(options)
 | `vertical` | `Boolean` | 是否为垂直布局 | `false` |
 | `position` | `String` | 控件位置 | `"top-right"` |
 | `reverseMenu` | `Boolean` | 反向菜单布局 | `false` |
+
+## 成员方法
+
+<!-- api-gen:start -->
+### Toolbar 的其他公开方法
+
+<!--@include: ./includes/api/control-toolbar-missing.md-->
+
+### 继承自 Control 的方法
+
+下列方法由父类 [Control](/api/control) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/control-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
+## 事件
+
+<!-- api-gen:start -->
+### 继承自 Control 的事件
+
+<!--@include: ./includes/api/control-events.md-->
+<!-- api-gen:end -->

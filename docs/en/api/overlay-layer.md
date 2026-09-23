@@ -56,6 +56,22 @@ Parameters:
 
 Common methods inherited from [Layer](/en/api/layer) also apply.
 
+<!-- api-gen:start -->
+### Other Public Methods of OverlayLayer
+
+<!--@include: ./includes/api/overlay-layer-missing.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `OverlayLayer.fromJSON(json)` — restore a layer from JSON
@@ -70,3 +86,9 @@ Common methods inherited from [Layer](/en/api/layer) also apply.
 | `removestyle` | style removed |
 
 Common layer events — see [Layer](/en/api/layer).
+
+<!-- api-gen:start -->
+### Events Inherited from Layer
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

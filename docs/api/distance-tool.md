@@ -45,3 +45,33 @@ new DistanceTool(options)
 - `getLastMeasure(): number` — 获取最近一次的测量结果。
 - `undo()` — 撤销上一步操作。
 - `redo()` — 重做上一步操作。
+
+<!-- api-gen:start -->
+### 继承自 DrawTool 的方法
+
+下列方法由父类 [DrawTool](/api/draw-tool) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/draw-tool-methods.md-->
+
+### 继承自 MapTool 的方法
+
+下列方法由父类 [MapTool](/api/map-tool) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/map-tool-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
+## 事件
+
+<!-- api-gen:start -->
+### 继承自 DrawTool 的事件
+
+<!--@include: ./includes/api/draw-tool-events.md-->
+
+### 继承自 MapTool 的事件
+
+<!--@include: ./includes/api/map-tool-events.md-->
+<!-- api-gen:end -->

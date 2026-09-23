@@ -137,6 +137,12 @@ Returns:
 </div>
 </details>
 
+<!-- api-gen:start -->
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable).
+<!-- api-gen:end -->
+
 ## Methods Inherited from Analysis
 
 <!--@include: ./includes/analysis-methods.md-->

@@ -23,6 +23,12 @@ const utm = projection.UTM.create({ zone: 50, south: false });
 
 `create` 根据 zone 计算中央经线 `centralMeridian = (zone + 0.5) * 6 - 180`，`scaleFactor = 0.9996`，`falseEasting = 500000`，并复用 `projection.EPSG9807.create` 的横轴墨卡托投影。
 
+<!-- api-gen:start -->
+### UTMProjection 的其他公开方法
+
+<!--@include: ./includes/api/projection-utm-missing.md-->
+<!-- api-gen:end -->
+
 ## 方法
 
 - `project(p, out?): Coordinate` — 将经纬度投影为 UTM 坐标（米）。

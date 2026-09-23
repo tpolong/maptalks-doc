@@ -112,6 +112,16 @@ new Layer(id, options)
 
 - `toJSON(options?): Object` — 导出图层JSON
 
+<!-- api-gen:start -->
+### Layer 的其他公开方法
+
+<!--@include: ./includes/api/layer-missing.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `Layer.fromJSON(layerJSON): Layer | null` — 从JSON还原图层

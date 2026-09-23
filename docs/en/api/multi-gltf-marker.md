@@ -250,6 +250,22 @@ Returns:
 > - `getCenter()`: the average center of all instance coordinates
 > - `toJSON()` / `static fromJSON(json)`: JSON serialization / deserialization
 
+<!-- api-gen:start -->
+### Other Public Methods of MultiGLTFMarker
+
+<!--@include: ./includes/api/multi-gltf-marker-missing.md-->
+
+### Methods Inherited from Marker
+
+The following methods are provided by the parent class [Marker](/en/api/marker) and are available on instances of this class.
+
+<!--@include: ./includes/api/marker-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [CenterMixin](/en/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable)；[Menuable](/en/api/menuable).
+<!-- api-gen:end -->
+
 ## Methods Inherited from GLTFMarker
 
 <!--@include: ./includes/gltf-marker-methods.md-->

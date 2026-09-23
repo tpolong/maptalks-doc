@@ -56,7 +56,6 @@ new GeoJSONVectorTileLayer('geojson0', {
 </div>
 </details>
 
-
 ## 成员方法
 
 <details><summary>getData()</summary>
@@ -78,7 +77,6 @@ const data = layer.getData();
 
 </div>
 </details>
-
 
 <details><summary>setData(data)</summary>
 <div>
@@ -103,7 +101,6 @@ layer.setData('path/to/another.geojson');
 </div>
 </details>
 
-
 <details><summary>getExtent()</summary>
 <div>
 <br/>
@@ -123,7 +120,6 @@ const extent = layer.getExtent();
 
 </div>
 </details>
-
 
 <details><summary>getFeature(id)</summary>
 <div>
@@ -169,6 +165,17 @@ const feature = layer.getGeometryById(id);
 </div>
 </details>
 
+<!-- api-gen:start -->
+### 继承自 VectorTileLayer 的方法
+
+下列方法由父类 [VectorTileLayer](/api/vector-tile-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/vector-tile-layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
 
 ## 继承自VectorTileLayer的方法
 
@@ -201,7 +208,6 @@ const compressedStyle = GeoJSONVectorTileLayer.compressStyleJSON(style);
 </div>
 </details>
 
-
 <details><summary>registerPlugin(Plugin)</summary>
 <div>
 <br/>
@@ -219,7 +225,6 @@ GeoJSONVectorTileLayer.registerPlugin(PluginClazz);
 </div>
 </details>
 
-
 <details><summary>getPlugins()</summary>
 <div>
 <br/>
@@ -236,7 +241,6 @@ const pluginClasses = GeoJSONVectorTileLayer.getPlugins();
 
 </div>
 </details>
-
 
 <details><summary>fromJSON(json)</summary>
 <div>
@@ -256,7 +260,6 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 
 </div>
 </details>
-
 
 ## 事件
 
@@ -281,7 +284,6 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 </div>
 </details>
 
-
 <details><summary>dataerror</summary>
 <div>
 <br/>
@@ -299,7 +301,6 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 </div>
 </details>
 
-
 ### 继承自VectorTileLayer的事件
 
 <!--@include: ./includes/vtlayer-events.md-->
@@ -313,3 +314,9 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 <!--@include: ./includes/layer-events.md-->
 
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+
+<!-- api-gen:start -->
+### 继承自 VectorTileLayer 的事件
+
+<!--@include: ./includes/api/vector-tile-layer-events.md-->
+<!-- api-gen:end -->

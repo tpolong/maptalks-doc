@@ -30,3 +30,11 @@ new Frame(state, styles)
 - `styles: Object` — 该帧的样式值。
 - `playState: String` — 播放状态。
 - `symbol: Object` — 帧对应的符号。
+
+## 成员方法
+
+<!-- api-gen:start -->
+### Frame 的其他公开方法
+
+<!--@include: ./includes/api/animation-frame-missing.md-->
+<!-- api-gen:end -->

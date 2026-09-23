@@ -71,6 +71,28 @@ new CanvasLayer(id, options?)
 - `onMoveStart(param)` / `onMoving(param)` / `onMoveEnd(param)` — 地图移动回调
 - `onResize(param)` — 地图尺寸变化回调
 
+<!-- api-gen:start -->
+### CanvasLayer 的其他公开方法
+
+<!--@include: ./includes/api/canvas-layer-missing.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 事件
 
 图层通用事件（`show`/`hide`、`setopacity`、`add`/`remove` 等）见 [Layer](/api/layer)。
+
+<!-- api-gen:start -->
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

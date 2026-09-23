@@ -42,6 +42,22 @@ Parameters:
 - `getContent(): String` — Gets the panel content.
 - `update()` — Updates the panel.
 
+<!-- api-gen:start -->
+### Other Public Methods of Panel
+
+<!--@include: ./includes/api/control-panel-missing.md-->
+
+### Methods Inherited from Control
+
+The following methods are provided by the parent class [Control](/en/api/control) and are available on instances of this class.
+
+<!--@include: ./includes/api/control-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Events
 
 - `contentchange` — Fired when the panel content changes.
@@ -49,3 +65,9 @@ Parameters:
 - `dragging` — Fired while dragging.
 - `dragend` — Fired when dragging ends.
 - `close` — Fired when the panel is closed.
+
+<!-- api-gen:start -->
+### Events Inherited from Control
+
+<!--@include: ./includes/api/control-events.md-->
+<!-- api-gen:end -->

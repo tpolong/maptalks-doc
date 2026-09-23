@@ -56,6 +56,22 @@ new OverlayLayer(id, geometries?, options?)
 
 继承自 [Layer](/api/layer) 的通用方法同样适用。
 
+<!-- api-gen:start -->
+### OverlayLayer 的其他公开方法
+
+<!--@include: ./includes/api/overlay-layer-missing.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 - `OverlayLayer.fromJSON(json)` — 从JSON还原图层
@@ -70,3 +86,9 @@ new OverlayLayer(id, geometries?, options?)
 | `removestyle` | 移除样式后 |
 
 图层通用事件见 [Layer](/api/layer)。
+
+<!-- api-gen:start -->
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

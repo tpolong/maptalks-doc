@@ -81,6 +81,22 @@ Parameters:
 - `clear(): this` — clear the layer
 - `toJSON(): Object` — export layer JSON
 
+<!-- api-gen:start -->
+### Other Public Methods of TileLayer
+
+<!--@include: ./includes/api/tile-layer-missing.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `TileLayer.fromJSON(layerJSON): TileLayer | null` — restore a layer from JSON
@@ -96,6 +112,12 @@ Parameters:
 | `clear` | layer cleared |
 
 Common layer events (`idchange`, `setopacity`, `show`/`hide`, `layerload`, `add`/`remove`, etc.) — see [Layer](/en/api/layer).
+
+<!-- api-gen:start -->
+### Events Inherited from Layer
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->
 
 ## TileSystem
 

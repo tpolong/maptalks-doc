@@ -28,6 +28,12 @@ console.log(marker.getCoordinates());     // Coordinate [10, 20]
 - `getCoordinates(): Coordinate` — 获取几何的中心点坐标。
 - `setCoordinates(coordinates): this` — 设置几何的中心点，更新投影坐标并触发 `positionchange` 事件。参数可为 `Coordinate` 或 `[x, y, z]` 数组。
 
+<!-- api-gen:start -->
+### CenterMixin 的其他公开方法
+
+<!--@include: ./includes/api/center-mixin-missing.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 - `positionchange` — 中心点位置改变时触发。

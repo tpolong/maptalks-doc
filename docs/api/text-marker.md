@@ -35,6 +35,28 @@ TextMarker 无特有 options，配置项继承自 [Marker](/api/marker)（如 `s
 - `toJSON()` — 序列化为 JSON 对象，会移除基类默认的 `symbol` 字段。
 - `setSymbol(symbol): this` — 设置符号，自动将 `text*` 开头的属性归入文本符号、其余归入背景框符号。
 
+<!-- api-gen:start -->
+### TextMarker 的其他公开方法
+
+<!--@include: ./includes/api/text-marker-missing.md-->
+
+### 继承自 Marker 的方法
+
+下列方法由父类 [Marker](/api/marker) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/marker-methods.md-->
+
+### 继承自 Geometry 的方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
+### 混入的方法
+
+本类通过混入获得以下能力的方法，详见对应页面：[CenterMixin](/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)；[Menuable](/api/menuable)。
+<!-- api-gen:end -->
+
 ## 静态方法
 
 TextMarker 无特有静态方法。
@@ -42,3 +64,9 @@ TextMarker 无特有静态方法。
 ## 事件
 
 - `contentchange` — 当文本内容改变时触发，事件对象含 `old`、`new` 字段。
+
+<!-- api-gen:start -->
+### 继承自 Geometry 的事件
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

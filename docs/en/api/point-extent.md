@@ -33,6 +33,14 @@ PointExtent has no unique methods of its own; it reuses all methods of `Extent`.
 - `getMin()`, `getMax()`, `getCenter()`, `toArray()` etc. return `Point` instead of `Coordinate`.
 - The rest of the methods (`getWidth`, `getHeight`, `contains`, `intersects`, `within`, `combine`, `expand`, `copy`, `toJSON`, `toBBOX`, etc.) behave the same as `Extent`. See [Extent](/en/api/extent).
 
+<!-- api-gen:start -->
+### Methods Inherited from Extent
+
+The following methods are provided by the parent class [Extent](/en/api/extent) and are available on instances of this class.
+
+<!--@include: ./includes/api/extent-methods.md-->
+<!-- api-gen:end -->
+
 ## Static Methods
 
 PointExtent has no static methods.

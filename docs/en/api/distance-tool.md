@@ -45,3 +45,33 @@ Parameters:
 - `getLastMeasure(): number` — Gets the last measurement result.
 - `undo()` — Undoes the last step.
 - `redo()` — Redoes the last step.
+
+<!-- api-gen:start -->
+### Methods Inherited from DrawTool
+
+The following methods are provided by the parent class [DrawTool](/en/api/draw-tool) and are available on instances of this class.
+
+<!--@include: ./includes/api/draw-tool-methods.md-->
+
+### Methods Inherited from MapTool
+
+The following methods are provided by the parent class [MapTool](/en/api/map-tool) and are available on instances of this class.
+
+<!--@include: ./includes/api/map-tool-methods.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
+## Events
+
+<!-- api-gen:start -->
+### Events Inherited from DrawTool
+
+<!--@include: ./includes/api/draw-tool-events.md-->
+
+### Events Inherited from MapTool
+
+<!--@include: ./includes/api/map-tool-events.md-->
+<!-- api-gen:end -->

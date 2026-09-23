@@ -44,6 +44,16 @@ Parameters:
 - `isVisible(): boolean` — Whether the control is visible.
 - `remove(): Control` — Removes the control from the map.
 
+<!-- api-gen:start -->
+### Other Public Methods of Control
+
+<!--@include: ./includes/api/control-missing.md-->
+
+### Mixed-in Methods
+
+This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
 ## Static Methods
 
 - `positions: Object` — An object map of control position values, keyed by `top-left`/`top-right`/`bottom-left`/`bottom-right`, each mapping to a position object (e.g. `{ top: 20, left: 20 }`).
