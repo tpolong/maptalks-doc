@@ -84,7 +84,7 @@ mousemove事件
 <div>
 <br/>
 
-drawend event.
+绘制结束并生成所绘图形时触发
 
 参数属性：
 

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-contentchange event.
+panel 内容被重新设置时触发
 
 参数属性：
 
@@ -20,7 +20,7 @@ contentchange event.
 <div>
 <br/>
 
-drag start event
+开始拖动 panel 时触发
 
 参数属性：
 
@@ -38,7 +38,7 @@ drag start event
 <div>
 <br/>
 
-dragging event
+panel 正在被拖动时触发
 
 参数属性：
 
@@ -56,7 +56,7 @@ dragging event
 <div>
 <br/>
 
-drag end event
+panel 拖动结束时触发
 
 参数属性：
 

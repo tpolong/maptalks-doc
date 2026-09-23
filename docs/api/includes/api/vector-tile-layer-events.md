@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-setstyle event.
+VectorTileLayer 的 style 设置后触发
 
 参数属性：
 

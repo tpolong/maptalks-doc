@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-an event when changing label's text content
+Label 文本内容改变后触发
 
 参数属性：
 

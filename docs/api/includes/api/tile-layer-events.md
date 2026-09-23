@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-clear event, fired when tile layer is cleared.
+tile layer 被清空时触发
 
 参数属性：
 
@@ -18,7 +18,7 @@ clear event, fired when tile layer is cleared.
 <div>
 <br/>
 
-tileload event, fired when tile is loaded.
+图层瓦片加载完成时触发
 
 参数属性：
 
@@ -36,7 +36,7 @@ tileload event, fired when tile is loaded.
 <div>
 <br/>
 
-tileerror event, fired when tile loading has error.
+tile 加载出错时触发
 
 参数属性：
 
@@ -53,7 +53,7 @@ tileerror event, fired when tile loading has error.
 <div>
 <br/>
 
-tiledelete event, fired when tile is delete.
+图层瓦片从缓存中删除时触发
 
 参数属性：
 

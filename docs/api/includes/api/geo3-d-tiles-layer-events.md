@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-tileload event, fired when tile is loaded.
+3dtiles 瓦片加载完成时触发
 
 参数属性：
 
@@ -19,7 +19,7 @@ tileload event, fired when tile is loaded.
 <div>
 <br/>
 
-tileerror event, fired when tile loading has error.
+3dtiles 图层 tile 加载出错时触发
 
 参数属性：
 

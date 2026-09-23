@@ -48,6 +48,14 @@ const withZh = (entity, m, lang) => {
   overridesUsed++;
   return { ...m, zh: ov };
 };
+/** 事件的中文说明键是 `Event:<触发类>#<事件名>` */
+const withZhEvent = (e, lang) => {
+  if (lang !== 'zh') return e;
+  const ov = OVERRIDES[`Event:${e.owner}#${e.name}`];
+  if (!ov) return e;
+  overridesUsed++;
+  return { ...e, zh: ov };
+};
 
 const written = [];
 const write = (dirIdx, file, content) => {
@@ -108,7 +116,7 @@ for (const key of entities) {
       if (lang === 'zh') stats.statics += statics.length;
     }
     if (events.length) {
-      const body = events.map((e) => renderEvent(e, lang)).join('\n\n');
+      const body = events.map((e) => renderEvent(withZhEvent(e, lang), lang)).join('\n\n');
       write(dirIdx, `${sl}-events.md`, body);
       if (lang === 'zh') stats.events += events.length;
     }

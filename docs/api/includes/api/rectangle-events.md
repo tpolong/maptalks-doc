@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-positionchange 事件。
+Rectangle 位置坐标改变后触发
 
 </div>
 </details>
@@ -11,7 +11,7 @@ positionchange 事件。
 <div>
 <br/>
 
-shapechange 事件。
+Rectangle 宽度或高度改变后触发
 
 </div>
 </details>

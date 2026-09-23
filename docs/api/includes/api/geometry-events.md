@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-positionchange event.
+geometry 位置改变时触发
 
 参数属性：
 
@@ -50,7 +50,7 @@ positionchange event.
 <div>
 <br/>
 
-changed geometry shape event, fired when drag end to change geometry shape.
+拖动编辑控制点改变 geometry 形状结束时触发
 
 参数属性：
 
@@ -66,7 +66,7 @@ changed geometry shape event, fired when drag end to change geometry shape.
 <div>
 <br/>
 
-changed geometry shape event, fired when edit control vertex  remove
+编辑中删除控制顶点后触发
 
 参数属性：
 
@@ -98,7 +98,7 @@ changed geometry shape event, fired when edit control vertex  remove
 <div>
 <br/>
 
-fired when geometry's animation ended.
+geometry 动画结束时触发
 
 参数属性：
 
@@ -114,7 +114,7 @@ fired when geometry's animation ended.
 <div>
 <br/>
 
-fired when geometry is animating.
+geometry 动画逐帧播放时触发
 
 参数属性：
 
@@ -130,7 +130,7 @@ fired when geometry is animating.
 <div>
 <br/>
 
-fired when geometry's animation start.
+geometry 动画开始时触发
 
 参数属性：
 
@@ -206,7 +206,7 @@ fired when geometry's animation start.
 <div>
 <br/>
 
-start edit event
+geometry 开始编辑时触发
 
 参数属性：
 
@@ -222,7 +222,7 @@ start edit event
 <div>
 <br/>
 
-end edit event
+geometry 结束编辑时触发
 
 参数属性：
 
@@ -238,7 +238,7 @@ end edit event
 <div>
 <br/>
 
-redo edit event
+geometry 编辑重做后触发
 
 参数属性：
 
@@ -254,7 +254,7 @@ redo edit event
 <div>
 <br/>
 
-undo edit event
+geometry 编辑撤销后触发
 
 参数属性：
 
@@ -270,7 +270,7 @@ undo edit event
 <div>
 <br/>
 
-cancel edit event
+geometry 编辑取消后触发
 
 参数属性：
 
@@ -303,7 +303,7 @@ add 事件
 <div>
 <br/>
 
-idchange event.
+图形的 id 改变后触发
 
 参数属性：
 
@@ -321,7 +321,7 @@ idchange event.
 <div>
 <br/>
 
-propertieschange event, thrown when geometry's properties is changed.
+图形的 properties 改变后触发
 
 参数属性：
 
@@ -339,7 +339,7 @@ propertieschange event, thrown when geometry's properties is changed.
 <div>
 <br/>
 
-symbolchange event.
+geometry 的 symbol 更新后触发
 
 参数属性：
 
@@ -356,7 +356,7 @@ symbolchange event.
 <div>
 <br/>
 
-show event
+geometry 被显示时触发
 
 参数属性：
 
@@ -372,7 +372,7 @@ show event
 <div>
 <br/>
 
-hide event
+geometry 被隐藏时触发
 
 参数属性：
 
@@ -406,7 +406,7 @@ hide event
 <div>
 <br/>
 
-shapechange event.
+geometry 形状改变时触发
 
 参数属性：
 
@@ -422,7 +422,7 @@ shapechange event.
 <div>
 <br/>
 
-removestart event.
+geometry 开始从 layer 中移除时触发
 
 参数属性：
 
@@ -438,7 +438,7 @@ removestart event.
 <div>
 <br/>
 
-remove event.
+geometry 从 layer 中移除后触发
 
 参数属性：
 
@@ -454,7 +454,7 @@ remove event.
 <div>
 <br/>
 
-removeend event.
+geometry 从 layer 上移除完成后触发
 
 参数属性：
 
@@ -470,7 +470,7 @@ removeend event.
 <div>
 <br/>
 
-shapechange 事件。
+geometry 形状改变时触发
 
 </div>
 </details>
@@ -479,7 +479,7 @@ shapechange 事件。
 <div>
 <br/>
 
-mousedown event
+鼠标在图形上按下时触发
 
 参数属性：
 
@@ -499,7 +499,7 @@ mousedown event
 <div>
 <br/>
 
-mouseup event
+鼠标在图形上松开时触发
 
 参数属性：
 
@@ -519,7 +519,7 @@ mouseup event
 <div>
 <br/>
 
-mousemove event
+鼠标在图形上移动时触发
 
 参数属性：
 
@@ -539,7 +539,7 @@ mousemove event
 <div>
 <br/>
 
-click event
+鼠标单击图形时触发
 
 参数属性：
 
@@ -559,7 +559,7 @@ click event
 <div>
 <br/>
 
-dblclick event
+鼠标双击图形时触发
 
 参数属性：
 
@@ -579,7 +579,7 @@ dblclick event
 <div>
 <br/>
 
-contextmenu event
+鼠标右键点击图形时触发
 
 参数属性：
 
@@ -599,7 +599,7 @@ contextmenu event
 <div>
 <br/>
 
-touchstart event
+手指触摸图形时触发
 
 参数属性：
 
@@ -619,7 +619,7 @@ touchstart event
 <div>
 <br/>
 
-touchmove event
+手指在图形上滑动时触发
 
 参数属性：
 
@@ -639,7 +639,7 @@ touchmove event
 <div>
 <br/>
 
-touchend event
+手指在图形上抬起时触发
 
 参数属性：
 
@@ -659,7 +659,7 @@ touchend event
 <div>
 <br/>
 
-mouseenter event for geometry
+鼠标进入图形时触发
 
 参数属性：
 
@@ -679,7 +679,7 @@ mouseenter event for geometry
 <div>
 <br/>
 
-mouseover event for geometry
+鼠标移到图形上方时触发
 
 参数属性：
 
@@ -699,7 +699,7 @@ mouseover event for geometry
 <div>
 <br/>
 
-mouseout event for geometry
+鼠标移出图形时触发
 
 参数属性：
 
@@ -719,7 +719,7 @@ mouseout event for geometry
 <div>
 <br/>
 
-openmenu event
+在 geometry 上右键唤出菜单时触发
 
 参数属性：
 
@@ -735,7 +735,7 @@ openmenu event
 <div>
 <br/>
 
-closemenu event
+geometry 的右键菜单关闭时触发
 
 参数属性：
 
@@ -751,7 +751,7 @@ closemenu event
 <div>
 <br/>
 
-removemenu event
+geometry 的右键菜单被移除后触发
 
 参数属性：
 

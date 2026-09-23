@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange 事件。
+GeometryCollection 包含的图形改变后触发
 
 </div>
 </details>
@@ -11,7 +11,7 @@ shapechange 事件。
 <div>
 <br/>
 
-removestart 事件。
+GeometryCollection 开始从 layer 中移除时触发
 
 </div>
 </details>
@@ -20,7 +20,7 @@ removestart 事件。
 <div>
 <br/>
 
-remove 事件。
+GeometryCollection 从 layer 中移除后触发
 
 </div>
 </details>
@@ -29,7 +29,7 @@ remove 事件。
 <div>
 <br/>
 
-removeend 事件。
+GeometryCollection 移除动作结束时触发
 
 </div>
 </details>
@@ -38,7 +38,7 @@ removeend 事件。
 <div>
 <br/>
 
-show 事件。
+GeometryCollection 被显示时触发
 
 </div>
 </details>
@@ -47,7 +47,7 @@ show 事件。
 <div>
 <br/>
 
-hide 事件。
+GeometryCollection 被隐藏时触发
 
 </div>
 </details>

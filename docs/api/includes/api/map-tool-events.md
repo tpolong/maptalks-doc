@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-add event.
+map tool 添加到 map 上时触发
 
 参数属性：
 
@@ -18,7 +18,7 @@ add event.
 <div>
 <br/>
 
-enable event.
+map tool 被启用时触发
 
 参数属性：
 
@@ -34,7 +34,7 @@ enable event.
 <div>
 <br/>
 
-disable event.
+map tool 被禁用时触发
 
 参数属性：
 
@@ -50,7 +50,7 @@ disable event.
 <div>
 <br/>
 
-remove event.
+map tool 从 map 上移除时触发
 
 参数属性：
 

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange 事件。
+Ellipse 宽度或高度改变后触发
 
 </div>
 </details>

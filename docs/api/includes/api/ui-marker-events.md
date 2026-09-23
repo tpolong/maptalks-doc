@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-mousedown event
+鼠标在 UIMarker 上按下时触发
 
 参数属性：
 
@@ -22,7 +22,7 @@ mousedown event
 <div>
 <br/>
 
-mouseup event
+鼠标在 UIMarker 上松开时触发
 
 参数属性：
 
@@ -42,7 +42,7 @@ mouseup event
 <div>
 <br/>
 
-mouseenter event
+鼠标进入 UIMarker 时触发
 
 参数属性：
 
@@ -62,7 +62,7 @@ mouseenter event
 <div>
 <br/>
 
-mouseover event
+鼠标移入 UIMarker 元素时触发
 
 参数属性：
 
@@ -82,7 +82,7 @@ mouseover event
 <div>
 <br/>
 
-mouseout event
+鼠标移出 UIMarker 元素时触发
 
 参数属性：
 
@@ -102,7 +102,7 @@ mouseout event
 <div>
 <br/>
 
-mousemove event
+鼠标在 UIMarker 上移动时触发
 
 参数属性：
 
@@ -122,7 +122,7 @@ mousemove event
 <div>
 <br/>
 
-click event
+鼠标在 UIMarker 上单击时触发
 
 参数属性：
 
@@ -142,7 +142,7 @@ click event
 <div>
 <br/>
 
-dblclick event
+鼠标在 UIMarker 上双击时触发
 
 参数属性：
 
@@ -162,7 +162,7 @@ dblclick event
 <div>
 <br/>
 
-contextmenu event
+鼠标右键点击 UIMarker 时触发
 
 参数属性：
 
@@ -182,7 +182,7 @@ contextmenu event
 <div>
 <br/>
 
-keypress event
+在 UIMarker 上按键时触发
 
 参数属性：
 
@@ -202,7 +202,7 @@ keypress event
 <div>
 <br/>
 
-touchstart event
+手指触摸 UIMarker 时触发
 
 参数属性：
 
@@ -222,7 +222,7 @@ touchstart event
 <div>
 <br/>
 
-touchmove event
+手指在 UIMarker 上滑动时触发
 
 参数属性：
 
@@ -242,7 +242,7 @@ touchmove event
 <div>
 <br/>
 
-touchend event
+手指离开 UIMarker 时触发
 
 参数属性：
 
@@ -262,7 +262,7 @@ touchend event
 <div>
 <br/>
 
-positionchange 事件。
+UIMarker 坐标被重新设置后触发
 
 </div>
 </details>
@@ -271,7 +271,7 @@ positionchange 事件。
 <div>
 <br/>
 
-positionchange event.
+UIMarker 坐标被重新设置后触发
 
 参数属性：
 
@@ -287,7 +287,7 @@ positionchange event.
 <div>
 <br/>
 
-contentchange 事件。
+UIMarker 内容被重新设置时触发
 
 </div>
 </details>
@@ -296,7 +296,7 @@ contentchange 事件。
 <div>
 <br/>
 
-contentchange event.
+UIMarker 内容被重新设置时触发
 
 参数属性：
 
@@ -314,7 +314,7 @@ contentchange event.
 <div>
 <br/>
 
-showstart 事件。
+UIMarker 开始显示时触发
 
 </div>
 </details>
@@ -323,7 +323,7 @@ showstart 事件。
 <div>
 <br/>
 
-showend 事件。
+UIMarker 显示完成时触发
 
 </div>
 </details>
@@ -332,7 +332,7 @@ showend 事件。
 <div>
 <br/>
 
-drag start event
+开始拖动 UIMarker 时触发
 
 参数属性：
 
@@ -352,7 +352,7 @@ drag start event
 <div>
 <br/>
 
-dragging event
+拖动 UIMarker 移动时触发
 
 参数属性：
 
@@ -372,7 +372,7 @@ dragging event
 <div>
 <br/>
 
-dragend event
+结束拖动 UIMarker 后触发
 
 参数属性：
 

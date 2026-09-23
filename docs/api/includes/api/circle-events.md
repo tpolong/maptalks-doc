@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange 事件。
+Circle 半径改变后触发
 
 </div>
 </details>

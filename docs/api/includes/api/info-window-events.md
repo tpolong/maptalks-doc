@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-contentchange event.
+InfoWindow 内容改变后触发
 
 参数属性：
 
@@ -20,7 +20,7 @@ contentchange event.
 <div>
 <br/>
 
-titlechange event.
+InfoWindow 标题改变后触发
 
 参数属性：
 

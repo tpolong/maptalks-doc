@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-edittextstart when starting to edit text content
+TextMarker 开始编辑文本内容时触发
 
 参数属性：
 
@@ -18,7 +18,7 @@ edittextstart when starting to edit text content
 <div>
 <br/>
 
-edittextend when ended editing text content
+TextMarker 结束编辑并保存文本后触发
 
 参数属性：
 

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange 事件。
+Polygon 坐标改变后触发
 
 </div>
 </details>

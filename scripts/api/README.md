@@ -81,6 +81,15 @@ node scripts/api/zh-batches.mjs 20       # 切成每批 20 条 → zh-batches/<N
 node scripts/api/zh-merge.mjs --write    # 合并 → scripts/api/zh-overrides.json
 ```
 
+事件描述同理（键为 `Event:<类>#<事件名>`）：
+
+```bash
+node scripts/api/zh-events.mjs --todo       # 导出缺中文事件 → zh-events-todo.json
+node scripts/api/zh-events.mjs --batches 20 # → zh-event-batches/<NN>.json
+#   子代理补写 → zh-event-parts/<NN>.json
+node scripts/api/zh-events.mjs --merge      # 并入 zh-overrides.json
+```
+
 给子代理的硬性要求（有效）：只依据源码实现写、一句话 ≤45 字、**不要编造**、键必须与输入完全一致、只写自己那一个文件。注意：
 
 - `zh-batches.mjs` 会 `rmSync` 重建批次目录 —— 补写期间**不要重跑**，否则批号错位。

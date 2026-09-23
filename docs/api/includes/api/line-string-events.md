@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange 事件。
+LineString 坐标改变后触发
 
 </div>
 </details>

@@ -54,7 +54,7 @@ setopacity 事件
 <div>
 <br/>
 
-show event.
+layer 由隐藏变为可见后触发
 
 参数属性：
 
@@ -120,7 +120,7 @@ visiblechange 事件
 <div>
 <br/>
 
-canvascreate event, fired when canvas created.
+layer 的 canvas 创建后触发
 
 参数属性：
 
@@ -138,7 +138,7 @@ canvascreate event, fired when canvas created.
 <div>
 <br/>
 
-renderstart event, fired when layer starts to render.
+图层开始渲染时触发
 
 参数属性：
 
@@ -155,7 +155,7 @@ renderstart event, fired when layer starts to render.
 <div>
 <br/>
 
-resourceload event, fired when external resources of the layer complete loading.
+layer 的外部资源加载完成时触发
 
 参数属性：
 
@@ -171,7 +171,7 @@ resourceload event, fired when external resources of the layer complete loading.
 <div>
 <br/>
 
-renderend event, fired when layer ends rendering.
+图层渲染结束时触发
 
 参数属性：
 
@@ -188,7 +188,7 @@ renderend event, fired when layer ends rendering.
 <div>
 <br/>
 
-layerload event, fired when layer is loaded.
+layer 瓦片加载完成时触发
 
 参数属性：
 

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-touchactstart event
+双指触摸手势在 map 上开始时触发
 
 参数属性：
 
@@ -18,7 +18,7 @@ touchactstart event
 <div>
 <br/>
 
-touchacting event
+双指触摸缩放或旋转进行时触发
 
 参数属性：
 
@@ -34,7 +34,7 @@ touchacting event
 <div>
 <br/>
 
-touchactend event
+双指触摸操作结束时触发
 
 参数属性：
 
@@ -50,7 +50,7 @@ touchactend event
 <div>
 <br/>
 
-fired when map is animating.  (panning, zooming, rotating)
+map 动画播放时触发
 
 参数属性：
 
@@ -66,7 +66,7 @@ fired when map is animating.  (panning, zooming, rotating)
 <div>
 <br/>
 
-fired when map's animation is interrupted by mouse event or else.
+map 动画被鼠标操作打断后触发
 
 参数属性：
 
@@ -82,7 +82,7 @@ fired when map's animation is interrupted by mouse event or else.
 <div>
 <br/>
 
-fired when map's animation ended (panning, zooming, rotating).
+map 动画正常播放结束时触发
 
 参数属性：
 
@@ -98,7 +98,7 @@ fired when map's animation ended (panning, zooming, rotating).
 <div>
 <br/>
 
-fired when map starts to animate (panning, zooming, rotating).
+map 开始播放动画时触发
 
 参数属性：
 
@@ -114,7 +114,7 @@ fired when map starts to animate (panning, zooming, rotating).
 <div>
 <br/>
 
-fovchange 事件。
+map 的 fov 改变后触发
 
 </div>
 </details>
@@ -123,7 +123,7 @@ fovchange 事件。
 <div>
 <br/>
 
-rotatestart 事件。
+地图开始旋转时触发
 
 </div>
 </details>
@@ -132,7 +132,7 @@ rotatestart 事件。
 <div>
 <br/>
 
-rotate 事件。
+已废弃的 rotateend 别名，map 旋转角度改变时触发
 
 </div>
 </details>
@@ -141,7 +141,7 @@ rotate 事件。
 <div>
 <br/>
 
-rotateend 事件。
+地图旋转结束时触发
 
 </div>
 </details>
@@ -150,7 +150,7 @@ rotateend 事件。
 <div>
 <br/>
 
-pitchstart 事件。
+map 开始改变 pitch 时触发
 
 </div>
 </details>
@@ -159,7 +159,7 @@ pitchstart 事件。
 <div>
 <br/>
 
-pitch event, alias of pitchend, deprecated
+已废弃的 pitchend 别名，map 的 pitch 改变后触发
 
 参数属性：
 
@@ -177,7 +177,7 @@ pitch event, alias of pitchend, deprecated
 <div>
 <br/>
 
-pitchend event
+map 的 pitch 改变后触发
 
 参数属性：
 
@@ -195,7 +195,7 @@ pitchend event
 <div>
 <br/>
 
-mousedown event
+鼠标在地图上按下时触发
 
 参数属性：
 
@@ -215,7 +215,7 @@ mousedown event
 <div>
 <br/>
 
-mouseup event
+鼠标在地图上松开时触发
 
 参数属性：
 
@@ -235,7 +235,7 @@ mouseup event
 <div>
 <br/>
 
-mouseover event
+鼠标移到地图上方时触发
 
 参数属性：
 
@@ -255,7 +255,7 @@ mouseover event
 <div>
 <br/>
 
-mouseout event
+鼠标移出地图时触发
 
 参数属性：
 
@@ -275,7 +275,7 @@ mouseout event
 <div>
 <br/>
 
-mouseenter event
+鼠标进入地图容器时触发
 
 参数属性：
 
@@ -295,7 +295,7 @@ mouseenter event
 <div>
 <br/>
 
-mouseleave event
+鼠标离开地图容器时触发
 
 参数属性：
 
@@ -315,7 +315,7 @@ mouseleave event
 <div>
 <br/>
 
-mousemove event
+鼠标在地图上移动时触发
 
 参数属性：
 
@@ -335,7 +335,7 @@ mousemove event
 <div>
 <br/>
 
-click event
+鼠标点击 map 时触发
 
 参数属性：
 
@@ -355,7 +355,7 @@ click event
 <div>
 <br/>
 
-dblclick event
+鼠标双击 map 时触发
 
 参数属性：
 
@@ -375,7 +375,7 @@ dblclick event
 <div>
 <br/>
 
-contextmenu event
+在 map 上点右键时触发
 
 参数属性：
 
@@ -395,7 +395,7 @@ contextmenu event
 <div>
 <br/>
 
-keypress event
+在已获得焦点的 map 上按下按键时触发
 
 参数属性：
 
@@ -415,7 +415,7 @@ keypress event
 <div>
 <br/>
 
-touchstart event
+手指触摸 map 时触发
 
 参数属性：
 
@@ -435,7 +435,7 @@ touchstart event
 <div>
 <br/>
 
-touchmove event
+手指在 map 上滑动时触发
 
 参数属性：
 
@@ -455,7 +455,7 @@ touchmove event
 <div>
 <br/>
 
-touchend event
+手指离开 map 屏幕时触发
 
 参数属性：
 
@@ -475,7 +475,7 @@ touchend event
 <div>
 <br/>
 
-drop event
+拖入的内容在 map 容器上放下时触发
 
 参数属性：
 
@@ -495,7 +495,7 @@ drop event
 <div>
 <br/>
 
-fullscreenstart event
+map 开始请求进入全屏时触发
 
 参数属性：
 
@@ -511,7 +511,7 @@ fullscreenstart event
 <div>
 <br/>
 
-fullscreenend event
+map 全屏请求发出后触发
 
 参数属性：
 
@@ -527,7 +527,7 @@ fullscreenend event
 <div>
 <br/>
 
-cancelfullscreen event
+map 取消全屏后触发
 
 参数属性：
 
@@ -543,7 +543,7 @@ cancelfullscreen event
 <div>
 <br/>
 
-spatialreferencechange event, fired when map's spatial reference is updated.
+地图的空间参考系更新后触发
 
 参数属性：
 
@@ -561,7 +561,7 @@ spatialreferencechange event, fired when map's spatial reference is updated.
 <div>
 <br/>
 
-setbaselayer event, fired when base layer is set.
+map 设置底图 layer 后触发
 
 参数属性：
 
@@ -577,7 +577,7 @@ setbaselayer event, fired when base layer is set.
 <div>
 <br/>
 
-baselayerchangestart event, fired when base layer is changed.
+map 开始更换底图 layer 时触发
 
 参数属性：
 
@@ -593,7 +593,7 @@ baselayerchangestart event, fired when base layer is changed.
 <div>
 <br/>
 
-baselayerchangeend event, fired when base layer is changed.
+map 底图 layer 切换完成后触发
 
 参数属性：
 
@@ -609,7 +609,7 @@ baselayerchangeend event, fired when base layer is changed.
 <div>
 <br/>
 
-baselayerload event, fired when base layer is loaded.
+底图 layer 加载完成时触发
 
 参数属性：
 
@@ -625,7 +625,7 @@ baselayerload event, fired when base layer is loaded.
 <div>
 <br/>
 
-baselayerremove event, fired when base layer is removed.
+底图 layer 被移除时触发
 
 参数属性：
 
@@ -641,7 +641,7 @@ baselayerremove event, fired when base layer is removed.
 <div>
 <br/>
 
-addlayer event, fired when adding layers.
+地图添加图层后触发
 
 参数属性：
 
@@ -658,7 +658,7 @@ addlayer event, fired when adding layers.
 <div>
 <br/>
 
-removelayer event, fired when removing layers.
+地图移除图层后触发
 
 参数属性：
 
@@ -675,7 +675,7 @@ removelayer event, fired when removing layers.
 <div>
 <br/>
 
-resize event when map container's size changes
+map 容器尺寸变化时触发
 
 参数属性：
 
@@ -691,7 +691,7 @@ resize event when map container's size changes
 <div>
 <br/>
 
-movestart event
+map 开始移动时触发
 
 参数属性：
 
@@ -711,7 +711,7 @@ movestart event
 <div>
 <br/>
 
-moving event
+map 正在移动时触发
 
 参数属性：
 
@@ -731,7 +731,7 @@ moving event
 <div>
 <br/>
 
-moveend event
+map 移动结束时触发
 
 参数属性：
 
@@ -751,7 +751,7 @@ moveend event
 <div>
 <br/>
 
-dragrotatestart event
+拖拽旋转或倾斜 map 开始时触发
 
 参数属性：
 
@@ -771,7 +771,7 @@ dragrotatestart event
 <div>
 <br/>
 
-dragrotating event
+拖拽改变 map 方位角或倾角时触发
 
 参数属性：
 
@@ -791,7 +791,7 @@ dragrotating event
 <div>
 <br/>
 
-dragrotateend event
+拖拽旋转或倾斜 map 结束时触发
 
 参数属性：
 
@@ -811,7 +811,7 @@ dragrotateend event
 <div>
 <br/>
 
-viewchange event
+地图视图变化并记录到视图历史时触发
 
 参数属性：
 
@@ -829,7 +829,7 @@ viewchange event
 <div>
 <br/>
 
-zoomstart event
+地图开始缩放时触发
 
 参数属性：
 
@@ -847,7 +847,7 @@ zoomstart event
 <div>
 <br/>
 
-zooming event
+地图正在缩放时触发
 
 参数属性：
 
@@ -865,7 +865,7 @@ zooming event
 <div>
 <br/>
 
-zoomend event
+地图缩放结束时触发
 
 参数属性：
 
@@ -883,7 +883,7 @@ zoomend event
 <div>
 <br/>
 
-renderend event, an event fired when map ends rendering.
+地图渲染结束时触发
 
 参数属性：
 
@@ -900,7 +900,7 @@ renderend event, an event fired when map ends rendering.
 <div>
 <br/>
 
-renderstart event, an event fired when map starts to render.
+地图开始渲染时触发
 
 参数属性：
 
@@ -917,7 +917,7 @@ renderstart event, an event fired when map starts to render.
 <div>
 <br/>
 
-openmenu event
+在 map 上打开右键菜单时触发
 
 参数属性：
 
@@ -933,7 +933,7 @@ openmenu event
 <div>
 <br/>
 
-closemenu event
+map 的右键菜单关闭时触发
 
 参数属性：
 
@@ -949,7 +949,7 @@ closemenu event
 <div>
 <br/>
 
-removemenu event
+map 的右键菜单被移除时触发
 
 参数属性：
 

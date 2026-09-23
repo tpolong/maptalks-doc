@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-add 事件。
+UIComponent 添加到 map 或图形上时触发
 
 </div>
 </details>
@@ -11,7 +11,7 @@ add 事件。
 <div>
 <br/>
 
-add event.
+UIComponent 添加到 map 或图形上时触发
 
 参数属性：
 
@@ -27,7 +27,7 @@ add event.
 <div>
 <br/>
 
-showstart event.
+UIComponent 开始显示时触发
 
 参数属性：
 
@@ -43,7 +43,7 @@ showstart event.
 <div>
 <br/>
 
-showend event.
+UIComponent 显示完成时触发
 
 参数属性：
 
@@ -59,7 +59,7 @@ showend event.
 <div>
 <br/>
 
-hide event.
+UIComponent 被隐藏时触发
 
 参数属性：
 
@@ -75,7 +75,7 @@ hide event.
 <div>
 <br/>
 
-remove event.
+UIComponent 从 map 或图形上移除时触发
 
 参数属性：
 
@@ -91,7 +91,7 @@ remove event.
 <div>
 <br/>
 
-mouseover event.
+鼠标移入 UIComponent 时触发
 
 参数属性：
 
@@ -107,7 +107,7 @@ mouseover event.
 <div>
 <br/>
 
-mouseout event.
+鼠标移出 UIComponent 时触发
 
 参数属性：
 

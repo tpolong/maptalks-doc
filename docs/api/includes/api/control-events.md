@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-add event.
+Control 添加到 map 上时触发
 
 参数属性：
 
@@ -18,7 +18,7 @@ add event.
 <div>
 <br/>
 
-Control's position update event.
+control 位置更新后触发
 
 参数属性：
 
@@ -35,7 +35,7 @@ Control's position update event.
 <div>
 <br/>
 
-remove event.
+Control 从 map 上移除时触发
 
 参数属性：
 

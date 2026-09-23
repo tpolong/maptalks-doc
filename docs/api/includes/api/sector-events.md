@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange 事件。
+Sector 半径或起止角度改变后触发
 
 </div>
 </details>
