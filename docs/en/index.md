@@ -10,7 +10,7 @@ hero:
       link: /en/guide/intro
     - theme: alt
       text: API Reference
-      link: /en/api/vector-tile-layer
+      link: /en/api/
 features:
   - title: 2D/3D in One Engine
     details: One map container for both 2D maps and 3D scenes, layers stack freely

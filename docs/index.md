@@ -10,7 +10,7 @@ hero:
       link: /guide/intro
     - theme: alt
       text: API 参考
-      link: /api/vector-tile-layer
+      link: /api/
 features:
   - title: 二维/三维一体化
     details: 同一套地图容器同时支持二维地图与三维场景，图层自由叠加
