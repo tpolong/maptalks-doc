@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get whether the layer needs to redraw; true when rotating, zooming or forcing render
 
 Returns:
 
@@ -15,7 +15,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the renderer can draw; clears the canvas and returns false when pitched
 
 Returns:
 
@@ -28,7 +28,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clip the canvas drawing area, currently calling the parent class implementation
 
 Parameters:
 
@@ -45,7 +45,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clear the layer canvas and its tile caches, then mark it to redraw
 
 </div>
 </details>
@@ -54,7 +54,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback on renderer removal; clears the canvas and the tile caches
 
 </div>
 </details>
@@ -63,7 +63,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Draw a tile image onto the canvas by tile position, scale and bearing
 
 Parameters:
 

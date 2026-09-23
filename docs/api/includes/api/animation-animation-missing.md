@@ -24,3 +24,23 @@
 
 </div>
 </details>
+
+<details><summary>animate(styles, options, step, target?)</summary>
+<div>
+<br/>
+
+创建动画 player，按 styles 与 options 逐帧回调 step
+
+参数：
+
+* styles `Object` styles to animate
+* options `AnimationOptionsType` animation options
+* step `AnimationCallback` callback function for animation steps
+* target（可选） `any`
+
+返回：
+
+* `Player` player
+
+</div>
+</details>

@@ -80,3 +80,12 @@ removegeo 事件
 
 </div>
 </details>
+
+<details><summary>add</summary>
+<div>
+<br/>
+
+geometry 添加到 layer 时触发
+
+</div>
+</details>

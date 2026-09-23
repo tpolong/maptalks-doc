@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the play state of the animation frame, idle, running or finished.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the symbol style of the animation frame.
 
 </div>
 </details>

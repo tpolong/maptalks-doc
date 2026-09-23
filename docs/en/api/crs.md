@@ -29,6 +29,12 @@ Parameters:
 - `CRS.createProj4(proj): CRS` — Create a proj4-style CRS used by maptalks, e.g. `CRS.createProj4("+proj=longlat +datum=WGS84 +no_defs")`.
 - `CRS.fromProjectionCode(code): CRS|null` — Return the built-in CRS for an EPSG code (e.g. `"EPSG:4326"`), or `null` if invalid.
 
+<!-- api-gen:start -->
+### Other Static Methods of CRS
+
+<!--@include: ./includes/api/crs-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## Predefined Constants
 
 - `CRS.WGS84` — The predefined WGS84 coordinate system (aka EPSG:4326).

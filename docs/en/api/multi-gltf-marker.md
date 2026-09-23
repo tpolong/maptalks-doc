@@ -255,11 +255,23 @@ Returns:
 
 <!--@include: ./includes/api/multi-gltf-marker-missing.md-->
 
+### Methods Inherited from GLTFMarker
+
+The following methods are provided by the parent class [GLTFMarker](/en/api/gltf-marker) and are available on instances of this class.
+
+<!--@include: ./includes/api/gltf-marker-methods.md-->
+
 ### Methods Inherited from Marker
 
 The following methods are provided by the parent class [Marker](/en/api/marker) and are available on instances of this class.
 
 <!--@include: ./includes/api/marker-methods.md-->
+
+### Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-methods.md-->
 
 ### Mixed-in Methods
 
@@ -268,24 +280,38 @@ This class gains the following method groups from mixins; see the linked pages f
 
 ## Methods Inherited from GLTFMarker
 
-<!--@include: ./includes/gltf-marker-methods.md-->
-
-<!--@include: ./includes/geometry-methods.md-->
-
 ## Static Methods
 
-<!--@include: ./includes/geometry-static-methods.md-->
+<!-- api-gen:start -->
+### Other Static Methods of MultiGLTFMarker
+
+<!--@include: ./includes/api/multi-gltf-marker-statics-missing.md-->
+
+### Static Methods Inherited from GLTFMarker
+
+The following methods are provided by the parent class [GLTFMarker](/en/api/gltf-marker) and are available on instances of this class.
+
+<!--@include: ./includes/api/gltf-marker-statics.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 
 <!--@include: ./includes/js-events-example.md-->
 
+> This document has been verified against the 2026 source code of @maptalks/gl-layers (api-notes-others.md)
+
+<!-- api-gen:start -->
 ### Events Inherited from GLTFMarker
 
-<!--@include: ./includes/gltf-marker-events.md-->
+<!--@include: ./includes/api/gltf-marker-events.md-->
 
 ### Events Inherited from Geometry
 
-<!--@include: ./includes/geometry-events.md-->
-
-> This document has been verified against the 2026 source code of @maptalks/gl-layers (api-notes-others.md)
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

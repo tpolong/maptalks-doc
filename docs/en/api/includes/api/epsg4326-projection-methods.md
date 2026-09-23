@@ -11,7 +11,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+The projection alias list, containing EPSG:4490.
 
 </div>
 </details>
@@ -20,7 +20,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Projects a coordinate into projection space, writing the result into out when it is given.
 
 Parameters:
 
@@ -38,7 +38,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Unprojects a coordinate back to lnglat space, writing the result into out when it is given.
 
 Parameters:
 

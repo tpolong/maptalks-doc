@@ -49,10 +49,6 @@ GLTFMarker的options.symbol中包含以下的设置和属性。
 
 ## 成员函数
 
-<!--@include: ./includes/gltf-marker-methods.md-->
-
-<!--@include: ./includes/geometry-methods.md-->
-
 > [!NOTE] 方法核对（2026 源码）
 > 旧版文档未收录、但 2026 源码中提供的方法：
 > - `setUniform(key, value, nodeIndex?)` / `getUniforms()`：按 key 设置 / 批量读取材质 uniform
@@ -82,6 +78,12 @@ GLTFMarker的options.symbol中包含以下的设置和属性。
 
 <!--@include: ./includes/api/marker-methods.md-->
 
+### 继承自 Geometry 的方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
 ### 混入的方法
 
 本类通过混入获得以下能力的方法，详见对应页面：[CenterMixin](/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)；[Menuable](/api/menuable)。
@@ -89,23 +91,25 @@ GLTFMarker的options.symbol中包含以下的设置和属性。
 
 ## 静态方法
 
-<!--@include: ./includes/geometry-static-methods.md-->
-
 > [!NOTE] 静态方法补充（2026 源码）
 > - `static getGLTFAnchorsAlongLineString(coordinates, bboxWidth, map, options)`：沿线生成批量模型锚点（options: gapLength / count / rotateAlongLine / snapToEndVertexes / scaleEndModel）
 > - `static combineGLTFBoundingBox(markers): {min, max}`：合并多个 marker 的包围盒
 
+<!-- api-gen:start -->
+### GLTFMarker 的其他静态方法
+
+<!--@include: ./includes/api/gltf-marker-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 <!--@include: ./includes/js-events-example.md-->
-
-### 图形事件
-
-<!--@include: ./includes/gltf-marker-events.md-->
-
-### 继承自Geometry的事件
-
-<!--@include: ./includes/geometry-events.md-->
 
 > [!NOTE] 事件补充（2026 源码核对）
 > - `meshcreate`：网格创建完成（在 marker 上触发，图层通过 geometry 事件同步接收）
@@ -113,3 +117,15 @@ GLTFMarker的options.symbol中包含以下的设置和属性。
 > - `positionchange`：坐标变化
 
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
+
+<!-- api-gen:start -->
+### GLTFMarker 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/gltf-marker-events-missing.md-->
+
+### 继承自 Geometry 的事件
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

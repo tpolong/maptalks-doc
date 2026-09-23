@@ -11,7 +11,7 @@
  */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname, resolve, basename } from 'node:path';
-import { ROOT, CACHE, loadPageMap, pageList } from './lib.mjs';
+import { ROOT, CACHE, loadPageMap, pageList, documentedBySection } from './lib.mjs';
 
 const MODEL = JSON.parse(readFileSync(join(CACHE, 'api-model.json'), 'utf8'));
 const MAP = loadPageMap();
@@ -57,10 +57,8 @@ for (const lang of ['zh', 'en']) {
     if (e.kind === 'class') own = (classByName.get(e.target)?.methods || []).map((x) => x.n);
     else if (e.kind === 'namespace') own = (nsByName.get(e.target)?.members || []).map((x) => x.n);
     if (!own.length) continue;
-    const listed = new Set();
-    for (const m of txt.matchAll(/<summary>([^<]+)<\/summary>/g)) listed.add(m[1].split('(')[0].trim());
-    for (const m of txt.matchAll(/^[-*]\s*`([A-Za-z_$][\w$]*)\(/gm)) listed.add(m[1]);
-    for (const m of txt.matchAll(/^\|\s*`?([A-Za-z_$][\w$]*)`?\s*\|/gm)) listed.add(m[1]);
+    // 与 gen-includes/audit 同口径：按章节取"已写成员"（反引号跨度里的开头标识符）
+    const listed = documentedBySection(txt).methods;
     const missing = [...new Set(own)].filter((n) => !listed.has(n));
     if (missing.length) problems.missingMember.push(`${lang}/${page} [${e.target}] 缺 ${missing.length}: ${missing.slice(0, 12).join(', ')}`);
   }

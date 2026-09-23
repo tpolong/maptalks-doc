@@ -321,7 +321,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the zoom for a resolution, clamped to minZoom and maxZoom
 
 Parameters:
 
@@ -562,7 +562,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Serialize the current map view into a JSON string
 
 </div>
 </details>
@@ -1065,7 +1065,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Moving callback firing the moving event and limiting max extent
 
 Parameters:
 
@@ -1078,7 +1078,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Move end callback firing moveend and resetting cursor and center
 
 Parameters:
 
@@ -1091,7 +1091,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the drag rotating flag and fire the dragrotatestart event
 
 Parameters:
 
@@ -1104,7 +1104,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Fire the dragrotating event while the map is drag rotated
 
 Parameters:
 
@@ -1117,7 +1117,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clear the drag rotating flag and fire the dragrotateend event
 
 Parameters:
 
@@ -1130,7 +1130,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the map is currently being drag rotated
 
 </div>
 </details>
@@ -1157,7 +1157,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the renderer instance of the map.
 
 </div>
 </details>
@@ -1196,7 +1196,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the container DOM content rect used to compute the map size
 
 Parameters:
 

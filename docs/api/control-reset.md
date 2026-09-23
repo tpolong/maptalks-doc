@@ -43,6 +43,10 @@ new control.Reset(options?)
 > 重置按钮为 `<div class="maptalks-reset">`，点击调用 `map.setView(this._view)` 恢复视图。
 
 <!-- api-gen:start -->
+### Reset 的其他公开方法
+
+<!--@include: ./includes/api/control-reset-missing.md-->
+
 ### 继承自 Control 的方法
 
 下列方法由父类 [Control](/api/control) 提供，本类的实例同样可以调用。

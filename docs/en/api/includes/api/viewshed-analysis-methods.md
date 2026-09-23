@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Update viewshed options, converting eyePos and lookPoint to world coordinates
 
 Parameters:
 
@@ -16,7 +16,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Render the viewshed analysis and return uniforms such as viewshedMap
 
 Parameters:
 
@@ -29,7 +29,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the coordinates of the viewshed pyramid's 4 apex vertices, or an empty array without a map.
 
 </div>
 </details>
@@ -38,7 +38,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Return the shader defines that enable the HAS_VIEWSHED macro
 
 </div>
 </details>

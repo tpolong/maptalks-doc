@@ -85,6 +85,10 @@ ExtrudePolygonLayer 在 Vector3DLayer 的选项基础上追加以下配置：
 </details>
 
 <!-- api-gen:start -->
+### ExtrudePolygonLayer 的其他公开方法
+
+<!--@include: ./includes/api/extrude-polygon-layer-missing.md-->
+
 ### 继承自 Vector3DLayer 的方法
 
 下列方法由父类 Vector3DLayer 提供，本类的实例同样可以调用。
@@ -122,6 +126,26 @@ ExtrudePolygonLayer 支持的 symbol 属性：
 对 Circle、Ellipse、Sector、Rectangle 等特殊几何，图层会自动计算最小外接矩形（OMBB）并转换为多边形后拉伸。
 
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+
+## 静态方法
+
+<!-- api-gen:start -->
+### ExtrudePolygonLayer 的其他静态方法
+
+<!--@include: ./includes/api/extrude-polygon-layer-statics-missing.md-->
+
+### 继承自 Vector3DLayer 的静态方法
+
+下列方法由父类 Vector3DLayer 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/vector3-d-layer-statics.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

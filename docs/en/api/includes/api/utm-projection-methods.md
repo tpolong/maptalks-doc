@@ -11,7 +11,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Alias array of the projection, empty by default for the UTM projection
 
 </div>
 </details>
@@ -20,7 +20,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create a UTM projection from the zone and south params, zone must be 1 to 60
 
 Parameters:
 

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Deserializes an ArcCurve from the feature coordinates and options and restores its properties.
 
 Parameters:
 

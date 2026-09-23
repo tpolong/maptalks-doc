@@ -127,6 +127,12 @@ new Layer(id, options)
 - `Layer.fromJSON(layerJSON): Layer | null` — 从JSON还原图层
 - `Layer.mergeOptions(options): this` — 合并默认配置
 
+<!-- api-gen:start -->
+### Layer 的其他静态方法
+
+<!--@include: ./includes/api/layer-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 | 事件 | 触发时机 |
@@ -145,3 +151,11 @@ layer.on("layerload", () => {
   console.log("layer loaded");
 });
 ```
+
+<!-- api-gen:start -->
+### Layer 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/layer-events-missing.md-->
+<!-- api-gen:end -->

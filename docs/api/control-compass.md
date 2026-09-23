@@ -41,6 +41,10 @@ new control.Compass(options?)
 > 罗盘元素为 `<div class="maptalks-compass">`，点击触发 `_resetView`（将方位角重置为 0）。
 
 <!-- api-gen:start -->
+### Compass 的其他公开方法
+
+<!--@include: ./includes/api/control-compass-missing.md-->
+
 ### 继承自 Control 的方法
 
 下列方法由父类 [Control](/api/control) 提供，本类的实例同样可以调用。

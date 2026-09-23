@@ -18,12 +18,6 @@ m.measureLenBetween([116.39, 39.9], [121.47, 31.23]); // great-circle distance
 - `measure: string` — The measurer code, `'EPSG:4326'`.
 - `sphere: Sphere` — The underlying sphere measurer, radius `6378137`.
 
-<!-- api-gen:start -->
-### Other Public Methods of wgs84
-
-<!--@include: ./includes/api/measurer-wgs84sphere-missing.md-->
-<!-- api-gen:end -->
-
 ## Methods
 
 - `measureLenBetween(c1, c2): number` — Great-circle distance (meters).

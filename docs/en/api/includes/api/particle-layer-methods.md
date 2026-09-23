@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Draw the particles at the current time, clipped by the extent, as dots or squares with trails.
 
 Parameters:
 

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns a square outline marker whose size comes from the container extent.
 
 Returns:
 
@@ -15,7 +15,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the marker symbol and clears its cached fixed extent.
 
 Parameters:
 

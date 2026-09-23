@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Fetch layer JSON from a url and create a VectorTileLayer instance
 
 Parameters:
 
@@ -16,7 +16,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create a VectorTileLayer from layer JSON, return null when the type mismatches
 
 Parameters:
 
@@ -29,7 +29,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Register a VectorTileLayer plugin into the plugin map keyed by its type
 
 Parameters:
 
@@ -42,7 +42,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get all VectorTileLayer plugins registered by their type
 
 </div>
 </details>
@@ -51,7 +51,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Compress a style array into plugins and styles, returning others as is
 
 Parameters:
 

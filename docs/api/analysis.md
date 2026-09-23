@@ -12,11 +12,13 @@ Analysis只支持添加到GroupGLLayer上，无法添加到其他WebGL图层。
 
 ## 成员方法
 
-<!--@include: ./includes/analysis-methods.md-->
-
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
 
 <!-- api-gen:start -->
+### Analysis 的其他公开方法
+
+<!--@include: ./includes/api/analysis-missing.md-->
+
 ### 混入的方法
 
 本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)。

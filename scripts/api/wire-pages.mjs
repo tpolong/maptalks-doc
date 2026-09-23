@@ -51,13 +51,18 @@ const M = {
     eventHead: /^##\s*事件/,
     anyHead: /^##\s+/,
     missingTitle: (t) => `### ${t} 的其他公开方法`,
+    staticsMissingTitle: (t) => `### ${t} 的其他静态方法`,
+    eventsMissingTitle: (t) => `### ${t} 的其他事件`,
+    eventsMissingNote: '以下事件源码里有定义，本类（或其父类）会触发：',
     inheritTitle: (t) => `### 继承自 ${t} 的方法`,
+    inheritStaticTitle: (t) => `### 继承自 ${t} 的静态方法`,
     inheritNote: (t, link) => `下列方法由父类 [${t}](${link}) 提供，本类的实例同样可以调用。`,
     inheritNotePlain: (t) => `下列方法由父类 ${t} 提供，本类的实例同样可以调用。`,
     mixinTitle: '### 混入的方法',
     mixinNote: (names) => `本类通过混入获得以下能力的方法，详见对应页面：${names}。`,
     eventTitle: (t) => `### 继承自 ${t} 的事件`,
     noMemberSection: '## 成员方法',
+    noStaticSection: '## 静态方法',
     noEventSection: '## 事件',
   },
   en: {
@@ -66,13 +71,18 @@ const M = {
     eventHead: /^##\s*Events/i,
     anyHead: /^##\s+/,
     missingTitle: (t) => `### Other Public Methods of ${t}`,
+    staticsMissingTitle: (t) => `### Other Static Methods of ${t}`,
+    eventsMissingTitle: (t) => `### Other Events of ${t}`,
+    eventsMissingNote: 'The following events are defined in the source and are fired by this class (or its ancestors):',
     inheritTitle: (t) => `### Methods Inherited from ${t}`,
+    inheritStaticTitle: (t) => `### Static Methods Inherited from ${t}`,
     inheritNote: (t, link) => `The following methods are provided by the parent class [${t}](${link}) and are available on instances of this class.`,
     inheritNotePlain: (t) => `The following methods are provided by the parent class ${t} and are available on instances of this class.`,
     mixinTitle: '### Mixed-in Methods',
     mixinNote: (names) => `This class gains the following method groups from mixins; see the linked pages for details: ${names}.`,
     eventTitle: (t) => `### Events Inherited from ${t}`,
     noMemberSection: '## Methods',
+    noStaticSection: '## Static Methods',
     noEventSection: '## Events',
   },
 };
@@ -95,12 +105,37 @@ function stripGenerated(txt) {
   return out.replace(/\n{3,}/g, '\n\n');
 }
 
+/** 移除被生成片段取代的旧片段（`*-methods.md` / `*-events.md` / `*-statics.md` / `*-static-methods.md`），
+ *  连同仅为其存在的上一行 `###` 标题；options / symbols / style / data / example 等旧片段保留。 */
+function stripSupersededLegacy(txt) {
+  const out = [];
+  for (const line of txt.split('\n')) {
+    const m = /^<!--@include:\s*([^\s>]+?)\s*-->$/.exec(line.trim());
+    const superseded = m && !/includes[\\/]api[\\/]/.test(m[1]) && /-(methods|events|statics|static-methods)\.md$/.test(m[1]);
+    if (!superseded) { out.push(line); continue; }
+    while (out.length && out[out.length - 1].trim() === '') out.pop();
+    if (out.length && /^###\s+/.test(out[out.length - 1].trim())) out.pop();
+    while (out.length && out[out.length - 1].trim() === '') out.pop();
+  }
+  return out.join('\n');
+}
+
 function buildBlocks(page, e, lang, includes) {
   const t = M[lang];
   const blocks = [];
-  // 1) 自有成员补充
-  if (existsSync(join(ROOT, lang === 'zh' ? 'docs' : 'docs/en', 'api', 'includes', 'api', `${slug(page)}-missing.md`))) {
+  const apiInc = join(ROOT, lang === 'zh' ? 'docs' : 'docs/en', 'api', 'includes', 'api');
+  const has = (f) => existsSync(join(apiInc, f));
+  // 1) 方法缺口（自有 + 父类，已扣除页面上已写的）
+  if (has(`${slug(page)}-missing.md`)) {
     blocks.push({ slot: 'member', text: `${t.missingTitle(e.target)}\n\n<!--@include: ./includes/api/${slug(page)}-missing.md-->` });
+  }
+  // 2) 静态方法缺口
+  if (has(`${slug(page)}-statics-missing.md`)) {
+    blocks.push({ slot: 'statics', text: `${t.staticsMissingTitle(e.target)}\n\n<!--@include: ./includes/api/${slug(page)}-statics-missing.md-->` });
+  }
+  // 3) 事件缺口
+  if (has(`${slug(page)}-events-missing.md`)) {
+    blocks.push({ slot: 'event', text: `${t.eventsMissingTitle(e.target)}\n\n${t.eventsMissingNote}\n\n<!--@include: ./includes/api/${slug(page)}-events-missing.md-->` });
   }
   if (e.kind !== 'class') return blocks;
 
@@ -113,12 +148,16 @@ function buildBlocks(page, e, lang, includes) {
   for (const a of chain) {
     if (FRAMEWORK.has(a)) continue;
     if (legacyCovers(includes, a)) continue;
-    const hasMethods = existsSync(join(ROOT, 'docs', 'api', 'includes', 'api', `${slug(a)}-methods.md`));
-    const hasEvents = existsSync(join(ROOT, 'docs', 'api', 'includes', 'api', `${slug(a)}-events.md`));
+    const hasMethods = has(`${slug(a)}-methods.md`);
+    const hasEvents = has(`${slug(a)}-events.md`);
+    const hasStatics = has(`${slug(a)}-statics.md`);
     const link = linkTo(a, lang);
     const note = link ? t.inheritNote(a, link) : t.inheritNotePlain(a);
     if (hasMethods) {
       parts.push(`${t.inheritTitle(a)}\n\n${note}\n\n<!--@include: ./includes/api/${slug(a)}-methods.md-->`);
+    }
+    if (hasStatics) {
+      blocks.push({ slot: 'statics', text: `${t.inheritStaticTitle(a)}\n\n${note}\n\n<!--@include: ./includes/api/${slug(a)}-statics.md-->` });
     }
     if (hasEvents) {
       blocks.push({ slot: 'event', text: `${t.eventTitle(a)}\n\n<!--@include: ./includes/api/${slug(a)}-events.md-->` });
@@ -143,41 +182,40 @@ function insertBlocks(lines, blocks, lang) {
   const t = M[lang];
   const headings = lines.map((l, i) => (l.match(t.anyHead) ? i : -1)).filter((i) => i >= 0);
   const memberIdx = headings.find((i) => t.memberHead.test(lines[i]));
+  const staticIdx = headings.find((i) => t.staticHead.test(lines[i]));
   const eventIdx = headings.find((i) => t.eventHead.test(lines[i]));
   const sectionEnd = (startIdx) => {
     if (startIdx < 0) return lines.length;
     const next = headings.find((i) => i > startIdx);
     return next === undefined ? lines.length : next;
   };
-  let memberIns = memberIdx === undefined ? null : sectionEnd(memberIdx);
-  let eventIns = eventIdx === undefined ? null : sectionEnd(eventIdx);
+  const memberIns = memberIdx === undefined ? null : sectionEnd(memberIdx);
+  const staticIns = staticIdx === undefined ? null : sectionEnd(staticIdx);
+  const eventIns = eventIdx === undefined ? null : sectionEnd(eventIdx);
 
-  // 没有成员/事件章节时，创建它们
-  const needMember = blocks.some((b) => b.slot === 'member') && memberIns === null;
-  const needEvent = blocks.some((b) => b.slot === 'event') && eventIns === null;
-  if (needMember) {
-    const anchor = headings.find((i) => t.staticHead.test(lines[i]) ?? false) ?? headings.find((i) => t.eventHead.test(lines[i]));
-    const at = anchor === undefined ? lines.length : anchor;
-    lines.splice(at, 0, t.noMemberSection, '');
-    return insertBlocks(lines, blocks, lang);          // 重新计算位置
+  // 缺章节时先补章节（静态方法章节插在事件章节之前）
+  if (blocks.some((b) => b.slot === 'member') && memberIns === null) {
+    const anchor = headings.find((i) => t.staticHead.test(lines[i])) ?? headings.find((i) => t.eventHead.test(lines[i]));
+    lines.splice(anchor === undefined ? lines.length : anchor, 0, t.noMemberSection, '');
+    return insertBlocks(lines, blocks, lang);
   }
-  if (needEvent) {
+  if (blocks.some((b) => b.slot === 'statics') && staticIns === null) {
+    const anchor = headings.find((i) => t.eventHead.test(lines[i]));
+    lines.splice(anchor === undefined ? lines.length : anchor, 0, t.noStaticSection, '');
+    return insertBlocks(lines, blocks, lang);
+  }
+  if (blocks.some((b) => b.slot === 'event') && eventIns === null) {
     if (!lines.length || lines[lines.length - 1].trim() !== '') lines.push('');
     lines.push(t.noEventSection, '');
     return insertBlocks(lines, blocks, lang);
   }
 
-  const memberText = blocks.filter((b) => b.slot === 'member').map((b) => b.text).join('\n\n');
-  const eventText = blocks.filter((b) => b.slot === 'event').map((b) => b.text).join('\n\n');
-  // 先插事件（后面的位置不受影响），再插成员
-  if (eventText) {
-    const block = ['', START, eventText, END, ''];
-    lines.splice(eventIns, 0, ...block);
-  }
-  if (memberText) {
-    const block = ['', START, memberText, END, ''];
-    lines.splice(memberIns, 0, ...block);
-  }
+  const text = (slot) => blocks.filter((b) => b.slot === slot).map((b) => b.text).join('\n\n');
+  // 按位置**从后往前**插入：前面的插入会改变后面行号，顺序反了会把块插进别的章节
+  const jobs = [['member', memberIns], ['statics', staticIns], ['event', eventIns]]
+    .filter(([slot, at]) => text(slot) && at !== null)
+    .sort((a, b) => b[1] - a[1]);
+  for (const [slot, at] of jobs) lines.splice(at, 0, '', START, text(slot), END, '');
   return lines;
 }
 
@@ -189,13 +227,14 @@ for (const page of pageList()) {
     const file = join(ROOT, lang === 'zh' ? 'docs' : 'docs/en', 'api', `${page}.md`);
     if (!existsSync(file)) { log(`  !! 缺文件 ${file}`); continue; }
     let txt = readFileSync(file, 'utf8');
+    const original = txt;
+    txt = stripSupersededLegacy(txt);          // 旧片段先清掉，之后由生成片段接管
     const includes = includeNames(txt);
     txt = stripGenerated(txt);
     const blocks = buildBlocks(page, e, lang, includes);
-    if (!blocks.length) continue;
-    const lines = insertBlocks(txt.split('\n'), blocks, lang);
+    const lines = blocks.length ? insertBlocks(txt.split('\n'), blocks, lang) : txt.split('\n');
     const out = lines.join('\n').replace(/\n{3,}/g, '\n\n').replace(/\n*$/, '\n');
-    if (out !== readFileSync(file, 'utf8')) {
+    if (out !== original) {
       changed++;
       if (!DRY) writeFileSync(file, out, 'utf8');
     }

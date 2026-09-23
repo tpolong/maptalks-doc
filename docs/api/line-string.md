@@ -38,6 +38,10 @@ new LineString(coordinates, options?)
 - `getOutline()` — 返回线的轮廓内容。
 
 <!-- api-gen:start -->
+### LineString 的其他公开方法
+
+<!--@include: ./includes/api/line-string-missing.md-->
+
 ### 继承自 Path 的方法
 
 下列方法由父类 [Path](/api/path) 提供，本类的实例同样可以调用。
@@ -58,6 +62,14 @@ new LineString(coordinates, options?)
 ## 静态方法
 
 - `fromJSON(json)` — 从 JSON 对象创建 LineString。
+
+<!-- api-gen:start -->
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

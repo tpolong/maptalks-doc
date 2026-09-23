@@ -117,6 +117,12 @@ This class gains the following method groups from mixins; see the linked pages f
 
 - `Geometry.fromJSON(json): Geometry | Geometry[]` — restore geometry from JSON
 
+<!-- api-gen:start -->
+### Other Static Methods of Geometry
+
+<!--@include: ./includes/api/geometry-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 | Event | Fired when |
@@ -135,3 +141,11 @@ marker.on("positionchange", () => {
   console.log("marker moved to", marker.getCoordinates());
 });
 ```
+
+<!-- api-gen:start -->
+### Other Events of Geometry
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/geometry-events-missing.md-->
+<!-- api-gen:end -->

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the sub layer classes used by DrawToolLayer to draw markers, lines, polygons
 
 Parameters:
 

@@ -83,7 +83,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the fixed 90 degree offset angle used when rotating the sector's coordinates
 
 </div>
 </details>

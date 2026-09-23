@@ -42,6 +42,10 @@ Rectangle 无特有配置项，配置项继承自 [Polygon](/api/polygon) / [Pat
 - `animateShow()` — 以动画方式显示矩形。
 
 <!-- api-gen:start -->
+### Rectangle 的其他公开方法
+
+<!--@include: ./includes/api/rectangle-missing.md-->
+
 ### 继承自 Polygon 的方法
 
 下列方法由父类 [Polygon](/api/polygon) 提供，本类的实例同样可以调用。
@@ -68,6 +72,14 @@ Rectangle 无特有配置项，配置项继承自 [Polygon](/api/polygon) / [Pat
 ## 静态方法
 
 - `fromJSON(json)` — 从 JSON 对象创建 Rectangle。
+
+<!-- api-gen:start -->
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

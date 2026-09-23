@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-Convert one or more GeoJSON objects to geometry
+Converts a GeoJSON object or string into maptalks geometries.
 
 Parameters:
 
@@ -56,7 +56,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Converts a GeoJSON object or string into maptalks geometries.
 
 Parameters:
 
@@ -70,7 +70,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Checks whether the given object is valid GeoJSON data.
 
 Parameters:
 

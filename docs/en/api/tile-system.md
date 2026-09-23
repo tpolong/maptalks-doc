@@ -39,3 +39,9 @@ Built-in presets:
 | `global-geodetic` | EPSG:4326 global geodetic grid |
 | `tms-global-geodetic` | TMS / OSGEO (EPSG:4326) |
 | `baidu` | Baidu Maps |
+
+<!-- api-gen:start -->
+### Other Static Methods of TileSystem
+
+<!--@include: ./includes/api/tile-system-statics-missing.md-->
+<!-- api-gen:end -->

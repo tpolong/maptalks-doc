@@ -77,6 +77,12 @@ new UIMarker(coordinate, options)
 - `dragend` — 拖拽结束时触发。
 
 <!-- api-gen:start -->
+### UIMarker 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/ui-marker-events-missing.md-->
+
 ### 继承自 UIComponent 的事件
 
 <!--@include: ./includes/api/ui-component-events.md-->

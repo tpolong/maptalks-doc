@@ -83,7 +83,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Build the InfoWindow DOM with its title, close button and content container
 
 Returns:
 
@@ -96,7 +96,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the info window pixel offset from its alignment options and marker size.
 
 </div>
 </details>
@@ -105,7 +105,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Shows the info window at the given coordinate, skipped without a map or when info windows are disabled.
 
 Parameters:
 
@@ -118,7 +118,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the map events that auto close the window, keyed by autoCloseOn
 
 </div>
 </details>
@@ -127,7 +127,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the owner events that auto open the window, keyed by autoOpenOn
 
 </div>
 </details>
@@ -136,7 +136,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Handles mouse out and unbinds DOM events when the infowindow is removed
 
 </div>
 </details>
@@ -145,7 +145,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Unbinds the click and touchend listeners on the close button
 
 </div>
 </details>

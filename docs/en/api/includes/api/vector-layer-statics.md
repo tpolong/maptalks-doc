@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the Painter class used by the layer
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the CollectionPainter class used by the layer
 
 </div>
 </details>

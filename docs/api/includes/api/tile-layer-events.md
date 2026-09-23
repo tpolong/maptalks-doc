@@ -66,3 +66,21 @@ tile 加载出错时触发
 
 </div>
 </details>
+
+<details><summary>forcereloadstart</summary>
+<div>
+<br/>
+
+forceReload 清除并重载全部缓存 tile 开始时触发
+
+</div>
+</details>
+
+<details><summary>forcereloadend</summary>
+<div>
+<br/>
+
+forceReload 清除并重载全部缓存 tile 结束时触发
+
+</div>
+</details>

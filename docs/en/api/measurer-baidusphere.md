@@ -18,12 +18,6 @@ m.measureLenBetween([116.404, 39.915], [121.47, 31.23]);
 - `measure: string` — The measurer code, `'BAIDU'`.
 - `sphere: Sphere` — The underlying sphere measurer, radius `6370996.81`.
 
-<!-- api-gen:start -->
-### Other Public Methods of baidu
-
-<!--@include: ./includes/api/measurer-baidusphere-missing.md-->
-<!-- api-gen:end -->
-
 ## Methods
 
 - `measureLenBetween(c1, c2): number` — Great-circle distance (meters).

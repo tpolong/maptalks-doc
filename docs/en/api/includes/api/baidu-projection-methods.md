@@ -11,7 +11,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Projects a lnglat coordinate into the Baidu mercator coordinate.
 
 Parameters:
 
@@ -29,7 +29,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Converts a Baidu mercator coordinate back into a lnglat coordinate.
 
 Parameters:
 

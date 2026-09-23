@@ -41,6 +41,10 @@ Parameters:
 - `setConnectTarget(target): this` — Sets the connection target.
 
 <!-- api-gen:start -->
+### Other Public Methods of ConnectorLine
+
+<!--@include: ./includes/api/connector-line-missing.md-->
+
 ### Methods Inherited from LineString
 
 The following methods are provided by the parent class [LineString](/en/api/line-string) and are available on instances of this class.
@@ -68,6 +72,18 @@ This class gains the following method groups from mixins; see the linked pages f
 
 - `ConnectorLine._hasConnectors(geometry): boolean` — Returns whether `geometry` is associated with connectors.
 - `ConnectorLine._getConnectors(geometry): ConnectorLine[]` — Gets all connectors associated with `geometry`.
+
+<!-- api-gen:start -->
+### Other Static Methods of ConnectorLine
+
+<!--@include: ./includes/api/connector-line-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

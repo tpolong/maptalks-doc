@@ -79,6 +79,10 @@ Common options inherited from [Layer](/en/api/layer) also apply.
 `addTo`, `remove`, `show`/`hide`, `setOpacity`, `setZIndex`, `bringToFront`/`bringToBack`, `getMap`, `toJSON`, etc. — see [Layer](/en/api/layer).
 
 <!-- api-gen:start -->
+### Other Public Methods of VectorLayer
+
+<!--@include: ./includes/api/vector-layer-missing.md-->
+
 ### Methods Inherited from OverlayLayer
 
 The following methods are provided by the parent class [OverlayLayer](/en/api/overlay-layer) and are available on instances of this class.
@@ -100,6 +104,18 @@ This class gains the following method groups from mixins; see the linked pages f
 
 - `VectorLayer.fromJSON(json): VectorLayer | null` — restore a layer from JSON
 
+<!-- api-gen:start -->
+### Other Static Methods of VectorLayer
+
+<!--@include: ./includes/api/vector-layer-statics-missing.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 | Event | Fired when |
@@ -118,6 +134,12 @@ layer.on("addgeo", (e) => {
 ```
 
 <!-- api-gen:start -->
+### Other Events of VectorLayer
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/vector-layer-events-missing.md-->
+
 ### Events Inherited from OverlayLayer
 
 <!--@include: ./includes/api/overlay-layer-events.md-->

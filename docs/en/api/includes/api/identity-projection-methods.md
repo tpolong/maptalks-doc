@@ -11,7 +11,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Projects the coordinate unchanged, writing into the passed out coordinate when given.
 
 Parameters:
 
@@ -29,7 +29,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Unprojects the coordinate unchanged, writing into the passed out coordinate when given.
 
 Parameters:
 

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clear the geometry altitude cache and redraw as needed when config changes
 
 Parameters:
 
@@ -51,7 +51,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the layer altitude value, 0 when it is not configured
 
 </div>
 </details>
@@ -77,7 +77,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the canvas renderer used by the layer
 
 Returns:
 

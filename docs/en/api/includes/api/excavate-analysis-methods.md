@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the layers to be excavated, updates the height map and redraws the layer.
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the layers that are being excavated.
 
 </div>
 </details>
@@ -24,7 +24,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Enables the excavate analysis and requests a redraw of the layer.
 
 </div>
 </details>
@@ -33,7 +33,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Disables the excavate analysis and requests a redraw of the layer.
 
 </div>
 </details>
@@ -42,7 +42,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns whether the excavate analysis is currently enabled.
 
 </div>
 </details>

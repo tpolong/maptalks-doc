@@ -166,11 +166,27 @@ const feature = layer.getGeometryById(id);
 </details>
 
 <!-- api-gen:start -->
+### GeoJSONVectorTileLayer 的其他公开方法
+
+<!--@include: ./includes/api/geojson-vector-tile-layer-missing.md-->
+
 ### 继承自 VectorTileLayer 的方法
 
 下列方法由父类 [VectorTileLayer](/api/vector-tile-layer) 提供，本类的实例同样可以调用。
 
 <!--@include: ./includes/api/vector-tile-layer-methods.md-->
+
+### 继承自 TileLayer 的方法
+
+下列方法由父类 [TileLayer](/api/tile-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/tile-layer-methods.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
 
 ### 混入的方法
 
@@ -178,12 +194,6 @@ const feature = layer.getGeometryById(id);
 <!-- api-gen:end -->
 
 ## 继承自VectorTileLayer的方法
-
-<!--@include: ./includes/vtlayer-methods.md-->
-
-<!--@include: ./includes/tilelayer-methods.md-->
-
-<!--@include: ./includes/layer-methods.md-->
 
 ## 静态方法
 
@@ -261,6 +271,24 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 </div>
 </details>
 
+<!-- api-gen:start -->
+### GeoJSONVectorTileLayer 的其他静态方法
+
+<!--@include: ./includes/api/geojson-vector-tile-layer-statics-missing.md-->
+
+### 继承自 VectorTileLayer 的静态方法
+
+下列方法由父类 [VectorTileLayer](/api/vector-tile-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/vector-tile-layer-statics.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 <!--@include: ./includes/js-events-example.md-->
@@ -301,22 +329,24 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 </div>
 </details>
 
-### 继承自VectorTileLayer的事件
-
-<!--@include: ./includes/vtlayer-events.md-->
-
-### 继承自TileLayer的事件
-
-<!--@include: ./includes/tilelayer-events.md-->
-
-### 继承自Layer的事件
-
-<!--@include: ./includes/layer-events.md-->
-
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
 
 <!-- api-gen:start -->
+### GeoJSONVectorTileLayer 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/geojson-vector-tile-layer-events-missing.md-->
+
 ### 继承自 VectorTileLayer 的事件
 
 <!--@include: ./includes/api/vector-tile-layer-events.md-->
+
+### 继承自 TileLayer 的事件
+
+<!--@include: ./includes/api/tile-layer-events.md-->
+
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
 <!-- api-gen:end -->

@@ -222,6 +222,12 @@ This class gains the following method groups from mixins; see the linked pages f
 - `Map.fromJSON(container, profile, options?): Map` — rebuild a map from JSON
 - `Map.addOnLoadHook(fn, ...args): Map` — add a hook after map load
 
+<!-- api-gen:start -->
+### Other Static Methods of Map
+
+<!--@include: ./includes/api/map-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 ### View & interaction
@@ -265,3 +271,11 @@ map.on("zoomend", (e) => {
   console.log("zoom:", map.getZoom(), "center:", map.getCenter());
 });
 ```
+
+<!-- api-gen:start -->
+### Other Events of Map
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/map-events-missing.md-->
+<!-- api-gen:end -->

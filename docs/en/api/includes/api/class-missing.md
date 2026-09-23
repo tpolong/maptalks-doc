@@ -11,7 +11,7 @@ Visit and call all the init hooks defined on Class and its parents.
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Deprecated private method that writes options directly and warns to use config instead.
 
 Parameters:
 

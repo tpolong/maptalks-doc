@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+The projection code, an empty string for the common projection.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns whether the projection code or one of its aliases matches the given code.
 
 Parameters:
 
@@ -140,7 +140,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the sphere projection circumference, the width and height of the sphere extent, cached.
 
 Returns:
 
@@ -153,7 +153,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the sphere extent computed by projecting lon-lat extremes, cached.
 
 Returns:
 

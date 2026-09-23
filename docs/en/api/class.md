@@ -52,6 +52,12 @@ Parameters:
 - `Class.include(...sources)` — Mix methods from source objects into the class prototype.
 - `Class.mergeOptions(options)` — Merge the given options as class defaults and return the class itself (`this`).
 
+<!-- api-gen:start -->
+### Other Static Methods of Class
+
+<!--@include: ./includes/api/class-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 `Class` fires no events itself. Mix in `Eventable` for event capability.

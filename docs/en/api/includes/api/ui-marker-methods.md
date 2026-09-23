@@ -36,7 +36,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the UIMarker center coordinate, the same as getCoordinates
 
 </div>
 </details>
@@ -45,7 +45,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the UIMarker altitude from the coordinate z, falling back to options.altitude
 
 Returns:
 
@@ -58,7 +58,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the UIMarker altitude and update its position
 
 Parameters:
 
@@ -105,7 +105,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Called when the UIMarker is added to a map, throws if the owner is not a map
 
 </div>
 </details>
@@ -151,7 +151,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Called when the DOM is removed, unbinds the DOM events registered on the marker
 
 </div>
 </details>
@@ -173,7 +173,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Called on zoom, toggles the marker DOM display by whether the marker is visible
 
 </div>
 </details>
@@ -182,7 +182,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the marker is visible, decided by the visible option and the zoom range
 
 </div>
 </details>
@@ -191,7 +191,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the marker supports dynamic show or hide filtering by zoom level
 
 </div>
 </details>

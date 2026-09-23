@@ -60,8 +60,6 @@ Parameters:
 
 ## Methods
 
-<!--@include: ./includes/vtlayer-methods.md-->
-
 <details><summary>getCurrentRenderedFeatures()</summary>
 <div>
 <br/>
@@ -333,15 +331,23 @@ Clears the tile data.
 </div>
 </details>
 
-<!--@include: ./includes/tilelayer-methods.md-->
-
-<!--@include: ./includes/layer-methods.md-->
-
 
 <!-- api-gen:start -->
 ### Other Public Methods of VectorTileLayer
 
 <!--@include: ./includes/api/vector-tile-layer-missing.md-->
+
+### Methods Inherited from TileLayer
+
+The following methods are provided by the parent class [TileLayer](/en/api/tile-layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/tile-layer-methods.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
 
 ### Mixed-in Methods
 
@@ -446,13 +452,18 @@ Returns:
 </div>
 </details>
 
+
+<!-- api-gen:start -->
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 <!--@include: ./includes/js-events-example.md-->
-
-### Layer Events
-
-<!--@include: ./includes/vtlayer-events.md-->
 
 <details><summary>cleardata</summary>
 <div>
@@ -504,12 +515,20 @@ Properties:
 </div>
 </details>
 
+> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+
+<!-- api-gen:start -->
+### Other Events of VectorTileLayer
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/vector-tile-layer-events-missing.md-->
+
 ### Events Inherited from TileLayer
 
-<!--@include: ./includes/tilelayer-events.md-->
+<!--@include: ./includes/api/tile-layer-events.md-->
 
 ### Events Inherited from Layer
 
-<!--@include: ./includes/layer-events.md-->
-
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

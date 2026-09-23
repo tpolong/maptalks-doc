@@ -51,6 +51,10 @@ Parameters:
 - `getTransformOrigin(): String` — Gets the transform origin of the menu.
 
 <!-- api-gen:start -->
+### Other Public Methods of Menu
+
+<!--@include: ./includes/api/menu-missing.md-->
+
 ### Methods Inherited from UIComponent
 
 The following methods are provided by the parent class [UIComponent](/en/api/ui-component) and are available on instances of this class.
@@ -65,6 +69,12 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Events
 
 <!-- api-gen:start -->
+### Other Events of Menu
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/menu-events-missing.md-->
+
 ### Events Inherited from UIComponent
 
 <!--@include: ./includes/api/ui-component-events.md-->

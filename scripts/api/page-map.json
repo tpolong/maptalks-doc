@@ -1,635 +1,636 @@
 {
- "ajax": {
-  "kind": "namespace",
-  "target": "Ajax",
-  "source": "maptalks/src/core/Ajax.ts"
- },
- "analysis": {
-  "kind": "class",
-  "target": "Analysis",
-  "source": "analysis/src/Analysis.js"
- },
- "animation-animation": {
-  "kind": "namespace",
-  "target": "Animation",
-  "source": "maptalks/src/core/Animation.ts"
- },
- "animation-easing": {
-  "kind": "namespace",
-  "target": "Easing",
-  "source": "maptalks/src/core/Animation.ts"
- },
- "animation-frame": {
-  "kind": "class",
-  "target": "Frame",
-  "source": "maptalks/src/core/Animation.ts"
- },
- "animation-player": {
-  "kind": "class",
-  "target": "Player",
-  "source": "maptalks/src/core/Animation.ts"
- },
- "arc-connector-line": {
-  "kind": "class",
-  "target": "ArcConnectorLine",
-  "source": "maptalks/src/geometry/ConnectorLine.ts"
- },
- "arc-curve": {
-  "kind": "class",
-  "target": "ArcCurve",
-  "source": "maptalks/src/geometry/ArcCurve.ts"
- },
- "area-tool": {
-  "kind": "class",
-  "target": "AreaTool",
-  "source": "maptalks/src/map/tool/AreaTool.ts"
- },
- "canvas-layer": {
-  "kind": "class",
-  "target": "CanvasLayer",
-  "source": "maptalks/src/layer/CanvasLayer.ts"
- },
- "canvas-renderer": {
-  "kind": "class",
-  "target": "CanvasRenderer",
-  "source": "maptalks/src/renderer/layer/CanvasRenderer.ts"
- },
- "center-mixin": {
-  "kind": "class",
-  "target": "CenterMixin",
-  "source": "maptalks/src/geometry/CenterMixin.ts"
- },
- "circle": {
-  "kind": "class",
-  "target": "Circle",
-  "source": "maptalks/src/geometry/Circle.ts"
- },
- "class": {
-  "kind": "class",
-  "target": "Class",
-  "source": "maptalks/src/core/Class.ts"
- },
- "connector-line": {
-  "kind": "class",
-  "target": "ConnectorLine",
-  "source": "maptalks/src/geometry/ConnectorLine.ts"
- },
- "control": {
-  "kind": "class",
-  "target": "Control",
-  "source": "maptalks/src/control/Control.ts"
- },
- "control-attribution": {
-  "kind": "class",
-  "target": "Attribution",
-  "source": "maptalks/src/control/Control.Attribution.ts"
- },
- "control-compass": {
-  "kind": "class",
-  "target": "Compass",
-  "source": "maptalks/src/control/Control.Compass.ts"
- },
- "control-layer-switcher": {
-  "kind": "class",
-  "target": "LayerSwitcher",
-  "source": "maptalks/src/control/Control.LayerSwitcher.ts"
- },
- "control-nav": {
-  "kind": "class",
-  "target": "Nav",
-  "source": "maptalks/src/control/Control.Nav.ts"
- },
- "control-overview": {
-  "kind": "class",
-  "target": "Overview",
-  "source": "maptalks/src/control/Control.Overview.ts"
- },
- "control-panel": {
-  "kind": "class",
-  "target": "Panel",
-  "source": "maptalks/src/control/Control.Panel.ts"
- },
- "control-reset": {
-  "kind": "class",
-  "target": "Reset",
-  "source": "maptalks/src/control/Control.Reset.ts"
- },
- "control-scale": {
-  "kind": "class",
-  "target": "Scale",
-  "source": "maptalks/src/control/Control.Scale.ts"
- },
- "control-toolbar": {
-  "kind": "class",
-  "target": "Toolbar",
-  "source": "maptalks/src/control/Control.Toolbar.ts"
- },
- "control-zoom": {
-  "kind": "class",
-  "target": "Zoom",
-  "source": "maptalks/src/control/Control.Zoom.ts"
- },
- "coordinate": {
-  "kind": "class",
-  "target": "Coordinate",
-  "source": "maptalks/src/geo/Coordinate.ts"
- },
- "crosscut-analysis": {
-  "kind": "class",
-  "target": "CrossCutAnalysis",
-  "source": "analysis/src/CrossCutAnalysis.js"
- },
- "crs": {
-  "kind": "class",
-  "target": "CRS",
-  "source": "maptalks/src/geo/CRS.ts"
- },
- "cubic-bezier-curve": {
-  "kind": "class",
-  "target": "CubicBezierCurve",
-  "source": "maptalks/src/geometry/CubicBezierCurve.ts"
- },
- "curve": {
-  "kind": "class",
-  "target": "Curve",
-  "source": "maptalks/src/geometry/Curve.ts"
- },
- "cut-analysis": {
-  "kind": "class",
-  "target": "CutAnalysis",
-  "source": "analysis/src/CutAnalysis.js"
- },
- "distance-tool": {
-  "kind": "class",
-  "target": "DistanceTool",
-  "source": "maptalks/src/map/tool/DistanceTool.ts"
- },
- "dom-util": {
-  "kind": "functions",
-  "target": "dom",
-  "file": "maptalks/src/core/util/dom.ts"
- },
- "draw-tool": {
-  "kind": "class",
-  "target": "DrawTool",
-  "source": "maptalks/src/map/tool/DrawTool.ts"
- },
- "draw-tool-layer": {
-  "kind": "class",
-  "target": "DrawToolLayer",
-  "source": "maptalks/src/layer/DrawToolLayer.ts"
- },
- "ellipse": {
-  "kind": "class",
-  "target": "Ellipse",
-  "source": "maptalks/src/geometry/Ellipse.ts"
- },
- "eventable": {
-  "kind": "class",
-  "target": "Eventable",
-  "source": "maptalks/src/core/Eventable.ts"
- },
- "excavate-analysis": {
-  "kind": "class",
-  "target": "ExcavateAnalysis",
-  "source": "analysis/src/ExcavateAnalysis.js"
- },
- "extent": {
-  "kind": "class",
-  "target": "Extent",
-  "source": "maptalks/src/geo/Extent.ts"
- },
- "extrude-polygon-layer": {
-  "kind": "class",
-  "target": "ExtrudePolygonLayer",
-  "source": "vt/src/layer/vector/ExtrudePolygonLayer.ts"
- },
- "flood-analysis": {
-  "kind": "class",
-  "target": "FloodAnalysis",
-  "source": "analysis/src/FloodAnalysis.js"
- },
- "geo-3dtiles-layer": {
-  "kind": "class",
-  "target": "Geo3DTilesLayer",
-  "source": "layer-3dtiles/src/layer/Geo3DTilesLayer.ts"
- },
- "geojson": {
-  "kind": "namespace",
-  "target": "GeoJSON",
-  "source": "maptalks/src/geometry/GeoJSON.ts"
- },
- "geojson-vector-tile-layer": {
-  "kind": "class",
-  "target": "GeoJSONVectorTileLayer",
-  "source": "vt/src/layer/layer/GeojsonVectorTileLayer.ts"
- },
- "geometry": {
-  "kind": "class",
-  "target": "Geometry",
-  "source": "maptalks/src/geometry/Geometry.ts"
- },
- "geometry-collection": {
-  "kind": "class",
-  "target": "GeometryCollection",
-  "source": "maptalks/src/geometry/GeometryCollection.ts"
- },
- "geometry-editor": {
-  "kind": "class",
-  "target": "GeometryEditor",
-  "source": "maptalks/src/geometry/editor/GeometryEditor.ts"
- },
- "gltf-layer": {
-  "kind": "class",
-  "target": "GLTFLayer",
-  "source": "layer-gltf/src/GLTFLayer.js"
- },
- "gltf-marker": {
-  "kind": "class",
-  "target": "GLTFMarker",
-  "source": "layer-gltf/src/GLTFMarker.js"
- },
- "group-gl-layer": {
-  "kind": "class",
-  "target": "GroupGLLayer",
-  "source": "gl/src/layer/GroupGLLayer.ts"
- },
- "group-tile-layer": {
-  "kind": "class",
-  "target": "GroupTileLayer",
-  "source": "maptalks/src/layer/tile/GroupTileLayer.ts"
- },
- "handler": {
-  "kind": "class",
-  "target": "Handler",
-  "source": "maptalks/src/handler/Handler.ts"
- },
- "handlerable": {
-  "kind": "class",
-  "target": "Handlerable",
-  "source": "maptalks/src/handler/Handlerable.ts"
- },
- "height-limit-analysis": {
-  "kind": "class",
-  "target": "HeightLimitAnalysis",
-  "source": "analysis/src/HeightLimitAnalysis.js"
- },
- "image-layer": {
-  "kind": "class",
-  "target": "ImageLayer",
-  "source": "maptalks/src/layer/ImageLayer.ts"
- },
- "info-window": {
-  "kind": "class",
-  "target": "InfoWindow",
-  "source": "maptalks/src/ui/InfoWindow.ts"
- },
- "insight-analysis": {
-  "kind": "class",
-  "target": "InSightAnalysis",
-  "source": "analysis/src/InSightAnalysis.js"
- },
- "json-able": {
-  "kind": "class",
-  "target": "JSONAble",
-  "source": "maptalks/src/core/JSONAble.ts"
- },
- "label": {
-  "kind": "class",
-  "target": "Label",
-  "source": "maptalks/src/geometry/Label.ts"
- },
- "layer": {
-  "kind": "class",
-  "target": "Layer",
-  "source": "maptalks/src/layer/Layer.ts"
- },
- "line-string": {
-  "kind": "class",
-  "target": "LineString",
-  "source": "maptalks/src/geometry/LineString.ts"
- },
- "line-string-layer": {
-  "kind": "class",
-  "target": "LineStringLayer",
-  "source": "vt/src/layer/vector/LineStringLayer.ts"
- },
- "map": {
-  "kind": "class",
-  "target": "Map",
-  "source": "maptalks/src/map/Map.ts"
- },
- "map-tool": {
-  "kind": "class",
-  "target": "MapTool",
-  "source": "maptalks/src/map/tool/MapTool.ts"
- },
- "marker": {
-  "kind": "class",
-  "target": "Marker",
-  "source": "maptalks/src/geometry/Marker.ts"
- },
- "measurer-baidusphere": {
-  "kind": "namespace",
-  "target": "baidu",
-  "merge": [
-   "common"
-  ],
-  "source": "maptalks/src/geo/measurer/Sphere.ts",
-  "mergeSources": {
-   "common": "maptalks/src/geo/measurer/Common.ts"
+  "ajax": {
+    "kind": "namespace",
+    "target": "Ajax",
+    "source": "maptalks/src/core/Ajax.ts"
+  },
+  "analysis": {
+    "kind": "class",
+    "target": "Analysis",
+    "source": "analysis/src/Analysis.js"
+  },
+  "animation-animation": {
+    "kind": "namespace",
+    "target": "Animation",
+    "source": "maptalks/src/core/Animation.ts"
+  },
+  "animation-easing": {
+    "kind": "namespace",
+    "target": "Easing",
+    "source": "maptalks/src/core/Animation.ts"
+  },
+  "animation-frame": {
+    "kind": "class",
+    "target": "Frame",
+    "source": "maptalks/src/core/Animation.ts"
+  },
+  "animation-player": {
+    "kind": "class",
+    "target": "Player",
+    "source": "maptalks/src/core/Animation.ts"
+  },
+  "arc-connector-line": {
+    "kind": "class",
+    "target": "ArcConnectorLine",
+    "source": "maptalks/src/geometry/ConnectorLine.ts"
+  },
+  "arc-curve": {
+    "kind": "class",
+    "target": "ArcCurve",
+    "source": "maptalks/src/geometry/ArcCurve.ts"
+  },
+  "area-tool": {
+    "kind": "class",
+    "target": "AreaTool",
+    "source": "maptalks/src/map/tool/AreaTool.ts"
+  },
+  "canvas-layer": {
+    "kind": "class",
+    "target": "CanvasLayer",
+    "source": "maptalks/src/layer/CanvasLayer.ts"
+  },
+  "canvas-renderer": {
+    "kind": "class",
+    "target": "CanvasRenderer",
+    "source": "maptalks/src/renderer/layer/CanvasRenderer.ts"
+  },
+  "center-mixin": {
+    "kind": "class",
+    "target": "CenterMixin",
+    "source": "maptalks/src/geometry/CenterMixin.ts"
+  },
+  "circle": {
+    "kind": "class",
+    "target": "Circle",
+    "source": "maptalks/src/geometry/Circle.ts"
+  },
+  "class": {
+    "kind": "class",
+    "target": "Class",
+    "source": "maptalks/src/core/Class.ts"
+  },
+  "connector-line": {
+    "kind": "class",
+    "target": "ConnectorLine",
+    "source": "maptalks/src/geometry/ConnectorLine.ts"
+  },
+  "control": {
+    "kind": "class",
+    "target": "Control",
+    "source": "maptalks/src/control/Control.ts"
+  },
+  "control-attribution": {
+    "kind": "class",
+    "target": "Attribution",
+    "source": "maptalks/src/control/Control.Attribution.ts"
+  },
+  "control-compass": {
+    "kind": "class",
+    "target": "Compass",
+    "source": "maptalks/src/control/Control.Compass.ts"
+  },
+  "control-layer-switcher": {
+    "kind": "class",
+    "target": "LayerSwitcher",
+    "source": "maptalks/src/control/Control.LayerSwitcher.ts"
+  },
+  "control-nav": {
+    "kind": "class",
+    "target": "Nav",
+    "source": "maptalks/src/control/Control.Nav.ts"
+  },
+  "control-overview": {
+    "kind": "class",
+    "target": "Overview",
+    "source": "maptalks/src/control/Control.Overview.ts"
+  },
+  "control-panel": {
+    "kind": "class",
+    "target": "Panel",
+    "source": "maptalks/src/control/Control.Panel.ts"
+  },
+  "control-reset": {
+    "kind": "class",
+    "target": "Reset",
+    "source": "maptalks/src/control/Control.Reset.ts"
+  },
+  "control-scale": {
+    "kind": "class",
+    "target": "Scale",
+    "source": "maptalks/src/control/Control.Scale.ts"
+  },
+  "control-toolbar": {
+    "kind": "class",
+    "target": "Toolbar",
+    "source": "maptalks/src/control/Control.Toolbar.ts"
+  },
+  "control-zoom": {
+    "kind": "class",
+    "target": "Zoom",
+    "source": "maptalks/src/control/Control.Zoom.ts"
+  },
+  "coordinate": {
+    "kind": "class",
+    "target": "Coordinate",
+    "source": "maptalks/src/geo/Coordinate.ts"
+  },
+  "crosscut-analysis": {
+    "kind": "class",
+    "target": "CrossCutAnalysis",
+    "source": "analysis/src/CrossCutAnalysis.js"
+  },
+  "crs": {
+    "kind": "class",
+    "target": "CRS",
+    "source": "maptalks/src/geo/CRS.ts"
+  },
+  "cubic-bezier-curve": {
+    "kind": "class",
+    "target": "CubicBezierCurve",
+    "source": "maptalks/src/geometry/CubicBezierCurve.ts"
+  },
+  "curve": {
+    "kind": "class",
+    "target": "Curve",
+    "source": "maptalks/src/geometry/Curve.ts"
+  },
+  "cut-analysis": {
+    "kind": "class",
+    "target": "CutAnalysis",
+    "source": "analysis/src/CutAnalysis.js"
+  },
+  "distance-tool": {
+    "kind": "class",
+    "target": "DistanceTool",
+    "source": "maptalks/src/map/tool/DistanceTool.ts"
+  },
+  "dom-util": {
+    "kind": "functions",
+    "target": "dom",
+    "file": "maptalks/src/core/util/dom.ts"
+  },
+  "draw-tool": {
+    "kind": "class",
+    "target": "DrawTool",
+    "source": "maptalks/src/map/tool/DrawTool.ts"
+  },
+  "draw-tool-layer": {
+    "kind": "class",
+    "target": "DrawToolLayer",
+    "source": "maptalks/src/layer/DrawToolLayer.ts"
+  },
+  "ellipse": {
+    "kind": "class",
+    "target": "Ellipse",
+    "source": "maptalks/src/geometry/Ellipse.ts"
+  },
+  "eventable": {
+    "kind": "class",
+    "target": "Eventable",
+    "source": "maptalks/src/core/Eventable.ts"
+  },
+  "excavate-analysis": {
+    "kind": "class",
+    "target": "ExcavateAnalysis",
+    "source": "analysis/src/ExcavateAnalysis.js"
+  },
+  "extent": {
+    "kind": "class",
+    "target": "Extent",
+    "source": "maptalks/src/geo/Extent.ts"
+  },
+  "extrude-polygon-layer": {
+    "kind": "class",
+    "target": "ExtrudePolygonLayer",
+    "source": "vt/src/layer/vector/ExtrudePolygonLayer.ts"
+  },
+  "flood-analysis": {
+    "kind": "class",
+    "target": "FloodAnalysis",
+    "source": "analysis/src/FloodAnalysis.js"
+  },
+  "geo-3dtiles-layer": {
+    "kind": "class",
+    "target": "Geo3DTilesLayer",
+    "source": "layer-3dtiles/src/layer/Geo3DTilesLayer.ts"
+  },
+  "geojson": {
+    "kind": "namespace",
+    "target": "GeoJSON",
+    "source": "maptalks/src/geometry/GeoJSON.ts"
+  },
+  "geojson-vector-tile-layer": {
+    "kind": "class",
+    "target": "GeoJSONVectorTileLayer",
+    "source": "vt/src/layer/layer/GeojsonVectorTileLayer.ts"
+  },
+  "geometry": {
+    "kind": "class",
+    "target": "Geometry",
+    "source": "maptalks/src/geometry/Geometry.ts"
+  },
+  "geometry-collection": {
+    "kind": "class",
+    "target": "GeometryCollection",
+    "source": "maptalks/src/geometry/GeometryCollection.ts"
+  },
+  "geometry-editor": {
+    "kind": "class",
+    "target": "GeometryEditor",
+    "source": "maptalks/src/geometry/editor/GeometryEditor.ts"
+  },
+  "gltf-layer": {
+    "kind": "class",
+    "target": "GLTFLayer",
+    "source": "layer-gltf/src/GLTFLayer.js"
+  },
+  "gltf-marker": {
+    "kind": "class",
+    "target": "GLTFMarker",
+    "source": "layer-gltf/src/GLTFMarker.js"
+  },
+  "group-gl-layer": {
+    "kind": "class",
+    "target": "GroupGLLayer",
+    "source": "gl/src/layer/GroupGLLayer.ts"
+  },
+  "group-tile-layer": {
+    "kind": "class",
+    "target": "GroupTileLayer",
+    "source": "maptalks/src/layer/tile/GroupTileLayer.ts"
+  },
+  "handler": {
+    "kind": "class",
+    "target": "Handler",
+    "source": "maptalks/src/handler/Handler.ts"
+  },
+  "handlerable": {
+    "kind": "class",
+    "target": "Handlerable",
+    "source": "maptalks/src/handler/Handlerable.ts"
+  },
+  "height-limit-analysis": {
+    "kind": "class",
+    "target": "HeightLimitAnalysis",
+    "source": "analysis/src/HeightLimitAnalysis.js"
+  },
+  "image-layer": {
+    "kind": "class",
+    "target": "ImageLayer",
+    "source": "maptalks/src/layer/ImageLayer.ts"
+  },
+  "info-window": {
+    "kind": "class",
+    "target": "InfoWindow",
+    "source": "maptalks/src/ui/InfoWindow.ts"
+  },
+  "insight-analysis": {
+    "kind": "class",
+    "target": "InSightAnalysis",
+    "source": "analysis/src/InSightAnalysis.js"
+  },
+  "json-able": {
+    "kind": "class",
+    "target": "JSONAble",
+    "source": "maptalks/src/core/JSONAble.ts"
+  },
+  "label": {
+    "kind": "class",
+    "target": "Label",
+    "source": "maptalks/src/geometry/Label.ts"
+  },
+  "layer": {
+    "kind": "class",
+    "target": "Layer",
+    "source": "maptalks/src/layer/Layer.ts"
+  },
+  "line-string": {
+    "kind": "class",
+    "target": "LineString",
+    "source": "maptalks/src/geometry/LineString.ts"
+  },
+  "line-string-layer": {
+    "kind": "class",
+    "target": "LineStringLayer",
+    "source": "vt/src/layer/vector/LineStringLayer.ts"
+  },
+  "map": {
+    "kind": "class",
+    "target": "Map",
+    "source": "maptalks/src/map/Map.ts"
+  },
+  "map-tool": {
+    "kind": "class",
+    "target": "MapTool",
+    "source": "maptalks/src/map/tool/MapTool.ts"
+  },
+  "marker": {
+    "kind": "class",
+    "target": "Marker",
+    "source": "maptalks/src/geometry/Marker.ts"
+  },
+  "measurer-baidusphere": {
+    "kind": "namespace",
+    "target": "baidu",
+    "merge": [
+      "common"
+    ],
+    "source": "maptalks/src/geo/measurer/Sphere.ts",
+    "mergeSources": {
+      "common": "maptalks/src/geo/measurer/Common.ts"
+    }
+  },
+  "measurer-common": {
+    "kind": "namespace",
+    "target": "common",
+    "source": "maptalks/src/geo/measurer/Common.ts"
+  },
+  "measurer-identity": {
+    "kind": "namespace",
+    "target": "identity",
+    "merge": [
+      "common"
+    ],
+    "source": "maptalks/src/geo/measurer/Identity.ts",
+    "mergeSources": {
+      "common": "maptalks/src/geo/measurer/Common.ts"
+    }
+  },
+  "measurer-measurer": {
+    "kind": "namespace",
+    "target": "Measurer",
+    "source": "maptalks/src/geo/measurer/index.ts"
+  },
+  "measurer-wgs84sphere": {
+    "kind": "namespace",
+    "target": "wgs84",
+    "merge": [
+      "common"
+    ],
+    "source": "maptalks/src/geo/measurer/Sphere.ts",
+    "mergeSources": {
+      "common": "maptalks/src/geo/measurer/Common.ts"
+    }
+  },
+  "menu": {
+    "kind": "class",
+    "target": "Menu",
+    "source": "maptalks/src/ui/Menu.ts"
+  },
+  "menuable": {
+    "kind": "namespace",
+    "target": "Menuable",
+    "source": "maptalks/src/ui/Menuable.ts"
+  },
+  "multi-geometry": {
+    "kind": "class",
+    "target": "MultiGeometry",
+    "source": "maptalks/src/geometry/MultiGeometry.ts"
+  },
+  "multi-gltf-marker": {
+    "kind": "class",
+    "target": "MultiGLTFMarker",
+    "source": "layer-gltf/src/MultiGLTFMarker.js"
+  },
+  "multi-line-string": {
+    "kind": "class",
+    "target": "MultiLineString",
+    "source": "maptalks/src/geometry/MultiLineString.ts"
+  },
+  "multi-point": {
+    "kind": "class",
+    "target": "MultiPoint",
+    "source": "maptalks/src/geometry/MultiPoint.ts"
+  },
+  "multi-polygon": {
+    "kind": "class",
+    "target": "MultiPolygon",
+    "source": "maptalks/src/geometry/MultiPolygon.ts"
+  },
+  "overlay-layer": {
+    "kind": "class",
+    "target": "OverlayLayer",
+    "source": "maptalks/src/layer/OverlayLayer.ts"
+  },
+  "particle-layer": {
+    "kind": "class",
+    "target": "ParticleLayer",
+    "source": "maptalks/src/layer/ParticleLayer.ts"
+  },
+  "path": {
+    "kind": "class",
+    "target": "Path",
+    "source": "maptalks/src/geometry/Path.ts"
+  },
+  "point": {
+    "kind": "class",
+    "target": "Point",
+    "source": "maptalks/src/geo/Point.ts"
+  },
+  "point-extent": {
+    "kind": "class",
+    "target": "PointExtent",
+    "source": "maptalks/src/geo/PointExtent.ts"
+  },
+  "point-layer": {
+    "kind": "class",
+    "target": "PointLayer",
+    "source": "vt/src/layer/vector/PointLayer.ts"
+  },
+  "polygon": {
+    "kind": "class",
+    "target": "Polygon",
+    "source": "maptalks/src/geometry/Polygon.ts"
+  },
+  "polygon-layer": {
+    "kind": "class",
+    "target": "PolygonLayer",
+    "source": "vt/src/layer/vector/PolygonLayer.ts"
+  },
+  "position": {
+    "kind": "class",
+    "target": "Position",
+    "source": "maptalks/src/geo/Position.ts"
+  },
+  "projection-baidu": {
+    "kind": "namespace",
+    "target": "BAIDUProjection",
+    "merge": [
+      "CommonProjection"
+    ],
+    "source": "maptalks/src/geo/projection/Projection.Baidu.ts",
+    "mergeSources": {
+      "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
+    }
+  },
+  "projection-common": {
+    "kind": "namespace",
+    "target": "CommonProjection",
+    "source": "maptalks/src/geo/projection/Projection.ts"
+  },
+  "projection-epsg3857": {
+    "kind": "namespace",
+    "target": "EPSG3857Projection",
+    "merge": [
+      "CommonProjection"
+    ],
+    "source": "maptalks/src/geo/projection/Projection.EPSG3857.ts",
+    "mergeSources": {
+      "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
+    }
+  },
+  "projection-epsg4326": {
+    "kind": "namespace",
+    "target": "EPSG4326Projection",
+    "merge": [
+      "CommonProjection"
+    ],
+    "source": "maptalks/src/geo/projection/Projection.EPSG4326.ts",
+    "mergeSources": {
+      "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
+    }
+  },
+  "projection-epsg9807": {
+    "kind": "namespace",
+    "target": "EPSG9807Projection",
+    "merge": [
+      "CommonProjection"
+    ],
+    "source": "maptalks/src/geo/projection/Projection.EPSG9807.ts",
+    "mergeSources": {
+      "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
+    }
+  },
+  "projection-identity": {
+    "kind": "namespace",
+    "target": "IdentityProjection",
+    "merge": [
+      "CommonProjection"
+    ],
+    "source": "maptalks/src/geo/projection/Projection.IDENTITY.ts",
+    "mergeSources": {
+      "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
+    }
+  },
+  "projection-utm": {
+    "kind": "namespace",
+    "target": "UTMProjection",
+    "merge": [
+      "CommonProjection"
+    ],
+    "source": "maptalks/src/geo/projection/Projection.UTM.ts",
+    "mergeSources": {
+      "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
+    }
+  },
+  "quad-bezier-curve": {
+    "kind": "class",
+    "target": "QuadBezierCurve",
+    "source": "maptalks/src/geometry/QuadBezierCurve.ts"
+  },
+  "rectangle": {
+    "kind": "class",
+    "target": "Rectangle",
+    "source": "maptalks/src/geometry/Rectangle.ts"
+  },
+  "renderable": {
+    "kind": "class",
+    "target": "Renderable",
+    "source": "maptalks/src/renderer/Renderable.ts"
+  },
+  "sector": {
+    "kind": "class",
+    "target": "Sector",
+    "source": "maptalks/src/geometry/Sector.ts"
+  },
+  "size": {
+    "kind": "class",
+    "target": "Size",
+    "source": "maptalks/src/geo/Size.ts"
+  },
+  "skyline-analysis": {
+    "kind": "class",
+    "target": "SkylineAnalysis",
+    "source": "analysis/src/SkylineAnalysis.js"
+  },
+  "string-util": {
+    "kind": "functions",
+    "target": "strings",
+    "file": "maptalks/src/core/util/strings.ts"
+  },
+  "text-box": {
+    "kind": "class",
+    "target": "TextBox",
+    "source": "maptalks/src/geometry/TextBox.ts"
+  },
+  "text-marker": {
+    "kind": "class",
+    "target": "TextMarker",
+    "source": "maptalks/src/geometry/TextMarker.ts"
+  },
+  "tile-layer": {
+    "kind": "class",
+    "target": "TileLayer",
+    "source": "maptalks/src/layer/tile/TileLayer.ts"
+  },
+  "tile-system": {
+    "kind": "class",
+    "target": "TileSystem",
+    "source": "maptalks/src/layer/tile/tileinfo/TileSystem.ts"
+  },
+  "tool-tip": {
+    "kind": "class",
+    "target": "ToolTip",
+    "source": "maptalks/src/ui/ToolTip.ts"
+  },
+  "transformation": {
+    "kind": "class",
+    "target": "Transformation",
+    "source": "maptalks/src/geo/transformation/Transformation.ts"
+  },
+  "ui-component": {
+    "kind": "class",
+    "target": "UIComponent",
+    "source": "maptalks/src/ui/UIComponent.ts"
+  },
+  "ui-marker": {
+    "kind": "class",
+    "target": "UIMarker",
+    "source": "maptalks/src/ui/UIMarker.ts"
+  },
+  "util": {
+    "kind": "functions",
+    "target": "util",
+    "file": "maptalks/src/core/util/util.ts"
+  },
+  "vector-layer": {
+    "kind": "class",
+    "target": "VectorLayer",
+    "source": "maptalks/src/layer/VectorLayer.ts"
+  },
+  "vector-tile-layer": {
+    "kind": "class",
+    "target": "VectorTileLayer",
+    "source": "vt/src/layer/layer/VectorTileLayer.ts"
+  },
+  "viewshed-analysis": {
+    "kind": "class",
+    "target": "ViewshedAnalysis",
+    "source": "analysis/src/ViewshedAnalysis.js"
+  },
+  "vt-compare": {
+    "kind": "prose"
+  },
+  "vt-intro": {
+    "kind": "prose"
+  },
+  "vt-performance": {
+    "kind": "prose"
+  },
+  "wms-tile-layer": {
+    "kind": "class",
+    "target": "WMSTileLayer",
+    "source": "maptalks/src/layer/tile/WMSTileLayer.ts"
   }
- },
- "measurer-common": {
-  "kind": "namespace",
-  "target": "common",
-  "source": "maptalks/src/geo/measurer/Common.ts"
- },
- "measurer-identity": {
-  "kind": "namespace",
-  "target": "identity",
-  "merge": [
-   "common"
-  ],
-  "source": "maptalks/src/geo/measurer/Identity.ts",
-  "mergeSources": {
-   "common": "maptalks/src/geo/measurer/Common.ts"
-  }
- },
- "measurer-measurer": {
-  "kind": "namespace",
-  "target": "Measurer",
-  "source": "maptalks/src/geo/measurer/index.ts"
- },
- "measurer-wgs84sphere": {
-  "kind": "namespace",
-  "target": "wgs84",
-  "merge": [
-   "common"
-  ],
-  "source": "maptalks/src/geo/measurer/Sphere.ts",
-  "mergeSources": {
-   "common": "maptalks/src/geo/measurer/Common.ts"
-  }
- },
- "menu": {
-  "kind": "class",
-  "target": "Menu",
-  "source": "maptalks/src/ui/Menu.ts"
- },
- "menuable": {
-  "kind": "namespace",
-  "target": "Menuable",
-  "source": "maptalks/src/ui/Menuable.ts"
- },
- "multi-geometry": {
-  "kind": "class",
-  "target": "MultiGeometry",
-  "source": "maptalks/src/geometry/MultiGeometry.ts"
- },
- "multi-gltf-marker": {
-  "kind": "class",
-  "target": "MultiGLTFMarker",
-  "source": "layer-gltf/src/MultiGLTFMarker.js"
- },
- "multi-line-string": {
-  "kind": "class",
-  "target": "MultiLineString",
-  "source": "maptalks/src/geometry/MultiLineString.ts"
- },
- "multi-point": {
-  "kind": "class",
-  "target": "MultiPoint",
-  "source": "maptalks/src/geometry/MultiPoint.ts"
- },
- "multi-polygon": {
-  "kind": "class",
-  "target": "MultiPolygon",
-  "source": "maptalks/src/geometry/MultiPolygon.ts"
- },
- "overlay-layer": {
-  "kind": "class",
-  "target": "OverlayLayer",
-  "source": "maptalks/src/layer/OverlayLayer.ts"
- },
- "particle-layer": {
-  "kind": "class",
-  "target": "ParticleLayer",
-  "source": "maptalks/src/layer/ParticleLayer.ts"
- },
- "path": {
-  "kind": "class",
-  "target": "Path",
-  "source": "maptalks/src/geometry/Path.ts"
- },
- "point": {
-  "kind": "class",
-  "target": "Point",
-  "source": "maptalks/src/geo/Point.ts"
- },
- "point-extent": {
-  "kind": "class",
-  "target": "PointExtent",
-  "source": "maptalks/src/geo/PointExtent.ts"
- },
- "point-layer": {
-  "kind": "class",
-  "target": "PointLayer",
-  "source": "vt/src/layer/vector/PointLayer.ts"
- },
- "polygon": {
-  "kind": "class",
-  "target": "Polygon",
-  "source": "maptalks/src/geometry/Polygon.ts"
- },
- "polygon-layer": {
-  "kind": "class",
-  "target": "PolygonLayer",
-  "source": "vt/src/layer/vector/PolygonLayer.ts"
- },
- "position": {
-  "kind": "class",
-  "target": "Position",
-  "source": "maptalks/src/geo/Position.ts"
- },
- "projection-baidu": {
-  "kind": "namespace",
-  "target": "BAIDUProjection",
-  "merge": [
-   "CommonProjection"
-  ],
-  "source": "maptalks/src/geo/projection/Projection.Baidu.ts",
-  "mergeSources": {
-   "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
-  }
- },
- "projection-common": {
-  "kind": "namespace",
-  "target": "CommonProjection",
-  "source": "maptalks/src/geo/projection/Projection.ts"
- },
- "projection-epsg3857": {
-  "kind": "namespace",
-  "target": "EPSG3857Projection",
-  "merge": [
-   "CommonProjection"
-  ],
-  "source": "maptalks/src/geo/projection/Projection.EPSG3857.ts",
-  "mergeSources": {
-   "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
-  }
- },
- "projection-epsg4326": {
-  "kind": "namespace",
-  "target": "EPSG4326Projection",
-  "merge": [
-   "CommonProjection"
-  ],
-  "source": "maptalks/src/geo/projection/Projection.EPSG4326.ts",
-  "mergeSources": {
-   "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
-  }
- },
- "projection-epsg9807": {
-  "kind": "namespace",
-  "target": "EPSG9807Projection",
-  "merge": [
-   "CommonProjection"
-  ],
-  "source": "maptalks/src/geo/projection/Projection.EPSG9807.ts",
-  "mergeSources": {
-   "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
-  }
- },
- "projection-identity": {
-  "kind": "namespace",
-  "target": "IdentityProjection",
-  "merge": [
-   "CommonProjection"
-  ],
-  "source": "maptalks/src/geo/projection/Projection.IDENTITY.ts",
-  "mergeSources": {
-   "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
-  }
- },
- "projection-utm": {
-  "kind": "namespace",
-  "target": "UTMProjection",
-  "merge": [
-   "CommonProjection"
-  ],
-  "source": "maptalks/src/geo/projection/Projection.UTM.ts",
-  "mergeSources": {
-   "CommonProjection": "maptalks/src/geo/projection/Projection.ts"
-  }
- },
- "quad-bezier-curve": {
-  "kind": "class",
-  "target": "QuadBezierCurve",
-  "source": "maptalks/src/geometry/QuadBezierCurve.ts"
- },
- "rectangle": {
-  "kind": "class",
-  "target": "Rectangle",
-  "source": "maptalks/src/geometry/Rectangle.ts"
- },
- "renderable": {
-  "kind": "class",
-  "target": "Renderable",
-  "source": "maptalks/src/renderer/Renderable.ts"
- },
- "sector": {
-  "kind": "class",
-  "target": "Sector",
-  "source": "maptalks/src/geometry/Sector.ts"
- },
- "size": {
-  "kind": "class",
-  "target": "Size",
-  "source": "maptalks/src/geo/Size.ts"
- },
- "skyline-analysis": {
-  "kind": "class",
-  "target": "SkylineAnalysis",
-  "source": "analysis/src/SkylineAnalysis.js"
- },
- "string-util": {
-  "kind": "functions",
-  "target": "strings",
-  "file": "maptalks/src/core/util/strings.ts"
- },
- "text-box": {
-  "kind": "class",
-  "target": "TextBox",
-  "source": "maptalks/src/geometry/TextBox.ts"
- },
- "text-marker": {
-  "kind": "class",
-  "target": "TextMarker",
-  "source": "maptalks/src/geometry/TextMarker.ts"
- },
- "tile-layer": {
-  "kind": "class",
-  "target": "TileLayer",
-  "source": "maptalks/src/layer/tile/TileLayer.ts"
- },
- "tile-system": {
-  "kind": "class",
-  "target": "TileSystem",
-  "source": "maptalks/src/layer/tile/tileinfo/TileSystem.ts"
- },
- "tool-tip": {
-  "kind": "class",
-  "target": "ToolTip",
-  "source": "maptalks/src/ui/ToolTip.ts"
- },
- "transformation": {
-  "kind": "class",
-  "target": "Transformation",
-  "source": "maptalks/src/geo/transformation/Transformation.ts"
- },
- "ui-component": {
-  "kind": "class",
-  "target": "UIComponent",
-  "source": "maptalks/src/ui/UIComponent.ts"
- },
- "ui-marker": {
-  "kind": "class",
-  "target": "UIMarker",
-  "source": "maptalks/src/ui/UIMarker.ts"
- },
- "util": {
-  "kind": "functions",
-  "target": "util",
-  "file": "maptalks/src/core/util/util.ts"
- },
- "vector-layer": {
-  "kind": "class",
-  "target": "VectorLayer",
-  "source": "maptalks/src/layer/VectorLayer.ts"
- },
- "vector-tile-layer": {
-  "kind": "class",
-  "target": "VectorTileLayer",
-  "source": "vt/src/layer/layer/VectorTileLayer.ts"
- },
- "viewshed-analysis": {
-  "kind": "class",
-  "target": "ViewshedAnalysis",
-  "source": "analysis/src/ViewshedAnalysis.js"
- },
- "vt-compare": {
-  "kind": "prose"
- },
- "vt-intro": {
-  "kind": "prose"
- },
- "vt-performance": {
-  "kind": "prose"
- },
- "wms-tile-layer": {
-  "kind": "class",
-  "target": "TileLayer",
-  "source": "maptalks/src/layer/tile/TileLayer.ts"
- }
 }
+

@@ -56,15 +56,34 @@ new WMSTileLayer(id, options)
 
 - `WMSTileLayer.fromJSON(layerJSON): WMSTileLayer | null` — 从 JSON 还原图层
 
+
+<!-- api-gen:start -->
+### WMSTileLayer 的其他静态方法
+
+<!--@include: ./includes/api/wms-tile-layer-statics-missing.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 成员方法
 
 - `getTileUrl(x, y, z): string` — 获取瓦片 `(x,y,z)` 的 WMS 请求 URL
 
 
 <!-- api-gen:start -->
-### TileLayer 的其他公开方法
+### WMSTileLayer 的其他公开方法
 
 <!--@include: ./includes/api/wms-tile-layer-missing.md-->
+
+### 继承自 TileLayer 的方法
+
+下列方法由父类 [TileLayer](/api/tile-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/tile-layer-methods.md-->
 
 ### 继承自 Layer 的方法
 
@@ -82,6 +101,10 @@ new WMSTileLayer(id, options)
 瓦片事件与图层通用事件见 [TileLayer](/api/tile-layer) / [Layer](/api/layer)。
 
 <!-- api-gen:start -->
+### 继承自 TileLayer 的事件
+
+<!--@include: ./includes/api/tile-layer-events.md-->
+
 ### 继承自 Layer 的事件
 
 <!--@include: ./includes/api/layer-events.md-->

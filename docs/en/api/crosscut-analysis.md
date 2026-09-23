@@ -59,13 +59,21 @@ Returns:
 </details>
 
 <!-- api-gen:start -->
+### Other Public Methods of CrossCutAnalysis
+
+<!--@include: ./includes/api/crosscut-analysis-missing.md-->
+
+### Methods Inherited from Analysis
+
+The following methods are provided by the parent class [Analysis](/en/api/analysis) and are available on instances of this class.
+
+<!--@include: ./includes/api/analysis-methods.md-->
+
 ### Mixed-in Methods
 
 This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable).
 <!-- api-gen:end -->
 
 ## Methods Inherited from Analysis
-
-<!--@include: ./includes/analysis-methods.md-->
 
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)

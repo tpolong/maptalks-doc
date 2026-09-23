@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Predefined animation speeds in milliseconds: slow 2000, normal 1000, fast 500.
 
 </div>
 </details>

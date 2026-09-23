@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create a MultiGLTFMarker from the data and options in the given JSON.
 
 Parameters:
 

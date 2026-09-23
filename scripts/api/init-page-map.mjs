@@ -29,6 +29,7 @@ const SPEC = {
   'gltf-marker': { kind: 'class', target: 'GLTFMarker' },
   'multi-gltf-marker': { kind: 'class', target: 'MultiGLTFMarker' },
   'extrude-polygon-layer': { kind: 'class', target: 'ExtrudePolygonLayer' },
+  'wms-tile-layer': { kind: 'class', target: 'WMSTileLayer' },
   'point-layer': { kind: 'class', target: 'PointLayer' },
   'polygon-layer': { kind: 'class', target: 'PolygonLayer' },
   'line-string-layer': { kind: 'class', target: 'LineStringLayer' },

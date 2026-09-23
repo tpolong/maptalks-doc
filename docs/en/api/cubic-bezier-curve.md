@@ -33,6 +33,10 @@ CubicBezierCurve has no class-specific options; it inherits the options of Curve
 No class-specific methods; it inherits the methods of Curve.
 
 <!-- api-gen:start -->
+### Other Public Methods of CubicBezierCurve
+
+<!--@include: ./includes/api/cubic-bezier-curve-missing.md-->
+
 ### Methods Inherited from LineString
 
 The following methods are provided by the parent class [LineString](/en/api/line-string) and are available on instances of this class.
@@ -59,6 +63,18 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Static Methods
 
 - `CubicBezierCurve.fromJSON(json): CubicBezierCurve` — Creates a CubicBezierCurve instance from a JSON object.
+
+<!-- api-gen:start -->
+### Other Static Methods of CubicBezierCurve
+
+<!--@include: ./includes/api/cubic-bezier-curve-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

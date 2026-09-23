@@ -29,3 +29,12 @@ Event properties:
 
 </div>
 </details>
+
+<details><summary>contentchange</summary>
+<div>
+<br/>
+
+Fired when the text content of the label is changed.
+
+</div>
+</details>

@@ -65,6 +65,10 @@ new Label(content, coordinates, options?)
 - `_canEdit(): boolean` — 是否可编辑，Label 固定返回 `false`（不支持手柄缩放的文本标注）。
 
 <!-- api-gen:start -->
+### Label 的其他公开方法
+
+<!--@include: ./includes/api/label-missing.md-->
+
 ### 继承自 TextMarker 的方法
 
 下列方法由父类 [TextMarker](/api/text-marker) 提供，本类的实例同样可以调用。
@@ -91,6 +95,14 @@ new Label(content, coordinates, options?)
 ## 静态方法
 
 - `fromJSON(json): Label` — 从 JSON 对象创建 Label 实例。
+
+<!-- api-gen:start -->
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

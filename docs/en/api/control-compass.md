@@ -41,6 +41,10 @@ Common options inherited from [control.Control](/en/api/control) (e.g. `cssName`
 > The compass element is `<div class="maptalks-compass">`; clicking triggers `_resetView` (resets bearing to 0).
 
 <!-- api-gen:start -->
+### Other Public Methods of Compass
+
+<!--@include: ./includes/api/control-compass-missing.md-->
+
 ### Methods Inherited from Control
 
 The following methods are provided by the parent class [Control](/en/api/control) and are available on instances of this class.

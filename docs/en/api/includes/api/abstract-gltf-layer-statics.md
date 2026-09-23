@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Registers a custom shader into the gltf layer shader map.
 
 Parameters:
 
@@ -18,7 +18,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Removes the shader with the given name from the gltf layer shader map.
 
 Parameters:
 
@@ -31,7 +31,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the names and uniforms of all registered shaders.
 
 </div>
 </details>
@@ -40,7 +40,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the map of shader names to their shader configs.
 
 </div>
 </details>

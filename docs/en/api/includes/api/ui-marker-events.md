@@ -262,7 +262,7 @@ Event properties:
 <div>
 <br/>
 
-positionchange event.
+Fired after the UIMarker coordinates are set again.
 
 </div>
 </details>
@@ -271,7 +271,7 @@ positionchange event.
 <div>
 <br/>
 
-positionchange event.
+Fired after the UIMarker coordinates are set again.
 
 Event properties:
 
@@ -287,7 +287,7 @@ Event properties:
 <div>
 <br/>
 
-contentchange event.
+Fired when the UIMarker content is set again.
 
 </div>
 </details>
@@ -296,7 +296,7 @@ contentchange event.
 <div>
 <br/>
 
-contentchange event.
+Fired when the UIMarker content is set again.
 
 Event properties:
 
@@ -314,7 +314,7 @@ Event properties:
 <div>
 <br/>
 
-showstart event.
+Fired when the UIMarker starts to show
 
 </div>
 </details>
@@ -323,7 +323,7 @@ showstart event.
 <div>
 <br/>
 
-showend event.
+Fired when the UIMarker finishes showing
 
 </div>
 </details>

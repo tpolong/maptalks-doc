@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Deserialize a Circle from coordinates, radius and options, restoring its properties.
 
 Parameters:
 

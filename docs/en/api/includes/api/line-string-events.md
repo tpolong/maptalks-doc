@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange event.
+Fired when the coordinates of the LineString change.
 
 </div>
 </details>

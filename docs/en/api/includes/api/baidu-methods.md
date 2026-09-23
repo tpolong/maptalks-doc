@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Identifies the baidu measurer, whose registered name is BAIDU.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Defines the sphere of radius 6370996.81 used by the baidu measurer.
 
 Parameters:
 

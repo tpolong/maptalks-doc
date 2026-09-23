@@ -48,10 +48,6 @@ GLTFLayer 特有的配置项（2026 源码补充）：
 </div>
 </details>
 
-<!--@include: ./includes/overlay-layer-methods.md-->
-
-<!--@include: ./includes/layer-methods.md-->
-
 ## 成员方法
 
 <!-- api-gen:start -->
@@ -64,6 +60,18 @@ GLTFLayer 特有的配置项（2026 源码补充）：
 下列方法由父类 AbstractGLTFLayer 提供，本类的实例同样可以调用。
 
 <!--@include: ./includes/api/abstract-gltf-layer-methods.md-->
+
+### 继承自 OverlayLayer 的方法
+
+下列方法由父类 [OverlayLayer](/api/overlay-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/overlay-layer-methods.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
 
 ### 混入的方法
 
@@ -91,6 +99,24 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 </div>
 </details>
 
+<!-- api-gen:start -->
+### GLTFLayer 的其他静态方法
+
+<!--@include: ./includes/api/gltf-layer-statics-missing.md-->
+
+### 继承自 AbstractGLTFLayer 的静态方法
+
+下列方法由父类 AbstractGLTFLayer 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/abstract-gltf-layer-statics.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 方法（2026 源码补充）
 
 > [!NOTE]
@@ -115,18 +141,6 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 
 <!--@include: ./includes/js-events-example.md-->
 
-### 图层事件
-
-<!--@include: ./includes/gltf-layer-events.md-->
-
-### 继承自OverlayLayer的事件
-
-<!--@include: ./includes/overlay-layer-events.md-->
-
-### 继承自Layer的事件
-
-<!--@include: ./includes/layer-events.md-->
-
 > [!NOTE] 事件核对（2026 源码）
 > - `modelload`：所有模型加载完成，参数为 `{ models: url 列表 }`
 > - `modelerror`：模型加载出错，参数为 `{ url, info }`
@@ -135,3 +149,17 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 > - `load` / `add`：marker 模型加载完成 / 添加时在 marker 上触发（含 layer 引用）
 
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
+
+<!-- api-gen:start -->
+### 继承自 AbstractGLTFLayer 的事件
+
+<!--@include: ./includes/api/abstract-gltf-layer-events.md-->
+
+### 继承自 OverlayLayer 的事件
+
+<!--@include: ./includes/api/overlay-layer-events.md-->
+
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

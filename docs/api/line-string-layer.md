@@ -44,8 +44,6 @@ const layer = new LineStringLayer('line0');
 
 ## 成员方法
 
-<!--@include: ./includes/vector3d-layer-methods.md-->
-
 <details><summary>identify(coordinate, options)</summary>
 <div>
 <br/>
@@ -96,11 +94,29 @@ layer.identifyAtPoint([400, 300], { tolerance: 2 });
 </div>
 </details>
 
-<!--@include: ./includes/overlay-layer-methods.md-->
-
-<!--@include: ./includes/layer-methods.md-->
-
 <!-- api-gen:start -->
+### LineStringLayer 的其他公开方法
+
+<!--@include: ./includes/api/line-string-layer-missing.md-->
+
+### 继承自 Vector3DLayer 的方法
+
+下列方法由父类 Vector3DLayer 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/vector3-d-layer-methods.md-->
+
+### 继承自 OverlayLayer 的方法
+
+下列方法由父类 [OverlayLayer](/api/overlay-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/overlay-layer-methods.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
+
 ### 混入的方法
 
 本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
@@ -127,22 +143,38 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 </div>
 </details>
 
+<!-- api-gen:start -->
+### LineStringLayer 的其他静态方法
+
+<!--@include: ./includes/api/line-string-layer-statics-missing.md-->
+
+### 继承自 Vector3DLayer 的静态方法
+
+下列方法由父类 Vector3DLayer 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/vector3-d-layer-statics.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 <!--@include: ./includes/js-events-example.md-->
 
-### 图层事件
-
-<!--@include: ./includes/vector3d-layer-events.md-->
-
 > 注：渲染器还会触发 `buildlinemesh`、`updatemesh`、`partialupdate`、`removegeo`、`iblupdated` 等渲染事件（2026 核对）。
 
-### 继承自OverlayLayer的事件
-
-<!--@include: ./includes/overlay-layer-events.md-->
-
-### 继承自Layer的事件
-
-<!--@include: ./includes/layer-events.md-->
-
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+
+<!-- api-gen:start -->
+### 继承自 OverlayLayer 的事件
+
+<!--@include: ./includes/api/overlay-layer-events.md-->
+
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

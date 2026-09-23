@@ -12,11 +12,13 @@ Analysis can only be added to a GroupGLLayer; it cannot be added to other WebGL 
 
 ## Methods
 
-<!--@include: ./includes/analysis-methods.md-->
-
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
 
 <!-- api-gen:start -->
+### Other Public Methods of Analysis
+
+<!--@include: ./includes/api/analysis-missing.md-->
+
 ### Mixed-in Methods
 
 This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable).

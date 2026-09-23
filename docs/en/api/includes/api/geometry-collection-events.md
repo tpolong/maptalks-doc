@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange event.
+Fired after the shape of a geometry in the collection changes.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ shapechange event.
 <div>
 <br/>
 
-removestart event.
+Fired when the GeometryCollection starts to be removed from its layer.
 
 </div>
 </details>
@@ -20,7 +20,7 @@ removestart event.
 <div>
 <br/>
 
-remove event.
+Fired after the GeometryCollection is removed from its layer.
 
 </div>
 </details>
@@ -29,7 +29,7 @@ remove event.
 <div>
 <br/>
 
-removeend event.
+Fired when the removal of the GeometryCollection ends.
 
 </div>
 </details>
@@ -38,7 +38,7 @@ removeend event.
 <div>
 <br/>
 
-show event.
+Fired when the GeometryCollection is shown.
 
 </div>
 </details>
@@ -47,7 +47,43 @@ show event.
 <div>
 <br/>
 
-hide event.
+Fired when the geometry collection is hidden together with its child geometries.
+
+</div>
+</details>
+
+<details><summary>editstart</summary>
+<div>
+<br/>
+
+Fired when the editing of the geometry collection starts.
+
+</div>
+</details>
+
+<details><summary>editend</summary>
+<div>
+<br/>
+
+Fired when the editing of the geometry collection ends.
+
+</div>
+</details>
+
+<details><summary>undoedit</summary>
+<div>
+<br/>
+
+Fired when one child geometry edit is undone in the collection.
+
+</div>
+</details>
+
+<details><summary>redoedit</summary>
+<div>
+<br/>
+
+Fired when one child geometry edit is redone in the collection.
 
 </div>
 </details>

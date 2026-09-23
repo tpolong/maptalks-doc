@@ -19,7 +19,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Unbinds map events when the control is removed, stopping scale updates
 
 </div>
 </details>

@@ -69,6 +69,18 @@ This class gains the following method groups from mixins; see the linked pages f
 
 - `GeometryCollection.fromJSON(json): GeometryCollection` — Creates a GeometryCollection instance from a JSON object.
 
+<!-- api-gen:start -->
+### Other Static Methods of GeometryCollection
+
+<!--@include: ./includes/api/geometry-collection-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 - `shapechange` — Fired when the geometry shape changes.

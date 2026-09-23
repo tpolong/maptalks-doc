@@ -19,7 +19,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Rotates the compass to the map bearing when the control is added.
 
 </div>
 </details>
@@ -28,7 +28,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Unbinds map view events and clears the compass cache when the control is removed.
 
 </div>
 </details>

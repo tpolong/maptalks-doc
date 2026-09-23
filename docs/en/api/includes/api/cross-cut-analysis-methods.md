@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Samples altitudes at evenly spaced points along the cut line and returns coordinate and distance entries.
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Updates an analysis option, rebuilding the extent and refreshing picking when cutLine changes
 
 Parameters:
 
@@ -29,7 +29,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Renders the cross-cut analysis and returns uniforms with cutLineColor and crosscutMap
 
 Parameters:
 
@@ -42,7 +42,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the shader defines that enable the HAS_CROSSCUT macro.
 
 </div>
 </details>

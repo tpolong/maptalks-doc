@@ -61,11 +61,29 @@ This class gains the following method groups from mixins; see the linked pages f
 
 TextMarker has no static methods of its own.
 
+<!-- api-gen:start -->
+### Other Static Methods of TextMarker
+
+<!--@include: ./includes/api/text-marker-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 - `contentchange` — Fired when the text content changes; the event object carries `old` and `new` fields.
 
 <!-- api-gen:start -->
+### Other Events of TextMarker
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/text-marker-events-missing.md-->
+
 ### Events Inherited from Geometry
 
 <!--@include: ./includes/api/geometry-events.md-->

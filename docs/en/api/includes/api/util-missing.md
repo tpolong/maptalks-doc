@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Checks whether url is svg, returns 1 for a .svg suffix, 2 for a data prefix, else 0
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Appends the elements of the following arrays into the first array, returns the new length
 
 Parameters:
 
@@ -28,7 +28,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Concatenates the elements of all input arrays into a new array
 
 Parameters:
 
@@ -41,7 +41,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the default when the value is undefined, otherwise returns the value itself
 
 Parameters:
 
@@ -68,7 +68,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Base-2 logarithm that rounds near-integer results, polyfilling Math.log2.
 
 Parameters:
 
@@ -117,7 +117,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Checks whether a string looks like a css url, returns 1 without quotes and 2 with quotes
 
 Parameters:
 
@@ -144,7 +144,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Copies defaults property descriptors onto obj, only for keys that are undefined in obj
 
 Parameters:
 
@@ -158,7 +158,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Reuses and resets a Point on ptKey for each point object, null placeholder for empty items
 
 Parameters:
 
@@ -172,7 +172,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Takes the image data out of data and passes it directly to the callback
 
 Parameters:
 
@@ -186,7 +186,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Resolves a relative URL to an absolute URL, returns http or https URLs unchanged
 
 Parameters:
 
@@ -199,7 +199,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Converts canvas pixel and css width and height by devicePixelRatio, reusing the result object
 
 Parameters:
 
@@ -213,7 +213,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Checks whether an HTTP status code means no content, covering 204, 4xx and 501
 
 Parameters:
 

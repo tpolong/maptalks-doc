@@ -58,6 +58,12 @@ This class gains the following method groups from mixins; see the linked pages f
 - `layerchange` — Fired when layer visibility changes.
 
 <!-- api-gen:start -->
+### Other Events of LayerSwitcher
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/control-layer-switcher-events-missing.md-->
+
 ### Events Inherited from Control
 
 <!--@include: ./includes/api/control-events.md-->

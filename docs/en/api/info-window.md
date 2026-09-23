@@ -53,6 +53,10 @@ Parameters:
 - `getTransformOrigin(): String` — Gets the transform origin of the bubble.
 
 <!-- api-gen:start -->
+### Other Public Methods of InfoWindow
+
+<!--@include: ./includes/api/info-window-missing.md-->
+
 ### Methods Inherited from UIComponent
 
 The following methods are provided by the parent class [UIComponent](/en/api/ui-component) and are available on instances of this class.
@@ -69,6 +73,12 @@ This class gains the following method groups from mixins; see the linked pages f
 - `contentchange` — Fired when the bubble content changes.
 
 <!-- api-gen:start -->
+### Other Events of InfoWindow
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/info-window-events-missing.md-->
+
 ### Events Inherited from UIComponent
 
 <!--@include: ./includes/api/ui-component-events.md-->

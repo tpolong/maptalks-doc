@@ -52,6 +52,12 @@ new Class(options?)
 - `Class.include(...sources)` — 将源对象中的方法批量混入类的原型中。
 - `Class.mergeOptions(options)` — 将传入的 options 合并为类的默认配置，返回类本身（`this`）。
 
+<!-- api-gen:start -->
+### Class 的其他静态方法
+
+<!--@include: ./includes/api/class-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 `Class` 本身不触发事件。若需要事件能力，请混入 `Eventable`。

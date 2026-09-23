@@ -40,6 +40,10 @@ MultiLineString has no class-specific options; it inherits the options of Path.
 No class-specific methods; it inherits the methods of MultiPath.
 
 <!-- api-gen:start -->
+### Other Public Methods of MultiLineString
+
+<!--@include: ./includes/api/multi-line-string-missing.md-->
+
 ### Methods Inherited from MultiPath
 
 The following methods are provided by the parent class MultiPath and are available on instances of this class.
@@ -72,6 +76,18 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Static Methods
 
 - `MultiLineString.fromJSON(json): MultiLineString` — Creates a MultiLineString instance from a JSON object.
+
+<!-- api-gen:start -->
+### Other Static Methods of MultiLineString
+
+<!--@include: ./includes/api/multi-line-string-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

@@ -34,6 +34,10 @@ AreaTool 无特有配置项，其 options 继承自 DistanceTool（详见 [Dista
 AreaTool 无特有方法，其成员方法均继承自 DistanceTool（详见 [DistanceTool](./distance-tool.md#成员方法)）。
 
 <!-- api-gen:start -->
+### AreaTool 的其他公开方法
+
+<!--@include: ./includes/api/area-tool-missing.md-->
+
 ### 继承自 DistanceTool 的方法
 
 下列方法由父类 [DistanceTool](/api/distance-tool) 提供，本类的实例同样可以调用。
@@ -55,6 +59,20 @@ AreaTool 无特有方法，其成员方法均继承自 DistanceTool（详见 [Di
 ### 混入的方法
 
 本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
+## 静态方法
+
+<!-- api-gen:start -->
+### AreaTool 的其他静态方法
+
+<!--@include: ./includes/api/area-tool-statics-missing.md-->
+
+### 继承自 DrawTool 的静态方法
+
+下列方法由父类 [DrawTool](/api/draw-tool) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/draw-tool-statics.md-->
 <!-- api-gen:end -->
 
 ## 事件

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model's default translation, 0, 0, 0 when the symbol is not set.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the default model rotation, which is 0, 0, 0 when the symbol does not set it.
 
 </div>
 </details>
@@ -20,7 +20,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the default model scale, which is 1, 1, 1 when the symbol does not set it.
 
 </div>
 </details>
@@ -29,7 +29,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the coordinate that serves as the origin of the model transformation.
 
 Parameters:
 
@@ -42,7 +42,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model transform origin, defaulting to the marker center when not set.
 
 </div>
 </details>
@@ -51,7 +51,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the meshes to render this frame, culled by frustum with matrix and uniforms updated.
 
 Parameters:
 
@@ -66,7 +66,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the raw json data of the loaded glTF model.
 
 </div>
 </details>
@@ -75,7 +75,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get all meshes created for the marker, without frustum culling.
 
 </div>
 </details>
@@ -84,7 +84,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the model resource url, which triggers a symbol update.
 
 Parameters:
 
@@ -97,7 +97,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the marker symbol and rebuild the mesh when url or shader changes.
 
 Parameters:
 
@@ -110,7 +110,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the geographic coordinate of the model center including translation and altitude.
 
 </div>
 </details>
@@ -119,7 +119,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Convert the coordinate z altitude into the point height of the GL world.
 
 </div>
 </details>
@@ -128,7 +128,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model resource url, returning pyramid when not set.
 
 </div>
 </details>
@@ -137,7 +137,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add the marker to the given layer; throws if the marker already belongs to a layer.
 
 Parameters:
 
@@ -150,7 +150,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the coordinate at the center of the model bounding box, or null before it is loaded.
 
 </div>
 </details>
@@ -159,7 +159,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model bounding box width for the given axis times scale; y and z are swapped.
 
 Parameters:
 
@@ -172,7 +172,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the width of the model bounding box along the X axis.
 
 </div>
 </details>
@@ -181,7 +181,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model bounding box width along the Y axis, read from the Z value internally.
 
 </div>
 </details>
@@ -190,7 +190,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model bounding box width along the Z axis, read from the Y value internally.
 
 </div>
 </details>
@@ -199,7 +199,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the pixel height the model currently occupies on the screen.
 
 </div>
 </details>
@@ -208,7 +208,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the translation that moves the model bounding box center to the origin.
 
 Parameters:
 
@@ -221,7 +221,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Show the model bounding box, options set line color and opacity.
 
 Parameters:
 
@@ -234,7 +234,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Hide the debug bounding box of the model.
 
 </div>
 </details>
@@ -243,7 +243,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model bounding box merged from all meshes, or null when there is no mesh.
 
 </div>
 </details>
@@ -252,7 +252,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Records the map zoom when the marker is added, used for auto sizing.
 
 </div>
 </details>
@@ -261,7 +261,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clears bounding box and zoom helper fields when the marker is removed.
 
 </div>
 </details>
@@ -270,7 +270,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Releases glTF resources and disposes meshes and textures, then removes the marker.
 
 </div>
 </details>
@@ -279,7 +279,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Show the marker by setting the symbol's visible to true.
 
 </div>
 </details>
@@ -288,7 +288,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Hide the marker by setting the symbol's visible property to false.
 
 </div>
 </details>
@@ -297,7 +297,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets whether the bloom effect is enabled on the marker.
 
 Parameters:
 
@@ -310,7 +310,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether the bloom effect is enabled for the marker.
 
 </div>
 </details>
@@ -319,7 +319,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets whether the marker casts shadow.
 
 Parameters:
 
@@ -332,7 +332,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether the marker casts shadow, enabled by default when not set explicitly.
 
 </div>
 </details>
@@ -341,7 +341,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add outline to the meshes whose nodeIndex is in the given list.
 
 Parameters:
 
@@ -354,7 +354,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Adds outline to every mesh of the model and turns on the symbol outline.
 
 </div>
 </details>
@@ -363,7 +363,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancel the outline of the marker, only the given nodes when nodes is passed
 
 Parameters:
 
@@ -376,7 +376,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns whether the marker is in outlined state.
 
 </div>
 </details>
@@ -385,7 +385,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns whether the marker is visible, defaulting to visible when unset.
 
 </div>
 </details>
@@ -394,7 +394,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the marker coordinate, accepting an array or a Coordinate.
 
 Parameters:
 
@@ -407,7 +407,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create an identical GLTFMarker from its JSON, keeping the recorded zoom
 
 </div>
 </details>
@@ -416,7 +416,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the shader name used by the marker, pbr by default.
 
 Parameters:
 
@@ -429,7 +429,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the marker's current shader name, returning pbr when not set.
 
 </div>
 </details>
@@ -438,7 +438,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the whole key value map of the shader's uniforms.
 
 Parameters:
 
@@ -451,7 +451,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the current uniform key value pairs of the marker.
 
 </div>
 </details>
@@ -460,7 +460,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set one uniform value, optional nodeIndex limits it to that node.
 
 Parameters:
 
@@ -475,7 +475,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the uniform value of the given key from the marker symbol.
 
 Parameters:
 
@@ -488,7 +488,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether animation plays, requiring model animations and an enabling symbol.
 
 </div>
 </details>
@@ -497,7 +497,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether dash animation is on, requiring both dashEnabled and dashAnimate.
 
 </div>
 </details>
@@ -506,7 +506,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets whether the animations bundled with the model are played.
 
 Parameters:
 
@@ -519,7 +519,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets whether the animation loops, resetting the animation start time.
 
 Parameters:
 
@@ -532,7 +532,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether the animation plays in a loop.
 
 </div>
 </details>
@@ -541,7 +541,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the animation playback speed, defaulting to 1 when it is not set.
 
 </div>
 </details>
@@ -550,7 +550,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the playback speed multiplier of the animation.
 
 Parameters:
 
@@ -563,7 +563,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set translation, rotation and scale together with arrays.
 
 Parameters:
 
@@ -578,7 +578,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Update the marker's symbol and handle bloom and effect attributes.
 
 Parameters:
 
@@ -591,7 +591,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the marker's translation offsets on the x, y and z axes.
 
 Parameters:
 
@@ -606,7 +606,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the marker's rotation angles around the x, y and z axes.
 
 Parameters:
 
@@ -621,7 +621,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Rotate the marker around the given coordinate and update its heading.
 
 Parameters:
 
@@ -635,7 +635,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the model scale factors on the x, y and z axes.
 
 Parameters:
 
@@ -650,7 +650,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the marker's current translation as a 3D vector, 0 for axes not set.
 
 </div>
 </details>
@@ -659,7 +659,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the marker's rotation angles on the three axes, 0 for axes not set.
 
 </div>
 </details>
@@ -668,7 +668,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model's scale factors on the three axes, 1 for axes not set.
 
 </div>
 </details>
@@ -677,7 +677,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancel the model pixel height set by markerPixelHeight
 
 </div>
 </details>
@@ -686,7 +686,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the Z axis anchor of the model, accepting bottom, top or center.
 
 Parameters:
 
@@ -699,7 +699,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model Z axis anchor, defaulting to bottom when it is not set.
 
 </div>
 </details>
@@ -708,7 +708,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether the symbol or its uniforms contain function-type definitions.
 
 </div>
 </details>
@@ -717,7 +717,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the model matrix by decomposing it into translation, rotation and scale.
 
 Parameters:
 
@@ -730,7 +730,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the marker's current model transform matrix.
 
 </div>
 </details>
@@ -739,7 +739,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether the marker needs updating, reset once the meshes are updated.
 
 </div>
 </details>
@@ -748,7 +748,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Serialize the marker to JSON, including its coordinates and symbol.
 
 </div>
 </details>
@@ -757,7 +757,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the zoom value recorded when the marker is added to the map.
 
 Parameters:
 
@@ -770,7 +770,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the zoom level recorded when the marker was added to the map.
 
 </div>
 </details>
@@ -779,7 +779,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether the glTF model is loaded and its meshes are created.
 
 </div>
 </details>
@@ -788,7 +788,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the marker type identifier, which is gltfmarker.
 
 </div>
 </details>
@@ -797,7 +797,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the feature count, which is always 1 for a GLTFMarker.
 
 </div>
 </details>
@@ -806,7 +806,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the model extent in container coordinates, or null without a layer or map.
 
 </div>
 </details>
@@ -815,7 +815,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the asset metadata of the loaded GLTF data, such as version and generator.
 
 </div>
 </details>
@@ -824,7 +824,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Opens the info window, waiting for the load event when the model is not loaded yet.
 
 Parameters:
 
@@ -837,7 +837,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the names of all model animations, or null when the model has none.
 
 </div>
 </details>
@@ -846,7 +846,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the current animationName from symbol, or undefined when it is not set.
 
 </div>
 </details>
@@ -855,7 +855,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the name of the current animation, an array of names is also accepted.
 
 Parameters:
 
@@ -868,7 +868,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the model height and scale the model to match it.
 
 Parameters:
 
@@ -881,7 +881,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the currently set model height.
 
 </div>
 </details>
@@ -890,7 +890,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the original bounding box of the glTF model itself.
 
 </div>
 </details>
@@ -917,7 +917,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Updates the model animation progress to the given timestamp.
 
 Parameters:
 
@@ -930,7 +930,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Highlight the model nodes whose nodeIndex is in the given list.
 
 Parameters:
 
@@ -943,7 +943,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Highlight the whole model, with optional color, opacity and bloom.
 
 Parameters:
 
@@ -956,7 +956,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancel the highlight and restore the original colors, optionally limited to the given nodes
 
 Parameters:
 

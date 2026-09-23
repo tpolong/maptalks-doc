@@ -29,6 +29,12 @@ new CRS(type, properties)
 - `CRS.createProj4(proj): CRS` — 使用 maptalks 创建 proj4 形式的 CRS，例如 `CRS.createProj4("+proj=longlat +datum=WGS84 +no_defs")`。
 - `CRS.fromProjectionCode(code): CRS|null` — 根据 EPSG 代码（如 `"EPSG:4326"`）返回对应的内置 CRS，无效时返回 `null`。
 
+<!-- api-gen:start -->
+### CRS 的其他静态方法
+
+<!--@include: ./includes/api/crs-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## 预置常量
 
 - `CRS.WGS84` — 预定义的 WGS84 坐标系（即 EPSG:4326）。

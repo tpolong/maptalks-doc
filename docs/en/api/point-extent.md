@@ -34,6 +34,10 @@ PointExtent has no unique methods of its own; it reuses all methods of `Extent`.
 - The rest of the methods (`getWidth`, `getHeight`, `contains`, `intersects`, `within`, `combine`, `expand`, `copy`, `toJSON`, `toBBOX`, etc.) behave the same as `Extent`. See [Extent](/en/api/extent).
 
 <!-- api-gen:start -->
+### Other Public Methods of PointExtent
+
+<!--@include: ./includes/api/point-extent-missing.md-->
+
 ### Methods Inherited from Extent
 
 The following methods are provided by the parent class [Extent](/en/api/extent) and are available on instances of this class.

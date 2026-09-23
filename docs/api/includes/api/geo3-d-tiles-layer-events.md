@@ -32,3 +32,21 @@
 
 </div>
 </details>
+
+<details><summary>rootready</summary>
+<div>
+<br/>
+
+各 service 的根瓦片创建完成后触发
+
+</div>
+</details>
+
+<details><summary>loadtileset</summary>
+<div>
+<br/>
+
+tileset 加载并解析成瓦片树后触发
+
+</div>
+</details>

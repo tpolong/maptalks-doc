@@ -17,7 +17,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Remove the listener callback of one event type from the dom element
 
 Parameters:
 
@@ -50,7 +50,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Prevent text selection and drag selection on the dom element
 
 Parameters:
 
@@ -94,7 +94,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Write the matrix text to the dom css transform, skipping when it is identical
 
 Parameters:
 
@@ -108,7 +108,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Remove the css transform previously set on the dom element
 
 Parameters:
 
@@ -121,7 +121,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the string is HTML text containing tags
 
 Parameters:
 
@@ -134,7 +134,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create a hidden element positioned off screen to use as a measuring ruler
 
 Parameters:
 
@@ -147,7 +147,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the event type is a move event, that is mousemove or touchmove
 
 Parameters:
 
@@ -160,7 +160,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the mousemove should be ignored by throttle time, and record its time
 
 Parameters:
 

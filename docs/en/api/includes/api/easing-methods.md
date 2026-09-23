@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Exponential ease-out function, fast at first then slowing toward the end.
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Quintic ease-out function, fast at the start and gentle at the end.
 
 Parameters:
 

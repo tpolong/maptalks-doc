@@ -35,6 +35,10 @@ Parameters:
 No class-specific methods; it inherits the methods of Curve.
 
 <!-- api-gen:start -->
+### Other Public Methods of ArcCurve
+
+<!--@include: ./includes/api/arc-curve-missing.md-->
+
 ### Methods Inherited from LineString
 
 The following methods are provided by the parent class [LineString](/en/api/line-string) and are available on instances of this class.
@@ -61,6 +65,18 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Static Methods
 
 - `ArcCurve.fromJSON(json): ArcCurve` — Creates an ArcCurve instance from a JSON object.
+
+<!-- api-gen:start -->
+### Other Static Methods of ArcCurve
+
+<!--@include: ./includes/api/arc-curve-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

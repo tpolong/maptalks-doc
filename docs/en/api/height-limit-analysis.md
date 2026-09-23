@@ -42,8 +42,6 @@ HeightLimitAnalysis inherits from [FloodAnalysis](./flood-analysis) (including o
 
 ## Methods Inherited from Analysis
 
-<!--@include: ./includes/analysis-methods.md-->
-
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
 
 ## Methods
@@ -54,6 +52,12 @@ HeightLimitAnalysis inherits from [FloodAnalysis](./flood-analysis) (including o
 The following methods are provided by the parent class [FloodAnalysis](/en/api/flood-analysis) and are available on instances of this class.
 
 <!--@include: ./includes/api/flood-analysis-methods.md-->
+
+### Methods Inherited from Analysis
+
+The following methods are provided by the parent class [Analysis](/en/api/analysis) and are available on instances of this class.
+
+<!--@include: ./includes/api/analysis-methods.md-->
 
 ### Mixed-in Methods
 

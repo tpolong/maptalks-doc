@@ -43,6 +43,10 @@ Common options inherited from [control.Control](/en/api/control) also apply.
 > The reset button is `<div class="maptalks-reset">`; clicking calls `map.setView(this._view)`.
 
 <!-- api-gen:start -->
+### Other Public Methods of Reset
+
+<!--@include: ./includes/api/control-reset-missing.md-->
+
 ### Methods Inherited from Control
 
 The following methods are provided by the parent class [Control](/en/api/control) and are available on instances of this class.

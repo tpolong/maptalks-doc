@@ -46,6 +46,10 @@ Polygon 的配置项继承自 [Path](/api/path)（基类），主要通过 `symb
 - `getOutline()` — 返回多边形的轮廓内容。
 
 <!-- api-gen:start -->
+### Polygon 的其他公开方法
+
+<!--@include: ./includes/api/polygon-missing.md-->
+
 ### 继承自 Path 的方法
 
 下列方法由父类 [Path](/api/path) 提供，本类的实例同样可以调用。
@@ -66,6 +70,14 @@ Polygon 的配置项继承自 [Path](/api/path)（基类），主要通过 `symb
 ## 静态方法
 
 - `fromJSON(json)` — 从 JSON 对象创建 Polygon。
+
+<!-- api-gen:start -->
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

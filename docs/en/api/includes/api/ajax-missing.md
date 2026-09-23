@@ -17,7 +17,7 @@ Parameters:
 <div>
 <br/>
 
-Fetch remote resource by HTTP "GET" method
+Performs an HTTP GET request and returns the response text or an error through the callback.
 
 Parameters:
 
@@ -55,7 +55,7 @@ Returns:
 <div>
 <br/>
 
-Fetch resource as arraybuffer.
+Requests a binary resource as an array buffer.
 
 Parameters:
 
@@ -70,7 +70,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Fetches the image as a blob and assigns its object URL to img.src, calling img.onerror on failure.
 
 Parameters:
 
@@ -85,7 +85,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Fetches and parses a JSON resource, using jsonp when the jsonp option is true.
 
 Parameters:
 
@@ -119,7 +119,7 @@ Parameters:
 <div>
 <br/>
 
-Fetch remote resource by HTTP "GET" method
+Performs an HTTP GET request and returns the response text or an error through the callback.
 
 Parameters:
 
@@ -138,7 +138,7 @@ Returns:
 <div>
 <br/>
 
-Fetch resource as arraybuffer.
+Requests a binary resource as an array buffer.
 
 Parameters:
 
@@ -153,7 +153,7 @@ Parameters:
 <div>
 <br/>
 
-Fetch remote resource by HTTP "GET" method
+Performs an HTTP GET request and returns the response text or an error through the callback.
 
 Parameters:
 
@@ -172,7 +172,7 @@ Returns:
 <div>
 <br/>
 
-Fetch resource as arraybuffer.
+Requests a binary resource as an array buffer.
 
 Parameters:
 
@@ -187,7 +187,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Requests a binary resource as an array buffer.
 
 Parameters:
 
@@ -201,7 +201,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Performs an HTTP GET request and returns the response text or an error through the callback.
 
 Parameters:
 

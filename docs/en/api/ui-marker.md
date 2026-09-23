@@ -77,6 +77,12 @@ This class gains the following method groups from mixins; see the linked pages f
 - `dragend` — Fired when dragging ends.
 
 <!-- api-gen:start -->
+### Other Events of UIMarker
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/ui-marker-events-missing.md-->
+
 ### Events Inherited from UIComponent
 
 <!--@include: ./includes/api/ui-component-events.md-->

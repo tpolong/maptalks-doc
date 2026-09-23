@@ -56,6 +56,10 @@ new ImageLayer(id, images?, options?)
 - `getImages(): ImageItem[]` — 获取图片项
 
 <!-- api-gen:start -->
+### ImageLayer 的其他公开方法
+
+<!--@include: ./includes/api/image-layer-missing.md-->
+
 ### 继承自 Layer 的方法
 
 下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
@@ -65,6 +69,20 @@ new ImageLayer(id, images?, options?)
 ### 混入的方法
 
 本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
+<!-- api-gen:end -->
+
+## 静态方法
+
+<!-- api-gen:start -->
+### ImageLayer 的其他静态方法
+
+<!--@include: ./includes/api/image-layer-statics-missing.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
 <!-- api-gen:end -->
 
 ## 事件

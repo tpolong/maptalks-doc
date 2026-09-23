@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the union of the container extents of all geometries in the collection.
 
 Parameters:
 
@@ -170,7 +170,7 @@ Fires:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Applies the config change to every geometry in the collection.
 
 Parameters:
 
@@ -183,7 +183,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the symbol, or a children array of child geometry symbols when none is set.
 
 Returns:
 
@@ -196,7 +196,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set symbol, a children object is assigned to each child in order, else to all
 
 Parameters:
 
@@ -213,7 +213,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Start editing all geometries in the collection, symbol sets the editing style
 
 Parameters:
 
@@ -230,7 +230,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Ends editing, restoring the symbol and visibility and firing editend.
 
 Returns:
 
@@ -243,7 +243,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the collection is in editing state
 
 Returns:
 
@@ -256,7 +256,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Undo one child geometry edit from the last position and fire undoedit
 
 Returns:
 
@@ -269,7 +269,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Redo one child geometry edit from the last position and fire redoedit
 
 Returns:
 
@@ -282,7 +282,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the edits of all child geometries have been fully undone.
 
 Returns:
 
@@ -295,7 +295,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the edits of all child geometries have been fully redone.
 
 Returns:
 

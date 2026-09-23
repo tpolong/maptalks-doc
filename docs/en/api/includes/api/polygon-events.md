@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange event.
+Fired after the polygon coordinates change.
 
 </div>
 </details>

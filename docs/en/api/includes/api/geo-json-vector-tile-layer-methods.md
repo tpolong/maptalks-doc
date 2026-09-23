@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the options passed to the worker: data, extent, projection and simplify tolerance.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the layer data to a GeoJSON object or a data url and refreshes the worker.
 
 Parameters:
 
@@ -24,7 +24,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the extent parsed from the loaded data.
 
 </div>
 </details>
@@ -33,7 +33,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback invoked when the worker finishes processing data or reports an error.
 
 Parameters:
 
@@ -47,7 +47,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the geojson data, or fetches it by url and passes it to the callback when not ready.
 
 Parameters:
 
@@ -60,7 +60,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Build the tile url identifier from the layer id and the tile x, y, z.
 
 Parameters:
 
@@ -75,7 +75,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the feature with the given id, or null when the id map is not ready.
 
 Parameters:
 
@@ -88,7 +88,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the feature with the given id, an alias of getFeature.
 
 Parameters:
 

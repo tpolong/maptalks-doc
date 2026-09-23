@@ -166,11 +166,27 @@ Returns:
 </details>
 
 <!-- api-gen:start -->
+### Other Public Methods of GeoJSONVectorTileLayer
+
+<!--@include: ./includes/api/geojson-vector-tile-layer-missing.md-->
+
 ### Methods Inherited from VectorTileLayer
 
 The following methods are provided by the parent class [VectorTileLayer](/en/api/vector-tile-layer) and are available on instances of this class.
 
 <!--@include: ./includes/api/vector-tile-layer-methods.md-->
+
+### Methods Inherited from TileLayer
+
+The following methods are provided by the parent class [TileLayer](/en/api/tile-layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/tile-layer-methods.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
 
 ### Mixed-in Methods
 
@@ -178,12 +194,6 @@ This class gains the following method groups from mixins; see the linked pages f
 <!-- api-gen:end -->
 
 ## Methods Inherited from VectorTileLayer
-
-<!--@include: ./includes/vtlayer-methods.md-->
-
-<!--@include: ./includes/tilelayer-methods.md-->
-
-<!--@include: ./includes/layer-methods.md-->
 
 ## Static Methods
 
@@ -261,6 +271,24 @@ Returns:
 </div>
 </details>
 
+<!-- api-gen:start -->
+### Other Static Methods of GeoJSONVectorTileLayer
+
+<!--@include: ./includes/api/geojson-vector-tile-layer-statics-missing.md-->
+
+### Static Methods Inherited from VectorTileLayer
+
+The following methods are provided by the parent class [VectorTileLayer](/en/api/vector-tile-layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/vector-tile-layer-statics.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 <!--@include: ./includes/js-events-example.md-->
@@ -301,22 +329,24 @@ Properties:
 </div>
 </details>
 
-### Events Inherited from VectorTileLayer
-
-<!--@include: ./includes/vtlayer-events.md-->
-
-### Events Inherited from TileLayer
-
-<!--@include: ./includes/tilelayer-events.md-->
-
-### Events Inherited from Layer
-
-<!--@include: ./includes/layer-events.md-->
-
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
 
 <!-- api-gen:start -->
+### Other Events of GeoJSONVectorTileLayer
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/geojson-vector-tile-layer-events-missing.md-->
+
 ### Events Inherited from VectorTileLayer
 
 <!--@include: ./includes/api/vector-tile-layer-events.md-->
+
+### Events Inherited from TileLayer
+
+<!--@include: ./includes/api/tile-layer-events.md-->
+
+### Events Inherited from Layer
+
+<!--@include: ./includes/api/layer-events.md-->
 <!-- api-gen:end -->

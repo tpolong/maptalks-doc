@@ -37,6 +37,10 @@ MultiGeometry has no class-specific options; it inherits the options of [Geometr
 - `setCoordinates(coords): this` — Sets the coordinates of all child geometries.
 
 <!-- api-gen:start -->
+### Other Public Methods of MultiGeometry
+
+<!--@include: ./includes/api/multi-geometry-missing.md-->
+
 ### Methods Inherited from GeometryCollection
 
 The following methods are provided by the parent class [GeometryCollection](/en/api/geometry-collection) and are available on instances of this class.
@@ -57,6 +61,18 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Static Methods
 
 - `MultiGeometry.fromJSON(json): MultiGeometry` — Creates a MultiGeometry instance from a JSON object.
+
+<!-- api-gen:start -->
+### Other Static Methods of MultiGeometry
+
+<!--@include: ./includes/api/multi-geometry-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

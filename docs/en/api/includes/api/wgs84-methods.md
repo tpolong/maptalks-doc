@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+The measurer registration name of the WGS84 measurer, its value is EPSG:4326.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+The sphere used by the WGS84 measurer, with a radius of 6378137.
 
 Parameters:
 

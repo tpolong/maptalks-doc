@@ -34,6 +34,10 @@ AreaTool has no dedicated options; its options are inherited from DistanceTool (
 AreaTool has no dedicated methods; its member methods are all inherited from DistanceTool (see [DistanceTool](./distance-tool.md#member-methods)).
 
 <!-- api-gen:start -->
+### Other Public Methods of AreaTool
+
+<!--@include: ./includes/api/area-tool-missing.md-->
+
 ### Methods Inherited from DistanceTool
 
 The following methods are provided by the parent class [DistanceTool](/en/api/distance-tool) and are available on instances of this class.
@@ -55,6 +59,20 @@ The following methods are provided by the parent class [MapTool](/en/api/map-too
 ### Mixed-in Methods
 
 This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
+## Static Methods
+
+<!-- api-gen:start -->
+### Other Static Methods of AreaTool
+
+<!--@include: ./includes/api/area-tool-statics-missing.md-->
+
+### Static Methods Inherited from DrawTool
+
+The following methods are provided by the parent class [DrawTool](/en/api/draw-tool) and are available on instances of this class.
+
+<!--@include: ./includes/api/draw-tool-statics.md-->
 <!-- api-gen:end -->
 
 ## Events

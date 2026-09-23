@@ -85,6 +85,10 @@ Returns:
 </details>
 
 <!-- api-gen:start -->
+### Other Public Methods of ExtrudePolygonLayer
+
+<!--@include: ./includes/api/extrude-polygon-layer-missing.md-->
+
 ### Methods Inherited from Vector3DLayer
 
 The following methods are provided by the parent class Vector3DLayer and are available on instances of this class.
@@ -122,6 +126,26 @@ Symbol properties supported by ExtrudePolygonLayer:
 For special geometries such as Circle, Ellipse, Sector and Rectangle, the layer automatically computes the oriented minimum bounding box (OMBB), converts them to polygons, and then extrudes them.
 
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+
+## Static Methods
+
+<!-- api-gen:start -->
+### Other Static Methods of ExtrudePolygonLayer
+
+<!--@include: ./includes/api/extrude-polygon-layer-statics-missing.md-->
+
+### Static Methods Inherited from Vector3DLayer
+
+The following methods are provided by the parent class Vector3DLayer and are available on instances of this class.
+
+<!--@include: ./includes/api/vector3-d-layer-statics.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

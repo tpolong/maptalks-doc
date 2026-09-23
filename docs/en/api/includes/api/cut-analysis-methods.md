@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Update one option of the analysis and sync its render options
 
 Parameters:
 
@@ -16,7 +16,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Resets the cut box controller to the configured position, rotation and scale.
 
 </div>
 </details>
@@ -25,7 +25,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Render the cut analysis and return the meshesMap and invisibleMap uniforms
 
 Parameters:
 
@@ -38,7 +38,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Return the shader defines with the HAS_CUT macro enabled
 
 </div>
 </details>

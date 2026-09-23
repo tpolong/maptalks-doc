@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the callback that rewrites model resource URLs, returns the layer
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the callback that rewrites the URLs of model resources while loading
 
 </div>
 </details>
@@ -24,7 +24,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Record the map zoom as each marker initial zoom when the layer is added
 
 </div>
 </details>
@@ -33,7 +33,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clear all markers when the layer is removed from the map
 
 </div>
 </details>
@@ -42,7 +42,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Pick markers by geographic coordinate and return the pick results
 
 Parameters:
 
@@ -56,7 +56,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Pick markers at a container point, filterable by excludeMasks and filter
 
 Parameters:
 

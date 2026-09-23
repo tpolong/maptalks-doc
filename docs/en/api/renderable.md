@@ -33,6 +33,12 @@ No instance methods; the core capability is provided by the static methods.
 - `Renderable.registerRenderer(name, clazz)` — Register a renderer class `clazz` under the name `name`.
 - `Renderable.getRendererClass(name)` — Return the renderer class registered under the name `name`.
 
+<!-- api-gen:start -->
+### Other Static Methods of Renderable
+
+<!--@include: ./includes/api/renderable-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 None.

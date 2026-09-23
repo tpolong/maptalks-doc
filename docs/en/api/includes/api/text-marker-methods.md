@@ -36,7 +36,7 @@ Fires:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Refresh the label text and box display when added to the map
 
 </div>
 </details>
@@ -45,7 +45,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Export the textmarker JSON data, dropping the symbol field.
 
 </div>
 </details>
@@ -54,7 +54,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Split the symbol into text and box parts by text prefix and apply each part
 
 Parameters:
 
@@ -67,7 +67,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the text style of the label, implemented by subclasses
 
 Returns:
 
@@ -80,7 +80,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the text style of the label, implemented by subclasses
 
 Parameters:
 
@@ -97,7 +97,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the text symbol of the label, implemented by subclasses
 
 Parameters:
 
@@ -114,7 +114,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the background box style of the label, implemented by subclasses
 
 Parameters:
 
@@ -131,7 +131,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the label background box style, implemented by subclasses
 
 Returns:
 
@@ -144,7 +144,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the background box symbol of the label, implemented by subclasses
 
 Parameters:
 

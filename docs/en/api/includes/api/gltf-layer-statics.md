@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Register the built-in phong, pbr, depth, pointline and wireframe shaders
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Restore a GLTFLayer from its JSON with options, geometries and style, null when the type differs.
 
 Parameters:
 

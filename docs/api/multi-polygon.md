@@ -40,6 +40,10 @@ MultiPolygon 无特有 options，继承自 Path。
 无特有方法，继承自 MultiPath。
 
 <!-- api-gen:start -->
+### MultiPolygon 的其他公开方法
+
+<!--@include: ./includes/api/multi-polygon-missing.md-->
+
 ### 继承自 MultiPath 的方法
 
 下列方法由父类 MultiPath 提供，本类的实例同样可以调用。
@@ -72,6 +76,18 @@ MultiPolygon 无特有 options，继承自 Path。
 ## 静态方法
 
 - `MultiPolygon.fromJSON(json): MultiPolygon` — 从 JSON 对象创建 MultiPolygon 实例。
+
+<!-- api-gen:start -->
+### MultiPolygon 的其他静态方法
+
+<!--@include: ./includes/api/multi-polygon-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

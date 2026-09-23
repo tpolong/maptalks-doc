@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the polygonOffset count the layer needs, which is always 0 for this layer.
 
 Returns:
 
@@ -15,7 +15,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the layer polygonOffset value, which is always 0 for this layer.
 
 </div>
 </details>
@@ -24,7 +24,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Applies the changed options and forwards the config to the layer renderer.
 
 Parameters:
 
@@ -37,7 +37,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Merges the material options and updates the renderer; null clears the material.
 
 Parameters:
 
@@ -50,7 +50,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Merges the side material options and updates the renderer; null clears the side material.
 
 Parameters:
 
@@ -63,7 +63,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Merges the new dataConfig into options and updates the renderer data config.
 
 Parameters:
 

@@ -101,6 +101,18 @@ This class gains the following method groups from mixins; see the linked pages f
 
 - `TileLayer.fromJSON(layerJSON): TileLayer | null` — restore a layer from JSON
 
+<!-- api-gen:start -->
+### Other Static Methods of TileLayer
+
+<!--@include: ./includes/api/tile-layer-statics-missing.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 | Event | Fired when |
@@ -114,6 +126,12 @@ This class gains the following method groups from mixins; see the linked pages f
 Common layer events (`idchange`, `setopacity`, `show`/`hide`, `layerload`, `add`/`remove`, etc.) — see [Layer](/en/api/layer).
 
 <!-- api-gen:start -->
+### Other Events of TileLayer
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/tile-layer-events-missing.md-->
+
 ### Events Inherited from Layer
 
 <!--@include: ./includes/api/layer-events.md-->

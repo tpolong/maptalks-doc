@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Checks whether the given object is valid GeoJSON data.
 
 Parameters:
 

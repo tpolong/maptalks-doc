@@ -62,7 +62,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Circle does not animate, it calls show to display the geometry directly.
 
 Returns:
 

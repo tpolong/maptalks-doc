@@ -130,7 +130,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Show the rectangle; it has no animation and just calls show.
 
 </div>
 </details>

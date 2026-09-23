@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create the attribution control's DOM container and fill it with content.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the content shown by the attribution control.
 
 </div>
 </details>
@@ -20,7 +20,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the attribution content and refreshes the display immediately.
 
 Parameters:
 
@@ -33,7 +33,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Listen to layer add and remove events to refresh attribution when the control is added.
 
 </div>
 </details>
@@ -42,7 +42,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Unbind the map's layer add and remove listeners when the control is removed.
 
 </div>
 </details>

@@ -1,24 +1,3 @@
-<details><summary>setSpatialReference(ref)</summary>
-<div>
-<br/>
-
-设置 map 的 spatial reference 并触发变更事件
-
-参数：
-
-* ref `SpatialReferenceType` spatial reference
-
-返回：
-
-* `Map` this
-
-触发事件：
-
-* `Map#spatialreferencechange`
-
-</div>
-</details>
-
 <details><summary>onConfig(conf)</summary>
 <div>
 <br/>
@@ -66,24 +45,6 @@
 </div>
 </details>
 
-<details><summary>setCenter(center, padding?)</summary>
-<div>
-<br/>
-
-设置地图中心 coordinate，可传 padding 让中心偏移容器中央
-
-参数：
-
-* center `Coordinate`
-* padding（可选） `MapPaddingType`
-
-返回：
-
-* `Map` this
-
-</div>
-</details>
-
 <details><summary>getGroundExtent()</summary>
 <div>
 <br/>
@@ -123,23 +84,6 @@ getProjExtent 的别名，获取投影后的 extent
 </div>
 </details>
 
-<details><summary>setMaxExtent(extent)</summary>
-<div>
-<br/>
-
-设置地图受限的最大 extent，传 null 取消限制
-
-参数：
-
-* extent `Extent`
-
-返回：
-
-* `Map` this
-
-</div>
-</details>
-
 <details><summary>getZoomForScale(scale, fromZoom?, isFraction?)</summary>
 <div>
 <br/>
@@ -172,58 +116,6 @@ getProjExtent 的别名，获取投影后的 extent
 返回：
 
 * `number`
-
-</div>
-</details>
-
-<details><summary>setZoom(zoom, options = { 'animation': true })</summary>
-<div>
-<br/>
-
-设置地图的 zoom，animation 控制是否平滑过渡
-
-参数：
-
-* zoom `number`
-* options = { 'animation': true } `Any`
-
-返回：
-
-* `Map` this
-
-</div>
-</details>
-
-<details><summary>setMaxZoom(maxZoom)</summary>
-<div>
-<br/>
-
-设置地图可放大的最大 zoom，超过底图上限时收窄
-
-参数：
-
-* maxZoom `number`
-
-返回：
-
-* `Map` this
-
-</div>
-</details>
-
-<details><summary>setMinZoom(minZoom)</summary>
-<div>
-<br/>
-
-设置地图可缩小的最小 zoom，低于空间参考下限时收窄
-
-参数：
-
-* minZoom `number`
-
-返回：
-
-* `Map` this
 
 </div>
 </details>
@@ -271,19 +163,6 @@ getProjExtent 的别名，获取投影后的 extent
 </div>
 </details>
 
-<details><summary>zoomOut()</summary>
-<div>
-<br/>
-
-将地图缩小一级 zoom
-
-返回：
-
-* `Map` this
-
-</div>
-</details>
-
 <details><summary>isInteracting()</summary>
 <div>
 <br/>
@@ -325,19 +204,6 @@ getProjExtent 的别名，获取投影后的 extent
 </div>
 </details>
 
-<details><summary>setView(view)</summary>
-<div>
-<br/>
-
-一次性设置地图的中心、zoom、pitch 与 bearing
-
-参数：
-
-* view `MapViewType` a object containing center/zoom/pitch/bearing return &#123;Map&#125; this
-
-</div>
-</details>
-
 <details><summary>fitExtent(extent, zoomOffset?, options?, step?)</summary>
 <div>
 <br/>
@@ -354,29 +220,6 @@ getProjExtent 的别名，获取投影后的 extent
 返回：
 
 * `Map | player` - this
-
-</div>
-</details>
-
-<details><summary>setBaseLayer(baseLayer)</summary>
-<div>
-<br/>
-
-设置新的底图 layer，替换旧底图并触发切换事件
-
-参数：
-
-* baseLayer `Layer` new base layer
-
-返回：
-
-* `Map` this
-
-触发事件：
-
-* `Map#setbaselayer`
-* `Map#baselayerchangestart`
-* `Map#baselayerchangeend`
 
 </div>
 </details>

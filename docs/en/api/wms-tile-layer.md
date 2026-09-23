@@ -56,15 +56,34 @@ Other tile options (`urlTemplate`, `tileSize`, `spatialReference`, etc.) — see
 
 - `WMSTileLayer.fromJSON(layerJSON): WMSTileLayer | null` — restore a layer from JSON
 
+
+<!-- api-gen:start -->
+### Other Static Methods of WMSTileLayer
+
+<!--@include: ./includes/api/wms-tile-layer-statics-missing.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Member Methods
 
 - `getTileUrl(x, y, z): string` — get the WMS request URL for tile `(x,y,z)`
 
 
 <!-- api-gen:start -->
-### Other Public Methods of TileLayer
+### Other Public Methods of WMSTileLayer
 
 <!--@include: ./includes/api/wms-tile-layer-missing.md-->
+
+### Methods Inherited from TileLayer
+
+The following methods are provided by the parent class [TileLayer](/en/api/tile-layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/tile-layer-methods.md-->
 
 ### Methods Inherited from Layer
 
@@ -82,6 +101,10 @@ This class gains the following method groups from mixins; see the linked pages f
 Tile events and common layer events — see [TileLayer](/en/api/tile-layer) / [Layer](/en/api/layer).
 
 <!-- api-gen:start -->
+### Events Inherited from TileLayer
+
+<!--@include: ./includes/api/tile-layer-events.md-->
+
 ### Events Inherited from Layer
 
 <!--@include: ./includes/api/layer-events.md-->

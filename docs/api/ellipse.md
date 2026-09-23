@@ -42,6 +42,10 @@ new Ellipse(center, width, height, options?)
 - `animateShow()` — 以动画方式显示椭圆。
 
 <!-- api-gen:start -->
+### Ellipse 的其他公开方法
+
+<!--@include: ./includes/api/ellipse-missing.md-->
+
 ### 继承自 Polygon 的方法
 
 下列方法由父类 [Polygon](/api/polygon) 提供，本类的实例同样可以调用。
@@ -68,6 +72,14 @@ new Ellipse(center, width, height, options?)
 ## 静态方法
 
 - `fromJSON(json)` — 从 JSON 对象创建 Ellipse。
+
+<!-- api-gen:start -->
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

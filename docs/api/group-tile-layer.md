@@ -41,21 +41,38 @@ new GroupTileLayer(id, layers, options?)
 
 - `GroupTileLayer.fromJSON(layerJSON): GroupTileLayer | null` — 从 JSON 还原图层
 
+<!-- api-gen:start -->
+### GroupTileLayer 的其他静态方法
+
+<!--@include: ./includes/api/group-tile-layer-statics-missing.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 成员方法
 
 - `getLayers(): TileLayer[]` — 获取子图层列表
 - `addLayer(tileLayers: TileLayer[] | TileLayer): this` — 添加子图层
 - `removeLayer(tileLayers: TileLayer[] | TileLayer): this` — 移除子图层
 - `clearLayers(): this` — 清空子图层
+
 - `getLayer(id): TileLayer` — 获取子图层（等价于 getChildLayer）
 - `getChildLayer(id): TileLayer` — 递归查找子图层
 - `toJSON(): Object` — 导出图层 JSON
 - `getTiles(z, parentLayer): TilesType` — 按 zoom 聚合子图层的瓦片
 
 <!-- api-gen:start -->
+### GroupTileLayer 的其他公开方法
+
+<!--@include: ./includes/api/group-tile-layer-missing.md-->
+
 ### 继承自 TileLayer 的方法
 
-下列方法由父类 [TileLayer](/api/wms-tile-layer) 提供，本类的实例同样可以调用。
+下列方法由父类 [TileLayer](/api/tile-layer) 提供，本类的实例同样可以调用。
 
 <!--@include: ./includes/api/tile-layer-methods.md-->
 

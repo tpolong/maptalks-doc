@@ -47,6 +47,10 @@ new DistanceTool(options)
 - `redo()` — 重做上一步操作。
 
 <!-- api-gen:start -->
+### DistanceTool 的其他公开方法
+
+<!--@include: ./includes/api/distance-tool-missing.md-->
+
 ### 继承自 DrawTool 的方法
 
 下列方法由父类 [DrawTool](/api/draw-tool) 提供，本类的实例同样可以调用。
@@ -62,6 +66,20 @@ new DistanceTool(options)
 ### 混入的方法
 
 本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）。
+<!-- api-gen:end -->
+
+## 静态方法
+
+<!-- api-gen:start -->
+### DistanceTool 的其他静态方法
+
+<!--@include: ./includes/api/distance-tool-statics-missing.md-->
+
+### 继承自 DrawTool 的静态方法
+
+下列方法由父类 [DrawTool](/api/draw-tool) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/draw-tool-statics.md-->
 <!-- api-gen:end -->
 
 ## 事件

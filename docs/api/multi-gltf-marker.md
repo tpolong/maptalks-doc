@@ -255,11 +255,23 @@ pickingId是用identify或identifyAtPoint方法选取出的数据中，标识数
 
 <!--@include: ./includes/api/multi-gltf-marker-missing.md-->
 
+### 继承自 GLTFMarker 的方法
+
+下列方法由父类 [GLTFMarker](/api/gltf-marker) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/gltf-marker-methods.md-->
+
 ### 继承自 Marker 的方法
 
 下列方法由父类 [Marker](/api/marker) 提供，本类的实例同样可以调用。
 
 <!--@include: ./includes/api/marker-methods.md-->
+
+### 继承自 Geometry 的方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-methods.md-->
 
 ### 混入的方法
 
@@ -268,24 +280,38 @@ pickingId是用identify或identifyAtPoint方法选取出的数据中，标识数
 
 ## 继承自GLTFMarker的方法
 
-<!--@include: ./includes/gltf-marker-methods.md-->
-
-<!--@include: ./includes/geometry-methods.md-->
-
 ## 静态方法
 
-<!--@include: ./includes/geometry-static-methods.md-->
+<!-- api-gen:start -->
+### MultiGLTFMarker 的其他静态方法
+
+<!--@include: ./includes/api/multi-gltf-marker-statics-missing.md-->
+
+### 继承自 GLTFMarker 的静态方法
+
+下列方法由父类 [GLTFMarker](/api/gltf-marker) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/gltf-marker-statics.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 
 <!--@include: ./includes/js-events-example.md-->
 
-### 继承自GLTFMarker的事件
-
-<!--@include: ./includes/gltf-marker-events.md-->
-
-### 继承自Geometry的事件
-
-<!--@include: ./includes/geometry-events.md-->
-
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
+
+<!-- api-gen:start -->
+### 继承自 GLTFMarker 的事件
+
+<!--@include: ./includes/api/gltf-marker-events.md-->
+
+### 继承自 Geometry 的事件
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

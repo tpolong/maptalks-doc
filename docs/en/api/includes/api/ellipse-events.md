@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange event.
+Fired when the ellipse width or height changes.
 
 </div>
 </details>

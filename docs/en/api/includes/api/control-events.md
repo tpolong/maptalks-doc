@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-add event.
+Fired when the control is added to a map.
 
 Event properties:
 
@@ -18,7 +18,7 @@ Event properties:
 <div>
 <br/>
 
-Control's position update event.
+Fired after the control position is updated.
 
 Event properties:
 
@@ -35,7 +35,7 @@ Event properties:
 <div>
 <br/>
 
-remove event.
+Fired when the control is removed from the map.
 
 Event properties:
 
@@ -43,6 +43,33 @@ Event properties:
 | --- | :-: | --- |
 | type | `String` | remove |
 | target | `control.Control` | the control instance |
+
+</div>
+</details>
+
+<details><summary>add</summary>
+<div>
+<br/>
+
+Fired when the control is added to a map.
+
+</div>
+</details>
+
+<details><summary>remove</summary>
+<div>
+<br/>
+
+Fired when the control is removed from the map.
+
+</div>
+</details>
+
+<details><summary>positionchange</summary>
+<div>
+<br/>
+
+Fired after the control position is updated.
 
 </div>
 </details>

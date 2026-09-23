@@ -30,6 +30,10 @@ Curve 为抽象基类，构造函数由其子类调用。
 Curve 无公开的特有方法，其子类通过绘制内部方法（`_arc`、`_quadraticCurve`、`_bezierCurve`）实现曲线绘制逻辑。
 
 <!-- api-gen:start -->
+### Curve 的其他公开方法
+
+<!--@include: ./includes/api/curve-missing.md-->
+
 ### 继承自 LineString 的方法
 
 下列方法由父类 [LineString](/api/line-string) 提供，本类的实例同样可以调用。
@@ -56,6 +60,18 @@ Curve 无公开的特有方法，其子类通过绘制内部方法（`_arc`、`_
 ## 静态方法
 
 无特有静态方法。
+
+<!-- api-gen:start -->
+### Curve 的其他静态方法
+
+<!--@include: ./includes/api/curve-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

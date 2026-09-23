@@ -74,6 +74,10 @@ Options inherited from [Geometry](/en/api/geometry) — `id`, `visible`, `intera
 Other methods (`getCenter`, `getExtent`, `getSymbol`/`setSymbol`, `getProperties`/`setProperties`, `getId`/`setId`, `show`/`hide`, `translate`, `addTo`/`remove`, `toGeoJSON`/`toJSON`, etc.) are inherited from [Geometry](/en/api/geometry).
 
 <!-- api-gen:start -->
+### Other Public Methods of Marker
+
+<!--@include: ./includes/api/marker-missing.md-->
+
 ### Methods Inherited from Geometry
 
 The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
@@ -89,6 +93,18 @@ This class gains the following method groups from mixins; see the linked pages f
 
 - `Marker.mergeOptions(options): this` — merge default options
 - `Marker.fromJSON(json)` — restore geometry from JSON (uses Geometry.fromJSON)
+
+<!-- api-gen:start -->
+### Other Static Methods of Marker
+
+<!--@include: ./includes/api/marker-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

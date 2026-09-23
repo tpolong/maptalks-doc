@@ -1,30 +1,3 @@
-<details><summary>setSpatialReference(ref)</summary>
-<div>
-<br/>
-
-Change the spatial reference of the map. <br/>
-A SpatialReference is a series of settings to decide the map presentation:<br/>
-1. the projection.<br/>
-2. zoom levels and resolutions. <br/>
-3. full extent.<br/>
-There are some [predefined spatial references](http://www.foo.com), and surely you can [define a custom one.](http://www.foo.com).<br/>
-SpatialReference can also be updated by map.config('spatialReference', spatialReference);
-
-Parameters:
-
-* ref `SpatialReferenceType` spatial reference
-
-Returns:
-
-* `Map` this
-
-Fires:
-
-* `Map#spatialreferencechange`
-
-</div>
-</details>
-
 <details><summary>onConfig(conf)</summary>
 <div>
 <br/>
@@ -72,24 +45,6 @@ Returns:
 </div>
 </details>
 
-<details><summary>setCenter(center, padding?)</summary>
-<div>
-<br/>
-
-Set a new center to the map.
-
-Parameters:
-
-* center `Coordinate`
-* padding (optional) `MapPaddingType`
-
-Returns:
-
-* `Map` this
-
-</div>
-</details>
-
 <details><summary>getGroundExtent()</summary>
 <div>
 <br/>
@@ -129,23 +84,6 @@ Returns:
 </div>
 </details>
 
-<details><summary>setMaxExtent(extent)</summary>
-<div>
-<br/>
-
-Sets the max extent that the map is restricted to.
-
-Parameters:
-
-* extent `Extent`
-
-Returns:
-
-* `Map` this
-
-</div>
-</details>
-
 <details><summary>getZoomForScale(scale, fromZoom?, isFraction?)</summary>
 <div>
 <br/>
@@ -169,7 +107,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the zoom for a resolution, clamped to minZoom and maxZoom
 
 Parameters:
 
@@ -178,24 +116,6 @@ Parameters:
 Returns:
 
 * `number`
-
-</div>
-</details>
-
-<details><summary>setZoom(zoom, options = { 'animation': true })</summary>
-<div>
-<br/>
-
-Sets zoom of the map
-
-Parameters:
-
-* zoom `number`
-* options = { 'animation': true } `Any`
-
-Returns:
-
-* `Map` this
 
 </div>
 </details>
@@ -303,19 +223,6 @@ Returns:
 </div>
 </details>
 
-<details><summary>zoomOut()</summary>
-<div>
-<br/>
-
-zoom out
-
-Returns:
-
-* `Map` this
-
-</div>
-</details>
-
 <details><summary>isInteracting()</summary>
 <div>
 <br/>
@@ -352,20 +259,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
-
-</div>
-</details>
-
-<details><summary>setView(view)</summary>
-<div>
-<br/>
-
-Set map's center/zoom/pitch/bearing at one time
-
-Parameters:
-
-* view `MapViewType` a object containing center/zoom/pitch/bearing return &#123;Map&#125; this
+Serialize the current map view into a JSON string
 
 </div>
 </details>
@@ -403,30 +297,6 @@ Parameters:
 Returns:
 
 * `Map | player` - this
-
-</div>
-</details>
-
-<details><summary>setBaseLayer(baseLayer)</summary>
-<div>
-<br/>
-
-Sets a new base layer to the map.<br/>
-Some events will be thrown such as baselayerchangestart, baselayerload, baselayerchangeend.
-
-Parameters:
-
-* baseLayer `Layer` new base layer
-
-Returns:
-
-* `Map` this
-
-Fires:
-
-* `Map#setbaselayer`
-* `Map#baselayerchangestart`
-* `Map#baselayerchangeend`
 
 </div>
 </details>
@@ -632,24 +502,11 @@ Returns:
 </div>
 </details>
 
-<details><summary>isMoving()</summary>
-<div>
-<br/>
-
-Whether the map is moving
-
-Returns:
-
-* `Boolean`
-
-</div>
-</details>
-
 <details><summary>onMoving(param)</summary>
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Moving callback firing the moving event and limiting max extent
 
 Parameters:
 
@@ -662,7 +519,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Move end callback firing moveend and resetting cursor and center
 
 Parameters:
 
@@ -675,7 +532,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the drag rotating flag and fire the dragrotatestart event
 
 Parameters:
 
@@ -688,7 +545,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Fire the dragrotating event while the map is drag rotated
 
 Parameters:
 
@@ -701,7 +558,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clear the drag rotating flag and fire the dragrotateend event
 
 Parameters:
 
@@ -714,7 +571,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the map is currently being drag rotated
 
 </div>
 </details>
@@ -737,24 +594,11 @@ Returns:
 </div>
 </details>
 
-<details><summary>getDevicePixelRatio()</summary>
-<div>
-<br/>
-
-Get map's devicePixelRatio, you can override it by setting devicePixelRatio in options.
-
-Returns:
-
-* `Number`
-
-</div>
-</details>
-
 <details><summary>setContainerDomRect(domRect)</summary>
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the container DOM content rect used to compute the map size
 
 Parameters:
 

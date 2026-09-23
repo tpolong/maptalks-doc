@@ -61,11 +61,29 @@ TextMarker 无特有 options，配置项继承自 [Marker](/api/marker)（如 `s
 
 TextMarker 无特有静态方法。
 
+<!-- api-gen:start -->
+### TextMarker 的其他静态方法
+
+<!--@include: ./includes/api/text-marker-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 - `contentchange` — 当文本内容改变时触发，事件对象含 `old`、`new` 字段。
 
 <!-- api-gen:start -->
+### TextMarker 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/text-marker-events-missing.md-->
+
 ### 继承自 Geometry 的事件
 
 <!--@include: ./includes/api/geometry-events.md-->

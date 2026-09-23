@@ -34,6 +34,10 @@ PointExtent 没有特有的成员方法，它完全复用 `Extent` 的全部方�
 - 其余方法（`getWidth`、`getHeight`、`contains`、`intersects`、`within`、`combine`、`expand`、`copy`、`toJSON`、`toBBOX` 等）行为与 `Extent` 一致，见 [Extent](/api/extent)。
 
 <!-- api-gen:start -->
+### PointExtent 的其他公开方法
+
+<!--@include: ./includes/api/point-extent-missing.md-->
+
 ### 继承自 Extent 的方法
 
 下列方法由父类 [Extent](/api/extent) 提供，本类的实例同样可以调用。

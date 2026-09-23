@@ -1,58 +1,3 @@
-<details><summary>getLastCoordinate()</summary>
-<div>
-<br/>
-
-Returns the last coordinate of the geometry.
-
-Returns:
-
-* `Coordinate` Last Coordinate
-
-</div>
-</details>
-
-<details><summary>setId(id)</summary>
-<div>
-<br/>
-
-Set geometry's id.
-
-Parameters:
-
-* id `string` new id
-
-Returns:
-
-* `Geometry` this
-
-Fires:
-
-* `Geometry#idchange`
-
-</div>
-</details>
-
-<details><summary>setProperties(properties)</summary>
-<div>
-<br/>
-
-Set a new properties to geometry.
-
-Parameters:
-
-* properties `{ [key: string]: any }` new properties
-
-Returns:
-
-* `Geometry` this
-
-Fires:
-
-* `Geometry#propertieschange`
-
-</div>
-</details>
-
 <details><summary>getType()</summary>
 <div>
 <br/>
@@ -62,27 +7,6 @@ Get type of the geometry, e.g. "Point", "LineString"
 Returns:
 
 * `String` type of the geometry
-
-</div>
-</details>
-
-<details><summary>setSymbol(symbol)</summary>
-<div>
-<br/>
-
-Set a new symbol to style the geometry.
-
-Parameters:
-
-* symbol `any` new symbol
-
-Returns:
-
-* `Geometry` this
-
-Fires:
-
-* `Geometry#symbolchange`
 
 </div>
 </details>
@@ -104,49 +28,11 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the cached text description computed from the text content and sizeSymbol.
 
 Returns:
 
 * `any`
-
-</div>
-</details>
-
-<details><summary>hide()</summary>
-<div>
-<br/>
-
-Hide the geometry
-
-Returns:
-
-* `Geometry` this
-
-Fires:
-
-* `Geometry#hide`
-
-</div>
-</details>
-
-<details><summary>setZIndex(zIndex)</summary>
-<div>
-<br/>
-
-Set a new zIndex to Geometry and fire zindexchange event (will cause layer to sort geometries and render)
-
-Parameters:
-
-* zIndex `number` new zIndex
-
-Returns:
-
-* `Geometry` this
-
-Fires:
-
-* `Geometry#zindexchange`
 
 </div>
 </details>
@@ -170,23 +56,6 @@ Returns:
 </div>
 </details>
 
-<details><summary>bringToBack()</summary>
-<div>
-<br/>
-
-Bring the geometry to the back
-
-Returns:
-
-* `Geometry` this
-
-Fires:
-
-* `Geometry#zindexchange`
-
-</div>
-</details>
-
 <details><summary>toGeoJSONGeometry()</summary>
 <div>
 <br/>
@@ -204,7 +73,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether both a rotation angle and a rotation center are set on the geometry.
 
 Returns:
 
@@ -217,7 +86,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback when the geometry is hidden; it closes any open menu and infoWindow.
 
 </div>
 </details>
@@ -226,7 +95,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback on shape change; it clears caches, redraws and fires shapechange.
 
 </div>
 </details>
@@ -235,7 +104,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback on position change; it clears caches, redraws and fires positionchange.
 
 </div>
 </details>
@@ -244,7 +113,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback on symbol change; it refreshes symbols, rebuilds sizeSymbol and fires events.
 
 </div>
 </details>
@@ -253,7 +122,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback after config updates options; it syncs properties and redraws when needed.
 
 Parameters:
 
@@ -262,28 +131,11 @@ Parameters:
 </div>
 </details>
 
-<details><summary>setAltitude(alt)</summary>
-<div>
-<br/>
-
-No prose description in source; parameters and return type come from the type signature.
-
-Parameters:
-
-* alt `number`
-
-Returns:
-
-* `this`
-
-</div>
-</details>
-
 <details><summary>getMinAltitude()</summary>
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the minimum altitude among all coordinates of the geometry.
 
 Returns:
 
@@ -296,7 +148,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the maximum altitude among all coordinates of the geometry.
 
 Returns:
 
@@ -309,7 +161,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the hole coordinate rings of the geometry, implemented by some subclasses only.
 
 Returns:
 
@@ -322,7 +174,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the coordinate ring of the geometry's outer shell, implemented by some subclasses only.
 
 Returns:
 
@@ -335,7 +187,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the child geometries of a collection, implemented only by collection subclasses.
 
 Returns:
 
@@ -348,7 +200,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback invoked when the geometry is removed from its layer, called internally.
 
 </div>
 </details>
@@ -357,7 +209,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the angle offset used when rotating around the center, currently implemented only by Sector.
 
 Returns:
 
@@ -370,7 +222,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback invoked after the geometry is added to a layer, called internally.
 
 </div>
 </details>

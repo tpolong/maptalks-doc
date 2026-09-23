@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Builds an outline polygon from the extent, null when no painter exists
 
 Returns:
 

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Restore a TextBox from JSON, recovering its content, coordinates, width, height, properties and symbol
 
 Parameters:
 

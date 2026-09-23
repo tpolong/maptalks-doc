@@ -406,7 +406,7 @@ Event properties:
 <div>
 <br/>
 
-shapechange event.
+Fired when the shape of a geometry changes.
 
 Event properties:
 
@@ -470,7 +470,7 @@ Event properties:
 <div>
 <br/>
 
-shapechange event.
+Fired when the shape of a geometry changes.
 
 </div>
 </details>

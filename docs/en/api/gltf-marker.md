@@ -49,10 +49,6 @@ The `options.symbol` of GLTFMarker contains the following settings and propertie
 
 ## Methods
 
-<!--@include: ./includes/gltf-marker-methods.md-->
-
-<!--@include: ./includes/geometry-methods.md-->
-
 > [!NOTE] Method verification (2026 source code)
 > Methods not documented in older docs but provided in the 2026 source code:
 > - `setUniform(key, value, nodeIndex?)` / `getUniforms()`: set / batch read material uniforms by key
@@ -82,6 +78,12 @@ The following methods are provided by the parent class [Marker](/en/api/marker) 
 
 <!--@include: ./includes/api/marker-methods.md-->
 
+### Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-methods.md-->
+
 ### Mixed-in Methods
 
 This class gains the following method groups from mixins; see the linked pages for details: [CenterMixin](/en/api/center-mixin)（`getCoordinates`、`setCoordinates`、`getMap`、`onPositionChanged`…）；[JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/en/api/handlerable)；[Menuable](/en/api/menuable).
@@ -89,23 +91,25 @@ This class gains the following method groups from mixins; see the linked pages f
 
 ## Static Methods
 
-<!--@include: ./includes/geometry-static-methods.md-->
-
 > [!NOTE] Additional static methods (2026 source code)
 > - `static getGLTFAnchorsAlongLineString(coordinates, bboxWidth, map, options)`: generate model anchors in batch along a line (options: gapLength / count / rotateAlongLine / snapToEndVertexes / scaleEndModel)
 > - `static combineGLTFBoundingBox(markers): {min, max}`: combine the bounding boxes of multiple markers
 
+<!-- api-gen:start -->
+### Other Static Methods of GLTFMarker
+
+<!--@include: ./includes/api/gltf-marker-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 <!--@include: ./includes/js-events-example.md-->
-
-### Geometry Events
-
-<!--@include: ./includes/gltf-marker-events.md-->
-
-### Events Inherited from Geometry
-
-<!--@include: ./includes/geometry-events.md-->
 
 > [!NOTE] Additional events (verified against 2026 source code)
 > - `meshcreate`: fired when the mesh is created (fired on the marker; the layer receives it synchronously through the geometry event)
@@ -113,3 +117,15 @@ This class gains the following method groups from mixins; see the linked pages f
 > - `positionchange`: fired when the coordinates change
 
 > This document has been verified against the 2026 source code of @maptalks/gl-layers (api-notes-others.md)
+
+<!-- api-gen:start -->
+### Other Events of GLTFMarker
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/gltf-marker-events-missing.md-->
+
+### Events Inherited from Geometry
+
+<!--@include: ./includes/api/geometry-events.md-->
+<!-- api-gen:end -->

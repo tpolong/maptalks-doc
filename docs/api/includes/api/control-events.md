@@ -46,3 +46,30 @@ Control 从 map 上移除时触发
 
 </div>
 </details>
+
+<details><summary>add</summary>
+<div>
+<br/>
+
+Control 添加到 map 上时触发
+
+</div>
+</details>
+
+<details><summary>remove</summary>
+<div>
+<br/>
+
+Control 从 map 上移除时触发
+
+</div>
+</details>
+
+<details><summary>positionchange</summary>
+<div>
+<br/>
+
+control 位置更新后触发
+
+</div>
+</details>

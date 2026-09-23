@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-positionchange event.
+Fired after the rectangle position changes.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ positionchange event.
 <div>
 <br/>
 
-shapechange event.
+Fired after the rectangle width or height changes.
 
 </div>
 </details>

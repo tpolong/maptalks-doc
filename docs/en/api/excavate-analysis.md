@@ -118,6 +118,10 @@ Returns:
 </details>
 
 <!-- api-gen:start -->
+### Other Public Methods of ExcavateAnalysis
+
+<!--@include: ./includes/api/excavate-analysis-missing.md-->
+
 ### Methods Inherited from ExtrudePolygonLayer
 
 The following methods are provided by the parent class [ExtrudePolygonLayer](/en/api/extrude-polygon-layer) and are available on instances of this class.
@@ -152,6 +156,26 @@ This class gains the following method groups from mixins; see the linked pages f
 ExcavateAnalysis inherits all layer methods and options of [ExtrudePolygonLayer](./extrude-polygon-layer) (and further of [PolygonLayer](./polygon-layer)).
 
 > This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+
+## Static Methods
+
+<!-- api-gen:start -->
+### Other Static Methods of ExcavateAnalysis
+
+<!--@include: ./includes/api/excavate-analysis-statics-missing.md-->
+
+### Static Methods Inherited from Vector3DLayer
+
+The following methods are provided by the parent class Vector3DLayer and are available on instances of this class.
+
+<!--@include: ./includes/api/vector3-d-layer-statics.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

@@ -11,7 +11,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+The conversion factor from degrees to radians, PI divided by 180.
 
 </div>
 </details>
@@ -20,7 +20,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Meters per degree of longitude and latitude, using the equatorial radius 6378137.
 
 </div>
 </details>
@@ -29,7 +29,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+The maximum latitude supported by the Mercator projection, about 85.051.
 
 </div>
 </details>
@@ -38,7 +38,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Projects a lnglat coordinate to EPSG:3857 plane coordinates, clamping the latitude.
 
 Parameters:
 
@@ -52,7 +52,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Unprojects EPSG:3857 plane coordinates back to a lnglat coordinate.
 
 Parameters:
 

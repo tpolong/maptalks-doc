@@ -18,12 +18,6 @@ m.measureLenBetween([116.404, 39.915], [121.47, 31.23]);
 - `measure: string` — 测量器代码，`'BAIDU'`。
 - `sphere: Sphere` — 底层球体测量器，半径 `6370996.81`。
 
-<!-- api-gen:start -->
-### baidu 的其他公开方法
-
-<!--@include: ./includes/api/measurer-baidusphere-missing.md-->
-<!-- api-gen:end -->
-
 ## 方法
 
 - `measureLenBetween(c1, c2): number` — 球面大圆距离（米）。

@@ -99,6 +99,14 @@ new TextBox(content, coordinates, width, height, options?)
 
 - `fromJSON(json): TextBox` — 从 JSON 对象创建 TextBox 实例。
 
+<!-- api-gen:start -->
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 - `contentchange` — 文本内容改变时触发（继承自 [TextMarker](/api/text-marker)）。

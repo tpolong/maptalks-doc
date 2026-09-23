@@ -42,15 +42,32 @@ Parameters:
 
 - `DrawToolLayer.setLayerClass(markerLayerClass, lineLayerClass, polygonLayerClass): void` — set the layer class for each geometry type
 
+<!-- api-gen:start -->
+### Other Static Methods of DrawToolLayer
+
+<!--@include: ./includes/api/draw-tool-layer-statics-missing.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Member Methods
 
 - `addGeometry(geometries: Geometry | Geometry[]): this` — add geometries and dispatch them to child layers by type
+
 - `removeGeometry(geometries: Geometry | Geometry[]): void` — remove geometries
 - `getGeometryById(id): Geometry` — look up a geometry by id in the child layers
 - `clear(): this` — clear
 - `bringToFront(): this` — bring the child layers to front
 
 <!-- api-gen:start -->
+### Other Public Methods of DrawToolLayer
+
+<!--@include: ./includes/api/draw-tool-layer-missing.md-->
+
 ### Methods Inherited from OverlayLayer
 
 The following methods are provided by the parent class [OverlayLayer](/en/api/overlay-layer) and are available on instances of this class.

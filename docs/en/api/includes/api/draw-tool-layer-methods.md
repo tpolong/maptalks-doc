@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clears this layer and its inner marker, line and polygon child layers.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Brings the polygon, line and marker child layers to the front in that order.
 
 </div>
 </details>
@@ -20,7 +20,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Adds geometries and dispatches them to the marker, line or polygon sub-layer.
 
 Parameters:
 
@@ -33,7 +33,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the geometry of the given id from the marker, line or polygon child layer, null if not found.
 
 Parameters:
 
@@ -50,7 +50,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Removes the given geometries from the layer list and from their matching child layer.
 
 Parameters:
 
@@ -63,7 +63,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clear geometries and destroy the three sub layers and their bindings on remove
 
 </div>
 </details>
@@ -72,7 +72,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add polygon, line and marker sub layers in order and bind removegeo on add
 
 </div>
 </details>
@@ -81,7 +81,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the renderer of the marker sub layer
 
 </div>
 </details>

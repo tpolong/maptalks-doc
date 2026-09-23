@@ -48,10 +48,6 @@ GLTFLayer-specific options (supplemented from 2026 source code):
 </div>
 </details>
 
-<!--@include: ./includes/overlay-layer-methods.md-->
-
-<!--@include: ./includes/layer-methods.md-->
-
 ## Methods
 
 <!-- api-gen:start -->
@@ -64,6 +60,18 @@ GLTFLayer-specific options (supplemented from 2026 source code):
 The following methods are provided by the parent class AbstractGLTFLayer and are available on instances of this class.
 
 <!--@include: ./includes/api/abstract-gltf-layer-methods.md-->
+
+### Methods Inherited from OverlayLayer
+
+The following methods are provided by the parent class [OverlayLayer](/en/api/overlay-layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/overlay-layer-methods.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
 
 ### Mixed-in Methods
 
@@ -91,6 +99,24 @@ Returns:
 </div>
 </details>
 
+<!-- api-gen:start -->
+### Other Static Methods of GLTFLayer
+
+<!--@include: ./includes/api/gltf-layer-statics-missing.md-->
+
+### Static Methods Inherited from AbstractGLTFLayer
+
+The following methods are provided by the parent class AbstractGLTFLayer and are available on instances of this class.
+
+<!--@include: ./includes/api/abstract-gltf-layer-statics.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Methods (supplemented from 2026 source code)
 
 > [!NOTE]
@@ -115,18 +141,6 @@ Returns:
 
 <!--@include: ./includes/js-events-example.md-->
 
-### Layer Events
-
-<!--@include: ./includes/gltf-layer-events.md-->
-
-### Events Inherited from OverlayLayer
-
-<!--@include: ./includes/overlay-layer-events.md-->
-
-### Events Inherited from Layer
-
-<!--@include: ./includes/layer-events.md-->
-
 > [!NOTE] Event verification (2026 source code)
 > - `modelload`: fired when all models are loaded; parameters: `{ models: url list }`
 > - `modelerror`: fired when a model fails to load; parameters: `{ url, info }`
@@ -135,3 +149,17 @@ Returns:
 > - `load` / `add`: fired on the marker when the model is loaded / when the marker is added (including the layer reference)
 
 > This document has been verified against the 2026 source code of @maptalks/gl-layers (api-notes-others.md)
+
+<!-- api-gen:start -->
+### Events Inherited from AbstractGLTFLayer
+
+<!--@include: ./includes/api/abstract-gltf-layer-events.md-->
+
+### Events Inherited from OverlayLayer
+
+<!--@include: ./includes/api/overlay-layer-events.md-->
+
+### Events Inherited from Layer
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

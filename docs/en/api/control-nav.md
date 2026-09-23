@@ -37,6 +37,10 @@ Common options inherited from [control.Control](/en/api/control) also apply.
 - `buildOn(): null` — Build the control DOM; currently returns `null` (renders nothing).
 
 <!-- api-gen:start -->
+### Other Public Methods of Nav
+
+<!--@include: ./includes/api/control-nav-missing.md-->
+
 ### Methods Inherited from Control
 
 The following methods are provided by the parent class [Control](/en/api/control) and are available on instances of this class.

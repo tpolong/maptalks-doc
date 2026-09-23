@@ -644,12 +644,16 @@ Returns:
 </div>
 </details>
 
-<!--@include: ./includes/layer-methods.md-->
-
 <!-- api-gen:start -->
 ### Other Public Methods of Geo3DTilesLayer
 
 <!--@include: ./includes/api/geo-3dtiles-layer-missing.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
 
 ### Mixed-in Methods
 
@@ -695,6 +699,14 @@ Returns:
 
 </div>
 </details>
+
+<!-- api-gen:start -->
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 
@@ -841,8 +853,10 @@ Properties:
 </div>
 </details>
 
+> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+
+<!-- api-gen:start -->
 ### Events Inherited from Layer
 
-<!--@include: ./includes/layer-events.md-->
-
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

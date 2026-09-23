@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Creates a Sector from coordinates, radius, start and end angles plus options in json
 
 Parameters:
 

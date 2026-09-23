@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the map instance the geometry belongs to.
 
 Returns:
 
@@ -15,7 +15,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Called after the geometry position changes to clear caches, repaint and fire positionchange.
 
 </div>
 </details>

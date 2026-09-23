@@ -19,7 +19,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the ENU transform matrix from the coordinate, scale and rotation.
 
 Parameters:
 

@@ -42,8 +42,6 @@ HeightLimitAnalysis 继承 [FloodAnalysis](./flood-analysis)（包括 waterHeigh
 
 ## 继承自Analysis的方法
 
-<!--@include: ./includes/analysis-methods.md-->
-
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
 
 ## 成员方法
@@ -54,6 +52,12 @@ HeightLimitAnalysis 继承 [FloodAnalysis](./flood-analysis)（包括 waterHeigh
 下列方法由父类 [FloodAnalysis](/api/flood-analysis) 提供，本类的实例同样可以调用。
 
 <!--@include: ./includes/api/flood-analysis-methods.md-->
+
+### 继承自 Analysis 的方法
+
+下列方法由父类 [Analysis](/api/analysis) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/analysis-methods.md-->
 
 ### 混入的方法
 

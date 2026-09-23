@@ -29,3 +29,12 @@ TextMarker 结束编辑并保存文本后触发
 
 </div>
 </details>
+
+<details><summary>contentchange</summary>
+<div>
+<br/>
+
+label 的文本内容改变时触发
+
+</div>
+</details>

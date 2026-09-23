@@ -33,6 +33,10 @@ QuadBezierCurve has no class-specific options; it inherits the options of Curve.
 No class-specific methods; it inherits the methods of Curve.
 
 <!-- api-gen:start -->
+### Other Public Methods of QuadBezierCurve
+
+<!--@include: ./includes/api/quad-bezier-curve-missing.md-->
+
 ### Methods Inherited from LineString
 
 The following methods are provided by the parent class [LineString](/en/api/line-string) and are available on instances of this class.
@@ -59,6 +63,18 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Static Methods
 
 - `QuadBezierCurve.fromJSON(json): QuadBezierCurve` — Creates a QuadBezierCurve instance from a JSON object.
+
+<!-- api-gen:start -->
+### Other Static Methods of QuadBezierCurve
+
+<!--@include: ./includes/api/quad-bezier-curve-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

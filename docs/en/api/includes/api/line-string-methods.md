@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns a polygon outline built from the geometry extent, reusing Polygon's implementation.
 
 Returns:
 

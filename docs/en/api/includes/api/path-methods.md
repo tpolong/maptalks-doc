@@ -20,7 +20,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the path has holes inside, implemented by subclasses such as Polygon.
 
 Returns:
 

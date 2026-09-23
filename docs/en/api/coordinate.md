@@ -86,3 +86,9 @@ const dist = coord.distanceTo(new Coordinate(121.48, 31.24));
 ```
 
 > Coordinate is a pure data type with no event system. Coordinate projection conversion (lon/lat ↔ Web Mercator / pixel) is done by `CRS`/projection classes, not by Coordinate methods.
+
+<!-- api-gen:start -->
+### Other Static Methods of Coordinate
+
+<!--@include: ./includes/api/coordinate-statics-missing.md-->
+<!-- api-gen:end -->

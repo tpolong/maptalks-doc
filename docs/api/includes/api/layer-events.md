@@ -199,3 +199,21 @@ layer 瓦片加载完成时触发
 
 </div>
 </details>
+
+<details><summary>remove</summary>
+<div>
+<br/>
+
+layer 从 map 上移除后触发
+
+</div>
+</details>
+
+<details><summary>add</summary>
+<div>
+<br/>
+
+layer 添加到 map 上后触发
+
+</div>
+</details>

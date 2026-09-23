@@ -42,6 +42,10 @@ new ArcConnectorLine(src, target, options?)
 - `setConnectTarget(target): this` — 设置连接目标。
 
 <!-- api-gen:start -->
+### ArcConnectorLine 的其他公开方法
+
+<!--@include: ./includes/api/arc-connector-line-missing.md-->
+
 ### 继承自 LineString 的方法
 
 下列方法由父类 [LineString](/api/line-string) 提供，本类的实例同样可以调用。
@@ -68,6 +72,24 @@ new ArcConnectorLine(src, target, options?)
 ## 静态方法
 
 无特有静态方法。
+
+<!-- api-gen:start -->
+### ArcConnectorLine 的其他静态方法
+
+<!--@include: ./includes/api/arc-connector-line-statics-missing.md-->
+
+### 继承自 ArcCurve 的静态方法
+
+下列方法由父类 [ArcCurve](/api/arc-curve) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/arc-curve-statics.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

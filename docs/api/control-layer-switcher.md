@@ -58,6 +58,12 @@ new LayerSwitcher(options)
 - `layerchange` — 图层可见性改变时触发。
 
 <!-- api-gen:start -->
+### LayerSwitcher 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/control-layer-switcher-events-missing.md-->
+
 ### 继承自 Control 的事件
 
 <!--@include: ./includes/api/control-events.md-->

@@ -393,7 +393,7 @@ export function buildModel(raw) {
     c.instanceMethods = c.publicMethods.filter((m) => !m.isStatic);
   }
 
-  // ---- 事件（@event Class#name 定义 + @fires Class#name 引用）
+  // ---- 事件（@event Class#name 定义 + @fires Class#name 引用 + fire('literal') 调用）
   // 事件定义常常写在没有任何类/方法的文件里（如 map/handler/Map.GeometryEvents.ts），
   // 因此必须扫描**全部源文件**，不能只扫有类/成员的文件的。
   const events = new Map();
@@ -434,6 +434,28 @@ export function buildModel(raw) {
       list.push({ name: m[1], def: (m[2] || '').trim(), desc: (m[3] || '').trim(), raw: p });
     }
     if (list.length) optionsOf.set(f, list);
+  }
+
+  // ---- 事件补充：`fire('literal')` / `_fireEvent('literal')` 调用（JS 包常见，没有 @event 注释）
+  // 归到包含该行的最内层类；找不到类就跳过（避免把工具函数里的事件算到别人头上）。
+  const classesByFileTmp = new Map();
+  for (const c of classes) {
+    if (!classesByFileTmp.has(c.file)) classesByFileTmp.set(c.file, []);
+    classesByFileTmp.get(c.file).push(c);
+  }
+  for (const f of files) {
+    const t = fileText(f);
+    for (const m of t.matchAll(/\b(?:fire|_fireEvent|_fire)\s*\(\s*['"`]([A-Za-z][\w:-]*)['"`]/g)) {
+      const line = lineOfIndex(f, m.index);
+      const owner = (classesByFileTmp.get(f) || [])
+        .filter((c) => line >= c.startLine && line <= c.endLine)
+        .sort((a, b) => (a.endLine - a.startLine) - (b.endLine - b.startLine))[0];
+      if (!owner) continue;
+      const key = `${owner.name}#${m[1]}`;
+      if (!events.has(key)) {
+        events.set(key, { owner: owner.name, name: m[1], zh: '', en: '', props: [], type: '', defined: false, file: REL(f) });
+      }
+    }
   }
 
   // ---- 独立导出函数（按文件归组，供 util / DomUtil / StringUtil 这类函数集合页使用）
@@ -706,6 +728,63 @@ export function writtenNames(txt) {
   for (const m of txt.matchAll(/^[-*]\s*`([A-Za-z_$][\w$]*)\(/gm)) s.add(m[1]);
   for (const m of txt.matchAll(/^\|\s*`?([A-Za-z_$][\w$]*)`?\s*\|/gm)) s.add(m[1]);
   return s;
+}
+
+// ---------------------------------------------------------------- 章节级"已写"判定
+// 生成器算缺口、审计查覆盖都用同一套（口径不一致会导致"生成器认为写了、审计认为没写"）。
+
+const SEC_EVENTS = /(事件|Events)/i;
+const SEC_STATICS = /(静态方法|Static Methods)/i;
+const SEC_METHODS = /(成员方法|成员函数|^方法$|主要函数|方法（|Methods|Functions|属性\s*\/\s*静态方法|Properties\s*\/\s*Static)/i;
+const SEC_OPTIONS = /^(options|Options|配置项|样式说明|Symbol)/;
+const SEC_CTOR = /^(构造函数|构造 options|Constructor)/i;
+
+export function sectionKind(title) {
+  // `## 属性 / 静态方法`、`## Properties / Static Methods` 是混合章节：方法名与静态名都算
+  if (/^(属性\s*\/\s*静态方法|Properties\s*\/\s*Static)/i.test(title)) return 'mixed';
+  if (SEC_EVENTS.test(title)) return 'events';
+  if (SEC_STATICS.test(title)) return 'statics';
+  if (SEC_METHODS.test(title)) return 'methods';
+  if (SEC_OPTIONS.test(title)) return 'options';
+  if (SEC_CTOR.test(title)) return 'ctor';
+  return 'other';
+}
+
+/** 按 `## ` 切分，返回各类章节正文拼接（mixed 同时计入 methods 与 statics） */
+export function sectionBodies(txt) {
+  const lines = txt.split('\n');
+  const heads = lines.map((l, i) => (/^##\s+/.test(l) ? i : -1)).filter((i) => i >= 0);
+  const out = { methods: '', statics: '', events: '', options: '', mixed: '', other: heads.length ? lines.slice(0, heads[0]).join('\n') : txt };
+  for (let k = 0; k < heads.length; k++) {
+    const start = heads[k];
+    const end = k + 1 < heads.length ? heads[k + 1] : lines.length;
+    out[sectionKind(lines[start].replace(/^##\s+/, '').trim())] += lines.slice(start, end).join('\n') + '\n';
+  }
+  return out;
+}
+
+/** 章节内出现的成员名：`<summary>` 条目 + 反引号跨度里的开头标识符
+ *  （覆盖 `\`name(args): type\``、`\`code: string\``、`| \`a\` / \`b\` |` 等写法） */
+export function sectionNames(body) {
+  const s = new Set();
+  for (const m of body.matchAll(/<summary>([^<]+)<\/summary>/g)) s.add(m[1].split('(')[0].trim());
+  for (const m of body.matchAll(/`([^`\n]+)`/g)) {
+    const id = /^\s*([A-Za-z_$][\w$]*)/.exec(m[1]);
+    if (id) s.add(id[1]);
+  }
+  return s;
+}
+
+/** 页面按章节解析出的"已写"名单（mixed 章节同时进 methods 与 statics） */
+export function documentedBySection(txt) {
+  const b = sectionBodies(txt);
+  const methods = sectionNames(b.methods);
+  const statics = sectionNames(b.statics);
+  for (const n of sectionNames(b.mixed)) { methods.add(n); statics.add(n); }
+  return {
+    methods, statics,
+    events: sectionNames(b.events), options: sectionNames(b.options), bodies: b,
+  };
 }
 
 export function writeJson(file, obj) {

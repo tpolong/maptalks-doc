@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback hook invoked when the UI component is added, implemented by subclasses
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback hook invoked when the UI component is removed, implemented by subclasses
 
 </div>
 </details>
@@ -20,7 +20,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback hook invoked when the UI's DOM element is removed, implemented by subclasses
 
 </div>
 </details>
@@ -29,7 +29,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the event map the component itself listens to, subclasses may override it
 
 </div>
 </details>
@@ -38,7 +38,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the event map to be bound on the owner, subclasses may override it
 
 </div>
 </details>
@@ -47,7 +47,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Creates and returns the UI's DOM element, must be implemented by subclasses
 
 Returns:
 
@@ -177,7 +177,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the owner the UI component is mounted on, a map or a geometry
 
 </div>
 </details>
@@ -212,7 +212,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the UI pixel position in the map container, including the getOffset shift
 
 </div>
 </details>
@@ -221,7 +221,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback when the owner geometry moves, refreshes the UI at its new center
 
 Parameters:
 
@@ -234,7 +234,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback on map moving and moveend, updates the UI position
 
 </div>
 </details>
@@ -243,7 +243,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback during map zooming, rotating and pitching, updates the UI position
 
 </div>
 </details>
@@ -252,7 +252,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback when map zooming ends, resets the UI's DOM position immediately
 
 </div>
 </details>
@@ -261,7 +261,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback when the map container is resized, resets the UI's DOM position
 
 </div>
 </details>
@@ -270,7 +270,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback when the DOM size changes, resets the position and recalculates collision
 
 </div>
 </details>
@@ -279,7 +279,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether DOM display can be filtered by zoom, the base class returns false
 
 </div>
 </details>
@@ -288,7 +288,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback after options change, refreshes position and re-sorts on collision state change
 
 Parameters:
 

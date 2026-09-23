@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Render the skyline analysis and return uniforms containing skylineMap
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Export the skyline analysis image, downloading it when options.save is true.
 
 Parameters:
 
@@ -28,7 +28,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Update an analysis option and request a layer redraw
 
 Parameters:
 
@@ -42,7 +42,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Remove the analysis from its layer and dispose the ground mesh and other resources
 
 </div>
 </details>
@@ -51,7 +51,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Return the shader define HAS_SKYLINE for skyline rendering
 
 </div>
 </details>

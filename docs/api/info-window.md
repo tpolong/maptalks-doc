@@ -53,6 +53,10 @@ new InfoWindow(options)
 - `getTransformOrigin(): String` — 获取气泡的变换原点。
 
 <!-- api-gen:start -->
+### InfoWindow 的其他公开方法
+
+<!--@include: ./includes/api/info-window-missing.md-->
+
 ### 继承自 UIComponent 的方法
 
 下列方法由父类 [UIComponent](/api/ui-component) 提供，本类的实例同样可以调用。
@@ -69,6 +73,12 @@ new InfoWindow(options)
 - `contentchange` — 气泡内容改变时触发。
 
 <!-- api-gen:start -->
+### InfoWindow 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/info-window-events-missing.md-->
+
 ### 继承自 UIComponent 的事件
 
 <!--@include: ./includes/api/ui-component-events.md-->

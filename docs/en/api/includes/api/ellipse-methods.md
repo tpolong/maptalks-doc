@@ -96,7 +96,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Shows the ellipse immediately, Ellipse has no show animation.
 
 Returns:
 

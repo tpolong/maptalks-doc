@@ -76,6 +76,18 @@ new OverlayLayer(id, geometries?, options?)
 
 - `OverlayLayer.fromJSON(json)` — 从JSON还原图层
 
+<!-- api-gen:start -->
+### OverlayLayer 的其他静态方法
+
+<!--@include: ./includes/api/overlay-layer-statics-missing.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 | 事件 | 触发时机 |
@@ -88,6 +100,12 @@ new OverlayLayer(id, geometries?, options?)
 图层通用事件见 [Layer](/api/layer)。
 
 <!-- api-gen:start -->
+### OverlayLayer 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/overlay-layer-events-missing.md-->
+
 ### 继承自 Layer 的事件
 
 <!--@include: ./includes/api/layer-events.md-->

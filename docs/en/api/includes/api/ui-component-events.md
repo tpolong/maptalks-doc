@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-add event.
+Fired when the UI component is added to a map or a geometry.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ add event.
 <div>
 <br/>
 
-add event.
+Fired when the UI component is added to a map or a geometry.
 
 Event properties:
 
@@ -27,7 +27,7 @@ Event properties:
 <div>
 <br/>
 
-showstart event.
+Fired when the UIComponent starts to show
 
 Event properties:
 
@@ -43,7 +43,7 @@ Event properties:
 <div>
 <br/>
 
-showend event.
+Fired when the UIComponent finishes showing
 
 Event properties:
 
@@ -59,7 +59,7 @@ Event properties:
 <div>
 <br/>
 
-hide event.
+Fired when the UIComponent is hidden
 
 Event properties:
 
@@ -75,7 +75,7 @@ Event properties:
 <div>
 <br/>
 
-remove event.
+Fired when the UIComponent is removed from its map or geometry
 
 Event properties:
 
@@ -91,7 +91,7 @@ Event properties:
 <div>
 <br/>
 
-mouseover event.
+Fired when the mouse enters the UIComponent
 
 Event properties:
 
@@ -107,7 +107,7 @@ Event properties:
 <div>
 <br/>
 
-mouseout event.
+Fired when the mouse leaves the UIComponent
 
 Event properties:
 
@@ -115,6 +115,60 @@ Event properties:
 | --- | :-: | --- |
 | type | `String` | mouseout |
 | target | `ui.UIComponent` | UIComponent |
+
+</div>
+</details>
+
+<details><summary>showstart</summary>
+<div>
+<br/>
+
+Fired when the UIComponent starts to show
+
+</div>
+</details>
+
+<details><summary>showend</summary>
+<div>
+<br/>
+
+Fired when the UIComponent finishes showing
+
+</div>
+</details>
+
+<details><summary>hide</summary>
+<div>
+<br/>
+
+Fired when the UIComponent is hidden
+
+</div>
+</details>
+
+<details><summary>remove</summary>
+<div>
+<br/>
+
+Fired when the UIComponent is removed from its map or geometry
+
+</div>
+</details>
+
+<details><summary>mouseover</summary>
+<div>
+<br/>
+
+Fired when the mouse enters the UIComponent
+
+</div>
+</details>
+
+<details><summary>mouseout</summary>
+<div>
+<br/>
+
+Fired when the mouse leaves the UIComponent
 
 </div>
 </details>

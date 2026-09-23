@@ -47,6 +47,10 @@ Parameters:
 - `redo()` — Redoes the last step.
 
 <!-- api-gen:start -->
+### Other Public Methods of DistanceTool
+
+<!--@include: ./includes/api/distance-tool-missing.md-->
+
 ### Methods Inherited from DrawTool
 
 The following methods are provided by the parent class [DrawTool](/en/api/draw-tool) and are available on instances of this class.
@@ -62,6 +66,20 @@ The following methods are provided by the parent class [MapTool](/en/api/map-too
 ### Mixed-in Methods
 
 This class gains the following method groups from mixins; see the linked pages for details: [Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）.
+<!-- api-gen:end -->
+
+## Static Methods
+
+<!-- api-gen:start -->
+### Other Static Methods of DistanceTool
+
+<!--@include: ./includes/api/distance-tool-statics-missing.md-->
+
+### Static Methods Inherited from DrawTool
+
+The following methods are provided by the parent class [DrawTool](/en/api/draw-tool) and are available on instances of this class.
+
+<!--@include: ./includes/api/draw-tool-statics.md-->
 <!-- api-gen:end -->
 
 ## Events

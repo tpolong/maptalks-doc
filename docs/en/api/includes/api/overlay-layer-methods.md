@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the layer altitude; OverlayLayer always returns 0.
 
 </div>
 </details>
@@ -262,7 +262,7 @@ Fires:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Apply the layer style to a geometry's symbol when it is added to the layer.
 
 Parameters:
 
@@ -275,7 +275,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Hide the layer and notify every geometry in it to hide.
 
 Returns:
 
@@ -288,7 +288,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Respond to geometry change events and sync the layer cache and renderer.
 
 Parameters:
 

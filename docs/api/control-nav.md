@@ -37,6 +37,10 @@ new control.Nav(options?)
 - `buildOn(): null` — 构建控件DOM，当前返回 `null`（不渲染内容）。
 
 <!-- api-gen:start -->
+### Nav 的其他公开方法
+
+<!--@include: ./includes/api/control-nav-missing.md-->
+
 ### 继承自 Control 的方法
 
 下列方法由父类 [Control](/api/control) 提供，本类的实例同样可以调用。

@@ -87,6 +87,20 @@ new CanvasLayer(id, options?)
 本类通过混入获得以下能力的方法，详见对应页面：[JSONAble](/api/json-able)（`getJSONType`…）；[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/api/renderable)。
 <!-- api-gen:end -->
 
+## 静态方法
+
+<!-- api-gen:start -->
+### CanvasLayer 的其他静态方法
+
+<!--@include: ./includes/api/canvas-layer-statics-missing.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 图层通用事件（`show`/`hide`、`setopacity`、`add`/`remove` 等）见 [Layer](/api/layer)。

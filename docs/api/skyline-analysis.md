@@ -56,13 +56,21 @@ skylineAnalysis.addTo(groupGLLayer);
 </details>
 
 <!-- api-gen:start -->
+### SkylineAnalysis 的其他公开方法
+
+<!--@include: ./includes/api/skyline-analysis-missing.md-->
+
+### 继承自 Analysis 的方法
+
+下列方法由父类 [Analysis](/api/analysis) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/analysis-methods.md-->
+
 ### 混入的方法
 
 本类通过混入获得以下能力的方法，详见对应页面：[Eventable](/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Handlerable](/api/handlerable)。
 <!-- api-gen:end -->
 
 ## 继承自Analysis的方法
-
-<!--@include: ./includes/analysis-methods.md-->
 
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）

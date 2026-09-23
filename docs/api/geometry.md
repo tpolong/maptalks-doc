@@ -117,6 +117,12 @@ new Geometry(options)
 
 - `Geometry.fromJSON(json): Geometry | Geometry[]` — 从JSON还原几何
 
+<!-- api-gen:start -->
+### Geometry 的其他静态方法
+
+<!--@include: ./includes/api/geometry-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 | 事件 | 触发时机 |
@@ -135,3 +141,11 @@ marker.on("positionchange", () => {
   console.log("marker moved to", marker.getCoordinates());
 });
 ```
+
+<!-- api-gen:start -->
+### Geometry 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/geometry-events-missing.md-->
+<!-- api-gen:end -->

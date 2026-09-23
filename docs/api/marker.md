@@ -74,6 +74,10 @@ new Marker(coordinates, options?)
 其余方法（`getCenter`、`getExtent`、`getSymbol`/`setSymbol`、`getProperties`/`setProperties`、`getId`/`setId`、`show`/`hide`、`translate`、`addTo`/`remove`、`toGeoJSON`/`toJSON` 等）继承自 [Geometry](/api/geometry)。
 
 <!-- api-gen:start -->
+### Marker 的其他公开方法
+
+<!--@include: ./includes/api/marker-missing.md-->
+
 ### 继承自 Geometry 的方法
 
 下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
@@ -89,6 +93,18 @@ new Marker(coordinates, options?)
 
 - `Marker.mergeOptions(options): this` — 合并默认配置
 - `Marker.fromJSON(json)` — 从JSON还原几何（沿用 Geometry.fromJSON）
+
+<!-- api-gen:start -->
+### Marker 的其他静态方法
+
+<!--@include: ./includes/api/marker-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

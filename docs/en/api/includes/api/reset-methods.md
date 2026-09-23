@@ -19,7 +19,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Records the map view to restore when the control is added
 
 </div>
 </details>
@@ -28,7 +28,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the map view that the reset control restores when it is clicked.
 
 Parameters:
 
@@ -41,7 +41,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Deletes the DOM and stored view references when the control is removed
 
 </div>
 </details>

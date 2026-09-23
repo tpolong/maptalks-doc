@@ -1,58 +1,3 @@
-<details><summary>getLastCoordinate()</summary>
-<div>
-<br/>
-
-获取几何图形最后一个坐标点
-
-返回：
-
-* `Coordinate` Last Coordinate
-
-</div>
-</details>
-
-<details><summary>setId(id)</summary>
-<div>
-<br/>
-
-给几何图形设置id
-
-参数：
-
-* id `string` new id
-
-返回：
-
-* `Geometry` this
-
-触发事件：
-
-* `Geometry#idchange`
-
-</div>
-</details>
-
-<details><summary>setProperties(properties)</summary>
-<div>
-<br/>
-
-给几何图形设置新的属性
-
-参数：
-
-* properties `{ [key: string]: any }` new properties
-
-返回：
-
-* `Geometry` this
-
-触发事件：
-
-* `Geometry#propertieschange`
-
-</div>
-</details>
-
 <details><summary>getType()</summary>
 <div>
 <br/>
@@ -62,27 +7,6 @@
 返回：
 
 * `String` type of the geometry
-
-</div>
-</details>
-
-<details><summary>setSymbol(symbol)</summary>
-<div>
-<br/>
-
-给几何图形设置样式
-
-参数：
-
-* symbol `any` new symbol
-
-返回：
-
-* `Geometry` this
-
-触发事件：
-
-* `Geometry#symbolchange`
 
 </div>
 </details>
@@ -113,44 +37,6 @@
 </div>
 </details>
 
-<details><summary>hide()</summary>
-<div>
-<br/>
-
-隐藏几何图形
-
-返回：
-
-* `Geometry` this
-
-触发事件：
-
-* `Geometry#hide`
-
-</div>
-</details>
-
-<details><summary>setZIndex(zIndex)</summary>
-<div>
-<br/>
-
-给几何图形设置新的层级并触发zindexchange事件（将导致层对几何体进行排序并进行渲染）
-
-参数：
-
-* zIndex `number` new zIndex
-
-返回：
-
-* `Geometry` this
-
-触发事件：
-
-* `Geometry#zindexchange`
-
-</div>
-</details>
-
 <details><summary>setZIndexSilently(zIndex)</summary>
 <div>
 <br/>
@@ -166,23 +52,6 @@
 返回：
 
 * `Geometry` this
-
-</div>
-</details>
-
-<details><summary>bringToBack()</summary>
-<div>
-<br/>
-
-将几何图形置于底层
-
-返回：
-
-* `Geometry` this
-
-触发事件：
-
-* `Geometry#zindexchange`
 
 </div>
 </details>
@@ -258,23 +127,6 @@ config 更新 options 后的回调，同步 properties 并按需重绘
 参数：
 
 * conf `any`
-
-</div>
-</details>
-
-<details><summary>setAltitude(alt)</summary>
-<div>
-<br/>
-
-设置几何体的 altitude，并同步改写 coordinate 的 z 值
-
-参数：
-
-* alt `number`
-
-返回：
-
-* `this`
 
 </div>
 </details>

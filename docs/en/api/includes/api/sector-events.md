@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange event.
+Fired after the sector radius or start and end angles change.
 
 </div>
 </details>

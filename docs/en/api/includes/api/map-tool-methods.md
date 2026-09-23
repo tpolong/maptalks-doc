@@ -83,7 +83,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Disables the tool, detaches it from its map and fires the remove event.
 
 </div>
 </details>
@@ -92,7 +92,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Optional callback called when the map tool is enabled, used to set up its context.
 
 </div>
 </details>
@@ -101,7 +101,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Required method returning the event map to register on the map.
 
 </div>
 </details>
@@ -110,7 +110,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Optional callback called when the map tool is disabled, used to clean up resources.
 
 </div>
 </details>
@@ -119,7 +119,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Optional callback called after the map tool is added to a map and before it is enabled.
 
 </div>
 </details>

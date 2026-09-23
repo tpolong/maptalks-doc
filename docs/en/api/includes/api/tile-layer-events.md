@@ -66,3 +66,21 @@ Event properties:
 
 </div>
 </details>
+
+<details><summary>forcereloadstart</summary>
+<div>
+<br/>
+
+Fired when forceReload starts clearing and reloading all cached tiles.
+
+</div>
+</details>
+
+<details><summary>forcereloadend</summary>
+<div>
+<br/>
+
+Fired when forceReload finishes clearing and reloading all cached tiles.
+
+</div>
+</details>

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback when the layer is added to the map, it sets tileSystem from the tms option
 
 </div>
 </details>
@@ -42,7 +42,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the tile grids and parent tiles to render at the given zoom.
 
 Parameters:
 
@@ -56,7 +56,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create a tile node with its extent, url and parent-child relations
 
 </div>
 </details>
@@ -65,7 +65,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether a tile falls in the parent tile zoom range kept for stacking
 
 Parameters:
 
@@ -140,7 +140,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the layer min zoom, raised to the map min zoom when it is higher.
 
 Returns:
 
@@ -153,7 +153,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the layer max zoom, capped by the map max zoom.
 
 Returns:
 
@@ -179,7 +179,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Build the unique tile id from the tile x, y, zoom and the layer id.
 
 Parameters:
 
@@ -199,7 +199,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the events the layer listens to, such as spatial reference change
 
 </div>
 </details>
@@ -247,7 +247,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the renderer instance of the layer
 
 </div>
 </details>

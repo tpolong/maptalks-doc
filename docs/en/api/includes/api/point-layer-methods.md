@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the polygon offset count, PointLayer always returns 0
 
 Returns:
 
@@ -15,7 +15,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the polygon offset, PointLayer always returns 0
 
 </div>
 </details>

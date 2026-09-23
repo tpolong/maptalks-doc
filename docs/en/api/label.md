@@ -65,6 +65,10 @@ Other options are inherited from [Marker](/en/api/marker) (e.g. `draggable`, `zI
 - `_canEdit(): boolean` — Whether the label can be edited; Label always returns `false` (text labels do not support handle resizing).
 
 <!-- api-gen:start -->
+### Other Public Methods of Label
+
+<!--@include: ./includes/api/label-missing.md-->
+
 ### Methods Inherited from TextMarker
 
 The following methods are provided by the parent class [TextMarker](/en/api/text-marker) and are available on instances of this class.
@@ -91,6 +95,14 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Static Methods
 
 - `fromJSON(json): Label` — Creates a Label instance from a JSON object.
+
+<!-- api-gen:start -->
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

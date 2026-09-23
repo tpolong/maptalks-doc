@@ -69,6 +69,18 @@ GeometryCollection 无特有 options，继承自 Geometry。
 
 - `GeometryCollection.fromJSON(json): GeometryCollection` — 从 JSON 对象创建 GeometryCollection 实例。
 
+<!-- api-gen:start -->
+### GeometryCollection 的其他静态方法
+
+<!--@include: ./includes/api/geometry-collection-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 - `shapechange` — 几何形状发生改变。

@@ -114,7 +114,7 @@ Event properties:
 <div>
 <br/>
 
-fovchange event.
+Fired after the fov of the map changed.
 
 </div>
 </details>
@@ -123,7 +123,7 @@ fovchange event.
 <div>
 <br/>
 
-rotatestart event.
+Fired when the map starts to rotate.
 
 </div>
 </details>
@@ -132,7 +132,7 @@ rotatestart event.
 <div>
 <br/>
 
-rotate event.
+Deprecated alias of rotateend, fired when the map bearing changes.
 
 </div>
 </details>
@@ -141,7 +141,7 @@ rotate event.
 <div>
 <br/>
 
-rotateend event.
+Fired when the map finishes rotating.
 
 </div>
 </details>
@@ -150,7 +150,7 @@ rotateend event.
 <div>
 <br/>
 
-pitchstart event.
+Fired when the map starts to change its pitch.
 
 </div>
 </details>
@@ -957,6 +957,42 @@ Event properties:
 | --- | :-: | --- |
 | type | `String` | removemenu |
 | target | `Map` | the Map fires the event |
+
+</div>
+</details>
+
+<details><summary>syncworld</summary>
+<div>
+<br/>
+
+Fired when the map center is out of the sphere and wrapped back into it.
+
+</div>
+</details>
+
+<details><summary>remove</summary>
+<div>
+<br/>
+
+Fired on each removed layer when the map removes its layers.
+
+</div>
+</details>
+
+<details><summary>removestart</summary>
+<div>
+<br/>
+
+Fired when the map starts to be removed.
+
+</div>
+</details>
+
+<details><summary>removeend</summary>
+<div>
+<br/>
+
+Fired after the map is completely removed.
 
 </div>
 </details>

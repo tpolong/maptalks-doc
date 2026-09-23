@@ -62,7 +62,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create the tooltip DOM element, calling content with the dom when it is a function
 
 </div>
 </details>
@@ -71,7 +71,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clears the show timer, removes the tooltip DOM and unbinds map events on mouse out
 
 </div>
 </details>
@@ -80,7 +80,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Shows the tooltip after the showTimeout delay when the mouse moves over the geometry
 
 Parameters:
 
@@ -93,7 +93,7 @@ Parameters:
 <div>
 <br/>
 
-remove the tooltip, this method will be called by 'this.remove()'
+Clears pending timers and unbinds the mouse events on the owner geometry when the tooltip is removed.
 
 </div>
 </details>
@@ -102,7 +102,7 @@ remove the tooltip, this method will be called by 'this.remove()'
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Hide the DOM element of the tooltip
 
 </div>
 </details>
@@ -111,7 +111,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Update the position and hide the tooltip while the map zooms, rotates or pitches
 
 </div>
 </details>

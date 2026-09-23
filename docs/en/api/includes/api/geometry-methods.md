@@ -238,7 +238,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the cached text description computed from the text content and sizeSymbol.
 
 Returns:
 
@@ -294,7 +294,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the geometry's 2D pixel extent at the current zoom, null when not on a map.
 
 Returns:
 
@@ -653,7 +653,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether both a rotation angle and a rotation center are set on the geometry.
 
 Returns:
 
@@ -666,7 +666,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback when the geometry is hidden; it closes any open menu and infoWindow.
 
 </div>
 </details>
@@ -675,7 +675,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback on shape change; it clears caches, redraws and fires shapechange.
 
 </div>
 </details>
@@ -684,7 +684,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback on position change; it clears caches, redraws and fires positionchange.
 
 </div>
 </details>
@@ -693,7 +693,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback on symbol change; it refreshes symbols, rebuilds sizeSymbol and fires events.
 
 </div>
 </details>
@@ -702,7 +702,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback after config updates options; it syncs properties and redraws when needed.
 
 Parameters:
 
@@ -715,7 +715,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the geometry altitude as a number or an array of altitudes.
 
 Returns:
 
@@ -728,7 +728,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the geometry has a non-zero altitude.
 
 Returns:
 
@@ -741,7 +741,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the geometry altitude and updates the z value of its coordinates.
 
 Parameters:
 
@@ -758,7 +758,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the minimum altitude among all coordinates of the geometry.
 
 Returns:
 
@@ -771,7 +771,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the maximum altitude among all coordinates of the geometry.
 
 Returns:
 
@@ -784,7 +784,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the hole coordinate rings of the geometry, implemented by some subclasses only.
 
 Returns:
 
@@ -797,7 +797,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the coordinate ring of the geometry's outer shell, implemented by some subclasses only.
 
 Returns:
 
@@ -810,7 +810,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the child geometries of a collection, implemented only by collection subclasses.
 
 Returns:
 
@@ -823,7 +823,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the geometry coordinates, a coordinate or nested arrays depending on its type.
 
 Returns:
 
@@ -836,7 +836,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the geometry coordinates and updates its geometry state.
 
 Parameters:
 
@@ -853,7 +853,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback invoked when the geometry is removed from its layer, called internally.
 
 </div>
 </details>
@@ -862,7 +862,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the angle offset used when rotating around the center, currently implemented only by Sector.
 
 Returns:
 
@@ -875,7 +875,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback invoked after the geometry is added to a layer, called internally.
 
 </div>
 </details>

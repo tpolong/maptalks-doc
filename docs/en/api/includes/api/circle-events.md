@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-shapechange event.
+Fired after the circle radius changes.
 
 </div>
 </details>

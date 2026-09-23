@@ -42,6 +42,10 @@ new Sector(center, radius, startAngle, endAngle, options?)
 - `getRotateOffsetAngle()` — 返回扇形的旋转偏移角度（固定为 90）。
 
 <!-- api-gen:start -->
+### Sector 的其他公开方法
+
+<!--@include: ./includes/api/sector-missing.md-->
+
 ### 继承自 Circle 的方法
 
 下列方法由父类 [Circle](/api/circle) 提供，本类的实例同样可以调用。
@@ -74,6 +78,20 @@ new Sector(center, radius, startAngle, endAngle, options?)
 ## 静态方法
 
 - `fromJSON(json)` — 从 JSON 对象创建 Sector。
+
+<!-- api-gen:start -->
+### 继承自 Circle 的静态方法
+
+下列方法由父类 [Circle](/api/circle) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/circle-statics.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

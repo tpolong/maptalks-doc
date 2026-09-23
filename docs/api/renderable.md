@@ -33,6 +33,12 @@ const RendererClass = RenderableClass.getRendererClass("my-renderer");
 - `Renderable.registerRenderer(name, clazz)` — 以名称 `name` 注册渲染器类 `clazz`。
 - `Renderable.getRendererClass(name)` — 根据名称 `name` 返回已注册的渲染器类。
 
+<!-- api-gen:start -->
+### Renderable 的其他静态方法
+
+<!--@include: ./includes/api/renderable-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 无。

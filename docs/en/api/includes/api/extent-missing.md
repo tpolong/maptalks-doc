@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Subtract a coordinate, point or extent, an alias for sub.
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-Alias for sub
+Subtract a coordinate, point or extent, an alias for sub.
 
 Parameters:
 
@@ -32,7 +32,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Subtract a coordinate, point or extent, an alias for sub.
 
 Parameters:
 
@@ -49,7 +49,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Subtract a coordinate, point or extent, an alias for sub.
 
 Parameters:
 

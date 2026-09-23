@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Prepare image data and trigger rendering when the layer is added to a map
 
 </div>
 </details>
@@ -41,7 +41,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the renderer instance of the layer
 
 </div>
 </details>

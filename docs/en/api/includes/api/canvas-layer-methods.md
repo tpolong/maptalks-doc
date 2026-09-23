@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the layer is rendered by HTML5 Canvas; always true for CanvasLayer.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-准备画布的接口函数
+An optional interface function called only once before the first draw, useful for preparing your canvas operations.
 
 Parameters:
 
@@ -28,7 +28,7 @@ Returns:
 <div>
 <br/>
 
-绘制something的接口函数
+Draws things on the layer canvas; implement it in subclasses.
 
 Parameters:
 
@@ -93,7 +93,7 @@ Returns:
 <div>
 <br/>
 
-清空画布
+Clears the layer canvas through its renderer.
 
 Returns:
 
@@ -106,7 +106,7 @@ Returns:
 <div>
 <br/>
 
-要求map不触发任何事件下重绘canvas
+Ask the map to redraw the layer canvas without firing any event.
 
 Returns:
 
@@ -119,7 +119,7 @@ Returns:
 <div>
 <br/>
 
-要求map触发layerload事件重绘canvas
+Asks the map to redraw the layer canvas and fire the layerload event.
 
 Returns:
 
@@ -142,7 +142,7 @@ Override it to do anything needed.
 <div>
 <br/>
 
-map zoomstart事件回调
+The event callback for the map zoomstart event.
 
 Parameters:
 
@@ -155,7 +155,7 @@ Parameters:
 <div>
 <br/>
 
-map zooming事件回调
+The event callback for the map zooming event.
 
 Parameters:
 
@@ -168,7 +168,7 @@ Parameters:
 <div>
 <br/>
 
-map zoomend事件回调
+The event callback for the map zoomend event.
 
 Parameters:
 
@@ -181,7 +181,7 @@ Parameters:
 <div>
 <br/>
 
-map movestart事件回调
+The event callback for the map movestart event.
 
 Parameters:
 
@@ -194,7 +194,7 @@ Parameters:
 <div>
 <br/>
 
-map moving事件回调
+The event callback for the map moving event.
 
 Parameters:
 
@@ -207,7 +207,7 @@ Parameters:
 <div>
 <br/>
 
-map moveend事件回调
+The event callback for the map moveend event.
 
 Parameters:
 
@@ -220,7 +220,7 @@ Parameters:
 <div>
 <br/>
 
-map resize事件回调
+The event callback for the map resize event.
 
 Parameters:
 
@@ -233,8 +233,7 @@ Parameters:
 <div>
 <br/>
 
-double buffer的回调函数
-默认情况下just draws and return，如果你需要在绘制之前处理canvas，可以重写改函数
+Clears the buffer context and returns this; override it to process the canvas image before drawing.
 
 Parameters:
 

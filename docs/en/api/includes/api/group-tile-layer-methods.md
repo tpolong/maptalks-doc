@@ -65,7 +65,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the tile size of the child layer with the given id, or the default size if missing.
 
 Parameters:
 
@@ -96,7 +96,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sorts and refreshes the child layers when the layer is added to the map.
 
 </div>
 </details>
@@ -105,7 +105,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Removes every child layer and clears the layer map when the layer is removed from the map.
 
 </div>
 </details>
@@ -114,7 +114,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets a child layer in the group by its id, equivalent to getChildLayer.
 
 Parameters:
 
@@ -127,7 +127,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the child layer with the given id, searching nested group layers, null when not found.
 
 Parameters:
 
@@ -144,7 +144,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns true when the layer itself is visible and at least one child layer is visible.
 
 Returns:
 

@@ -40,6 +40,10 @@ MultiPolygon has no class-specific options; it inherits the options of Path.
 No class-specific methods; it inherits the methods of MultiPath.
 
 <!-- api-gen:start -->
+### Other Public Methods of MultiPolygon
+
+<!--@include: ./includes/api/multi-polygon-missing.md-->
+
 ### Methods Inherited from MultiPath
 
 The following methods are provided by the parent class MultiPath and are available on instances of this class.
@@ -72,6 +76,18 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Static Methods
 
 - `MultiPolygon.fromJSON(json): MultiPolygon` — Creates a MultiPolygon instance from a JSON object.
+
+<!-- api-gen:start -->
+### Other Static Methods of MultiPolygon
+
+<!--@include: ./includes/api/multi-polygon-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

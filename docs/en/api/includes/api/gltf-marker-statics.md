@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Restores a GLTFMarker from JSON data and reapplies the zoomOnAdded option.
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create a GLTFMarker instance from its JSON data.
 
 Parameters:
 
@@ -28,7 +28,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Compute gltf model anchor positions and headings along a line, with gap, count and end snapping options.
 
 Parameters:
 
@@ -44,7 +44,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Merge several markers' bounding boxes into one min and max, or null when none is given.
 
 Parameters:
 

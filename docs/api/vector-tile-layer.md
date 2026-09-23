@@ -60,8 +60,6 @@ new VectorTileLayer('vt0', {
 
 ## 成员方法
 
-<!--@include: ./includes/vtlayer-methods.md-->
-
 <details><summary>getCurrentRenderedFeatures()</summary>
 <div>
 <br/>
@@ -333,15 +331,23 @@ layer.setFeatureState({ id: 'feature-1', layer: 'layer-name' }, { hot: true });
 </div>
 </details>
 
-<!--@include: ./includes/tilelayer-methods.md-->
-
-<!--@include: ./includes/layer-methods.md-->
-
 
 <!-- api-gen:start -->
 ### VectorTileLayer 的其他公开方法
 
 <!--@include: ./includes/api/vector-tile-layer-missing.md-->
+
+### 继承自 TileLayer 的方法
+
+下列方法由父类 [TileLayer](/api/tile-layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/tile-layer-methods.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
 
 ### 混入的方法
 
@@ -446,13 +452,18 @@ const layer = await VectorTileLayer.loadFrom(url, {});
 </div>
 </details>
 
+
+<!-- api-gen:start -->
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 <!--@include: ./includes/js-events-example.md-->
-
-### 图层事件
-
-<!--@include: ./includes/vtlayer-events.md-->
 
 <details><summary>cleardata</summary>
 <div>
@@ -504,12 +515,20 @@ GL上下文创建事件。
 </div>
 </details>
 
-### 继承自TileLayer的事件
-
-<!--@include: ./includes/tilelayer-events.md-->
-
-### 继承自Layer的事件
-
-<!--@include: ./includes/layer-events.md-->
-
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+
+<!-- api-gen:start -->
+### VectorTileLayer 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/vector-tile-layer-events-missing.md-->
+
+### 继承自 TileLayer 的事件
+
+<!--@include: ./includes/api/tile-layer-events.md-->
+
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

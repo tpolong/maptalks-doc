@@ -644,12 +644,16 @@ layer.once('loadtileset', e => {
 </div>
 </details>
 
-<!--@include: ./includes/layer-methods.md-->
-
 <!-- api-gen:start -->
 ### Geo3DTilesLayer 的其他公开方法
 
 <!--@include: ./includes/api/geo-3dtiles-layer-missing.md-->
+
+### 继承自 Layer 的方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-methods.md-->
 
 ### 混入的方法
 
@@ -695,6 +699,14 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 
 </div>
 </details>
+
+<!-- api-gen:start -->
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 
@@ -841,8 +853,10 @@ GL 上下文创建事件（2026 源码核对补充）。
 </div>
 </details>
 
-### 继承自Layer的事件
-
-<!--@include: ./includes/layer-events.md-->
-
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+
+<!-- api-gen:start -->
+### 继承自 Layer 的事件
+
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

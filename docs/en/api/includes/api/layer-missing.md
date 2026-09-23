@@ -1,119 +1,8 @@
-<details><summary>setId(id)</summary>
-<div>
-<br/>
-
-Set a new id to the layer
-
-Parameters:
-
-* id `string` new layer id
-
-Returns:
-
-* `Any` this
-
-Fires:
-
-* `Layer#idchange`
-
-</div>
-</details>
-
-<details><summary>setZIndex(zIndex)</summary>
-<div>
-<br/>
-
-为layer 设置zIndex
-
-Parameters:
-
-* zIndex `number` layer's z-index
-
-Returns:
-
-* `Any` this
-
-</div>
-</details>
-
-<details><summary>getMaxZoom()</summary>
-<div>
-<br/>
-
-Get Layer's maxZoom to display
-
-Returns:
-
-* `number`
-
-</div>
-</details>
-
-<details><summary>setOpacity(op)</summary>
-<div>
-<br/>
-
-Set opacity to the layer
-
-Parameters:
-
-* op `number` layer's opacity
-
-Returns:
-
-* `Any` this
-
-</div>
-</details>
-
-<details><summary>hide()</summary>
-<div>
-<br/>
-
-Hide the layer
-
-Returns:
-
-* `Any` this
-
-</div>
-</details>
-
-<details><summary>setMask(mask)</summary>
-<div>
-<br/>
-
-Set a mask geometry on the layer, only the area in the mask will be displayed.
-
-Parameters:
-
-* mask `Polygon | MultiPolygon | Marker` mask geometry, can only be a Marker with vector symbol, a Polygon or a MultiPolygon
-
-Returns:
-
-* `Layer` this
-
-</div>
-</details>
-
-<details><summary>removeMask()</summary>
-<div>
-<br/>
-
-移除mask
-
-Returns:
-
-* `Layer` this
-
-</div>
-</details>
-
 <details><summary>onLoadEnd()</summary>
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Hook called when the layer finishes loading, overridden by subclasses, empty by default
 
 </div>
 </details>
@@ -122,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback on option change that triggers a redraw and an attribution update
 
 Parameters:
 
@@ -135,7 +24,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback called after the layer is bound to a map, subclasses may override it
 
 </div>
 </details>
@@ -144,7 +33,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback called after the layer renderer is created, subclasses may override it
 
 </div>
 </details>
@@ -153,7 +42,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback called after the layer canvas is created, subclasses may override it
 
 </div>
 </details>
@@ -162,7 +51,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback called when the layer is removed from the map, subclasses may override it
 
 </div>
 </details>
@@ -171,7 +60,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Return the renderer name the layer uses according to the map renderer type
 
 </div>
 </details>
@@ -180,7 +69,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the child layer list, implemented only by group layers
 
 Returns:
 

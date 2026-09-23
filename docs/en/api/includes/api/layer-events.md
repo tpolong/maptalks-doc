@@ -199,3 +199,21 @@ Event properties:
 
 </div>
 </details>
+
+<details><summary>remove</summary>
+<div>
+<br/>
+
+Fired after the layer is removed from the map.
+
+</div>
+</details>
+
+<details><summary>add</summary>
+<div>
+<br/>
+
+Fired after the layer is added to a map.
+
+</div>
+</details>

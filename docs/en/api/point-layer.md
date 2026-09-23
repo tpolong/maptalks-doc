@@ -53,8 +53,6 @@ Parameters:
 
 ## Methods
 
-<!--@include: ./includes/vector3d-layer-methods.md-->
-
 <details><summary>identify(coordinate, options)</summary>
 <div>
 <br/>
@@ -105,14 +103,28 @@ Returns:
 </div>
 </details>
 
-<!--@include: ./includes/overlay-layer-methods.md-->
-
-<!--@include: ./includes/layer-methods.md-->
-
 <!-- api-gen:start -->
 ### Other Public Methods of PointLayer
 
 <!--@include: ./includes/api/point-layer-missing.md-->
+
+### Methods Inherited from Vector3DLayer
+
+The following methods are provided by the parent class Vector3DLayer and are available on instances of this class.
+
+<!--@include: ./includes/api/vector3-d-layer-methods.md-->
+
+### Methods Inherited from OverlayLayer
+
+The following methods are provided by the parent class [OverlayLayer](/en/api/overlay-layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/overlay-layer-methods.md-->
+
+### Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-methods.md-->
 
 ### Mixed-in Methods
 
@@ -140,22 +152,38 @@ Returns:
 </div>
 </details>
 
+<!-- api-gen:start -->
+### Other Static Methods of PointLayer
+
+<!--@include: ./includes/api/point-layer-statics-missing.md-->
+
+### Static Methods Inherited from Vector3DLayer
+
+The following methods are provided by the parent class Vector3DLayer and are available on instances of this class.
+
+<!--@include: ./includes/api/vector3-d-layer-statics.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 <!--@include: ./includes/js-events-example.md-->
 
-### Layer Events
-
-<!--@include: ./includes/vector3d-layer-events.md-->
-
 > Note: The renderer also fires rendering events such as `buildmarkermesh`, `updatemesh`, `partialupdate`, `removegeo`, and `iblupdated` (verified in 2026).
 
+> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+
+<!-- api-gen:start -->
 ### Events Inherited from OverlayLayer
 
-<!--@include: ./includes/overlay-layer-events.md-->
+<!--@include: ./includes/api/overlay-layer-events.md-->
 
 ### Events Inherited from Layer
 
-<!--@include: ./includes/layer-events.md-->
-
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+<!--@include: ./includes/api/layer-events.md-->
+<!-- api-gen:end -->

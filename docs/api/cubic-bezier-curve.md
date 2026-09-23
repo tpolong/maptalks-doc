@@ -33,6 +33,10 @@ CubicBezierCurve 无特有 options，继承自 Curve。
 无特有方法，继承自 Curve。
 
 <!-- api-gen:start -->
+### CubicBezierCurve 的其他公开方法
+
+<!--@include: ./includes/api/cubic-bezier-curve-missing.md-->
+
 ### 继承自 LineString 的方法
 
 下列方法由父类 [LineString](/api/line-string) 提供，本类的实例同样可以调用。
@@ -59,6 +63,18 @@ CubicBezierCurve 无特有 options，继承自 Curve。
 ## 静态方法
 
 - `CubicBezierCurve.fromJSON(json): CubicBezierCurve` — 从 JSON 对象创建 CubicBezierCurve 实例。
+
+<!-- api-gen:start -->
+### CubicBezierCurve 的其他静态方法
+
+<!--@include: ./includes/api/cubic-bezier-curve-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

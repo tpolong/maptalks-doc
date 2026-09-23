@@ -55,7 +55,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create an edit handle at the given container point and bind its drag events
 
 Parameters:
 
@@ -73,7 +73,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancel the current edit and roll back to the first record in the edit history
 
 Returns:
 

@@ -32,3 +32,21 @@ Event properties:
 
 </div>
 </details>
+
+<details><summary>rootready</summary>
+<div>
+<br/>
+
+Fired after the root tiles of all services are created.
+
+</div>
+</details>
+
+<details><summary>loadtileset</summary>
+<div>
+<br/>
+
+Fired when a tileset is loaded and parsed, carrying tileset, index and url.
+
+</div>
+</details>

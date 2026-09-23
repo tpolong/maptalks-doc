@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Restores a CubicBezierCurve from JSON feature coordinates and options and reapplies its properties
 
 Parameters:
 

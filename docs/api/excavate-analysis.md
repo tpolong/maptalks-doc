@@ -118,6 +118,10 @@ excavateAnalysis.addTo(groupGLLayer);
 </details>
 
 <!-- api-gen:start -->
+### ExcavateAnalysis 的其他公开方法
+
+<!--@include: ./includes/api/excavate-analysis-missing.md-->
+
 ### 继承自 ExtrudePolygonLayer 的方法
 
 下列方法由父类 [ExtrudePolygonLayer](/api/extrude-polygon-layer) 提供，本类的实例同样可以调用。
@@ -152,6 +156,26 @@ excavateAnalysis.addTo(groupGLLayer);
 ExcavateAnalysis 继承 [ExtrudePolygonLayer](./extrude-polygon-layer)（进而继承 [PolygonLayer](./polygon-layer)）的所有图层方法与选项。
 
 > 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+
+## 静态方法
+
+<!-- api-gen:start -->
+### ExcavateAnalysis 的其他静态方法
+
+<!--@include: ./includes/api/excavate-analysis-statics-missing.md-->
+
+### 继承自 Vector3DLayer 的静态方法
+
+下列方法由父类 Vector3DLayer 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/vector3-d-layer-statics.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

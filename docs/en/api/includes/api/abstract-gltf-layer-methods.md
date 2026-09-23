@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Adds gltf markers or GeoJSON features to the layer, validating their types first.
 
 Parameters:
 
@@ -16,7 +16,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Registers markers into the layer's picking table, fires add and loads their gltf data.
 
 Parameters:
 
@@ -29,7 +29,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Exports the layer as JSON, optionally including its style and geometries.
 
 Parameters:
 
@@ -42,7 +42,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the layer style and re-matches markers, restoring the default style on falsy input.
 
 Parameters:
 
@@ -55,7 +55,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the raw style currently set on the layer.
 
 </div>
 </details>
@@ -64,7 +64,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Updates the symbol at index idx in the layer style and its copy, then re-matches markers.
 
 Parameters:
 
@@ -78,7 +78,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the urls of all gltf models registered on the layer.
 
 </div>
 </details>
@@ -87,7 +87,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clears all gltf markers in the layer and resets the marker id maps.
 
 </div>
 </details>
@@ -96,7 +96,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Enables outline on the style at filterIndex and outlines the matched geometries.
 
 Parameters:
 
@@ -109,7 +109,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Enables outline for every geometry in the layer.
 
 </div>
 </details>
@@ -118,7 +118,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancels outlines of all markers and removes outline from the layer style.
 
 </div>
 </details>

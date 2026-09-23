@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Updates an analysis option, boundary and water height changes recompute the render parameters.
 
 Parameters:
 
@@ -16,7 +16,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Renders the flood analysis and returns the water color, opacity and flood map uniforms.
 
 Parameters:
 
@@ -29,7 +29,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the shader defines, enabling the HAS_FLOODANALYSE macro.
 
 </div>
 </details>

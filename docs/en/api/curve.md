@@ -30,6 +30,10 @@ Curve is an abstract base class; its constructor is called by its subclasses.
 Curve has no public class-specific methods; its subclasses implement curve drawing through the internal methods `_arc`, `_quadraticCurve`, and `_bezierCurve`.
 
 <!-- api-gen:start -->
+### Other Public Methods of Curve
+
+<!--@include: ./includes/api/curve-missing.md-->
+
 ### Methods Inherited from LineString
 
 The following methods are provided by the parent class [LineString](/en/api/line-string) and are available on instances of this class.
@@ -56,6 +60,18 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Static Methods
 
 No class-specific static methods.
+
+<!-- api-gen:start -->
+### Other Static Methods of Curve
+
+<!--@include: ./includes/api/curve-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

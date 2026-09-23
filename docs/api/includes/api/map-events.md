@@ -960,3 +960,39 @@ map 的右键菜单被移除时触发
 
 </div>
 </details>
+
+<details><summary>syncworld</summary>
+<div>
+<br/>
+
+map 中心点超出球面范围并被回绕修正时触发
+
+</div>
+</details>
+
+<details><summary>remove</summary>
+<div>
+<br/>
+
+map 移除其上的 layer 时，被移除的 layer 各自触发
+
+</div>
+</details>
+
+<details><summary>removestart</summary>
+<div>
+<br/>
+
+map 开始移除时触发
+
+</div>
+</details>
+
+<details><summary>removeend</summary>
+<div>
+<br/>
+
+map 移除完成后触发
+
+</div>
+</details>

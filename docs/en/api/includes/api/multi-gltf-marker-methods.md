@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets coordinates of all child markers; a single Coordinate shifts them together.
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the coordinates of the child marker at the event index, or null without a valid event.
 
 Parameters:
 
@@ -28,7 +28,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Adds a data item for a child marker and refreshes the layer marker map.
 
 Parameters:
 
@@ -41,7 +41,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Remove the data item at the given index and refresh the layer marker map.
 
 Parameters:
 
@@ -54,7 +54,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the data item of the child marker at the given index.
 
 Parameters:
 
@@ -67,7 +67,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the named property of the data item at the given index and mark it dirty.
 
 Parameters:
 
@@ -82,7 +82,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the data item array of all child markers.
 
 </div>
 </details>
@@ -91,7 +91,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set one property for all child markers, taking each value from the given array.
 
 Parameters:
 
@@ -105,7 +105,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Remove all data items of the child markers and mark the marker dirty.
 
 </div>
 </details>
@@ -114,7 +114,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Open the infoWindow at the coordinate of the given data item, else center
 
 Parameters:
 
@@ -127,7 +127,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Compute the center by averaging the coordinates of all child markers.
 
 </div>
 </details>
@@ -136,7 +136,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the map the marker belongs to, falling back to the map of its layer.
 
 </div>
 </details>
@@ -145,7 +145,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the layer the marker belongs to.
 
 </div>
 </details>
@@ -154,7 +154,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the number of data items held by the marker.
 
 </div>
 </details>
@@ -163,7 +163,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Export to JSON with data, options and properties
 
 </div>
 </details>
@@ -172,7 +172,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the data item index by subtracting the base picking id from the picking id.
 
 Parameters:
 
@@ -185,7 +185,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Enable outline for the data item at the given index
 
 Parameters:
 
@@ -198,7 +198,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Turn off the outline of the data item at the given index.
 
 Parameters:
 
@@ -211,7 +211,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Check whether any data item has outline enabled
 
 </div>
 </details>
@@ -220,7 +220,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Highlight the given nodes of a data item by nodeIndex
 
 Parameters:
 
@@ -234,7 +234,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Highlight the data item at the given index with color and opacity
 
 Parameters:
 
@@ -248,7 +248,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancel the highlight of a data item, optionally limited to the given node
 
 Parameters:
 

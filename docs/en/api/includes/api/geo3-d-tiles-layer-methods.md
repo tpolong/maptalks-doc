@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Shows the 3DTiles service at the given index.
 
 Parameters:
 
@@ -19,7 +19,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Hides the 3DTiles service at the given index.
 
 Parameters:
 
@@ -36,7 +36,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Marks the layer to redraw so that it is rendered in the next frame.
 
 </div>
 </details>
@@ -45,7 +45,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Adds a 3DTiles service and rebuilds the root tile nodes.
 
 Parameters:
 
@@ -62,7 +62,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Updates the visibility, offset and scale options of the service at the given index.
 
 Parameters:
 
@@ -80,7 +80,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Removes the 3DTiles service at the given index and requests a redraw.
 
 Parameters:
 
@@ -97,7 +97,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the tile url with its domain placeholder replaced by a configured subdomain.
 
 Parameters:
 
@@ -115,7 +115,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the extent of the service at index, or the combined extent of all services.
 
 Parameters:
 
@@ -132,7 +132,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Converts the bounding volume of a tile node into a geographic extent.
 
 Parameters:
 
@@ -149,7 +149,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the array of root tile nodes of the layer services.
 
 Returns:
 
@@ -162,7 +162,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the candidate tiles queried by LOD for the current view.
 
 Returns:
 
@@ -175,7 +175,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Attaches the child nodes of a loaded tile and records its baseUrl.
 
 Parameters:
 
@@ -189,7 +189,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Merges the root node and handles coordinate transforms when a tileset finishes loading.
 
 Parameters:
 
@@ -240,7 +240,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets all batch ids of the currently drawn tiles together with their service index.
 
 Returns:
 
@@ -253,7 +253,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Highlights the batches of the given ids, with optional color, opacity and bloom.
 
 Parameters:
 
@@ -270,7 +270,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancels the batch highlights of the given ids in the given service.
 
 Parameters:
 
@@ -288,7 +288,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancels all the highlights and restores the original color and opacity.
 
 Returns:
 
@@ -301,7 +301,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Shows only the batches of the given ids and services, hiding the others.
 
 Parameters:
 
@@ -318,7 +318,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancels the showOnly restriction and shows all the batches again.
 
 Parameters:
 
@@ -335,7 +335,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the model opacity of the service at the given index and triggers a redraw.
 
 Parameters:
 
@@ -353,7 +353,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Turns debug rendering of the given service on or off to show tile bounding boxes.
 
 Parameters:
 
@@ -371,9 +371,7 @@ Returns:
 <div>
 <br/>
 
-Export the Geo3DTilesLayer's profile json. <br/>
-Layer's profile is a snapshot of the layer in JSON format. <br/>
-It can be used to reproduce the instance by fromJSON method
+Exports a snapshot of the layer configuration that fromJSON can rebuild.
 
 Returns:
 

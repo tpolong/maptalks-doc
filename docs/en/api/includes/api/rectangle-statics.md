@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Creates a Rectangle from the coordinates, width, height and options in json
 
 Parameters:
 

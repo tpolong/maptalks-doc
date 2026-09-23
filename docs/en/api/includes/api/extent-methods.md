@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add a coordinate, point or extent, returning a new extent.
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Subtract a coordinate, point or extent, returning a new extent.
 
 Parameters:
 
@@ -28,7 +28,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Subtract a coordinate, point or extent, an alias for sub.
 
 Parameters:
 
@@ -54,7 +54,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the minimum point of the extent; out can be passed to reuse an object.
 
 Parameters:
 
@@ -71,7 +71,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the maximum point of the extent; out can be passed to reuse an object.
 
 Parameters:
 
@@ -148,7 +148,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the extent contains the given coordinate, point or extent.
 
 Parameters:
 
@@ -297,7 +297,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Return the extent as an array of xmin, ymin, xmax and ymax.
 
 </div>
 </details>
@@ -332,7 +332,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Convert the extent corners with a function, returning a new extent; out can be reused.
 
 Parameters:
 
@@ -349,7 +349,7 @@ Returns:
 <div>
 <br/>
 
-Add the extent with a coordinate or a point.
+Add a coordinate, point or extent, returning a new extent.
 
 Parameters:
 
@@ -366,7 +366,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add a coordinate, point or extent, returning a new extent.
 
 Parameters:
 
@@ -383,7 +383,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add a coordinate, point or extent, returning a new extent.
 
 Parameters:
 
@@ -400,7 +400,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add a coordinate, point or extent, returning a new extent.
 
 Parameters:
 
@@ -417,7 +417,7 @@ Returns:
 <div>
 <br/>
 
-Substract the extent with a coordinate or a point.
+Subtract a coordinate, point or extent, returning a new extent.
 
 Parameters:
 
@@ -434,7 +434,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Subtract a coordinate, point or extent, returning a new extent.
 
 Parameters:
 
@@ -451,7 +451,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Subtract a coordinate, point or extent, returning a new extent.
 
 Parameters:
 
@@ -468,7 +468,7 @@ Returns:
 <div>
 <br/>
 
-Alias for sub
+Subtract a coordinate, point or extent, an alias for sub.
 
 Parameters:
 
@@ -485,7 +485,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Subtract a coordinate, point or extent, an alias for sub.
 
 Parameters:
 
@@ -502,7 +502,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Subtract a coordinate, point or extent, an alias for sub.
 
 Parameters:
 
@@ -519,7 +519,7 @@ Returns:
 <div>
 <br/>
 
-Get the minimum point
+Get the minimum point of the extent; out can be passed to reuse an object.
 
 Parameters:
 
@@ -536,7 +536,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the minimum point of the extent; out can be passed to reuse an object.
 
 Parameters:
 
@@ -553,7 +553,7 @@ Returns:
 <div>
 <br/>
 
-Get the maximum point
+Get the maximum point of the extent; out can be passed to reuse an object.
 
 Parameters:
 
@@ -570,7 +570,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the maximum point of the extent; out can be passed to reuse an object.
 
 Parameters:
 
@@ -587,7 +587,7 @@ Returns:
 <div>
 <br/>
 
-Whether the extent contains the input point.
+Whether the extent contains the given coordinate, point or extent.
 
 Parameters:
 
@@ -604,7 +604,7 @@ Returns:
 <div>
 <br/>
 
-Convert to a new extent
+Convert the extent corners with a function, returning a new extent; out can be reused.
 
 Parameters:
 
@@ -621,7 +621,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Convert the extent corners with a function, returning a new extent; out can be reused.
 
 Parameters:
 

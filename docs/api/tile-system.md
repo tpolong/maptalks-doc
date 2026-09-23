@@ -39,3 +39,9 @@ new TileSystem([sx, sy, ox, oy])
 | `global-geodetic` | EPSG:4326 全球地理网格 |
 | `tms-global-geodetic` | TMS / OSGEO（EPSG:4326） |
 | `baidu` | 百度地图 |
+
+<!-- api-gen:start -->
+### TileSystem 的其他静态方法
+
+<!--@include: ./includes/api/tile-system-statics-missing.md-->
+<!-- api-gen:end -->

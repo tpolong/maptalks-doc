@@ -75,7 +75,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Validate whether the draw mode is legal when the tool is added to the map
 
 </div>
 </details>
@@ -84,7 +84,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Enable the draw tool, create the draw layer and back up the map config
 
 </div>
 </details>
@@ -93,7 +93,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Disable the draw tool, end drawing and remove the draw layer
 
 </div>
 </details>
@@ -128,7 +128,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the event handlers to be bound in the current draw mode
 
 </div>
 </details>

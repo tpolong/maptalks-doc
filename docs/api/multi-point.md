@@ -37,6 +37,10 @@ MultiPoint 无特有 options，继承自 Geometry。
 - `findClosest(coordinate): Coordinate` — 查找距离给定 `coordinate` 最近的点坐标。
 
 <!-- api-gen:start -->
+### MultiPoint 的其他公开方法
+
+<!--@include: ./includes/api/multi-point-missing.md-->
+
 ### 继承自 MultiGeometry 的方法
 
 下列方法由父类 [MultiGeometry](/api/multi-geometry) 提供，本类的实例同样可以调用。
@@ -63,6 +67,18 @@ MultiPoint 无特有 options，继承自 Geometry。
 ## 静态方法
 
 - `MultiPoint.fromJSON(json): MultiPoint` — 从 JSON 对象创建 MultiPoint 实例。
+
+<!-- api-gen:start -->
+### MultiPoint 的其他静态方法
+
+<!--@include: ./includes/api/multi-point-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 

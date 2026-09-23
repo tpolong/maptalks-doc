@@ -32,7 +32,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Prepare options and verify the projection matches the map when the layer is added
 
 </div>
 </details>
@@ -94,7 +94,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Expire the tiles cached in the worker and force reload the layer
 
 Returns:
 
@@ -107,7 +107,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Hook called after worker data is ready, subclasses may override to handle the result
 
 </div>
 </details>
@@ -116,7 +116,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-Update layer config.
+Callback after the vector tile layer options change; forwards to the renderer and redraws
 
 Parameters:
 
@@ -163,7 +163,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Query the terrain altitude of a point in a tile at the given resolution
 
 </div>
 </details>
@@ -172,7 +172,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the terrain tiles of a tile, returns null when there is no terrain
 
 Parameters:
 
@@ -268,7 +268,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the rendered features asynchronously in pages to avoid blocking the UI
 
 Parameters:
 
@@ -359,7 +359,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Highlight features by id or filter, queued until the layer is ready
 
 Parameters:
 
@@ -372,7 +372,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancel the highlight of the features with the given ids
 
 Parameters:
 
@@ -385,7 +385,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancel the highlight of all features in the layer
 
 </div>
 </details>
@@ -505,7 +505,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Whether the layer uses default rendering when no style is set
 
 </div>
 </details>
@@ -553,7 +553,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get a deep copy of the current effective style, with background and style
 
 </div>
 </details>
@@ -562,7 +562,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-Identify the data on the given container point
+Identifies vector tile features at a coordinate, forwarding to the renderer
 
 Parameters:
 
@@ -582,7 +582,7 @@ Returns:
 <div>
 <br/>
 
-Identify the data on the given container point
+Identifies vector tile features at a container point, forwarding to the renderer
 
 Parameters:
 
@@ -619,7 +619,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Hook fired when the layer is removed from the map, calls the super class cleanup
 
 </div>
 </details>
@@ -628,7 +628,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clear the tile data cached in the renderer and the layer
 
 </div>
 </details>

@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Reorder the group's child layers by ascending zIndex.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the scene config and tells the renderer to update the scene immediately.
 
 Parameters:
 
@@ -28,7 +28,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get a deep copy of the scene config.
 
 Returns:
 
@@ -41,7 +41,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the ground config in the scene config.
 
 Returns:
 
@@ -54,7 +54,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the weather config in the scene config.
 
 Returns:
 
@@ -67,7 +67,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the scanEffect config in postProcess of the scene config.
 
 Returns:
 
@@ -98,7 +98,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Removes a child layer from the group and unbinds its event listeners.
 
 Parameters:
 
@@ -115,7 +115,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Remove all child layers from the group.
 
 Returns:
 
@@ -128,7 +128,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the total polygon offset count accumulated by the child layers.
 
 Returns:
 
@@ -169,7 +169,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Load end callback that prepares child layers and inits the terrain layer.
 
 </div>
 </details>
@@ -178,7 +178,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Unloads the child layers and analysis objects and cleans up the terrain layer when removed from the map.
 
 </div>
 </details>
@@ -187,7 +187,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the child layer in the group by its id, or null when not found.
 
 Parameters:
 
@@ -204,7 +204,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get a child layer by id, the same as getChildLayer.
 
 Parameters:
 
@@ -221,7 +221,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add an analysis object to the layer and redraw it.
 
 Parameters:
 
@@ -234,7 +234,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Removes the given analysis object from the layer and stops its analysis.
 
 Parameters:
 
@@ -247,7 +247,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Remove all analysis objects from the layer and clear the list.
 
 </div>
 </details>
@@ -292,7 +292,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the current terrain config, undefined when not set.
 
 Returns:
 
@@ -305,7 +305,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Sets the terrain options, recreating the terrain layer and updating the center altitude.
 
 Parameters:
 
@@ -318,7 +318,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Removes the terrain, equivalent to calling setTerrain with null.
 
 </div>
 </details>
@@ -327,7 +327,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Merge the given terrain material options and refresh the terrain layer.
 
 Parameters:
 
@@ -340,7 +340,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Query the terrain altitude at a coordinate, returning the altitude and whether a same level tile was hit.
 
 Parameters:
 
@@ -358,7 +358,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Ray casts terrain meshes at the given container point and returns the hit coordinate.
 
 Parameters:
 
@@ -371,7 +371,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Query the coordinate of the first 3D Tiles hit at the given container point, null if none.
 
 Parameters:
 
@@ -384,7 +384,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Query the terrain altitude by projected coordinate, returning the altitude and whether a same level tile was hit.
 
 Parameters:
 
@@ -402,7 +402,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the internal terrain layer, undefined when terrain is not enabled.
 
 Returns:
 
@@ -415,7 +415,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Fire events, and on layerload first let render-complete child layers fire layerload.
 
 Parameters:
 

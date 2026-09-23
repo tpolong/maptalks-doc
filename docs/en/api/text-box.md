@@ -99,6 +99,14 @@ This class gains the following method groups from mixins; see the linked pages f
 
 - `fromJSON(json): TextBox` — Creates a TextBox instance from a JSON object.
 
+<!-- api-gen:start -->
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 - `contentchange` — Fired when the text content changes (inherited from [TextMarker](/en/api/text-marker)).

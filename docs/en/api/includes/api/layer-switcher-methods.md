@@ -15,7 +15,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Bind button mouseover to show and panel mouseleave to hide when added
 
 </div>
 </details>
@@ -24,7 +24,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Unbind the events and remove the panel and button DOM nodes with their references
 
 </div>
 </details>

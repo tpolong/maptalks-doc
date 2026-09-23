@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create the tile canvas and call layer.drawTile to paint it, then run onTileLoad or onTileError.
 
 Parameters:
 

@@ -80,3 +80,12 @@ Event properties:
 
 </div>
 </details>
+
+<details><summary>add</summary>
+<div>
+<br/>
+
+Fired when a geometry is added to the layer.
+
+</div>
+</details>

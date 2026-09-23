@@ -235,6 +235,12 @@ Map的完整配置项可通过 `map.config()` 动态更新。常用配置如下�
 - `Map.fromJSON(container, profile, options?): Map` — 从JSON重建地图
 - `Map.addOnLoadHook(fn, ...args): Map` — 增加地图加载完成后的钩子
 
+<!-- api-gen:start -->
+### Map 的其他静态方法
+
+<!--@include: ./includes/api/map-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 ### 视图与交互
@@ -278,3 +284,11 @@ map.on("zoomend", (e) => {
   console.log("zoom:", map.getZoom(), "center:", map.getCenter());
 });
 ```
+
+<!-- api-gen:start -->
+### Map 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/map-events-missing.md-->
+<!-- api-gen:end -->

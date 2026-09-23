@@ -87,6 +87,20 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 This class gains the following method groups from mixins; see the linked pages for details: [JSONAble](/en/api/json-able)（`getJSONType`…）；[Eventable](/en/api/eventable)（`on`、`addEventListener`、`once`、`off`、`removeEventListener`、`listens`、`getListeningEvents`、`copyEventListeners`…）；[Renderable](/en/api/renderable).
 <!-- api-gen:end -->
 
+## Static Methods
+
+<!-- api-gen:start -->
+### Other Static Methods of CanvasLayer
+
+<!--@include: ./includes/api/canvas-layer-statics-missing.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 Common layer events (`show`/`hide`, `setopacity`, `add`/`remove`, etc.) — see [Layer](/en/api/layer).

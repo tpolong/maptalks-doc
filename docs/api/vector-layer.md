@@ -79,6 +79,10 @@ new VectorLayer(id, geometries?, options?)
 `addTo`、`remove`、`show`/`hide`、`setOpacity`、`setZIndex`、`bringToFront`/`bringToBack`、`getMap`、`toJSON` 等，见 [Layer](/api/layer)。
 
 <!-- api-gen:start -->
+### VectorLayer 的其他公开方法
+
+<!--@include: ./includes/api/vector-layer-missing.md-->
+
 ### 继承自 OverlayLayer 的方法
 
 下列方法由父类 [OverlayLayer](/api/overlay-layer) 提供，本类的实例同样可以调用。
@@ -100,6 +104,18 @@ new VectorLayer(id, geometries?, options?)
 
 - `VectorLayer.fromJSON(json): VectorLayer | null` — 从JSON还原图层
 
+<!-- api-gen:start -->
+### VectorLayer 的其他静态方法
+
+<!--@include: ./includes/api/vector-layer-statics-missing.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 | 事件 | 触发时机 |
@@ -118,6 +134,12 @@ layer.on("addgeo", (e) => {
 ```
 
 <!-- api-gen:start -->
+### VectorLayer 的其他事件
+
+以下事件源码里有定义，本类（或其父类）会触发：
+
+<!--@include: ./includes/api/vector-layer-events-missing.md-->
+
 ### 继承自 OverlayLayer 的事件
 
 <!--@include: ./includes/api/overlay-layer-events.md-->

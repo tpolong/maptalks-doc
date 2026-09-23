@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the modifier function rewriting resource loading urls and return the layer
 
 Parameters:
 
@@ -15,7 +15,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the modifier function that rewrites resource loading urls
 
 </div>
 </details>
@@ -24,7 +24,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the event map the layer listens to, including spatial reference change
 
 </div>
 </details>
@@ -33,7 +33,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback on options update, syncs the bloom switches to the renderer
 
 Parameters:
 
@@ -46,7 +46,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Merge symbol properties into the style at index idx and refresh the layer style
 
 Parameters:
 
@@ -60,8 +60,7 @@ Parameters:
 <div>
 <br/>
 
-获取图层的polygonOffsetCount
-用于GroupGLLayer全局管理polygonOffset
+Get the polygonOffset count the layer needs, 0 for empty or altitude layers
 
 </div>
 </details>
@@ -70,8 +69,7 @@ Parameters:
 <div>
 <br/>
 
-获取图层的polygonOffset
-用于GroupGLLayer全局管理polygonOffset
+Get the layer polygonOffset used for global management by GroupGLLayer
 
 </div>
 </details>
@@ -80,7 +78,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Set the layer polygonOffset and the global total for GroupGLLayer management
 
 Parameters:
 
@@ -94,7 +92,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the total polygonOffset assigned by the GroupGLLayer
 
 </div>
 </details>
@@ -143,7 +141,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the layer computed style and return it in the style field
 
 </div>
 </details>
@@ -152,7 +150,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add outline highlight to all geometries in the layer
 
 </div>
 </details>
@@ -161,7 +159,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Add outline highlight to the geometries with the given id array
 
 Parameters:
 
@@ -174,7 +172,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Cancel the outline highlight of the geometries in the layer
 
 </div>
 </details>
@@ -196,7 +194,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Return the default tile size of 1x1 used internally by painters
 
 </div>
 </details>

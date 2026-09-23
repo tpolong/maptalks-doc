@@ -19,7 +19,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Create the overview map and listen to map events when the control is added to a map.
 
 </div>
 </details>
@@ -28,7 +28,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Lifecycle callback that unbinds map events and destroys the overview map when the control is removed.
 
 </div>
 </details>

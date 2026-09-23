@@ -51,3 +51,39 @@ GeometryCollection 被隐藏时触发
 
 </div>
 </details>
+
+<details><summary>editstart</summary>
+<div>
+<br/>
+
+geometry collection 开始编辑时触发
+
+</div>
+</details>
+
+<details><summary>editend</summary>
+<div>
+<br/>
+
+geometry collection 结束编辑时触发
+
+</div>
+</details>
+
+<details><summary>undoedit</summary>
+<div>
+<br/>
+
+geometry collection 撤销一个子 geometry 的编辑时触发
+
+</div>
+</details>
+
+<details><summary>redoedit</summary>
+<div>
+<br/>
+
+geometry collection 重做一个子 geometry 的编辑时触发
+
+</div>
+</details>

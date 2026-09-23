@@ -53,6 +53,18 @@ This class gains the following method groups from mixins; see the linked pages f
 
 No class-specific static methods.
 
+<!-- api-gen:start -->
+### Other Static Methods of Path
+
+<!--@include: ./includes/api/path-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 No class-specific events.

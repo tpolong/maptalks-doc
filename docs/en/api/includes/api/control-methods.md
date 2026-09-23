@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Optional callback invoked after the control is added to a map; implemented by subclasses.
 
 </div>
 </details>
@@ -11,7 +11,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Optional callback invoked after the control is removed from a map; implemented by subclasses.
 
 </div>
 </details>
@@ -197,7 +197,7 @@ Fires:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Recomputes and updates the control position when the config contains a position option.
 
 Parameters:
 

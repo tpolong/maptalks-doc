@@ -86,3 +86,9 @@ const dist = coord.distanceTo(new Coordinate(121.48, 31.24));
 ```
 
 > Coordinate是纯数据类型，无事件系统。坐标投影换算（经纬度 ↔ Web墨卡托/像素坐标）由 `CRS`/投影类完成，而非 Coordinate 的方法。
+
+<!-- api-gen:start -->
+### Coordinate 的其他静态方法
+
+<!--@include: ./includes/api/coordinate-statics-missing.md-->
+<!-- api-gen:end -->

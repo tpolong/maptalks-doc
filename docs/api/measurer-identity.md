@@ -17,12 +17,6 @@ m.measureLenBetween([0, 0], [3, 4]); // 5
 
 - `measure: string` — 测量器代码，`'IDENTITY'`。
 
-<!-- api-gen:start -->
-### identity 的其他公开方法
-
-<!--@include: ./includes/api/measurer-identity-missing.md-->
-<!-- api-gen:end -->
-
 ## 方法
 
 - `measureLenBetween(c1, c2, ignoreAltitude?): number` — 平面两点间的欧氏距离。

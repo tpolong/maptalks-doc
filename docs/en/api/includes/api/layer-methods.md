@@ -62,7 +62,7 @@ Returns:
 <div>
 <br/>
 
-为layer 设置zIndex
+Sets the layer z-index and re-sorts the layers on the map.
 
 Parameters:
 
@@ -282,7 +282,7 @@ Returns:
 <div>
 <br/>
 
-移除mask
+Removes the layer mask from its options and requests a redraw.
 
 Returns:
 
@@ -295,7 +295,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Hook called when the layer finishes loading, overridden by subclasses, empty by default
 
 </div>
 </details>
@@ -340,7 +340,7 @@ Will ignore if collisionScope is not layer
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the renderer instance bound to this layer.
 
 </div>
 </details>
@@ -349,7 +349,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback on option change that triggers a redraw and an attribution update
 
 Parameters:
 
@@ -362,7 +362,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback called after the layer is bound to a map, subclasses may override it
 
 </div>
 </details>
@@ -371,7 +371,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback called after the layer renderer is created, subclasses may override it
 
 </div>
 </details>
@@ -380,7 +380,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback called after the layer canvas is created, subclasses may override it
 
 </div>
 </details>
@@ -389,7 +389,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Callback called when the layer is removed from the map, subclasses may override it
 
 </div>
 </details>
@@ -398,7 +398,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Return the renderer name the layer uses according to the map renderer type
 
 </div>
 </details>
@@ -407,7 +407,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the layer JSON object with its type, id and options.
 
 Parameters:
 
@@ -424,7 +424,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Identify geometries on the layer at a coordinate; implemented by subclasses.
 
 Parameters:
 
@@ -438,7 +438,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Identify geometries on the layer at a container point; implemented by subclasses.
 
 Parameters:
 
@@ -452,7 +452,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Get the child layer list, implemented only by group layers
 
 Returns:
 

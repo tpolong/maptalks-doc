@@ -1,35 +1,12 @@
-<details><summary>code()</summary>
+<details><summary>is(code)</summary>
 <div>
 <br/>
 
-"EPSG:3857", Code of the projection
+Returns whether the projection code or one of its aliases matches the given code.
 
-</div>
-</details>
+Parameters:
 
-<details><summary>rad()</summary>
-<div>
-<br/>
-
-No prose description in source; parameters and return type come from the type signature.
-
-</div>
-</details>
-
-<details><summary>metersPerDegree()</summary>
-<div>
-<br/>
-
-No prose description in source; parameters and return type come from the type signature.
-
-</div>
-</details>
-
-<details><summary>maxLatitude()</summary>
-<div>
-<br/>
-
-No prose description in source; parameters and return type come from the type signature.
+* code `string`
 
 </div>
 </details>

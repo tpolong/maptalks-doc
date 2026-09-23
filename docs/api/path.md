@@ -53,6 +53,18 @@ Path 为抽象基类，构造函数由其子类调用。
 
 无特有静态方法。
 
+<!-- api-gen:start -->
+### Path 的其他静态方法
+
+<!--@include: ./includes/api/path-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
+
 ## 事件
 
 无特有事件。

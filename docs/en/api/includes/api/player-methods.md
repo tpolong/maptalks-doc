@@ -54,7 +54,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Reverse the animation playback; an empty implementation in the source.
 
 </div>
 </details>

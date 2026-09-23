@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Update an analysis option by name, recomputing height when limitHeight changes
 
 Parameters:
 
@@ -16,7 +16,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Render the height limit analysis, returning uniforms with the height limit map and limit color
 
 Parameters:
 
@@ -29,7 +29,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Return the shader define that turns on the HAS_HEIGHTLIMIT macro
 
 </div>
 </details>

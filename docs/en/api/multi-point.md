@@ -37,6 +37,10 @@ MultiPoint has no class-specific options; it inherits the options of Geometry.
 - `findClosest(coordinate): Coordinate` — Finds the coordinate of the point closest to the given coordinate.
 
 <!-- api-gen:start -->
+### Other Public Methods of MultiPoint
+
+<!--@include: ./includes/api/multi-point-missing.md-->
+
 ### Methods Inherited from MultiGeometry
 
 The following methods are provided by the parent class [MultiGeometry](/en/api/multi-geometry) and are available on instances of this class.
@@ -63,6 +67,18 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Static Methods
 
 - `MultiPoint.fromJSON(json): MultiPoint` — Creates a MultiPoint instance from a JSON object.
+
+<!-- api-gen:start -->
+### Other Static Methods of MultiPoint
+
+<!--@include: ./includes/api/multi-point-statics-missing.md-->
+
+### Static Methods Inherited from Geometry
+
+The following methods are provided by the parent class [Geometry](/en/api/geometry) and are available on instances of this class.
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## Events
 

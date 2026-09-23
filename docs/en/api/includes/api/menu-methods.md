@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Adds the menu to a geometry or map, replacing its previous menu.
 
 Parameters:
 
@@ -41,7 +41,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the negated menu offset as a CSS transform origin string in pixels.
 
 </div>
 </details>
@@ -50,7 +50,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Return map events that remove the menu DOM on move, zoom or click
 
 </div>
 </details>

@@ -127,6 +127,12 @@ This class gains the following method groups from mixins; see the linked pages f
 - `Layer.fromJSON(layerJSON): Layer | null` — restore a layer from JSON
 - `Layer.mergeOptions(options): this` — merge default options
 
+<!-- api-gen:start -->
+### Other Static Methods of Layer
+
+<!--@include: ./includes/api/layer-statics-missing.md-->
+<!-- api-gen:end -->
+
 ## Events
 
 | Event | Fired when |
@@ -145,3 +151,11 @@ layer.on("layerload", () => {
   console.log("layer loaded");
 });
 ```
+
+<!-- api-gen:start -->
+### Other Events of Layer
+
+The following events are defined in the source and are fired by this class (or its ancestors):
+
+<!--@include: ./includes/api/layer-events-missing.md-->
+<!-- api-gen:end -->

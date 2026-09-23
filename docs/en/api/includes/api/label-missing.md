@@ -1,0 +1,968 @@
+<details><summary>getContent()</summary>
+<div>
+<br/>
+
+Get text content of the label
+
+Returns:
+
+* `String`
+
+</div>
+</details>
+
+<details><summary>setContent(content)</summary>
+<div>
+<br/>
+
+Set a new text content to the label
+
+Parameters:
+
+* content `string`
+
+Returns:
+
+* `Label` this
+
+Fires:
+
+* `Label#contentchange`
+
+</div>
+</details>
+
+<details><summary>onAdd()</summary>
+<div>
+<br/>
+
+Lifecycle callback fired when added to a layer, refreshes the text layout
+
+</div>
+</details>
+
+<details><summary>toJSON()</summary>
+<div>
+<br/>
+
+Export the label JSON with feature and content, without the symbol field
+
+</div>
+</details>
+
+<details><summary>setSymbol(symbol)</summary>
+<div>
+<br/>
+
+Split the symbol into text and box parts by the text prefix and set each part
+
+Parameters:
+
+* symbol `any`
+
+</div>
+</details>
+
+<details><summary>getTextStyle()</summary>
+<div>
+<br/>
+
+Get a copy of the text box's text style, null when it is not set
+
+Returns:
+
+* `any`
+
+</div>
+</details>
+
+<details><summary>setTextStyle(tyle?)</summary>
+<div>
+<br/>
+
+Optional method declared on TextMarker that sets the label text style, implemented by TextBox
+
+Parameters:
+
+* tyle (optional) `any`
+
+Returns:
+
+* `any`
+
+</div>
+</details>
+
+<details><summary>setBoxSymbol(style?)</summary>
+<div>
+<br/>
+
+Optional method declared on TextMarker that sets the label box symbol, implemented by TextBox
+
+Parameters:
+
+* style (optional) `any`
+
+Returns:
+
+* `any`
+
+</div>
+</details>
+
+<details><summary>getOutline()</summary>
+<div>
+<br/>
+
+Create a square outline marker sized to this marker's container extent
+
+Returns:
+
+* `Marker`
+
+</div>
+</details>
+
+<details><summary>setSymbol(symbol)</summary>
+<div>
+<br/>
+
+Split the symbol into text and box parts by the text prefix and set each part
+
+Parameters:
+
+* symbol `AnyMarkerSymbol | Array<AnyMarkerSymbol>`
+
+Returns:
+
+* `this`
+
+</div>
+</details>
+
+<details><summary>getFirstCoordinate()</summary>
+<div>
+<br/>
+
+Returns the first coordinate of the geometry.
+
+Returns:
+
+* `Coordinate` First Coordinate
+
+</div>
+</details>
+
+<details><summary>getLastCoordinate()</summary>
+<div>
+<br/>
+
+Returns the last coordinate of the geometry.
+
+Returns:
+
+* `Coordinate` Last Coordinate
+
+</div>
+</details>
+
+<details><summary>addTo(layer, fitview?)</summary>
+<div>
+<br/>
+
+Adds the geometry to a layer
+
+Parameters:
+
+* layer `OverlayLayer` layer add to
+* fitview (optional) `boolean | addGeometryFitViewOptions` =false] - automatically set the map to a fit center and zoom for the geometry
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#add`
+
+</div>
+</details>
+
+<details><summary>getLayer()</summary>
+<div>
+<br/>
+
+Get the layer which this geometry added to.
+
+Returns:
+
+* `Layer` - layer added to
+
+</div>
+</details>
+
+<details><summary>getId()</summary>
+<div>
+<br/>
+
+Gets geometry's id. Id is set by setId or constructor options.
+
+Returns:
+
+* `String|Number` geometry的id
+
+</div>
+</details>
+
+<details><summary>setId(id)</summary>
+<div>
+<br/>
+
+Set geometry's id.
+
+Parameters:
+
+* id `string` new id
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#idchange`
+
+</div>
+</details>
+
+<details><summary>getProperties()</summary>
+<div>
+<br/>
+
+Get geometry's properties. Defined by GeoJSON as [feature's properties](http://geojson.org/geojson-spec.html#feature-objects).
+
+Returns:
+
+* `Object` properties
+
+</div>
+</details>
+
+<details><summary>setProperties(properties)</summary>
+<div>
+<br/>
+
+Set a new properties to geometry.
+
+Parameters:
+
+* properties `{ [key: string]: any }` new properties
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#propertieschange`
+
+</div>
+</details>
+
+<details><summary>getType()</summary>
+<div>
+<br/>
+
+Get type of the geometry, e.g. "Point", "LineString"
+
+Returns:
+
+* `String` type of the geometry
+
+</div>
+</details>
+
+<details><summary>getSymbol()</summary>
+<div>
+<br/>
+
+Get symbol of the geometry
+
+Returns:
+
+* `Object` geometry's symbol
+
+</div>
+</details>
+
+<details><summary>setSymbol(symbol)</summary>
+<div>
+<br/>
+
+Split the symbol into text and box parts by the text prefix and set each part
+
+Parameters:
+
+* symbol `any` new symbol
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#symbolchange`
+
+</div>
+</details>
+
+<details><summary>getSymbolHash()</summary>
+<div>
+<br/>
+
+Get symbol's hash code
+
+Returns:
+
+* `String`
+
+</div>
+</details>
+
+<details><summary>updateSymbol(props)</summary>
+<div>
+<br/>
+
+Update geometry's current symbol.
+
+Parameters:
+
+* props `any` symbol properties to update
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#symbolchange`
+
+</div>
+</details>
+
+<details><summary>getTextContent()</summary>
+<div>
+<br/>
+
+Get geometry's text content if it has
+
+Returns:
+
+* `String`
+
+</div>
+</details>
+
+<details><summary>getTextDesc()</summary>
+<div>
+<br/>
+
+Get the text description parsed from the text symbol, cached until it changes
+
+Returns:
+
+* `any`
+
+</div>
+</details>
+
+<details><summary>getCenter()</summary>
+<div>
+<br/>
+
+Get the geographical center of the geometry.
+
+Returns:
+
+* `Coordinate`
+
+</div>
+</details>
+
+<details><summary>getExtent()</summary>
+<div>
+<br/>
+
+Get the geometry's geographical extent
+
+Returns:
+
+* `Extent` geometry's extent
+
+</div>
+</details>
+
+<details><summary>getContainerExtent(out?)</summary>
+<div>
+<br/>
+
+Get geometry's screen extent in pixel
+
+Parameters:
+
+* out (optional) `PointExtent`
+
+Returns:
+
+* `PointExtent`
+
+</div>
+</details>
+
+<details><summary>get2DExtent()</summary>
+<div>
+<br/>
+
+Get the geometry's 2D pixel extent at the current zoom, or null when it has no map
+
+Returns:
+
+* `PointExtent`
+
+</div>
+</details>
+
+<details><summary>getSize()</summary>
+<div>
+<br/>
+
+Get pixel size of the geometry, which may vary in different zoom levels.
+
+Returns:
+
+* `Size`
+
+</div>
+</details>
+
+<details><summary>containsPoint(containerPoint, t?)</summary>
+<div>
+<br/>
+
+Whehter the geometry contains the input container point.
+
+Parameters:
+
+* containerPoint `Point` input container point or coordinate
+* t (optional) `number` =undefined] - tolerance in pixel
+
+Returns:
+
+* `Boolean`
+
+</div>
+</details>
+
+<details><summary>show()</summary>
+<div>
+<br/>
+
+Show the geometry.
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#show`
+
+</div>
+</details>
+
+<details><summary>hide()</summary>
+<div>
+<br/>
+
+Hide the geometry
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#hide`
+
+</div>
+</details>
+
+<details><summary>isVisible()</summary>
+<div>
+<br/>
+
+Whether the geometry is visible
+
+Returns:
+
+* `Boolean`
+
+</div>
+</details>
+
+<details><summary>symbolIsVisible()</summary>
+<div>
+<br/>
+
+Whether the geometry symbol is visible
+
+Returns:
+
+* `Boolean`
+
+</div>
+</details>
+
+<details><summary>getZIndex()</summary>
+<div>
+<br/>
+
+Get zIndex of the geometry, default is 0
+
+Returns:
+
+* `Number` zIndex
+
+</div>
+</details>
+
+<details><summary>setZIndex(zIndex)</summary>
+<div>
+<br/>
+
+Set a new zIndex to Geometry and fire zindexchange event (will cause layer to sort geometries and render)
+
+Parameters:
+
+* zIndex `number` new zIndex
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#zindexchange`
+
+</div>
+</details>
+
+<details><summary>setZIndexSilently(zIndex)</summary>
+<div>
+<br/>
+
+Only set a new zIndex to Geometry without firing zindexchange event. <br/>
+Can be useful to improve perf when a lot of geometries' zIndex need to be updated. <br/>
+When updated N geometries, You can use setZIndexSilently with (N-1) geometries and use setZIndex with the last geometry for layer to sort and render.
+
+Parameters:
+
+* zIndex `number` new zIndex
+
+Returns:
+
+* `Geometry` this
+
+</div>
+</details>
+
+<details><summary>bringToFront()</summary>
+<div>
+<br/>
+
+Bring the geometry on the top
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#zindexchange`
+
+</div>
+</details>
+
+<details><summary>bringToBack()</summary>
+<div>
+<br/>
+
+Bring the geometry to the back
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#zindexchange`
+
+</div>
+</details>
+
+<details><summary>translate(x, y?, z?)</summary>
+<div>
+<br/>
+
+Translate or move the geometry by the given offset.
+
+Parameters:
+
+* x `number | Coordinate` x offset
+* y (optional) `number` y offset
+* z (optional) `number` z offset
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#positionchange`
+* `Geometry#shapechange`
+
+</div>
+</details>
+
+<details><summary>flash(interval?, count?, cb?)</summary>
+<div>
+<br/>
+
+Flash the geometry, show and hide by certain internal for times of count.
+
+Parameters:
+
+* interval (optional) `number` =100]     - interval of flash, in millisecond (ms)
+* count (optional) `number` =4]          - flash times
+* cb (optional) `() => void, context: any` =null]        - callback function when flash ended
+
+Returns:
+
+* `Geometry` this
+
+</div>
+</details>
+
+<details><summary>copy()</summary>
+<div>
+<br/>
+
+Returns a copy of the geometry without the event listeners.
+
+Returns:
+
+* `Geometry` copy
+
+</div>
+</details>
+
+<details><summary>remove()</summary>
+<div>
+<br/>
+
+remove itself from the layer if any.
+
+Returns:
+
+* `Geometry` this
+
+Fires:
+
+* `Geometry#removestart`
+* `Geometry#remove`
+
+</div>
+</details>
+
+<details><summary>toGeoJSONGeometry()</summary>
+<div>
+<br/>
+
+Exports [geometry](http://geojson.org/geojson-spec.html#feature-objects) out of a GeoJSON feature.
+
+Returns:
+
+* `Object` GeoJSON Geometry
+
+</div>
+</details>
+
+<details><summary>toGeoJSON(opts?)</summary>
+<div>
+<br/>
+
+Exports a GeoJSON feature.
+
+Parameters:
+
+* opts (optional) `{ [key: string]: any }` =null]              - export options
+
+Returns:
+
+* `Object` GeoJSON Feature
+
+</div>
+</details>
+
+<details><summary>toJSON(options?)</summary>
+<div>
+<br/>
+
+Export the label JSON with feature and content, without the symbol field
+
+Parameters:
+
+* options (optional) `{ [key: string]: any }` =null]          - export options
+
+Returns:
+
+* `Object` profile json object
+
+</div>
+</details>
+
+<details><summary>getLength()</summary>
+<div>
+<br/>
+
+Get the geographic length of the geometry.
+
+Returns:
+
+* `Number` geographic length, unit is meter
+
+</div>
+</details>
+
+<details><summary>getArea()</summary>
+<div>
+<br/>
+
+Get the geographic area of the geometry.
+
+Returns:
+
+* `Number` geographic area, unit is sq.meter
+
+</div>
+</details>
+
+<details><summary>rotate(angle, pivot?)</summary>
+<div>
+<br/>
+
+Rotate the geometry of given angle around a pivot point
+
+Parameters:
+
+* angle `number` angle to rotate in degree
+* pivot (optional) `Coordinate` =null]  - optional, will be the geometry's center by default
+
+Returns:
+
+* `Geometry` this
+
+</div>
+</details>
+
+<details><summary>isRotated()</summary>
+<div>
+<br/>
+
+Whether the geometry has both a rotation angle and a pivot set
+
+Returns:
+
+* `boolean`
+
+</div>
+</details>
+
+<details><summary>onHide()</summary>
+<div>
+<br/>
+
+Lifecycle callback fired when hidden, closes its menu and info window
+
+</div>
+</details>
+
+<details><summary>onShapeChanged()</summary>
+<div>
+<br/>
+
+Shape callback, clears cache, repaints and fires shapechange
+
+</div>
+</details>
+
+<details><summary>onSymbolChanged()</summary>
+<div>
+<br/>
+
+Symbol callback, refreshes the symbol and fires symbolchange
+
+</div>
+</details>
+
+<details><summary>onConfig(conf)</summary>
+<div>
+<br/>
+
+Config callback, applies properties and repaints when arrow or smooth options change
+
+Parameters:
+
+* conf `any`
+
+</div>
+</details>
+
+<details><summary>getAltitude()</summary>
+<div>
+<br/>
+
+Get the geometry altitude from its altitude property or coordinates z, 0 when none
+
+Returns:
+
+* `number | number[] | number[][]`
+
+</div>
+</details>
+
+<details><summary>hasAltitude()</summary>
+<div>
+<br/>
+
+Whether the geometry has any non-zero altitude
+
+Returns:
+
+* `boolean`
+
+</div>
+</details>
+
+<details><summary>setAltitude(alt)</summary>
+<div>
+<br/>
+
+Set the geometry altitude, updating its property and coordinates z, then repaint
+
+Parameters:
+
+* alt `number`
+
+Returns:
+
+* `this`
+
+</div>
+</details>
+
+<details><summary>getMinAltitude()</summary>
+<div>
+<br/>
+
+Get the minimum altitude of the geometry's coordinates
+
+Returns:
+
+* `number`
+
+</div>
+</details>
+
+<details><summary>getMaxAltitude()</summary>
+<div>
+<br/>
+
+Get the maximum altitude of the geometry's coordinates
+
+Returns:
+
+* `number`
+
+</div>
+</details>
+
+<details><summary>getHoles()</summary>
+<div>
+<br/>
+
+Get the polygon's hole rings, an empty array when it has none
+
+Returns:
+
+* `Array<Array<Coordinate>>`
+
+</div>
+</details>
+
+<details><summary>getShell()</summary>
+<div>
+<br/>
+
+Get the polygon's shell coordinates, an empty array when there are none
+
+Returns:
+
+* `Array<Coordinate>`
+
+</div>
+</details>
+
+<details><summary>getGeometries()</summary>
+<div>
+<br/>
+
+Get the geometries contained in the geometry collection
+
+Returns:
+
+* `Geometry[]`
+
+</div>
+</details>
+
+<details><summary>onRemove()</summary>
+<div>
+<br/>
+
+Lifecycle callback fired when the geometry is removed from its layer
+
+</div>
+</details>
+
+<details><summary>getRotateOffsetAngle()</summary>
+<div>
+<br/>
+
+Get the angle offset applied when rotating, overridden by shapes like sector
+
+Returns:
+
+* `number`
+
+</div>
+</details>
+
+<details><summary>onAdd()</summary>
+<div>
+<br/>
+
+Lifecycle callback fired when added to a layer, refreshes the text layout
+
+</div>
+</details>

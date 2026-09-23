@@ -41,21 +41,38 @@ Other tile options (`urlTemplate`, `tileSize`, `spatialReference`, etc.) — see
 
 - `GroupTileLayer.fromJSON(layerJSON): GroupTileLayer | null` — restore a layer from JSON
 
+<!-- api-gen:start -->
+### Other Static Methods of GroupTileLayer
+
+<!--@include: ./includes/api/group-tile-layer-statics-missing.md-->
+
+### Static Methods Inherited from Layer
+
+The following methods are provided by the parent class [Layer](/en/api/layer) and are available on instances of this class.
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## Member Methods
 
 - `getLayers(): TileLayer[]` — get the child layer list
 - `addLayer(tileLayers: TileLayer[] | TileLayer): this` — add child layers
 - `removeLayer(tileLayers: TileLayer[] | TileLayer): this` — remove child layers
 - `clearLayers(): this` — clear the child layers
+
 - `getLayer(id): TileLayer` — get a child layer (equivalent to getChildLayer)
 - `getChildLayer(id): TileLayer` — look up a child layer recursively
 - `toJSON(): Object` — export the layer JSON
 - `getTiles(z, parentLayer): TilesType` — aggregate child-layer tiles by zoom
 
 <!-- api-gen:start -->
+### Other Public Methods of GroupTileLayer
+
+<!--@include: ./includes/api/group-tile-layer-missing.md-->
+
 ### Methods Inherited from TileLayer
 
-The following methods are provided by the parent class [TileLayer](/en/api/wms-tile-layer) and are available on instances of this class.
+The following methods are provided by the parent class [TileLayer](/en/api/tile-layer) and are available on instances of this class.
 
 <!--@include: ./includes/api/tile-layer-methods.md-->
 

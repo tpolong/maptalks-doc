@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns null so the nav control creates no DOM element itself.
 
 </div>
 </details>

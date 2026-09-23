@@ -2,7 +2,7 @@
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Update an option by name; lines goes to setLines, others are stored as render options
 
 Parameters:
 
@@ -16,7 +16,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Adds an inSight line with from and to coordinates and requests a redraw.
 
 Parameters:
 
@@ -29,7 +29,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Removes the given inSight line from the analysis and requests a redraw.
 
 Parameters:
 
@@ -42,7 +42,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Gets the array of current inSight lines.
 
 </div>
 </details>
@@ -51,7 +51,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Replaces all inSight lines and requests a redraw.
 
 Parameters:
 
@@ -64,7 +64,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Clears all inSight lines and requests a redraw.
 
 </div>
 </details>
@@ -97,7 +97,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Runs the visibility analysis with the meshes and returns shader uniforms
 
 Parameters:
 
@@ -110,7 +110,7 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+Returns the shader macro defines used by the analysis
 
 </div>
 </details>

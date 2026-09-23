@@ -42,15 +42,32 @@ new DrawToolLayer(id, geometries?, options?)
 
 - `DrawToolLayer.setLayerClass(markerLayerClass, lineLayerClass, polygonLayerClass): void` — 设置各几何类型对应的图层类
 
+<!-- api-gen:start -->
+### DrawToolLayer 的其他静态方法
+
+<!--@include: ./includes/api/draw-tool-layer-statics-missing.md-->
+
+### 继承自 Layer 的静态方法
+
+下列方法由父类 [Layer](/api/layer) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/layer-statics.md-->
+<!-- api-gen:end -->
+
 ## 成员方法
 
 - `addGeometry(geometries: Geometry | Geometry[]): this` — 添加几何并按类型分发到子图层
+
 - `removeGeometry(geometries: Geometry | Geometry[]): void` — 移除几何
 - `getGeometryById(id): Geometry` — 按 id 在子图层中查找几何
 - `clear(): this` — 清空
 - `bringToFront(): this` — 子图层置顶
 
 <!-- api-gen:start -->
+### DrawToolLayer 的其他公开方法
+
+<!--@include: ./includes/api/draw-tool-layer-missing.md-->
+
 ### 继承自 OverlayLayer 的方法
 
 下列方法由父类 [OverlayLayer](/api/overlay-layer) 提供，本类的实例同样可以调用。

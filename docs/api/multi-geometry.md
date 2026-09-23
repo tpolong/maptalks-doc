@@ -37,6 +37,10 @@ MultiGeometry 无特有 options，继承自 [GeometryCollection](/api/geometry-c
 - `setCoordinates(coords): this` — 设置所有子几何的坐标。
 
 <!-- api-gen:start -->
+### MultiGeometry 的其他公开方法
+
+<!--@include: ./includes/api/multi-geometry-missing.md-->
+
 ### 继承自 GeometryCollection 的方法
 
 下列方法由父类 [GeometryCollection](/api/geometry-collection) 提供，本类的实例同样可以调用。
@@ -57,6 +61,18 @@ MultiGeometry 无特有 options，继承自 [GeometryCollection](/api/geometry-c
 ## 静态方法
 
 - `MultiGeometry.fromJSON(json): MultiGeometry` — 从 JSON 对象创建 MultiGeometry 实例。
+
+<!-- api-gen:start -->
+### MultiGeometry 的其他静态方法
+
+<!--@include: ./includes/api/multi-geometry-statics-missing.md-->
+
+### 继承自 Geometry 的静态方法
+
+下列方法由父类 [Geometry](/api/geometry) 提供，本类的实例同样可以调用。
+
+<!--@include: ./includes/api/geometry-statics.md-->
+<!-- api-gen:end -->
 
 ## 事件
 
