@@ -12,12 +12,17 @@
  *   - http://map.baidu.com ......................... https 200（attribution 链接）
  *   - http://online{s}.map.bdimg.com/tile/ ......... TLS 证书域名不匹配（ALTNAME_INVALID）
  *                                                    → https://maponline{s}.bdimg.com/tile/ 200
- *   - http://webst{s}.is.autonavi.com/.............. 该主机名根本不存在（ECONNRESET）
- *                                                    → https://webst0{s}.is.autonavi.com 200（s=1..4）
+ *   - http://webst{s}.is.autonavi.com/.............. 只改协议即可（模板配 subdomains:["01".."04"]，
+ *                                                    拼出来本就是 webst01..04，https 下 200）。
+ *                                                    改主机名会拼成 webst001 而失效。
  *   - http://t{s}.tianditu.com/DataServer .......... 自签名证书，https 不可用且示例缺 tk
  *                                                    → https://t{s}.tianditu.gov.cn WMTS 端点（与示例
  *                                                      tile/tiles/epsg4326、指南 projection.md 一致）
  *   - http://www.tianditu.cn（attribution） ........ https 自签名证书 → https://www.tianditu.gov.cn
+ *
+ * 注意：**改主机名前先看示例里的 subdomains**。`{s}` 只是把 subdomains 的元素原样填进模板，
+ * 若 subdomains 已经带前缀（如 ["01","02"]），再往模板里加 "0" 会拼出不存在的 webst001。
+ * 只有确认「同一 subdomains 下新主机名可达」时才换主机（如 online{s}.map.bdimg.com → maponline{s}.bdimg.com）。
  *
  * 用法：node scripts/fix-example-stale-refs.mjs [--dry]
  */
@@ -47,7 +52,7 @@ const RULES = [
   [/http:\/\/dmitrybaranovskiy\.github\.io/g, 'https://dmitrybaranovskiy.github.io', 'http→https'],
   // 3) 主机在 https 下不可用，必须换主机
   [/http:\/\/online\{s\}\.map\.bdimg\.com\/tile\//g, 'https://maponline{s}.bdimg.com/tile/', 'host-bdimg'],
-  [/https?:\/\/webst\{s\}\.is\.autonavi\.com/g, 'https://webst0{s}.is.autonavi.com', 'host-autonavi'],
+  [/http:\/\/webst\{s\}\.is\.autonavi\.com/g, 'https://webst{s}.is.autonavi.com', 'host-autonavi'],
   // 4) 天地图旧 DataServer（自签名证书 + 缺 tk）→ 现行 WMTS 端点
   [/https?:\/\/t\{s\}\.tianditu\.com\/DataServer\?T=vec_c&x=\{x\}&y=\{y\}&l=\{z\}/g, tdtWmts('vec'), 'host-tianditu'],
   [/https?:\/\/t\{s\}\.tianditu\.com\/DataServer\?T=cva_c&x=\{x\}&y=\{y\}&l=\{z\}/g, tdtWmts('cva'), 'host-tianditu'],
