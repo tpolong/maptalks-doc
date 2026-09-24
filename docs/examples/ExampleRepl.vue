@@ -269,6 +269,11 @@ async function updateExample() {
     // 仍是 0，canvas 变成 0 高，编辑模式等绘制顶部元素时会报 drawImage 0 尺寸。
     // 把 css 内联成 <style> 随 index.html 一起先于脚本注入，样式提前生效。
     inlineCss(files);
+    // maptalks 自带控件（Toolbar / ZoomControl / Scale / Attribution 等）的样式来自
+    // maptalks/dist/maptalks.css。旧站由外层页面统一引入，而预览 iframe 是独立文档：
+    // 393 个示例里有 231 个的 HTML 没写这个 @import，控件就会退化成裸列表
+    // （例如 vector2d/interaction/map-on-off 的 Toolbar）。这里统一兜住。
+    inlineMaptalksCss(files);
     store.setFiles(files, "index.html");
   } catch (err) {
     if (token !== loadToken) return;
@@ -379,6 +384,29 @@ function inlineCss(files: Record<string, string>) {
     files["index.html"] = html.replace("</html>", styleTag + "</html>");
   } else {
     files["index.html"] = html + styleTag;
+  }
+}
+
+/**
+ * 保证预览里有 maptalks 的样式表。
+ *
+ * 示例里的 maptalks 控件（`control.Toolbar`、ZoomControl、Scale、Attribution 等）
+ * 靠 `maptalks/dist/maptalks.css` 里的 `.maptalks-*` 规则排版；旧站是外层页面统一引入的，
+ * 而预览 iframe 是独立文档，HTML 里没写 `@import "…/maptalks.css"` 的示例（393 个里有 231 个）
+ * 控件就会渲染成带圆点的裸 `<ul>`（如 vector2d/interaction/map-on-off 的 Toolbar）。
+ * 这里统一补一条 `<link>`，已自带该引用的示例不重复加；版本与 import map 的 maptalks 对齐。
+ */
+const MAPTALKS_CSS_URL = "https://unpkg.com/maptalks@1.12.1/dist/maptalks.css";
+function inlineMaptalksCss(files: Record<string, string>) {
+  const html = files["index.html"] ?? "";
+  if (!html || html.includes("maptalks.css")) return;
+  const link = `\n<link rel="stylesheet" href="${MAPTALKS_CSS_URL}">`;
+  if (html.includes("</head>")) {
+    files["index.html"] = html.replace("</head>", link + "\n</head>");
+  } else if (html.includes("</html>")) {
+    files["index.html"] = html.replace("</html>", link + "\n</html>");
+  } else {
+    files["index.html"] = html + link;
   }
 }
 
