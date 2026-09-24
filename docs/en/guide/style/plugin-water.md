@@ -98,7 +98,7 @@ Default: [0.1451, 0.2588, 0.4863, 1]
 
 Default: false
 
-**Boolean** — whether to enable the water animation (in the 2026 source code WaterPainter, the animation is not enabled when symbol.animation is absent; the old documentation wrote true).
+**Boolean** — whether to enable the water animation (in the source code WaterPainter, the animation is not enabled when symbol.animation is absent; the old documentation wrote true).
 
 -----------
 ### contrast
@@ -128,4 +128,4 @@ Default: 1
 
 **Number** — the water flow speed, used together with animation; the larger the value, the faster the flow.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

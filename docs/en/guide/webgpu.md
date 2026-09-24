@@ -12,7 +12,7 @@ WebGPU is one of the map's renderers; the default renderer list is `['canvas','g
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 
 // 1. Map uses the WebGPU renderer
 const map = new Map("map", {
@@ -25,7 +25,7 @@ const map = new Map("map", {
 
 // 2. Put 3D layers into the same GroupGLLayer
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
 });
 const groupLayer = new GroupGLLayer("group", [vt]).addTo(map);
 ```

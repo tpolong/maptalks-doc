@@ -26,7 +26,7 @@ const map = new Map("map", {
   baseLayer: new TileLayer("base", {
     urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
-      "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
   layers: [new VectorLayer("v")],
 });
@@ -83,7 +83,7 @@ const map = new Map("map", {
   baseLayer: new TileLayer("base", {
     urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
-      "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
   layers: [new VectorLayer("v")],
 });
@@ -223,7 +223,7 @@ Map.fromJSON("map", mapJSON);
 
 ## 相关 API
 
-- [GeoJSON](https://maptalks.org/maptalks.js/api/0.x/GeoJSON.html) · [Geometry](https://maptalks.org/maptalks.js/api/0.x/Geometry.html) · [VectorLayer](https://maptalks.org/maptalks.js/api/0.x/VectorLayer.html)
-- [Layer](https://maptalks.org/maptalks.js/api/0.x/Layer.html) · [Map](https://maptalks.org/maptalks.js/api/0.x/Map.html)
+- [GeoJSON](/api/geojson) · [Geometry](/api/geometry) · [VectorLayer](/api/vector-layer)
+- [Layer](/api/layer) · [Map](/api/map)
 
-> 本文档已与 maptalks 2026 源码核对（maptalks.js packages/maptalks 核心包源码）
+> 本文档已与 maptalks 1.12.1 源码核对（maptalks.js packages/maptalks 核心包）

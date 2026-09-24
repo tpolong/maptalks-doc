@@ -9,7 +9,7 @@ A spatial analysis object for flood analysis, used to perform flood analysis on 
 ## Constructor
 
 ```js
-import { FloodAnalysis } from '@maptalks/gl-layers';
+import { FloodAnalysis } from '@maptalks/analysis';
 
 const floodAnalysis = new FloodAnalysis({
   waterHeight: 100,
@@ -27,17 +27,17 @@ Parameters:
 
 | Option               |   Type    |   Description                     | Default |
 |  ------             | :----:   | ----                      |   :-----------:  |
-|boundary             | Number[] | Boundary coordinate ring of the flooded area (optional; when not set, the whole scene is analyzed, added after cross-checking the 2026 source code) | null |
+|boundary             | Number[] | Boundary coordinate ring of the flooded area (optional; when not set, the whole scene is analyzed, added after cross-checking the source code) | null |
 |waterHeight          | Number   | Water surface height                   | 0 |
 |waterColor           | Number[] | A 3-component normalized array; the water surface color    | [0.1451, 0.2588, 0.4863] |
-|waterOpacity         | Number   | Water surface opacity (added after cross-checking the 2026 source code; the default value in the source's renderAnalysis) | 0.6 |
+|waterOpacity         | Number   | Water surface opacity (added after cross-checking the source code; the default value in the source's renderAnalysis) | 0.6 |
 
 </div>
 </details>
 
 ## Methods Inherited from Analysis
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source
 
 ## Methods
 

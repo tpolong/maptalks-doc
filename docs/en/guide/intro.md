@@ -15,21 +15,25 @@ title: Quick Start
 
 ## Package structure
 
-maptalks is split into multiple npm packages by feature. For everyday development you only need two:
+maptalks is split into multiple npm packages by feature. For everyday development you usually need the following three:
 
 | Package | Description |
 | --- | --- |
 | [maptalks](https://www.npmjs.com/package/maptalks) | Core package. Contains the map, 2D layers, geometries, UI controls and other basic capabilities. |
-| [@maptalks/gl-layers](https://www.npmjs.com/package/@maptalks/gl-layers) | Aggregate package of WebGL layers. Contains the rendering infrastructure for 3D layers (GroupGLLayer) and all 3D layer plugins (vector tiles, gltf, 3dtiles, video, etc.). |
+| [maptalks-gl](https://www.npmjs.com/package/maptalks-gl) | Aggregate package of WebGL layers. Contains the rendering infrastructure for 3D layers (GroupGLLayer) and all 3D layer plugins (vector tiles, gltf, 3dtiles, video, transform control, etc.). |
+| [@maptalks/analysis](https://www.npmjs.com/package/@maptalks/analysis) | Spatial analysis package. Contains the analysis classes (cut, cross cut, viewshed, skyline, flood, height limit, excavate, etc.). These classes are **not** exported by `maptalks-gl` and must be installed and imported from this package separately. |
 
-`@maptalks/gl-layers` is the aggregate package of 3D layer plugins. It wraps `@maptalks/gl`, `@maptalks/vt`, `@maptalks/gltf-layer`, `@maptalks/3dtiles` and other plugins internally, so installing this single package gives you all 3D layers without installing or importing other WebGL plugins separately.
+`maptalks-gl` is the aggregate package of 3D layer plugins. It wraps `@maptalks/gl`, `@maptalks/vt`, `@maptalks/gltf-layer`, `@maptalks/3dtiles`, `@maptalks/video-layer`, `@maptalks/transform-control` and other plugins internally, so installing this single package gives you all 3D layers without installing or importing other WebGL plugins separately; the analysis classes are not included, as noted above.
 
 ## Installation
 
-Install the two packages with npm or pnpm:
+Install with npm or pnpm:
 
 ```bash
-npm install maptalks @maptalks/gl-layers
+npm install maptalks maptalks-gl
+
+# install this only when you need spatial analysis
+npm install @maptalks/analysis
 ```
 
 Then import the maptalks stylesheet in your code (bundled with the built core package):
@@ -59,7 +63,7 @@ const map = new Map("map", {
     urlTemplate:
       "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
-      "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
 });
 ```
@@ -72,7 +76,7 @@ The most obvious difference between 3D layers and 2D layers is that 3D layers ar
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 import "maptalks/dist/maptalks.css";
 
 const map = new Map("map", {
@@ -83,7 +87,7 @@ const map = new Map("map", {
 
 // 矢量瓦片图层：加载 mvt 格式的矢量瓦片数据
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
 });
 
 // 三维图层加入 GroupGLLayer，再添加到地图

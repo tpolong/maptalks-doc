@@ -139,4 +139,4 @@ Default: 0, in meters
 
 **Number** — the translation of the billboard along the Z axis. Supports [function-type](/en/guide/style/function-type) expressions.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-others.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

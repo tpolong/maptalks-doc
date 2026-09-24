@@ -1,6 +1,6 @@
 ## Dynamic styles
 
-The gltf render plugin supports [function-type](/en/guide/style/function-type) on the following properties: `visible`, `modelHeight`, `translationX` / `translationY` / `translationZ`, `rotationX` / `rotationY` / `rotationZ`, `scaleX` / `scaleY` / `scaleZ` (2026 source code GLTFMixin).
+The gltf render plugin supports [function-type](/en/guide/style/function-type) on the following properties: `visible`, `modelHeight`, `translationX` / `translationY` / `translationZ`, `rotationX` / `rotationY` / `rotationZ`, `scaleX` / `scaleY` / `scaleZ` (source code GLTFMixin).
 
 For example, the following makes the model height increase with the map zoom level:
 
@@ -12,7 +12,7 @@ For example, the following makes the model height increase with the map zoom lev
 }
 ```
 
-> Note: the GLTF plugin does not support function-type for colors such as polygonFill / polygonOpacity (the old documentation was incorrect; GLTFMixin.getFnTypeConfig in the 2026 source code returns empty).
+> Note: the GLTF plugin does not support function-type for colors such as polygonFill / polygonOpacity (the old documentation was incorrect; GLTFMixin.getFnTypeConfig in the source code returns empty).
 
 ## Supported Symbol style properties
 
@@ -93,7 +93,7 @@ Default: 0
 
 **Number** — the rotation angle of the model around the x (/y/z) axis of its local coordinate system, in degrees.
 
-> Note: in the 2026 source code (GLTFMixin), the model's translation/rotation/scale use the component form translationX/Y/Z, rotationX/Y/Z, scaleX/Y/Z (all supporting function-type); the array form translation / scale / rotation from the old documentation no longer applies (2026 cross-check).
+> Note: in the source code (GLTFMixin), the model's translation/rotation/scale use the component form translationX/Y/Z, rotationX/Y/Z, scaleX/Y/Z (all supporting function-type); the array form translation / scale / rotation from the old documentation no longer applies.
 
 -----------
 ### fixSizeOnZoom

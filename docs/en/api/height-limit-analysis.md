@@ -11,7 +11,7 @@ The parts exceeding `limitHeight` are highlighted with `limitColor`, reusing the
 ## Constructor
 
 ```js
-import { HeightLimitAnalysis } from '@maptalks/gl-layers';
+import { HeightLimitAnalysis } from '@maptalks/analysis';
 
 const heightLimitAnalysis = new HeightLimitAnalysis({
   limitHeight: 25,
@@ -38,11 +38,11 @@ Parameters:
 
 ## Methods Inherited from FloodAnalysis
 
-HeightLimitAnalysis inherits from [FloodAnalysis](./flood-analysis) (including options such as `waterHeight`, `waterColor`, `waterOpacity`, and methods such as `update` and `renderAnalysis`, verified against the 2026 source).
+HeightLimitAnalysis inherits from [FloodAnalysis](./flood-analysis) (including options such as `waterHeight`, `waterColor`, `waterOpacity`, and methods such as `update` and `renderAnalysis`, verified against the source).
 
 ## Methods Inherited from Analysis
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source
 
 ## Methods
 

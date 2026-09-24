@@ -197,7 +197,7 @@ Returns:
 <div>
 <br/>
 
-Sets a single property value in the model's symbol.uniforms; nodeIndex can be specified to apply the uniform only to the given node (supplemented from 2026 source code).
+Sets a single property value in the model's symbol.uniforms; nodeIndex can be specified to apply the uniform only to the given node (supplemented from source code).
 
 Parameters:
 
@@ -216,7 +216,7 @@ Returns:
 <div>
 <br/>
 
-Returns the symbol.uniforms object of the model (supplemented from 2026 source code).
+Returns the symbol.uniforms object of the model (supplemented from source code).
 
 Returns:
 
@@ -545,7 +545,7 @@ Sets the anchor or alignment point of the model on the z axis, i.e. whether to a
 
 Parameters:
 
-* anchorZ **String** The z-axis anchor; possible values are center, top, or bottom (verified against 2026 source code; when unset, the model center is aligned with the coordinate)
+* anchorZ **String** The z-axis anchor; possible values are center, top, or bottom (verified against source code; when unset, the model center is aligned with the coordinate)
 
 Returns:
 

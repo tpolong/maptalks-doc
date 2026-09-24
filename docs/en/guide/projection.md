@@ -152,9 +152,9 @@ const map = new Map("map-bd09", {
   },
   baseLayer: new TileLayer("base", {
     urlTemplate:
-      "http://online{s}.map.bdimg.com/tile/?qt=tile&x={x}&y={y}&z={z}&styles=pl",
+      "https://maponline{s}.bdimg.com/tile/?qt=tile&x={x}&y={y}&z={z}&styles=pl",
     subdomains: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    attribution: '&copy; <a target="_blank" href="http://map.baidu.com">Baidu</a>',
+    attribution: '&copy; <a target="_blank" href="https://map.baidu.com">Baidu</a>',
   }),
 });
 ```
@@ -188,6 +188,6 @@ map.config("spatialReference", { projection: "EPSG:4326" });
 
 ## Related APIs
 
-- [Map](https://maptalks.org/maptalks.js/api/0.x/Map.html) · [Coordinate](https://maptalks.org/maptalks.js/api/0.x/Coordinate.html) · [TileLayer](https://maptalks.org/maptalks.js/api/0.x/TileLayer.html)
+- [Map](/en/api/map) · [Coordinate](/en/api/coordinate) · [TileLayer](/en/api/tile-layer)
 
-> This document has been cross-checked against the maptalks 2026 source (maptalks.js packages/maptalks core package)
+> This document has been cross-checked against the maptalks 1.12.1 source (maptalks.js packages/maptalks core package)

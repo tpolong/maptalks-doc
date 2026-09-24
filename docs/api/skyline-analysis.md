@@ -9,7 +9,7 @@ title: SkylineAnalysis
 ## 构造函数
 
 ```js
-import { SkylineAnalysis } from '@maptalks/gl-layers';
+import { SkylineAnalysis } from '@maptalks/analysis';
 
 const skylineAnalysis = new SkylineAnalysis({
   lineColor: [1, 0, 0],
@@ -38,7 +38,7 @@ skylineAnalysis.addTo(groupGLLayer);
 <div>
 <br/>
 
-导出天际线图片（透明背景），返回 dataURL（2026 源码核对补充）。
+导出天际线图片（透明背景），返回 dataURL（源码核对补充）。
 
 参数：
 
@@ -73,4 +73,4 @@ skylineAnalysis.addTo(groupGLLayer);
 
 ## 继承自Analysis的方法
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

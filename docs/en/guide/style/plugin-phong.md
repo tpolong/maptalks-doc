@@ -109,4 +109,4 @@ Default: null
 
 **Object** — the Phong material settings. See the [material reference](/en/guide/style/material#phong-material) for the specific properties.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

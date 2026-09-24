@@ -18,7 +18,7 @@ This document covers vector style properties. 3D styles are defined by rendering
 marker style properties fall into the following categories:
 
 * Basic properties: the most commonly used icon style properties
-* Vector icons: style properties adjustable for [vector icons](https://maptalks.org/examples/cn/style/vector-marker/#style_vector-marker)
+* Vector icons: style properties adjustable for [vector icons](/en/examples/#vector2d/style/vector-marker)
 * Alignment: how the icon aligns with its coordinate point
 * Placement: whether and how icons are placed along a line
 * Collision detection: related settings
@@ -241,7 +241,7 @@ Default: 1
 
 Default: []
 
-> Note: per the 2026 source code, the default value is [] (an empty array, i.e. a solid line, matching the maptalks core default); the old documentation wrote 1, which was incorrect.
+> Note: per the source code, the default value is [] (an empty array, i.e. a solid line, matching the maptalks core default); the old documentation wrote 1, which was incorrect.
 
 **Number[]** — requires a valid markerType. The dashed border style of the vector icon, same as the dash styles supported by the canvas.setLineDash method.
 
@@ -302,7 +302,7 @@ Default: 14
 
 Default: [0, 0, 0, 1]
 
-> Note: per the 2026 source code, the default value is [0, 0, 0, 1] (opaque black, vt create_text_painter DEFAULT_UNIFORMS); the old documentation wrote [0, 0, 0, 0], which was incorrect.
+> Note: per the source code, the default value is [0, 0, 0, 1] (opaque black, vt create_text_painter DEFAULT_UNIFORMS); the old documentation wrote [0, 0, 0, 0], which was incorrect.
 
 **String** | **Number** — the text color, either a [css color value](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value) or a normalized four-element array.
 
@@ -325,7 +325,7 @@ Default: monospace
 
 Default: normal
 
-> Note: per the 2026 source code, the default value is 'normal' (numerically equivalent to 400, the maptalks core TextMarkerSymbolizer default); the old documentation wrote 400.
+> Note: per the source code, the default value is 'normal' (numerically equivalent to 400, the maptalks core TextMarkerSymbolizer default); the old documentation wrote 400.
 
 **String** — the font weight, same as the CSS [font-weight](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight) definition.
 
@@ -478,7 +478,7 @@ Does not support function-type.
 
 **Number** — the perspective ratio of the text, range 0-1. 0 disables 3D perspective (the default); the larger the value, the stronger the near-larger-far-smaller effect (the vt create_text_painter default uniform is 0, and it defaults to 1 when textPlacement is line).
 
-> Note: the old documentation described textPerspectiveRatio as a Boolean with a default of true; in the 2026 source code it is a numeric ratio from 0-1 with a default of 0 (2026 cross-check).
+> Note: the old documentation described textPerspectiveRatio as a Boolean with a default of true; in the source code it is a numeric ratio from 0-1 with a default of 0.
 
 ---------
 
@@ -489,7 +489,7 @@ Does not support function-type.
 
 Default: #fff
 
-> Note: per the 2026 source code, the default value is white #fff (the vt LinePainter sets the default line color to white so it composites correctly with linePattern — see the source comments); the old documentation wrote #000.
+> Note: per the source code, the default value is white #fff (the vt LinePainter sets the default line color to white so it composites correctly with linePattern — see the source comments); the old documentation wrote #000.
 
 **String** | **Number[]** — the line color, either a [css color value](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value) or a normalized four-element array.
 
@@ -547,7 +547,7 @@ Default: 0
 
 Default: [0, 0, 0, 0]
 
-> Note: per the 2026 source code, the default value is [0, 0, 0, 0] (transparent, i.e. no stroke is drawn by default); the old documentation wrote #000.
+> Note: per the source code, the default value is [0, 0, 0, 0] (transparent, i.e. no stroke is drawn by default); the old documentation wrote #000.
 
 **String** | **Number[]** — the stroke color of the line, either a [css color value](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value) or a normalized four-element array.
 
@@ -565,7 +565,7 @@ Default: 0
 
 **Number** — the pattern fill mode at lineJoin. When 0, the pattern texture is drawn continuously across the join; when 1, the color of the first pixel of the image is used.
 
-> Note: lineJoinPatternMode no longer exists in the 2026 source code (grep of the whole vt package repository); it is a legacy property that no longer takes effect (2026 cross-check).
+> Note: lineJoinPatternMode no longer exists in the source code (grep of the whole vt package repository); it is a legacy property that no longer takes effect.
 
 ---------
 ### linePatternGap
@@ -581,7 +581,7 @@ Default: 0
 
 **Number** — the animation speed, range -5 to 5. A negative value reverses the animation direction.
 
-> Note: the "line animation" illustration (assets/line-animation.gif) from the original documentation is missing in the migration source and has not been included (2026 cross-check).
+> Note: the "line animation" illustration (assets/line-animation.gif) from the original documentation is missing in the migration source and has not been included.
 
 ---------
 ### lineDasharray
@@ -632,17 +632,17 @@ Default: [1, 1]
 
 Default: [0, 0]
 
-> Note: the uvOffset default has been adjusted to [0, 0] per the 2026 source code (FillPainter DEFAULT_UNIFORMS / PolygonLayer default); the old documentation wrote [0, 1].
+> Note: the uvOffset default has been adjusted to [0, 0] per the source code (FillPainter DEFAULT_UNIFORMS / PolygonLayer default); the old documentation wrote [0, 1].
 
 **Number[]** — a two-element array: the texture offset. 0 means no offset, 1 means an offset equal to the image size; e.g. 0.5 offsets the texture by half the image.
 
-## New in 2026
+## New
 
-The following symbol properties are newly added or supplemented in the 2026 source code (@maptalks/gl-layers vt package) and were not covered by the old documentation:
+The following symbol properties are newly added or supplemented in the @maptalks/vt package source and were not covered by the old documentation:
 
 ### WaterSymbol (water render plugin)
 
-Used by the water render plugin (realistic water), added in the 2026 source code:
+Used by the water render plugin (realistic water), added in the current version:
 
 | Property | Type | Description |
 | --- | --- | --- |
@@ -657,11 +657,11 @@ Used by the water render plugin (realistic water), added in the 2026 source code
 | waterSpeed | Number | Water flow speed |
 | waterDirection | Number | Water flow direction |
 
-> Note: water symbol defaults (2026 source code WaterPainter): ssr defaults to false, texWaveNormal / texWavePerturbation default to null, waterBaseColor defaults to [0.1451, 0.2588, 0.4863, 1], contrast defaults to 1, hsv defaults to [0, 0, 0], uvScale defaults to 3, animation defaults to false, waterSpeed defaults to 1, waterDirection defaults to 0.
+> Note: water symbol defaults (source code WaterPainter): ssr defaults to false, texWaveNormal / texWavePerturbation default to null, waterBaseColor defaults to [0.1451, 0.2588, 0.4863, 1], contrast defaults to 1, hsv defaults to [0, 0, 0], uvScale defaults to 3, animation defaults to false, waterSpeed defaults to 1, waterDirection defaults to 0.
 
 ### LitSymbol (lit render plugin)
 
-The symbol of the lit render plugin (PBR material 3D rendering), added in the 2026 source code:
+The symbol of the lit render plugin (PBR material 3D rendering), added in the current version:
 
 | Property | Type | Description |
 | --- | --- | --- |
@@ -677,4 +677,4 @@ The symbol of the lit render plugin (PBR material 3D rendering), added in the 20
 - `polygonPatternUV`: uv control of the fill texture.
 - Top/bottom face colors of ExtrudePolygonLayer: `topPolygonFill` and `bottomPolygonFill` (default [1, 1, 1, 1]).
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

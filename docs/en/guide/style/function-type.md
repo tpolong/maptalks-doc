@@ -36,7 +36,7 @@ At zoom 1 it is 4 pixels, at zoom 20 it is 20 pixels, and intermediate zoom leve
 
 ## Feature properties
 
-function-type computes using the properties of a GeoJSON Feature, the properties of a vector tile Feature, or the value returned by the getProperties method of a [Geometry](https://maptalks.org/maptalks.js/api/0.x/Geometry.html).
+function-type computes using the properties of a GeoJSON Feature, the properties of a vector tile Feature, or the value returned by the getProperties method of a [Geometry](/en/api/geometry).
 
 ## Properties
 
@@ -119,4 +119,4 @@ For example, in the following example, when a Feature's class property is highwa
 }
 ```
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

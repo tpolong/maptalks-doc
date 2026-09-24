@@ -4,7 +4,7 @@ title: API Reference
 
 # API Reference
 
-This reference is compiled from the latest maptalks source, covering the core library `maptalks` and the WebGL extension `@maptalks/gl-layers`. It contains 117 classes and reference entries, with one-to-one Chinese and English pages, grouped on the left by the nature of each class rather than by how often it is used.
+This reference is compiled from the latest maptalks source, covering the core library `maptalks` and the WebGL packages `maptalks-gl` and `@maptalks/analysis`. It contains 117 classes and reference entries, with one-to-one Chinese and English pages, grouped on the left by the nature of each class rather than by how often it is used.
 
 ## Import Conventions
 
@@ -13,7 +13,8 @@ This reference is compiled from the latest maptalks source, covering the core li
 import { Map, TileLayer, VectorLayer, Marker, Polygon } from "maptalks";
 
 // WebGL extension: vector tiles, WebGL vector layers, 3D scenes, spatial analysis
-import { VectorTileLayer, PointLayer, GroupGLLayer, ViewshedAnalysis } from "@maptalks/gl-layers";
+import { VectorTileLayer, PointLayer, GroupGLLayer } from "maptalks-gl";
+import { ViewshedAnalysis } from "@maptalks/analysis";
 ```
 
 > The REPL in the [example center](/en/examples/) uses the same import conventions, so code from these pages can be copied and run directly.

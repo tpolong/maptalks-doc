@@ -12,20 +12,11 @@ maptalks 的空间分析是一组基于 WebGL 的分析图层/分析对象，作
 
 ## 通用用法
 
-所有分析类都从 `@maptalks/gl-layers` 导入：
+所有分析类都从 `@maptalks/analysis` 导入：
 
 ```js
 import { Map } from "maptalks";
-import {
-  CutAnalysis,
-  CrossCutAnalysis,
-  ExcavateAnalysis,
-  FloodAnalysis,
-  HeightLimitAnalysis,
-  InSightAnalysis,
-  SkylineAnalysis,
-  ViewshedAnalysis
-} from "@maptalks/gl-layers";
+import { CutAnalysis, CrossCutAnalysis, ExcavateAnalysis, FloodAnalysis, HeightLimitAnalysis, InSightAnalysis, SkylineAnalysis, ViewshedAnalysis } from "@maptalks/analysis";
 ```
 
 `Analysis` 基类为各分析任务提供了统一的生命周期管理，常用方法如下：
@@ -54,7 +45,8 @@ import {
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GLTFLayer, GLTFMarker, CutAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker } from "maptalks-gl";
+import { CutAnalysis } from "@maptalks/analysis";
 
 const map = new Map("map", {
   center: [108.9605239272878, 34.21955775963946],
@@ -104,7 +96,8 @@ API：[Analysis](../api/analysis) · 示例：[剖切分析](/examples/#analysis
 
 ```js
 import { Map, Polygon } from "maptalks";
-import { GroupGLLayer, GLTFLayer, ExcavateAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer } from "maptalks-gl";
+import { ExcavateAnalysis } from "@maptalks/analysis";
 
 const map = new Map("map", {
   center: [108.9605239272878, 34.21955775963946],
@@ -159,7 +152,8 @@ API：[Analysis](../api/analysis) · 示例：[挖方分析](/examples/#analysis
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, Geo3DTilesLayer, FloodAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, Geo3DTilesLayer } from "maptalks-gl";
+import { FloodAnalysis } from "@maptalks/analysis";
 
 const map = new Map("map", {
   center: [108.95965, 34.21776],
@@ -169,7 +163,7 @@ const map = new Map("map", {
 const layer = new Geo3DTilesLayer("3dtiles", {
   services: [
     {
-      url: "http://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
+      url: "https://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
       heightOffset: -400
     }
   ]
@@ -214,7 +208,8 @@ API：[FloodAnalysis](../api/flood-analysis) · 示例：[水淹分析](/example
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, Geo3DTilesLayer, HeightLimitAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, Geo3DTilesLayer } from "maptalks-gl";
+import { HeightLimitAnalysis } from "@maptalks/analysis";
 
 // map / layer / groupGLLayer：3dtiles 场景搭建同上文「淹没 Flood」
 const heightLimitAnalysis = new HeightLimitAnalysis({
@@ -243,7 +238,7 @@ API：[Analysis](../api/analysis)（`HeightLimitAnalysis` 未提供独立 API �
 
 ```js
 import { Map } from "maptalks";
-import { InSightAnalysis } from "@maptalks/gl-layers";
+import { InSightAnalysis } from "@maptalks/analysis";
 
 // map / groupGLLayer：三维场景搭建见上文「淹没 Flood」
 const center = map.getCenter();
@@ -285,7 +280,8 @@ API：[Analysis](../api/analysis)（`InSightAnalysis` 未提供独立 API 页）
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, Geo3DTilesLayer, SkylineAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, Geo3DTilesLayer } from "maptalks-gl";
+import { SkylineAnalysis } from "@maptalks/analysis";
 
 // map / layer / groupGLLayer：3dtiles 场景搭建同上文「淹没 Flood」
 const skylineAnalysis = new SkylineAnalysis({
@@ -321,7 +317,8 @@ API：[SkylineAnalysis](../api/skyline-analysis) · 示例：[天际线分析](/
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, Geo3DTilesLayer, ViewshedAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, Geo3DTilesLayer } from "maptalks-gl";
+import { ViewshedAnalysis } from "@maptalks/analysis";
 
 // map / layer / groupGLLayer：3dtiles 场景搭建同上文「淹没 Flood」
 let lookPoint = [108.95948541183475, 34.21971441232435, 67.59082];

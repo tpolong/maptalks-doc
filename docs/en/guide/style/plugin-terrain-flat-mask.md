@@ -52,4 +52,4 @@ For more on the filter data filtering conditions, see [feature-filter](/en/guide
 
 The terrain-flat-mask render plugin has no symbol style properties; `symbol` can be set to an empty object `{}`.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-others.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

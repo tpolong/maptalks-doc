@@ -6,12 +6,12 @@ title: CutAnalysis
 
 A spatial analysis object for cut analysis, used to perform cut analysis on a 3D scene.
 
-It defines a cut plane (a cuboid region) with `position`, `rotation` and `scale`, and hides the parts outside the cut region so the inside of the model can be inspected. It is usually combined with TransformControl for interactive adjustment of the cut plane (verified against the 2026 source).
+It defines a cut plane (a cuboid region) with `position`, `rotation` and `scale`, and hides the parts outside the cut region so the inside of the model can be inspected. It is usually combined with TransformControl for interactive adjustment of the cut plane (verified against the source).
 
 ## Constructor
 
 ```js
-import { CutAnalysis } from '@maptalks/gl-layers';
+import { CutAnalysis } from '@maptalks/analysis';
 
 const cutAnalysis = new CutAnalysis({
   position: [center.x, center.y, 10],
@@ -43,7 +43,7 @@ Parameters:
 <div>
 <br/>
 
-Resets the cut plane to its initial position, rotation and scale (added after cross-checking the 2026 source code).
+Resets the cut plane to its initial position, rotation and scale (added after cross-checking the source code).
 
 Returns:
 
@@ -70,4 +70,4 @@ This class gains the following method groups from mixins; see the linked pages f
 
 ## Methods Inherited from Analysis
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source

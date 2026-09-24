@@ -12,7 +12,7 @@ VectorTileLayer的样式是在options.style中用JSON数据格式的。 样式�
 
 因为VectorTileLayer的样式属性非常丰富，用户可以采用 [MapTalks IDE](https://studio.maptalks.com) 软件来用所见即所得的方式来定制VectorTileLayer的样式，然后在程序中加载。
 
-它是 [maptalks](https://maptalks.org)核心库 [TileLayer](https://maptalks.org/maptalks.js/api/0.x/TileLayer.html)的子类，同样继承了TileLayer上的方法和配置。
+它是 [maptalks](https://maptalks.org)核心库 [TileLayer](/api/tile-layer)的子类，同样继承了TileLayer上的方法和配置。
 
 > [!NOTE]
 > 参数或配置名称上带 \* 表示该参数或配置不能为空，例如下面id后的\*号表示参数id是不能为空的：
@@ -24,10 +24,10 @@ VectorTileLayer的样式是在options.style中用JSON数据格式的。 样式�
 ## 构造函数
 
 ```js
-import { VectorTileLayer } from '@maptalks/gl-layers';
+import { VectorTileLayer } from 'maptalks-gl';
 
 new VectorTileLayer('vt0', {
-  urlTemplate: 'https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt'
+  urlTemplate: 'https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt'
 });
 ```
 <details><summary>详细信息</summary>
@@ -515,7 +515,7 @@ GL上下文创建事件。
 </div>
 </details>
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 <!-- api-gen:start -->
 ### VectorTileLayer 的其他事件

@@ -109,7 +109,7 @@ The following example loads a video patch into a 3D scene and controls play/paus
 ```html
 <script type="module">
   import { Map } from "maptalks";
-  import { GroupGLLayer, VideoLayer, VideoSurface } from "@maptalks/gl-layers";
+  import { GroupGLLayer, VideoLayer, VideoSurface } from "maptalks-gl";
 
   const map = new Map("map", {
     center: [-74.01026733935669, 40.710726717547544],
@@ -197,7 +197,7 @@ The following example loads a video patch into a 3D scene and controls play/paus
 <button id="btn-pause">暂停</button>
 
 <style>
-  @import "https://maptalks.com/api/maptalks.css";
+  @import "https://unpkg.com/maptalks/dist/maptalks.css";
 
   html,
   body {
@@ -219,5 +219,5 @@ The full interaction (including the sound toggle and the GLTF model scene) can b
 
 ## Notes
 
-- API details of VideoLayer / VideoSurface are in the `@maptalks/gl-layers` package (the new site's API docs are still being organized; standalone API pages are not yet provided).
+- API details of VideoLayer / VideoSurface are in the `@maptalks/video-layer` package (the new site's API docs are still being organized; standalone API pages are not yet provided).
 - Like GLTF layers and other 3D layers, a video layer must be mounted to a GroupGLLayer to be rendered.

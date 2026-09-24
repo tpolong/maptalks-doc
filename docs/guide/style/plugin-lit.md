@@ -115,6 +115,6 @@ filter 数据过滤条件的具体说明请点击[这里](/guide/style/feature-f
 
 **Object**，pbr材质设置，具体属性可以参考[材质说明文档](/guide/style/material#pbr材质)。
 
-> 注：新版本还有 tube/heatmap/billboard/terrain-flat-mask 渲染插件，暂无独立文档（2026 核对）
+> 注：新版本还有 tube/heatmap/billboard/terrain-flat-mask 渲染插件，暂无独立文档
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

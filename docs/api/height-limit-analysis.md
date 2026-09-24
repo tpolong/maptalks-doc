@@ -11,7 +11,7 @@ title: HeightLimitAnalysis
 ## 构造函数
 
 ```js
-import { HeightLimitAnalysis } from '@maptalks/gl-layers';
+import { HeightLimitAnalysis } from '@maptalks/analysis';
 
 const heightLimitAnalysis = new HeightLimitAnalysis({
   limitHeight: 25,
@@ -38,11 +38,11 @@ heightLimitAnalysis.addTo(groupGLLayer);
 
 ## 继承自FloodAnalysis的方法
 
-HeightLimitAnalysis 继承 [FloodAnalysis](./flood-analysis)（包括 waterHeight、waterColor、waterOpacity 等选项与 update、renderAnalysis 等方法，2026 源码核对）。
+HeightLimitAnalysis 继承 [FloodAnalysis](./flood-analysis)（包括 waterHeight、waterColor、waterOpacity 等选项与 update、renderAnalysis 等方法，源码核对）。
 
 ## 继承自Analysis的方法
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 ## 成员方法
 

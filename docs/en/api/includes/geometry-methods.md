@@ -630,7 +630,7 @@ Parameters:
 * options.title **String** The info window title
 * options.content **String** The info window content
 
-For other settings, see the [InfoWindow](https://maptalks.org/maptalks.js/api/0.x/ui.InfoWindow.html) documentation and [examples](https://maptalks.org/examples/cn/ui-control/ui-custom-infownd/#ui-control_ui-custom-infownd)
+For other settings, see the [InfoWindow](/en/api/info-window) documentation and [examples](/en/examples/#map/ui/ui-custom-infownd)
 
 Returns:
 
@@ -709,7 +709,7 @@ Parameters:
 * options.items.item **String** The menu item title
 * options.items.click **Function** The click handler
 
-For other settings, see the [Menu](https://maptalks.org/maptalks.js/api/0.x/ui.Menu.html) documentation and [examples](https://maptalks.org/examples/cn/ui-control/ui-custom-menu/#ui-control_ui-custom-menu)
+For other settings, see the [Menu](/en/api/menu) documentation and [examples](/en/examples/#map/ui/ui-custom-menu)
 
 Returns:
 

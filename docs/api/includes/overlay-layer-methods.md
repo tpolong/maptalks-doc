@@ -1,6 +1,6 @@
 ## 继承自OverlayLayer的方法
 
-具体可以参考[父类OverlayLayer的API文档](https://maptalks.org/maptalks.js/api/0.x/OverlayLayer.html)。
+具体可以参考[父类OverlayLayer的API文档](/api/overlay-layer)。
 
 <details><summary>getGeometryById(id)</summary>
 <div>

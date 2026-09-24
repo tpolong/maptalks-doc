@@ -1,6 +1,6 @@
 ## Methods Inherited from Layer
 
-See the [API documentation of the parent class Layer](https://maptalks.org/maptalks.js/api/0.x/Layer.html) for details.
+See the [API documentation of the parent class Layer](/en/api/layer) for details.
 
 <details><summary>getId()</summary>
 <div>

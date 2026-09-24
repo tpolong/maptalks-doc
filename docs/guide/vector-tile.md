@@ -20,7 +20,7 @@ title: 矢量瓦片
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 
 const map = new Map("map", {
   center: [-74.00912099912109, 40.71107610933129],
@@ -29,7 +29,7 @@ const map = new Map("map", {
 });
 
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
 });
 
 const groupLayer = new GroupGLLayer("group", [vt]).addTo(map);
@@ -152,10 +152,12 @@ node scripts/convert-maplibre-style.mjs https://tiles.openfreemap.org/styles/lib
 转换器会把样式的 sprite 图集写进 `sprites` 字段，并把 `icon-image` 映射成 `markerFile: "$<前缀><图标名>"`（前缀按样式来源自动取 `ofm` / `mb`，再用 `sourceName` 把图集注册到 maptalks 的 `ResourceProxy`）：
 
 ```js
+import { ResourceProxy } from "maptalks";
+
 const style = await fetch("{res}/styles/mapbox/streets-v12.json").then((r) => r.json());
 // 当前 CDN 版本（maptalks-gl 0.124.4）还不会自动读取 style.sprites，
 // 手动把图集注入 ResourceProxy，$<前缀><名字> 才能取到图标；更新的版本会自动处理
-await Promise.all(style.sprites.map((sprite) => maptalks.ResourceProxy.loadSprite(sprite)));
+await Promise.all(style.sprites.map((sprite) => ResourceProxy.loadSprite(sprite)));
 new VectorTileLayer("vt", { urlTemplate, style }).addTo(map);
 ```
 
@@ -185,7 +187,7 @@ streets-v12 / outdoors-v12 / light-v11 / dark-v11 / navigation-day-v1 这类经�
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 import "maptalks/dist/maptalks.css";
 
 const map = new Map("map", {
@@ -200,7 +202,7 @@ const map = new Map("map", {
 });
 
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
   style: [
     /* 样式数组，见上文 */
   ],

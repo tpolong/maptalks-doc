@@ -179,4 +179,4 @@ filter 数据过滤条件的具体说明请点击[这里](/guide/style/feature-f
 
 **Number[]**，管道纹理坐标的缩放比例。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

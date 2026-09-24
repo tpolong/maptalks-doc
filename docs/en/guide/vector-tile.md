@@ -20,7 +20,7 @@ When creating a `VectorTileLayer`, specify the tile service URL template with `u
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 
 const map = new Map("map", {
   center: [-74.00912099912109, 40.71107610933129],
@@ -29,7 +29,7 @@ const map = new Map("map", {
 });
 
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
 });
 
 const groupLayer = new GroupGLLayer("group", [vt]).addTo(map);
@@ -152,10 +152,12 @@ The conversion keeps each layer's visible zoom range (written into `minZoom`/`ma
 The converter writes the style's sprite atlas into `sprites` and maps `icon-image` to `markerFile: "$<prefix><icon name>"` (the prefix is inferred from the style source — `ofm` / `mb` — and `sourceName` registers the atlas in maptalks' `ResourceProxy`):
 
 ```js
+import { ResourceProxy } from "maptalks";
+
 const style = await fetch("{res}/styles/mapbox/streets-v12.json").then((r) => r.json());
 // the CDN build (maptalks-gl 0.124.4) does not read style.sprites automatically yet,
 // so register the atlas into ResourceProxy yourself; newer builds do it for you
-await Promise.all(style.sprites.map((sprite) => maptalks.ResourceProxy.loadSprite(sprite)));
+await Promise.all(style.sprites.map((sprite) => ResourceProxy.loadSprite(sprite)));
 new VectorTileLayer("vt", { urlTemplate, style }).addTo(map);
 ```
 
@@ -185,7 +187,7 @@ Vector tiles join a 3D scene through `GroupGLLayer`. Because the vector data in 
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 import "maptalks/dist/maptalks.css";
 
 const map = new Map("map", {
@@ -200,7 +202,7 @@ const map = new Map("map", {
 });
 
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
   style: [
     /* 样式数组，见上文 */
   ],

@@ -9,7 +9,7 @@
       altitudeScale: 1,
       // [Optional] Default: 0, in meters
       // Default height.
-      // Note: in the 2026 source code build3DExtrusion, defaultAltitude defaults to 0;
+      // Note: in the source code build3DExtrusion, defaultAltitude defaults to 0;
       // in the default dataConfig of ExtrudePolygonLayer (vector layer) it is 20.
       defaultAltitude: 0,
       // [Optional] Default: 0, in meters

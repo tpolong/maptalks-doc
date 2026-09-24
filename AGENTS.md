@@ -1,6 +1,6 @@
 # AGENTS.md — maptalks-docs
 
-面向 **maptalks 新引擎**（`maptalks` + `@maptalks/gl-layers`）的中英双语开发者文档站，基于 VitePress 静态构建。内容四块：**SDK 指南 / 样式指南 / API 参考 / 可运行示例**（约 390 个）。构建产物可部署到任意静态托管（当前演示站 `https://tpolong.github.io/`）。
+面向 **maptalks 新引擎**（`maptalks` 核心 + `maptalks-gl` 三维汇总包 + `@maptalks/analysis` 空间分析包）的中英双语开发者文档站，基于 VitePress 静态构建。内容四块：**SDK 指南 / 样式指南 / API 参考 / 可运行示例**（约 390 个）。构建产物可部署到任意静态托管（当前演示站 `https://tpolong.github.io/`）。
 
 ## 常用命令
 
@@ -87,13 +87,42 @@ API 页的**继承成员与方法/事件清单由源码自动生成**，不要�
   - **不要把文件内容写回 data**：一旦内联，首屏 chunk `examples_index.md.*.js` 会从 61KB 涨回 2MB。
 - `docs/examples/index.md` frontmatter 固定为 `layout: page` + `sidebar: false` + `aside: false`；带 hash（如 `#scene3d/tiles3d/load`）时渲染 REPL，否则渲染列表。
 - **REPL import map 三段式**（在 `ExampleRepl.vue` 内）：
-  1. maptalks 系大包走 **unpkg 原生 ESM**（`maptalks`、`@maptalks/gl-layers`、`@maptalks/gl`、vt / 3dtiles / gltf / analysis / video 等，版本已 pin）。
+  1. maptalks 系大包走 **unpkg 原生 ESM**（`maptalks`、`maptalks-gl`、`@maptalks/analysis`、`@maptalks/gl`、vt / 3dtiles / gltf / video 等，版本已 pin）。
+     示例源码里的 `"gl-layers"` 是**站点本地别名**（映射到 `/lib/gl-layers.mjs`，合并 maptalks-gl 与 @maptalks/analysis），
+     不是 npm 包名；写进文档给读者照抄时必须换成 `maptalks-gl` / `@maptalks/analysis`。
   2. 小依赖走 **esm.sh**（`gl-matrix`、`earcut`、`color` 等）。
   3. `@maptalks/regl` 映射到**本地** `/lib/regl-esm.mjs`（因为 npm 的 regl 无 `createREGL` 命名导出）。
   - **新增裸依赖**：在 `imports` 加映射 + 在 `config.ts` 的 `vite.optimizeDeps.exclude` 加该模块（见上）。
 - 示例代码里 `{res}` / `{urlTemplate}` / `{attribution}` 是**占位符**，由 `ExampleRepl.vue` 运行时替换；`{res}` → `/examples/resources`。不要直接改掉这些占位符逻辑。
-- 示例常依赖**外部瓦片/数据服务与公开测试 token**（Mapbox、MapTiler、高德、dvgis 等），部分服务当前不可达（如 `tiles.maptalks.com`）。REPL 渲染失败优先排查是否外部服务/网络问题，再怀疑示例代码。
+- 示例常依赖**外部瓦片/数据服务与公开测试 token**（Mapbox、MapTiler、高德、dvgis 等）。可用性以实测为准：
+  `https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt` 可用，`https://tiles.maptalks.com/**` 不可达。
+  REPL 渲染失败优先排查是否外部服务/网络问题，再怀疑示例代码。
 - 注意：源码示例内嵌的公开测试 token 曾触发 GitHub secret-scanning 拦截推送，调整示例时如无必要不要把新密钥写死。
+
+## 内容时效性体检（改 guide / 示例前必读）
+
+guide 与示例大量由 maptalks.com 旧站迁移而来，最容易出问题的是**包的导入路径、外部服务地址、指向旧站的外链**。
+三个脚本固化这套流程（均在 `scripts/`，可重复执行、幂等）：
+
+| 命令 | 作用 |
+| --- | --- |
+| `node scripts/check-guide-links.mjs` | 站内链接 / `#锚点` / `<!--@include:-->` / 示例深链体检；有死链时退出码非 0 |
+| `node scripts/fix-guide-stale-refs.mjs [--dry]` | guide 的过时引用迁移：`@maptalks/gl-layers` → `maptalks-gl` + `@maptalks/analysis`、不可达域名、旧站外链、http→https、年份当版本号等 |
+| `node scripts/fix-example-stale-refs.mjs [--dry]` | 示例（`docs/public/examples/**`）同一类问题：旧域样式表、http 混合内容、TLS 不可用的瓦片主机 |
+
+- **改包名/导入路径后必须校验符号存在**：`maptalks` 的导出以 unpkg 上的 `maptalks@<version>/dist/maptalks.es.js` 为准，
+  `maptalks-gl` 以源码 `packages/maptalks-gl/index.js` 为准。分析类（8 个：Cut/CrossCut/Excavate/Flood/HeightLimit/InSight/Skyline/Viewshed）
+  **不在** `maptalks-gl` 内，必须从 `@maptalks/analysis` 导入。
+- **判定"某地址已死"必须复测并记录状态码**，不要凭一次失败或凭印象写结论。已证实的两处反例：
+  `https://maptalks.com/api/maptalks.css` 与 `https://studio.maptalks.com/` 都**仍然可访问**
+  （前者是旧快照 10127B/76 选择器，npm 包内同路径才是当前版本 12090B/86 选择器，故仍改用 unpkg 版本化地址；
+  后者是在线的 umi SPA，链接必须保留）。真正不可用的是 `https://tiles.maptalks.com/**`（超时/ECONNRESET）。
+- **换链接目标要逐条确认等价**：旧站 `examples/cn/style/vector-marker` 对应站内同名示例
+  `/examples/#vector2d/style/vector-marker`；不要写"任意旧示例链接都指向某个示例"的兜底规则。
+- **健康检查脚本按 `\r?\n` 切行**：仓库内 md 混用 CRLF/LF，JS 的 `.` 不匹配 `\r`，
+  用 `split('\n')` 配 `/^#{1,6}\s+(.*)$/` 会一条标题都匹配不到（锚点检查会全部假报缺失）。
+- 示例的 `@import "https://…/maptalks.css"` 之类的片段在 REPL 里**不会**被注入（REPL 只执行 JS），
+  但示例目录下的 `index.html` 是可被直接打开的，地址仍须有效。
 
 ## 构建与部署
 

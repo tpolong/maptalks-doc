@@ -179,4 +179,4 @@ Default: [1, 1]
 
 **Number[]** — the scale of the tube texture coordinates.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-others.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

@@ -41,6 +41,6 @@ title: 矢量数据图层的性能优化
 |topPolygonFill           | 🆗           |   ❗    |
 |bottomPolygonFill        | 🆗           |   ❗    |
 
-> 注：旧文档中的 `textStyle`、`textWeight` 两个属性已在 @maptalks/gl-layers 新版本中移除（2026 源码中已注释），不再触发Mesh重建；`topPolygonFill`、`bottomPolygonFill` 为 3D 拉伸面图层（ExtrudePolygonLayer）新增的属性（2026 核对）。
+> 注：旧文档中的 `textStyle`、`textWeight` 两个属性已在 maptalks-gl 新版本中移除（源码中已注释），不再触发Mesh重建；`topPolygonFill`、`bottomPolygonFill` 为 3D 拉伸面图层（ExtrudePolygonLayer）新增的属性。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

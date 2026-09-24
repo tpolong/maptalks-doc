@@ -6,13 +6,13 @@ title: PointLayer
 
 PointLayer is a layer for rendering point data based on WebGL graphics technology. PointLayer uses the same rendering logic as [VectorTileLayer](/en/api/vector-tile-layer) and shares the same Symbol styles.
 
-PointLayer is used exactly like [VectorLayer](https://maptalks.org/maptalks.js/api/0.x/VectorLayer.html) in the core maptalks library, but benefits from WebGL technology for significantly better performance.
+PointLayer is used exactly like [VectorLayer](/en/api/vector-layer) in the core maptalks library, but benefits from WebGL technology for significantly better performance.
 
-PointLayer only supports adding [Marker](https://maptalks.org/maptalks.js/api/0.x/Marker.html) and [MultiPoint](https://maptalks.org/maptalks.js/api/0.x/MultiPoint.html). Adding other data will raise an error.
+PointLayer only supports adding [Marker](/en/api/marker) and [MultiPoint](/en/api/multi-point). Adding other data will raise an error.
 
 PointLayer supports all marker and text styles of the Symbol styles.
 
-It is an indirect subclass of [maptalks.OverlayLayer](https://maptalks.org/maptalks.js/api/0.x/OverlayLayer.html) (directly inheriting from Vector3DLayer) and inherits all methods of Vector3DLayer.
+It is an indirect subclass of [maptalks.OverlayLayer](/en/api/overlay-layer) (directly inheriting from Vector3DLayer) and inherits all methods of Vector3DLayer.
 
 > [!INFO]
 > By default, PointLayer assembles all Markers into a single 3D Mesh for rendering. Updating some Marker-related styles causes the layer to rebuild the Mesh, and frequent operations may cause performance issues. See the [performance optimization for vector layers](/en/api/vt-performance) document for details.
@@ -20,7 +20,7 @@ It is an indirect subclass of [maptalks.OverlayLayer](https://maptalks.org/mapta
 ## Constructor
 
 ```js
-import { PointLayer } from '@maptalks/gl-layers';
+import { PointLayer } from 'maptalks-gl';
 
 const layer = new PointLayer('point0');
 ```
@@ -174,9 +174,9 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 
 <!--@include: ./includes/js-events-example.md-->
 
-> Note: The renderer also fires rendering events such as `buildmarkermesh`, `updatemesh`, `partialupdate`, `removegeo`, and `iblupdated` (verified in 2026).
+> Note: The renderer also fires rendering events such as `buildmarkermesh`, `updatemesh`, `partialupdate`, `removegeo`, and `iblupdated`.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code
 
 <!-- api-gen:start -->
 ### Events Inherited from Vector3DLayer

@@ -115,6 +115,6 @@ Default: null
 
 **Object** — the PBR material settings. See the [material reference](/en/guide/style/material#pbr-material) for the specific properties.
 
-> Note: newer versions also have tube/heatmap/billboard/terrain-flat-mask render plugins, which have no standalone documentation yet (2026 cross-check).
+> Note: newer versions also have tube/heatmap/billboard/terrain-flat-mask render plugins, which have no standalone documentation yet.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

@@ -9,7 +9,7 @@ A spatial analysis object for viewshed analysis, used to perform viewshed analys
 ## Constructor
 
 ```js
-import { ViewshedAnalysis } from '@maptalks/gl-layers';
+import { ViewshedAnalysis } from '@maptalks/analysis';
 
 const viewshedAnalysis = new ViewshedAnalysis({
   eyePos: [121, 39, 100],
@@ -38,7 +38,7 @@ Parameters:
 |visibleColor          | Number[] | A 4-component normalized array; the color of the visible area   | [0, 1, 0, 0.3] |
 |invisibleColor        | Number[] | A 4-component normalized array; the color of the invisible area | [1, 0, 0, 0.3] |
 
-> Note: The default opacity of visibleColor / invisibleColor has been adjusted to 0.3 in the new version (default values [0.0, 1.0, 0.0, 0.3] / [1.0, 0.0, 0.0, 0.3] in the 2026 source's renderAnalysis, verified 2026).
+> Note: The default opacity of visibleColor / invisibleColor has been adjusted to 0.3 in the new version (default values [0.0, 1.0, 0.0, 0.3] / [1.0, 0.0, 0.0, 0.3] in the source's renderAnalysis).
 
 </div>
 </details>
@@ -49,7 +49,7 @@ Parameters:
 <div>
 <br/>
 
-Gets the coordinates of the 4 vertices of the viewshed pyramid (added after cross-checking the 2026 source code).
+Gets the coordinates of the 4 vertices of the viewshed pyramid (added after cross-checking the source code).
 
 Returns:
 
@@ -76,4 +76,4 @@ This class gains the following method groups from mixins; see the linked pages f
 
 ## Methods Inherited from Analysis
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source

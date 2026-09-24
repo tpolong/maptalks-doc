@@ -8,7 +8,7 @@ title: Geo3DTilesLayer
 
 如果有什么bug或建议，可以在[这里](https://github.com/fuzhenn/3dtiles-issues/)提交给开发组。
 
-> 注：3DTiles 渲染能力已并入 `@maptalks/gl-layers` 包统一发布，不再作为独立插件分发（2026 核对）。
+> 注：3DTiles 渲染能力已并入 `maptalks-gl` 包统一发布，不再作为独立插件分发。
 
 特点：
 * 个头小：gzip压缩前只有100多K（目前200多K是因为开启了源代码格式化）
@@ -27,11 +27,11 @@ title: Geo3DTilesLayer
 - [X] CRN图片纹理格式
 - [X] [KTX2图片纹理格式](https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_texture_basisu/README.md)
 
-> 注：2026 源码除上述格式外，还支持 i3s、s3m 数据格式（api-notes-others.md，2026 核对）。
+> 注：源码除上述格式外，还支持 i3s、s3m 数据格式。
 
-它是[maptalks.Layer](https://maptalks.org/maptalks.js/api/0.x/Layer.html)的子类，继承了 Layer 上所有的方法。
+它是[maptalks.Layer](/api/layer)的子类，继承了 Layer 上所有的方法。
 
-> 注：2026 源码中 Geo3DTilesLayer 通过 MaskLayerMixin 混入了遮罩裁剪能力，支持 setMask / removeMask / getMasks 等接口（2026 核对）。
+> 注：源码中 Geo3DTilesLayer 通过 MaskLayerMixin 混入了遮罩裁剪能力，支持 setMask / removeMask / getMasks 等接口。
 
 ## 示例代码
 
@@ -41,7 +41,7 @@ title: Geo3DTilesLayer
 <head>
 <title>3dtiles viewer</title>
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@maptalks/gl-layers/dist/maptalks-gl-layers.js"></script>
+<script type="text/javascript" src="https://unpkg.com/maptalks-gl/dist/maptalks-gl.js"></script>
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.draco/dist/transcoders.draco.js"></script>
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.crn/dist/transcoders.crn.js"></script>
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.ktx2/dist/transcoders.ktx2.js"></script>
@@ -96,12 +96,12 @@ layer.once('loadtileset', e => {
 
 ## npm安装
 ```
-npm i @maptalks/gl-layers
+npm i maptalks-gl
 ```
 ### 使用
 esm方式:
 ```js
-import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
+import { GroupGLLayer, Geo3DTilesLayer } from 'maptalks-gl';
 // 可选的draco插件
 // import '@maptalks/transcoders.draco';
 // 可选的crn纹理解析插件
@@ -111,7 +111,7 @@ import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
 ```
 commonjs方式：
 ```js
-const { GroupGLLayer, Geo3DTilesLayer } = require('@maptalks/gl-layers');
+const { GroupGLLayer, Geo3DTilesLayer } = require('maptalks-gl');
 // 可选的draco插件
 // require('@maptalks/transcoders.draco');
 // require('@maptalks/transcoders.crn');
@@ -168,7 +168,7 @@ KHR_draco_mesh_compression is required but @maptalks/transcoders.draco is not lo
 此时加载draco解码插件即可。
 ```html
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@maptalks/gl-layers/dist/maptalks-gl-layers.js"></script>
+<script type="text/javascript" src="https://unpkg.com/maptalks-gl/dist/maptalks-gl.js"></script>
 <!-- draco插件，必须写在gl后面，其他插件的前面，es方式加载时同理 -->
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.draco/dist/transcoders.draco.js"></script>
 ```
@@ -178,12 +178,12 @@ npm i @maptalks/transcoders.draco
 ```
 esm方式:
 ```js
-import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
+import { GroupGLLayer, Geo3DTilesLayer } from 'maptalks-gl';
 import '@maptalks/transcoders.draco';
 ```
 commonjs方式：
 ```js
-const { GroupGLLayer, Geo3DTilesLayer } = require('@maptalks/gl-layers');
+const { GroupGLLayer, Geo3DTilesLayer } = require('maptalks-gl');
 require('@maptalks/transcoders.draco');
 ```
 ## CRN纹理支持
@@ -191,7 +191,7 @@ require('@maptalks/transcoders.draco');
 因为crn插件是umd格式，采用esm载入时，需要webpack或rollup的commonjs插件支持。
 ```html
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@maptalks/gl-layers/dist/maptalks-gl-layers.js"></script>
+<script type="text/javascript" src="https://unpkg.com/maptalks-gl/dist/maptalks-gl.js"></script>
 <!-- crn插件，必须写在gl后面，其他插件的前面，es方式加载时同理 -->
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.crn/dist/transcoders.crn.js"></script>
 ```
@@ -201,12 +201,12 @@ npm i @maptalks/transcoders.crn
 ```
 esm加载方式:
 ```js
-import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
+import { GroupGLLayer, Geo3DTilesLayer } from 'maptalks-gl';
 import '@maptalks/transcoders.crn';
 ```
 commonjs方式：
 ```js
-const { GroupGLLayer, Geo3DTilesLayer } = require('@maptalks/gl-layers');
+const { GroupGLLayer, Geo3DTilesLayer } = require('maptalks-gl');
 require('@maptalks/transcoders.crn');
 ```
 ## KTX2纹理支持
@@ -214,7 +214,7 @@ require('@maptalks/transcoders.crn');
 因为ktx2插件是umd格式，采用esm载入时，需要webpack或rollup的commonjs插件支持。
 ```html
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@maptalks/gl-layers/dist/maptalks-gl-layers.js"></script>
+<script type="text/javascript" src="https://unpkg.com/maptalks-gl/dist/maptalks-gl.js"></script>
 <!-- ktx2插件，必须写在gl后面，其他插件的前面，es方式加载时同理 -->
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.ktx2/dist/transcoders.ktx2.js"></script>
 ```
@@ -224,12 +224,12 @@ npm i @maptalks/transcoders.ktx2
 ```
 esm方式加载:
 ```js
-import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
+import { GroupGLLayer, Geo3DTilesLayer } from 'maptalks-gl';
 import '@maptalks/transcoders.ktx2';
 ```
 commonjs方式：
 ```js
-const { GroupGLLayer, Geo3DTilesLayer } = require('@maptalks/gl-layers');
+const { GroupGLLayer, Geo3DTilesLayer } = require('maptalks-gl');
 require('@maptalks/transcoders.ktx2');
 ```
 ## 抗锯齿
@@ -275,27 +275,27 @@ const layer = new maptalks.Geo3DTilesLayer('3dtiles', {
 
 | 配置名                     |  类型   |  描述                     | 默认值 |
 |  ------                   | :----:  | ----                      |   :-----------:  |
-|maxGPUMemory               | Number  | 最大缓存数，单位M bytes。2026 源码默认：移动端 32，桌面端 1536 | 移动端 32 / 桌面端 1536 |
-|retireInterval             | Number  | 瓦片退役/回收检查间隔（毫秒，2026 源码核对补充） | 2000 |
+|maxGPUMemory               | Number  | 最大缓存数，单位M bytes。源码默认：移动端 32，桌面端 1536 | 移动端 32 / 桌面端 1536 |
+|retireInterval             | Number  | 瓦片退役/回收检查间隔（毫秒，源码核对补充） | 2000 |
 |loadingLimitOnInteracting  | Number  | 地图交互（拖动/缩放）过程中每帧瓦片请求最大数量 | 5 |
 |loadingLimit               | Number  | 每帧最多加载的瓦片数 | 10 |
-|debug                      | Boolean | 是否开启debug显示（2026 源码核对补充） | false |
-|meshLimitPerFrame          | Number  | 每帧最多创建的mesh数量（2026 源码核对补充） | 2 |
-|i3sNodepageLimitPerFrame   | Number  | 每帧最多加载的i3s nodepage数量（2026 源码核对补充） | 1 |
-|enableI3SCompressedGeometry | Boolean | 是否启用i3s压缩几何体（2026 源码核对补充） | true |
-|forceI3SCompressedGeometry | Boolean | 是否强制使用i3s压缩几何体（2026 源码核对补充） | true |
-|onlyCacheNoContentTileWhenError | Boolean | 出错时是否只缓存无content的瓦片（2026 源码核对补充） | true |
-|picking                    | Boolean | 是否启用拾取（2026 源码核对补充） | true |
-|pickingPoint               | Boolean | 拾取是否返回交点坐标（2026 源码核对补充） | true |
-|geometryEvents             | Boolean | 是否触发几何体事件（默认关闭，影响性能，2026 源码核对补充） | false |
-|alwaysShowTopTiles         | Boolean | 是否总是显示顶层瓦片（2026 源码核对补充） | true |
-|antialias                  | Boolean | 是否开启抗锯齿（2026 源码核对补充） | false |
+|debug                      | Boolean | 是否开启debug显示（源码核对补充） | false |
+|meshLimitPerFrame          | Number  | 每帧最多创建的mesh数量（源码核对补充） | 2 |
+|i3sNodepageLimitPerFrame   | Number  | 每帧最多加载的i3s nodepage数量（源码核对补充） | 1 |
+|enableI3SCompressedGeometry | Boolean | 是否启用i3s压缩几何体（源码核对补充） | true |
+|forceI3SCompressedGeometry | Boolean | 是否强制使用i3s压缩几何体（源码核对补充） | true |
+|onlyCacheNoContentTileWhenError | Boolean | 出错时是否只缓存无content的瓦片（源码核对补充） | true |
+|picking                    | Boolean | 是否启用拾取（源码核对补充） | true |
+|pickingPoint               | Boolean | 拾取是否返回交点坐标（源码核对补充） | true |
+|geometryEvents             | Boolean | 是否触发几何体事件（默认关闭，影响性能，源码核对补充） | false |
+|alwaysShowTopTiles         | Boolean | 是否总是显示顶层瓦片（源码核对补充） | true |
+|antialias                  | Boolean | 是否开启抗锯齿（源码核对补充） | false |
 |offset                     | Number/Function | 模型的绘制偏移量，如果是函数则会动态调用计算，函数的参数为模型的参考坐标： function (center) { }，可以用于计算 | [0, 0] |
-|renderer                   | String  | 渲染器（gl / gpu，均注册为 Geo3DTilesRenderer，2026 源码核对补充） | 'gl' |
-|forceRenderOnZooming / Moving / Rotating | Boolean | 缩放/移动/旋转时是否强制重绘（2026 源码核对补充） | true |
+|renderer                   | String  | 渲染器（gl / gpu，均注册为 Geo3DTilesRenderer，源码核对补充） | 'gl' |
+|forceRenderOnZooming / Moving / Rotating | Boolean | 缩放/移动/旋转时是否强制重绘（源码核对补充） | true |
 |services                   | Object[]  | 3dtiles数据源定义             | [] |
 
-> 注：maxGPUMemory、loadingLimit、loadingLimitOnInteracting 的默认值已在新版本中调整（2026 核对）：maxGPUMemory 移动端 32 / 桌面端 1536，loadingLimit 10，loadingLimitOnInteracting 5。
+> 注：maxGPUMemory、loadingLimit、loadingLimitOnInteracting 的默认值已在新版本中调整：maxGPUMemory 移动端 32 / 桌面端 1536，loadingLimit 10，loadingLimitOnInteracting 5。
 
 services 中每一项（Geo3DTilesService）的配置：
 
@@ -303,32 +303,32 @@ services 中每一项（Geo3DTilesService）的配置：
 |  ------                   | :----:  | ----                      |   :-----------:  |
 |services.url               | String    | 3dtiles数据集根json文件的url地址     | null |
 |services.maximumScreenSpaceError | Number | 最大屏幕空间误差，默认 8。当模型瓦片在屏幕上大小超过设定时会尝试请求下一级瓦片，数字越小请求的模型瓦片越精细 | 8 |
-|services.maxExtent         | Extent    | 服务范围（2026 源码核对补充） | null |
-|services.scale             | Number/[x,y,z] | 模型缩放比例（2026 源码核对补充） | null |
-|services.coordOffset       | Number[]  | 模型在xy平面上的偏移量，与地图坐标系一致（2026 源码核对补充） | null |
+|services.maxExtent         | Extent    | 服务范围（源码核对补充） | null |
+|services.scale             | Number/[x,y,z] | 模型缩放比例（源码核对补充） | null |
+|services.coordOffset       | Number[]  | 模型在xy平面上的偏移量，与地图坐标系一致（源码核对补充） | null |
 |services.heightOffset      | Number    | 数据的高度偏移量，单位米，可以用于升高或降低模型 | 0 |
-|services.rotation          | Number[]  | 模型在xyz轴上的旋转角度，单位度，取值范围-180到180（2026 源码核对补充） | null |
-|services.ecefTransform     | Number[]  | 模型在ECEF坐标系下的4x4变换矩阵，优先级高于 rotation / scale / coordOffset / heightOffset（2026 源码核对补充） | null |
-|services.subdomains        | String[]  | 服务子域列表，用于替换url中的 {s}（2026 源码核对补充） | null |
-|services.urlParams         | String    | 额外的url请求参数（2026 源码 worker 中仍支持） | null |
+|services.rotation          | Number[]  | 模型在xyz轴上的旋转角度，单位度，取值范围-180到180（源码核对补充） | null |
+|services.ecefTransform     | Number[]  | 模型在ECEF坐标系下的4x4变换矩阵，优先级高于 rotation / scale / coordOffset / heightOffset（源码核对补充） | null |
+|services.subdomains        | String[]  | 服务子域列表，用于替换url中的 {s}（源码核对补充） | null |
+|services.urlParams         | String    | 额外的url请求参数（源码 worker 中仍支持） | null |
 |services.fetchOptions      | Object    | fetch请求[参数](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)        | null |
-|services.opacity           | Number    | 透明度，取值范围0-1（2026 源码核对补充） | null |
-|services.visible           | Boolean   | 是否可见（2026 源码核对补充） | null |
-|services.debug             | Boolean   | 该服务是否开启debug（2026 源码核对补充） | false |
-|services.alphaTest         | Number    | 材质中的alphaTest阈值（2026 源码核对补充） | 0.1 |
-|services.pointSize         | Number/Function | 点云（pnts）pointSize（像素），支持zoom级function-type（2026 源码核对补充） | null |
-|services.pointOpacity      | Number/Function | 点云透明度 0~1，支持zoom级function-type（2026 源码核对补充） | null |
-|services.unlit             | Boolean   | 模型按unlit渲染，忽略全局灯光，适用于倾斜摄影等已含灯光信息的模型（2026 源码核对补充） | null |
-|services.doubleSided       | Boolean   | 模型是否双面绘制（2026 源码核对补充） | false |
-|services.maxTextureSize     | Number    | 模型纹理尺寸最大值（2026 源码核对补充） | 1024 |
-|services.material           | Object    | 材质 uniform 变量的预设值（2026 源码核对补充） | null |
-|services.ambientLight       | Number[]  | 三位归一化数组，手动设置模型的环境光值，可以用于提亮或变暗模型，没有设置时则默认读取map的环境光值。2026 源码中作为兼容旧配置保留（TileMeshPainter 中为老 ambientLight 设置的兼容性代码），新版本建议使用 environmentExposure | null |
-|services.environmentExposure | Number   | 环境光曝光参数（2026 源码核对补充） | null |
-|services.createNormalIfMissed | Boolean  | 模型缺少法线属性时自动创建（2026 源码核对补充） | null |
-|services.polygonFill        | Number[]  | 模型填充色（2026 源码核对补充） | null |
-|services.polygonOffset      | Object/Function | 手动设置模型的[polygon offset](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/polygonOffset)，可用于解决z-fighting；2026 源码中仍受支持（未在 TS 类型中声明），且可传函数动态计算 | { factor: 0, units: 0 } |
+|services.opacity           | Number    | 透明度，取值范围0-1（源码核对补充） | null |
+|services.visible           | Boolean   | 是否可见（源码核对补充） | null |
+|services.debug             | Boolean   | 该服务是否开启debug（源码核对补充） | false |
+|services.alphaTest         | Number    | 材质中的alphaTest阈值（源码核对补充） | 0.1 |
+|services.pointSize         | Number/Function | 点云（pnts）pointSize（像素），支持zoom级function-type（源码核对补充） | null |
+|services.pointOpacity      | Number/Function | 点云透明度 0~1，支持zoom级function-type（源码核对补充） | null |
+|services.unlit             | Boolean   | 模型按unlit渲染，忽略全局灯光，适用于倾斜摄影等已含灯光信息的模型（源码核对补充） | null |
+|services.doubleSided       | Boolean   | 模型是否双面绘制（源码核对补充） | false |
+|services.maxTextureSize     | Number    | 模型纹理尺寸最大值（源码核对补充） | 1024 |
+|services.material           | Object    | 材质 uniform 变量的预设值（源码核对补充） | null |
+|services.ambientLight       | Number[]  | 三位归一化数组，手动设置模型的环境光值，可以用于提亮或变暗模型，没有设置时则默认读取map的环境光值。源码中作为兼容旧配置保留（TileMeshPainter 中为老 ambientLight 设置的兼容性代码），新版本建议使用 environmentExposure | null |
+|services.environmentExposure | Number   | 环境光曝光参数（源码核对补充） | null |
+|services.createNormalIfMissed | Boolean  | 模型缺少法线属性时自动创建（源码核对补充） | null |
+|services.polygonFill        | Number[]  | 模型填充色（源码核对补充） | null |
+|services.polygonOffset      | Object/Function | 手动设置模型的[polygon offset](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/polygonOffset)，可用于解决z-fighting；源码中仍受支持（未在 TS 类型中声明），且可传函数动态计算 | { factor: 0, units: 0 } |
 
-> 注：services.maximumScreenSpaceError 的默认值已在新版本中调整为 8；示例代码中使用的 24.0 / 16.0 为推荐的调大值，数值越小加载的模型越精细、数据量越大（2026 核对）。
+> 注：services.maximumScreenSpaceError 的默认值已在新版本中调整为 8；示例代码中使用的 24.0 / 16.0 为推荐的调大值，数值越小加载的模型越精细、数据量越大。
 </div>
 </details>
 
@@ -371,7 +371,7 @@ layer.once('loadtileset', e => {
 </div>
 </details>
 
-> 注：以下方法为 2026 源码核对时补充（api-notes-others.md）。
+> 注：以下方法为源码核对时补充。
 
 <details><summary>addService(info)</summary>
 <div>
@@ -685,7 +685,7 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 <div>
 <br/>
 
-计算给定经纬度坐标处的 ENU（东北天）变换矩阵（2026 源码核对补充）。
+计算给定经纬度坐标处的 ENU（东北天）变换矩阵（源码核对补充）。
 
 参数：
 
@@ -789,7 +789,7 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 <div>
 <br/>
 
-每帧绘制瓦片后触发的事件（2026 源码核对补充）。
+每帧绘制瓦片后触发的事件（源码核对补充）。
 
 参数属性：
 
@@ -814,7 +814,7 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 |  ------         | :----:  | ----  |
 |type     | String          |   "canvasisdirty"  |
 |target   | Geo3DTilesLayer |   this     |
-|renderCount | Number        |   本帧绘制的瓦片数量（2026 源码核对补充） |
+|renderCount | Number        |   本帧绘制的瓦片数量（源码核对补充） |
 
 </div>
 </details>
@@ -823,7 +823,7 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 <div>
 <br/>
 
-GL 上下文创建事件（2026 源码核对补充）。
+GL 上下文创建事件（源码核对补充）。
 
 参数属性：
 
@@ -841,7 +841,7 @@ GL 上下文创建事件（2026 源码核对补充）。
 <div>
 <br/>
 
-3dtiles worker 就绪事件（2026 源码核对补充）。
+3dtiles worker 就绪事件（源码核对补充）。
 
 参数属性：
 
@@ -853,7 +853,7 @@ GL 上下文创建事件（2026 源码核对补充）。
 </div>
 </details>
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 <!-- api-gen:start -->
 ### 继承自 Layer 的事件

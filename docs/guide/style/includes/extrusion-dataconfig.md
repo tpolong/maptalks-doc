@@ -9,7 +9,7 @@
       altitudeScale: 1,
       // [可选] 默认为0，单位米
       // 默认的高度。
-      // 注：2026 源码 build3DExtrusion 中 defaultAltitude 缺省时为 0；
+      // 注：源码 build3DExtrusion 中 defaultAltitude 缺省时为 0；
       // ExtrudePolygonLayer（矢量图层）的默认 dataConfig 中为 20。
       defaultAltitude: 0,
       // [可选] 默认为0，单位米

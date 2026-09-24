@@ -6,15 +6,15 @@ title: LineStringLayer
 
 LineStringLayer是基于WebGL图形技术的的线数据绘制图层。 LineStringLayer和[VectorTileLayer](/api/vector-tile-layer)采用同样的绘制逻辑，共享同样的Symbol样式。
 
-LineStringLayer的用法和maptalks核心库中[VectorLayer](https://maptalks.org/maptalks.js/api/0.x/VectorLayer.html)完全一样，但得益于WebGL技术，性能有着显著提升。
+LineStringLayer的用法和maptalks核心库中[VectorLayer](/api/vector-layer)完全一样，但得益于WebGL技术，性能有着显著提升。
 
-LineStringLayer仅支持添加[LineString](https://maptalks.org/maptalks.js/api/0.x/LineString.html) 和 [MultiLineString](https://maptalks.org/maptalks.js/api/0.x/MultiLineString.html)，添加其他数据时会报错。
+LineStringLayer仅支持添加[LineString](/api/line-string) 和 [MultiLineString](/api/multi-line-string)，添加其他数据时会报错。
 
 LineStringLayer支持Symbol样式中的所有marker，text和line样式。 marker和text样式主要用于在线端点或线段中段指定位置绘制图标或沿线文字。
 
 ![沿线文字](./assets/line-text.jpg)
 
-它是[maptalks.OverlayLayer](https://maptalks.org/maptalks.js/api/0.x/OverlayLayer.html)的间接子类（直接继承自 Vector3DLayer），继承了 Vector3DLayer 上所有的方法。
+它是[maptalks.OverlayLayer](/api/overlay-layer)的间接子类（直接继承自 Vector3DLayer），继承了 Vector3DLayer 上所有的方法。
 
 > [!INFO]
 > LineStringLayer默认把所有LineString拼装成一个三维Mesh进行绘制，Marker部分样式的更新会导致图层重新构造Mesh，频繁操作会出现性能问题，具体说明请见[矢量图层的性能优化](/api/vt-performance)文档。
@@ -22,7 +22,7 @@ LineStringLayer支持Symbol样式中的所有marker，text和line样式。 marke
 ## 构造函数
 
 ```js
-import { LineStringLayer } from '@maptalks/gl-layers';
+import { LineStringLayer } from 'maptalks-gl';
 
 const layer = new LineStringLayer('line0');
 ```
@@ -165,9 +165,9 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 
 <!--@include: ./includes/js-events-example.md-->
 
-> 注：渲染器还会触发 `buildlinemesh`、`updatemesh`、`partialupdate`、`removegeo`、`iblupdated` 等渲染事件（2026 核对）。
+> 注：渲染器还会触发 `buildlinemesh`、`updatemesh`、`partialupdate`、`removegeo`、`iblupdated` 等渲染事件。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 <!-- api-gen:start -->
 ### 继承自 Vector3DLayer 的事件

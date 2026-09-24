@@ -27,7 +27,7 @@ Likewise, styles written for VectorTileLayer can be applied to GeoJSONVectorTile
 ## Constructor
 
 ```js
-import { GeoJSONVectorTileLayer } from '@maptalks/gl-layers';
+import { GeoJSONVectorTileLayer } from 'maptalks-gl';
 
 new GeoJSONVectorTileLayer('geojson0', {
   data: 'path/to/example.geojson'
@@ -329,7 +329,7 @@ Properties:
 </div>
 </details>
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code
 
 <!-- api-gen:start -->
 ### Other Events of GeoJSONVectorTileLayer

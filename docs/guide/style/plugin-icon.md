@@ -68,7 +68,7 @@ title: icon 渲染插件
 }
 ```
 
-> 注：icon/text 场景配置的默认值已按 2026 源码核对：VectorTileLayer 的 style 未设置 sceneConfig 时按 `{}` 处理，collision / fading 默认均为关闭（collision 还需图层 `options.collision: true` 才生效）；矢量图层（PointLayer）默认注入 `ICON_PAINTER_SCENECONFIG`（collision: true, fading: false）。旧文档 fading 默认 true 有误，已修正（2026 核对）。
+> 注：icon/text 场景配置的默认值已按源码核对：VectorTileLayer 的 style 未设置 sceneConfig 时按 `{}` 处理，collision / fading 默认均为关闭（collision 还需图层 `options.collision: true` 才生效）；矢量图层（PointLayer）默认注入 `ICON_PAINTER_SCENECONFIG`（collision: true, fading: false）。旧文档 fading 默认 true 有误，已修正。
 
 filter 数据过滤条件的具体说明请点击[这里](/guide/style/feature-filter)。
 
@@ -118,6 +118,6 @@ icon渲染插件支持[marker样式属性](/guide/style/symbols#marker样式属�
 
 默认值：false
 
-**Boolean**，文字部分是否支持bloom泛光后处理（2026 源码 IconPainter.getBloomSymbol 同时支持 markerBloom 与 textBloom）。
+**Boolean**，文字部分是否支持bloom泛光后处理（源码 IconPainter.getBloomSymbol 同时支持 markerBloom 与 textBloom）。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

@@ -12,7 +12,7 @@ Configure one or more 3dtiles data services through the `services` array:
 
 ```js
 import { Map } from "maptalks";
-import { Geo3DTilesLayer, GroupGLLayer } from "@maptalks/gl-layers";
+import { Geo3DTilesLayer, GroupGLLayer } from "maptalks-gl";
 
 const map = new Map("map", {
   center: [108.95965, 34.2189],
@@ -23,7 +23,7 @@ const map = new Map("map", {
 const layer = new Geo3DTilesLayer("3dtiles", {
   services: [
     {
-      url: "http://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
+      url: "https://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
       maximumScreenSpaceError: 16.0, // 屏幕空间误差，控制模型精细程度
       heightOffset: -400, // 高度偏移（米）
     },
@@ -56,7 +56,7 @@ Oblique photography models are usually used together with a vector tile base lay
 
 ```js
 import { Map } from "maptalks";
-import { Geo3DTilesLayer, GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { Geo3DTilesLayer, GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 
 const map = new Map("map", {
   center: [108.95965, 34.2189],
@@ -65,11 +65,11 @@ const map = new Map("map", {
 });
 
 const tilesLayer = new Geo3DTilesLayer("3dtiles", {
-  services: [{ url: "http://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json" }],
+  services: [{ url: "https://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json" }],
 });
 
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
 });
 
 const groupLayer = new GroupGLLayer("group", [tilesLayer, vt]).addTo(map);

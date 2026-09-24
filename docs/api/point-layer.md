@@ -6,13 +6,13 @@ title: PointLayer
 
 PointLayer是基于WebGL图形技术的的点数据绘制图层。 PointLayer和[VectorTileLayer](/api/vector-tile-layer)采用同样的绘制逻辑，共享同样的Symbol样式。
 
-PointLayer的用法和maptalks核心库中[VectorLayer](https://maptalks.org/maptalks.js/api/0.x/VectorLayer.html)完全一样，但得益于WebGL技术，性能有着显著提升。
+PointLayer的用法和maptalks核心库中[VectorLayer](/api/vector-layer)完全一样，但得益于WebGL技术，性能有着显著提升。
 
-PointLayer仅支持添加[Marker](https://maptalks.org/maptalks.js/api/0.x/Marker.html) 和 [MultiPoint](https://maptalks.org/maptalks.js/api/0.x/MultiPoint.html)，添加其他数据时会报错。
+PointLayer仅支持添加[Marker](/api/marker) 和 [MultiPoint](/api/multi-point)，添加其他数据时会报错。
 
 PointLayer支持Symbol样式中的所有marker和text样式。
 
-它是[maptalks.OverlayLayer](https://maptalks.org/maptalks.js/api/0.x/OverlayLayer.html)的间接子类（直接继承自 Vector3DLayer），继承了 Vector3DLayer 上所有的方法。
+它是[maptalks.OverlayLayer](/api/overlay-layer)的间接子类（直接继承自 Vector3DLayer），继承了 Vector3DLayer 上所有的方法。
 
 > [!INFO]
 > PointLayer默认把所有Marker拼装成一个三维Mesh进行绘制，Marker部分样式的更新会导致图层重新构造Mesh，频繁操作会出现性能问题，具体说明请见[矢量图层的性能优化](/api/vt-performance)文档。
@@ -20,7 +20,7 @@ PointLayer支持Symbol样式中的所有marker和text样式。
 ## 构造函数
 
 ```js
-import { PointLayer } from '@maptalks/gl-layers';
+import { PointLayer } from 'maptalks-gl';
 
 const layer = new PointLayer('point0');
 ```
@@ -174,9 +174,9 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 
 <!--@include: ./includes/js-events-example.md-->
 
-> 注：渲染器还会触发 `buildmarkermesh`、`updatemesh`、`partialupdate`、`removegeo`、`iblupdated` 等渲染事件（2026 核对）。
+> 注：渲染器还会触发 `buildmarkermesh`、`updatemesh`、`partialupdate`、`removegeo`、`iblupdated` 等渲染事件。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 <!-- api-gen:start -->
 ### 继承自 Vector3DLayer 的事件

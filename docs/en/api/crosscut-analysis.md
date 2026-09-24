@@ -11,7 +11,7 @@ It cuts through the model along a `cutLine` and displays the cross-section face,
 ## Constructor
 
 ```js
-import { CrossCutAnalysis } from '@maptalks/gl-layers';
+import { CrossCutAnalysis } from '@maptalks/analysis';
 
 const crosscutAnalysis = new CrossCutAnalysis({
   cutLine: [
@@ -33,7 +33,7 @@ Parameters:
 | Option   |   Type    |   Description                     | Default |
 |  ------ | :----:   | ----                      |   :-----------:  |
 |cutLine* | Array\<Array\> | The coordinate array of the cut line, forming a polyline | null |
-|cutLineColor | Number[] | The fill color of the cross-section face (the source's DEFAULT_WATER_COLOR, verified against the 2026 source) | [0.8451, 0.2588, 0.4863] |
+|cutLineColor | Number[] | The fill color of the cross-section face (the source's DEFAULT_WATER_COLOR, verified against the source) | [0.8451, 0.2588, 0.4863] |
 |textureUrl| String   | The url of the cross-section texture (mentioned in the README) | null |
 
 </div>
@@ -45,7 +45,7 @@ Parameters:
 <div>
 <br/>
 
-Samples `count` points at equal intervals along the cut line and returns the coordinate and the distance along the line of each sampled point, which can be used to draw a profile line or measure the elevation of the cross-section (added after cross-checking the 2026 source code).
+Samples `count` points at equal intervals along the cut line and returns the coordinate and the distance along the line of each sampled point, which can be used to draw a profile line or measure the elevation of the cross-section (added after cross-checking the source code).
 
 Parameters:
 
@@ -76,4 +76,4 @@ This class gains the following method groups from mixins; see the linked pages f
 
 ## Methods Inherited from Analysis
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source

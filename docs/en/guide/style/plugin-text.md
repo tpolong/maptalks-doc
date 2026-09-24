@@ -70,7 +70,7 @@ A render plugin that draws text for point data. The [icon render plugin](/en/gui
 }
 ```
 
-> Note: the text plugin's sceneConfig defaults have been cross-checked against the 2026 source code: when a VectorTileLayer style does not set sceneConfig, it is treated as `{}`, and collision / fading are both disabled by default (collision additionally requires the layer `options.collision: true` to take effect); vector layers (PointLayer) inject `ICON_PAINTER_SCENECONFIG` by default (collision: true, fading: false). The old documentation said fading defaults to true, which was incorrect and has been fixed (2026 cross-check).
+> Note: the text plugin's sceneConfig defaults have been cross-checked against the source code: when a VectorTileLayer style does not set sceneConfig, it is treated as `{}`, and collision / fading are both disabled by default (collision additionally requires the layer `options.collision: true` to take effect); vector layers (PointLayer) inject `ICON_PAINTER_SCENECONFIG` by default (collision: true, fading: false). The old documentation said fading defaults to true, which was incorrect and has been fixed.
 
 For more on the filter data filtering conditions, see [feature-filter](/en/guide/style/feature-filter).
 
@@ -103,6 +103,6 @@ In addition, the following properties are also supported:
 
 Default: false
 
-**Boolean** — whether to enable the bloom post-processing effect (in the 2026 source code, TextPainter.getBloomSymbol uses textBloom; the old documentation wrote markerBloom, which was incorrect).
+**Boolean** — whether to enable the bloom post-processing effect (in the source code, TextPainter.getBloomSymbol uses textBloom; the old documentation wrote markerBloom, which was incorrect).
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

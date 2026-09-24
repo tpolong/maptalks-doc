@@ -197,7 +197,7 @@ gltfMarker.outline();
 <div>
 <br/>
 
-设置模型的symbol.uniforms中的单个属性值，可指定nodeIndex将uniform只应用到指定节点（2026 源码补充）。
+设置模型的symbol.uniforms中的单个属性值，可指定nodeIndex将uniform只应用到指定节点（源码补充）。
 
 参数：
 
@@ -216,7 +216,7 @@ gltfMarker.outline();
 <div>
 <br/>
 
-返回模型的symbol.uniforms对象（2026 源码补充）。
+返回模型的symbol.uniforms对象（源码补充）。
 
 返回：
 
@@ -545,7 +545,7 @@ scale是三位数组，模型在本地坐标系x,y,z轴上的缩放倍数。
 
 参数：
 
-* anchorZ **String** z轴锚点，可选的值为 center 或者 top 或者 bottom（2026 源码核对，未设置时模型中心与坐标对齐）
+* anchorZ **String** z轴锚点，可选的值为 center 或者 top 或者 bottom（源码核对，未设置时模型中心与坐标对齐）
 
 返回：
 

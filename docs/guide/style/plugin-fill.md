@@ -79,4 +79,4 @@ fill渲染插件支持[polygon样式属性](/guide/style/symbols#polygon样式�
 
 **Boolean**，是否支持bloom泛光后处理。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

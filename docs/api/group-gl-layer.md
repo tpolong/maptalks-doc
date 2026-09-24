@@ -25,16 +25,16 @@ GroupGLLayer是一个WebGL容器图层，它可以添加多个WebGL子图层，�
   * sharpen 锐化效果，实现画面的锐化。
   * outline 物体高亮，能实现指定物体轮廓的高亮效果。
 
-> 注：TAA 抗锯齿与 SSAO 屏幕空间环境光遮蔽已在新版本中调整——2026 源码渲染器（GroupGLLayerRenderer）中 `isEnableTAA` / `isEnableSSAO` 恒返回 false，相关配置不再生效；FXAA、bloom、SSR、sharpen、outline 等后处理仍然有效（2026 核对）。
+> 注：TAA 抗锯齿与 SSAO 屏幕空间环境光遮蔽已在新版本中调整——源码渲染器（GroupGLLayerRenderer）中 `isEnableTAA` / `isEnableSSAO` 恒返回 false，相关配置不再生效；FXAA、bloom、SSR、sharpen、outline 等后处理仍然有效。
 
 你可以通过GroupGLLayer.options.sceneConfig来设置上述全局效果。
 
-它是[maptalks.Layer](https://maptalks.org/maptalks.js/api/0.x/Layer.html)的子类，继承了 Layer 上所有的方法。
+它是[maptalks.Layer](/api/layer)的子类，继承了 Layer 上所有的方法。
 
 ## 构造函数
 
 ```js
-import { GroupGLLayer } from '@maptalks/gl-layers';
+import { GroupGLLayer } from 'maptalks-gl';
 
 const layer = new GroupGLLayer('group', [layer0, layer1, layer2], options);
 ```
@@ -50,19 +50,19 @@ const layer = new GroupGLLayer('group', [layer0, layer1, layer2], options);
 |  ------             | :----:  | ----                      |   :-----------:  |
 |renderer             | String  | 渲染器类型：`'gl'`（WebGL）或 `'gpu'`（WebGPU）；当 `<a href="../guide/webgpu">WebGPU 渲染</a>` 开启时设为 `'gpu'`（子图层仍需以 `'gl'` 渲染器加入） | 'gl' |
 |antialias            | Boolean | 是否开启WebGL MSAA抗锯齿，默认开启，采样数由 multiSamples 控制；也可以关闭后使用后处理中的 FXAA 抗锯齿 | true |
-|multiSamples         | Number  | MSAA采样数（2026 源码核对补充） | 4 |
-|single               | Boolean | 是否只允许一个 GroupGLLayer 实例，false 时允许添加多个（2026 源码核对补充） | true |
+|multiSamples         | Number  | MSAA采样数（源码核对补充） | 4 |
+|single               | Boolean | 是否只允许一个 GroupGLLayer 实例，false 时允许添加多个（源码核对补充） | true |
 |geometryEvents       | Boolean  | 是否允许子图层上的Geometry响应事件                           | true |
 |extensions           | String[] | 必须开启的webgl扩展， [所有的扩展列表](https://github.com/regl-project/regl/blob/master/API.md#extensions)   | [] |
 |optionalExtensions   | String[] | 可以选择开启的webgl扩展， [所有的扩展列表](https://github.com/regl-project/regl/blob/master/API.md#extensions) | 见下方注解 |
 |sceneConfig          | Object   | 全局效果设置，[配置说明](#sceneconfig配置说明)          | {} |
 |onlyWebGL1           | Boolean | 是否强制用WebGL 1渲染，用以解决少数webgl2环境存在问题的设备 | false |
-|viewMoveThreshold    | Number  | 视角移动触发重绘的阈值（2026 源码核对补充） | 100 |
-|forceRedrawPerFrame  | Boolean | 是否每帧强制重绘（2026 源码核对补充） | false |
-|terrain              | Object  | 地形配置 TerrainOptions，type 支持 mapbox / tianditu / cesium / cesium-ion（2026 源码核对补充） | null |
+|viewMoveThreshold    | Number  | 视角移动触发重绘的阈值（源码核对补充） | 100 |
+|forceRedrawPerFrame  | Boolean | 是否每帧强制重绘（源码核对补充） | false |
+|terrain              | Object  | 地形配置 TerrainOptions，type 支持 mapbox / tianditu / cesium / cesium-ion（源码核对补充） | null |
 <!--@include: ./includes/layer-options.md-->
 
-> 注：antialias 默认值已在新版本中调整：2026 源码中默认开启 MSAA 抗锯齿（multiSamples 默认 4），sceneConfig 默认值为 {}（2026 核对）。
+> 注：antialias 默认值已在新版本中调整：源码中默认开启 MSAA 抗锯齿（multiSamples 默认 4），sceneConfig 默认值为 {}。
 
 默认的optionalExtensions:
 
@@ -70,7 +70,7 @@ const layer = new GroupGLLayer('group', [layer0, layer1, layer2], options);
 ['ANGLE_instanced_arrays','OES_element_index_uint','OES_standard_derivatives','OES_vertex_array_object','OES_texture_half_float', 'OES_texture_half_float_linear','OES_texture_float', 'OES_texture_float_linear','WEBGL_depth_texture', 'EXT_shader_texture_lod','WEBGL_compressed_texture_astc','WEBGL_compressed_texture_etc','WEBGL_compressed_texture_etc1','WEBGL_compressed_texture_pvrtc','WEBGL_compressed_texture_s3tc','WEBGL_compressed_texture_s3tc_srgb']
 ```
 
-> 注：2026 源码的默认 optionalExtensions 在以上列表基础上增加了 'EXT_frag_depth' 和 'EXT_texture_filter_anisotropic' 两个扩展（2026 核对）。
+> 注：源码的默认 optionalExtensions 在以上列表基础上增加了 'EXT_frag_depth' 和 'EXT_texture_filter_anisotropic' 两个扩展。
 
 > **WebGPU 渲染**：GroupGLLayer 注册了 `'gl'` 与 `'gpu'` 两种渲染器（`registerRenderer('gl'|'gpu', Renderer)`），可通过 `renderer: 'gpu'` 走 WebGPU 渲染路径。当地图以 `renderer: 'gpu'`（`MapGPURenderer`）运行时，配合 WebGPU 设备渲染。需要支持 WebGPU 的浏览器与 GPU（可用 `navigator.gpu` 判断）；详见 [WebGPU 渲染](/guide/webgpu)。注意：加入 GroupGLLayer 的子图层其 `renderer` 仍须为 `'gl'`（源码 `addLayer` 会对非 `'gl'` 子图层抛错）。
 
@@ -109,7 +109,7 @@ const sceneConfig = {
       polygonOpacity: 1                             // 透明度 0-1
     }
   },
-  weather: {                                        // 天气效果（2026 源码核对补充）
+  weather: {                                        // 天气效果（源码核对补充）
     enable: true,
     fog: {                                          // 雾效
       enable: true,
@@ -131,12 +131,12 @@ const sceneConfig = {
   postProcess: {
     enable: true,                                   // 是否开启后处理
     antialias: {
-      enable: true                                  // 是否开启FXAA后处理（TAA在2026源码渲染器中已停用）
+      enable: true                                  // 是否开启FXAA后处理（TAA在源码渲染器中已停用）
     },
     ssr: {
       enable: true                                  // 是否开启屏幕空间反射
     },
-    // ssao 已在新版本中停用（2026 核对，GroupGLLayerRenderer 中 isEnableSSAO 恒返回 false）
+    // ssao 已在新版本中停用（GroupGLLayerRenderer 中 isEnableSSAO 恒返回 false）
     // ssao: {
     //   enable: true,                              // 是否开启屏幕空间环境光遮蔽
     //   bias: 0.03,                                // 阴影偏移值，越大，阴影就越清晰，0.05 - 1
@@ -155,13 +155,13 @@ const sceneConfig = {
     },
     outline: {
       enable: true,                                 // 是否开启高亮后处理
-      // 2026 源码中 outline 还支持以下参数（2026 核对）：
+      // 源码中 outline 还支持以下参数：
       // highlightFactor: 1,
       // outlineFactor: 1,
       // outlineWidth: 1,
       // outlineColor: [1, 0, 0]
     }
-    // scanEffect: {                                 // 扫描特效（2026 源码新增）
+    // scanEffect: {                                 // 扫描特效（源码新增）
     //   enable: true,
     //   effects: [{ center, radius, speed, color }]
     // }
@@ -171,7 +171,7 @@ const sceneConfig = {
 const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 ```
 
-> 注：weather（fog/rain/snow）与 postProcess.scanEffect 扫描特效为 2026 源码确认的新增配置（api-notes-vt-gl.md）；outline 在 2026 源码中还支持 highlightFactor、outlineFactor、outlineWidth、outlineColor 参数（2026 核对）。
+> 注：weather（fog/rain/snow）与 postProcess.scanEffect 扫描特效为源码确认的新增配置；outline 在源码中还支持 highlightFactor、outlineFactor、outlineWidth、outlineColor 参数。
 
 ## 成员方法
 
@@ -222,7 +222,7 @@ const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 <div>
 <br/>
 
-获取sceneConfig.weather天气配置（2026 源码核对补充）。
+获取sceneConfig.weather天气配置（源码核对补充）。
 
 返回：
 
@@ -235,7 +235,7 @@ const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 <div>
 <br/>
 
-获取sceneConfig.postProcess.scanEffect扫描特效配置（2026 源码核对补充）。
+获取sceneConfig.postProcess.scanEffect扫描特效配置（源码核对补充）。
 
 返回：
 
@@ -248,7 +248,7 @@ const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 <div>
 <br/>
 
-设置地形配置并创建内部地形图层（2026 源码核对补充）。
+设置地形配置并创建内部地形图层（源码核对补充）。
 
 参数：
 
@@ -265,7 +265,7 @@ const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 <div>
 <br/>
 
-移除地形配置并删除内部地形图层（2026 源码核对补充）。
+移除地形配置并删除内部地形图层（源码核对补充）。
 
 返回：
 
@@ -278,7 +278,7 @@ const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 <div>
 <br/>
 
-获取地形配置（2026 源码核对补充）。
+获取地形配置（源码核对补充）。
 
 返回：
 
@@ -291,7 +291,7 @@ const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 <div>
 <br/>
 
-查询坐标处的地形高度（2026 源码核对补充）。
+查询坐标处的地形高度（源码核对补充）。
 
 参数：
 
@@ -330,7 +330,7 @@ const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 
 参数：
 
-* layer* **Layer** 图层对象（2026 源码也支持传图层 id 字符串）
+* layer* **Layer** 图层对象（源码也支持传图层 id 字符串）
 
 返回：
 
@@ -343,7 +343,7 @@ const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 <div>
 <br/>
 
-清空所有子图层（2026 源码核对补充）。
+清空所有子图层（源码核对补充）。
 
 返回：
 
@@ -420,7 +420,7 @@ const groupLayer = new GroupGLLayer('group', [layer], { sceneConfig });
 <div>
 <br/>
 
-清空所有空间分析任务（2026 源码核对补充）。
+清空所有空间分析任务（源码核对补充）。
 
 返回：
 
@@ -482,7 +482,7 @@ layer.identifyAtPoint([400, 300], { tolerance: 2 })
 | orderByCamera   | Boolean | 是否按照相机距离排序，更近的在前面 | false |
 | childLayers     | Layer[] | 指定的子图层 | [] |
 
-> 注：2026 源码中 identifyAtPoint 的 options 还支持 includeInternals（返回内部数据）选项（2026 核对）。
+> 注：源码中 identifyAtPoint 的 options 还支持 includeInternals（返回内部数据）选项。
 
 返回：
 
@@ -598,7 +598,7 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 
 TAA抗锯齿开始事件。
 
-> 注：taastart / taaend 事件已不再触发（2026 核对，GroupGLLayerRenderer 源码中对应的 fire 已注释，TAA 已停用）。
+> 注：taastart / taaend 事件已不再触发（GroupGLLayerRenderer 源码中对应的 fire 已注释，TAA 已停用）。
 
 参数属性：
 
@@ -628,7 +628,7 @@ TAA抗锯齿结束事件。
 <div>
 <br/>
 
-内部地形图层创建完成事件（2026 源码核对补充）。
+内部地形图层创建完成事件（源码核对补充）。
 
 参数属性：
 
@@ -643,7 +643,7 @@ TAA抗锯齿结束事件。
 <div>
 <br/>
 
-内部地形图层被移除事件（2026 源码核对补充）。
+内部地形图层被移除事件（源码核对补充）。
 
 参数属性：
 
@@ -658,7 +658,7 @@ TAA抗锯齿结束事件。
 <div>
 <br/>
 
-重发事件：当子图层渲染完成时对子图层触发 layerload（2026 源码核对补充）。
+重发事件：当子图层渲染完成时对子图层触发 layerload（源码核对补充）。
 
 参数属性：
 
@@ -669,7 +669,7 @@ TAA抗锯齿结束事件。
 </div>
 </details>
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 <!-- api-gen:start -->
 ### 继承自 Layer 的事件

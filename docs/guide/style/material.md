@@ -48,11 +48,11 @@ pbr材质参数如下：
 |uvRotation         | Number      | 纹理旋转角度，单位度，0 - 360                          | 0            |
 |uvOffsetAnim       | Number[2]   | uv方向上的偏移动画，不为1时开启动画，绝对值越大动画越快，负值时则反方向动画 | [0, 0] |
 
-> 注：bumpTexture、bumpScale、occlusionTexture、noiseTexture 与 clearCoat*（clearCoatThickness / clearCoatFactor / clearCoatIor / clearCoatRoughnessFactor）已从 2026 源码的 LitMaterial 类型接口中移除（`vt/src/types/index.ts` 不再声明；运行时 StandardMaterial 仍保留 bumpTexture / occlusionTexture / noiseTexture 等兼容，clearCoat* 系列无对应默认值）。
+> 注：bumpTexture、bumpScale、occlusionTexture、noiseTexture 与 clearCoat*（clearCoatThickness / clearCoatFactor / clearCoatIor / clearCoatRoughnessFactor）已从源码的 LitMaterial 类型接口中移除（`vt/src/types/index.ts` 不再声明；运行时 StandardMaterial 仍保留 bumpTexture / occlusionTexture / noiseTexture 等兼容，clearCoat* 系列无对应默认值）。
 >
-> 注：roughnessFactor 与 metallicFactor 在 2026 源码中类型为 Number[]（2026 核对）。
+> 注：roughnessFactor 与 metallicFactor 在源码中类型为 Number[]。
 >
-> 注：emitMultiplicative 默认值以 2026 源码为准为 1（StandardMaterial DEFAULT_UNIFORMS），旧文档写作 0。
+> 注：emitMultiplicative 默认值为 1（StandardMaterial DEFAULT_UNIFORMS），旧文档写作 0。
 
 示例：
 
@@ -112,7 +112,7 @@ pbr材质参数如下：
 |uvOffset           | Number[2]   | uv偏移量，0表示不偏移，1表示刚好偏移一个纹理尺寸。        | [0, 0]       |
 |extrusionOpacityRange| Number[2] | 侧面透明度的变化范围，如果最大值超过1，则表示在顶部一部分比例都是不透明的。 | [0, 1.8]     |
 
-> 注：ambientStrength 在 2026 源码（PhongMaterial / PhongShader 均无此属性）中已不存在，旧文档属性已移除；environmentExposure、extrusionOpacity 为 2026 源码 PhongMaterial 默认项（2026 核对）。
+> 注：ambientStrength 在源码中已不存在（PhongMaterial / PhongShader 均无此属性），旧文档属性已移除；environmentExposure、extrusionOpacity 为 PhongMaterial 的默认项。
 
 
 示例：
@@ -137,4 +137,4 @@ pbr材质参数如下：
 }
 ```
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

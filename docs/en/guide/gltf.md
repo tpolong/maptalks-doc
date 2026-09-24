@@ -12,7 +12,7 @@ gltf (GL Transmission Format) is the common format for transmitting models in 3D
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GLTFLayer, GLTFMarker } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker } from "maptalks-gl";
 
 const map = new Map("map", {
   center: [-74.01252272617671, 40.70709931736744],

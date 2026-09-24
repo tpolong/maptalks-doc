@@ -79,7 +79,7 @@ filter 数据过滤条件的具体说明请点击[这里](/guide/style/feature-f
 
 默认值：10
 
-> 注：默认值以 2026 源码为准为 10（NativePointPainter DEFAULT_UNIFORMS.markerSize），旧文档写作 1。
+> 注：默认值为 10（NativePointPainter DEFAULT_UNIFORMS.markerSize），旧文档写作 1。
 
 **Number**，点的尺寸，取值范围由平台决定，不同平台的原生点的尺寸可能有所不同。
 
@@ -97,4 +97,4 @@ filter 数据过滤条件的具体说明请点击[这里](/guide/style/feature-f
 
 **Number** 点的透明度，取值范围 0 - 1。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

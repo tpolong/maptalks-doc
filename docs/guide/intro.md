@@ -15,21 +15,25 @@ title: 快速开始
 
 ## 包结构
 
-maptalks 的代码按功能拆分为多个 npm 包，日常开发只需要两个：
+maptalks 的代码按功能拆分为多个 npm 包，日常开发通常只需要下面三个：
 
 | 包 | 说明 |
 | --- | --- |
 | [maptalks](https://www.npmjs.com/package/maptalks) | 核心包。包含地图、二维图层、几何图形、UI 控件等基础能力。 |
-| [@maptalks/gl-layers](https://www.npmjs.com/package/@maptalks/gl-layers) | WebGL 图层汇总包。包含三维图层的渲染基础设施（GroupGLLayer）以及所有三维图层插件（矢量瓦片、gltf、3dtiles、视频等）。 |
+| [maptalks-gl](https://www.npmjs.com/package/maptalks-gl) | WebGL 图层汇总包。包含三维图层的渲染基础设施（GroupGLLayer）以及所有三维图层插件（矢量瓦片、gltf、3dtiles、视频、三维变换控件等）。 |
+| [@maptalks/analysis](https://www.npmjs.com/package/@maptalks/analysis) | 空间分析包。包含剖切、交叉剖切、可视域、天际线、淹没、限高、开挖等分析类。这些类**不在** `maptalks-gl` 中导出，须单独安装并从本包引入。 |
 
-`@maptalks/gl-layers` 是三维图层插件的汇总包，内部封装了 `@maptalks/gl`、`@maptalks/vt`、`@maptalks/gltf-layer`、`@maptalks/3dtiles` 等插件，安装这一个包即可使用全部三维图层，无需再单独安装和引入其他 WebGL 插件。
+`maptalks-gl` 是三维图层插件的汇总包，内部封装了 `@maptalks/gl`、`@maptalks/vt`、`@maptalks/gltf-layer`、`@maptalks/3dtiles`、`@maptalks/video-layer`、`@maptalks/transform-control` 等插件，安装这一个包即可使用全部三维图层，无需再单独安装和引入其他 WebGL 插件；空间分析类不在此列，见上表。
 
 ## 安装
 
-使用 npm 或 pnpm 安装两个包：
+使用 npm 或 pnpm 安装：
 
 ```bash
-npm install maptalks @maptalks/gl-layers
+npm install maptalks maptalks-gl
+
+# 需要空间分析时再安装
+npm install @maptalks/analysis
 ```
 
 然后在代码中引入 maptalks 的样式（核心包构建后自带）：
@@ -59,7 +63,7 @@ const map = new Map("map", {
     urlTemplate:
       "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
-      "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
 });
 ```
@@ -72,7 +76,7 @@ const map = new Map("map", {
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 import "maptalks/dist/maptalks.css";
 
 const map = new Map("map", {
@@ -83,7 +87,7 @@ const map = new Map("map", {
 
 // 矢量瓦片图层：加载 mvt 格式的矢量瓦片数据
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
 });
 
 // 三维图层加入 GroupGLLayer，再添加到地图

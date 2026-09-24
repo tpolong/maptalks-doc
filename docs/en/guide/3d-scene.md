@@ -12,12 +12,12 @@ Unlike 2D layers, which are added directly with `addTo(map)`, **all 3D layers mu
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 
 const map = new Map("map", { center: [-74.009, 40.711], zoom: 16, pitch: 56 });
 
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
 });
 
 // 所有三维图层放入一个 GroupGLLayer

@@ -11,7 +11,7 @@ ExtrudePolygonLayer 是[PolygonLayer](./polygon-layer)的 WebGL 三维拉伸图�
 ## 构造函数
 
 ```js
-import { ExtrudePolygonLayer } from '@maptalks/gl-layers';
+import { ExtrudePolygonLayer } from 'maptalks-gl';
 
 const layer = new ExtrudePolygonLayer('extrude');
 ```
@@ -125,7 +125,7 @@ ExtrudePolygonLayer 支持的 symbol 属性：
 
 对 Circle、Ellipse、Sector、Rectangle 等特殊几何，图层会自动计算最小外接矩形（OMBB）并转换为多边形后拉伸。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 ## 静态方法
 

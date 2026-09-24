@@ -9,7 +9,7 @@ title: ViewshedAnalysis
 ## 构造函数
 
 ```js
-import { ViewshedAnalysis } from '@maptalks/gl-layers';
+import { ViewshedAnalysis } from '@maptalks/analysis';
 
 const viewshedAnalysis = new ViewshedAnalysis({
   eyePos: [121, 39, 100],
@@ -38,7 +38,7 @@ viewshedAnalysis.addTo(groupGLLayer);
 |visibleColor          | Number[] | 四位归一化数组，可视区域颜色   | [0, 1, 0, 0.3] |
 |invisibleColor        | Number[] | 四位归一化数组，不可视区域颜色 | [1, 0, 0, 0.3] |
 
-> 注：visibleColor / invisibleColor 的默认透明度已在新版本中调整为 0.3（2026 源码 renderAnalysis 默认值 [0.0, 1.0, 0.0, 0.3] / [1.0, 0.0, 0.0, 0.3]，2026 核对）。
+> 注：visibleColor / invisibleColor 的默认透明度已在新版本中调整为 0.3（源码 renderAnalysis 默认值 [0.0, 1.0, 0.0, 0.3] / [1.0, 0.0, 0.0, 0.3]）。
 
 </div>
 </details>
@@ -49,7 +49,7 @@ viewshedAnalysis.addTo(groupGLLayer);
 <div>
 <br/>
 
-获取viewshed棱锥的4个顶点的坐标（2026 源码核对补充）。
+获取viewshed棱锥的4个顶点的坐标（源码核对补充）。
 
 返回：
 
@@ -76,4 +76,4 @@ viewshedAnalysis.addTo(groupGLLayer);
 
 ## 继承自Analysis的方法
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

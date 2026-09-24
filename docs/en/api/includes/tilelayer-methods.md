@@ -1,6 +1,6 @@
 ## Methods Inherited from TileLayer
 
-See the [API documentation of the parent class TileLayer](https://maptalks.org/maptalks.js/api/0.x/TileLayer.html) for details.
+See the [API documentation of the parent class TileLayer](/en/api/tile-layer) for details.
 
 <details><summary>getTileSize()</summary>
 <div>

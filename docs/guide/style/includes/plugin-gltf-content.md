@@ -1,6 +1,6 @@
 ## 动态样式
 
-gltf 渲染插件支持 [function-type](/guide/style/function-type) 的属性有：`visible`、`modelHeight`、`translationX` / `translationY` / `translationZ`、`rotationX` / `rotationY` / `rotationZ`、`scaleX` / `scaleY` / `scaleZ`（2026 源码 GLTFMixin）。
+gltf 渲染插件支持 [function-type](/guide/style/function-type) 的属性有：`visible`、`modelHeight`、`translationX` / `translationY` / `translationZ`、`rotationX` / `rotationY` / `rotationZ`、`scaleX` / `scaleY` / `scaleZ`（源码 GLTFMixin）。
 
 例如以下示例，能让模型的高度在不同地图级别上由小变大：
 
@@ -12,7 +12,7 @@ gltf 渲染插件支持 [function-type](/guide/style/function-type) 的属性有
 }
 ```
 
-> 注：GLTF 插件不支持 polygonFill / polygonOpacity 等颜色的 function-type（旧文档所述有误，2026 源码 GLTFMixin.getFnTypeConfig 返回空）。
+> 注：GLTF 插件不支持 polygonFill / polygonOpacity 等颜色的 function-type（旧文档所述有误，源码 GLTFMixin.getFnTypeConfig 返回空）。
 
 ## 支持的Symbol样式属性
 
@@ -93,7 +93,7 @@ gltf 渲染插件支持 [function-type](/guide/style/function-type) 的属性有
 
 **Number**，模型在本地坐标系 x（/y/z）轴上的旋转角度，单位为度。
 
-> 注：2026 源码（GLTFMixin）中模型的位移/旋转/缩放使用 translationX/Y/Z、rotationX/Y/Z、scaleX/Y/Z 分量形式（且均支持 function-type），旧文档的 translation / scale / rotation 数组写法已不适用（2026 核对）。
+> 注：源码（GLTFMixin）中模型的位移/旋转/缩放使用 translationX/Y/Z、rotationX/Y/Z、scaleX/Y/Z 分量形式（且均支持 function-type），旧文档的 translation / scale / rotation 数组写法已不适用。
 
 -----------
 ### fixSizeOnZoom

@@ -48,4 +48,4 @@ PostGIS now provides the `ST_AsMVT` SQL function, which can output query results
 
 The MapTalks solution provides the VTS server software for real-time vector tile tiling of data at the scale of hundreds of millions of records. You can find detailed information here.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

@@ -630,7 +630,7 @@ Geometry是否显示。
 * options.title **String** 信息框标题
 * options.content **String** 信息框内容
 
-其他设置可以参考[InfoWindow](https://maptalks.org/maptalks.js/api/0.x/ui.InfoWindow.html)中的说明和[示例](https://maptalks.org/examples/cn/ui-control/ui-custom-infownd/#ui-control_ui-custom-infownd)
+其他设置可以参考[InfoWindow](/api/info-window)中的说明和[示例](/examples/#map/ui/ui-custom-infownd)
 
 返回：
 
@@ -709,7 +709,7 @@ Geometry是否显示。
 * options.items.item **String** 菜单显示标题
 * options.items.click **Function** 响应函数
 
-其他设置可以参考[Menu](https://maptalks.org/maptalks.js/api/0.x/ui.Menu.html)中的说明和[示例](https://maptalks.org/examples/cn/ui-control/ui-custom-menu/#ui-control_ui-custom-menu)
+其他设置可以参考[Menu](/api/menu)中的说明和[示例](/examples/#map/ui/ui-custom-menu)
 
 返回：
 

@@ -108,4 +108,4 @@ Default: 1
 
 **Number** — the weight of each point in the heatmap. Supports [function-type](/en/guide/style/function-type) expressions.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-others.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

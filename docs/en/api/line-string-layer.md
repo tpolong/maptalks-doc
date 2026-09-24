@@ -6,15 +6,15 @@ title: LineStringLayer
 
 LineStringLayer is a layer for rendering line data based on WebGL graphics technology. LineStringLayer uses the same rendering logic as [VectorTileLayer](/en/api/vector-tile-layer) and shares the same Symbol styles.
 
-LineStringLayer is used exactly like [VectorLayer](https://maptalks.org/maptalks.js/api/0.x/VectorLayer.html) in the core maptalks library, but benefits from WebGL technology for significantly better performance.
+LineStringLayer is used exactly like [VectorLayer](/en/api/vector-layer) in the core maptalks library, but benefits from WebGL technology for significantly better performance.
 
-LineStringLayer only supports adding [LineString](https://maptalks.org/maptalks.js/api/0.x/LineString.html) and [MultiLineString](https://maptalks.org/maptalks.js/api/0.x/MultiLineString.html). Adding other data will raise an error.
+LineStringLayer only supports adding [LineString](/en/api/line-string) and [MultiLineString](/en/api/multi-line-string). Adding other data will raise an error.
 
 LineStringLayer supports all marker, text and line styles of the Symbol styles. The marker and text styles are mainly used to draw icons at specified positions such as line endpoints or mid-segments, or text along the line.
 
 ![Text along the line](./assets/line-text.jpg)
 
-It is an indirect subclass of [maptalks.OverlayLayer](https://maptalks.org/maptalks.js/api/0.x/OverlayLayer.html) (directly inheriting from Vector3DLayer) and inherits all methods of Vector3DLayer.
+It is an indirect subclass of [maptalks.OverlayLayer](/en/api/overlay-layer) (directly inheriting from Vector3DLayer) and inherits all methods of Vector3DLayer.
 
 > [!INFO]
 > By default, LineStringLayer assembles all LineStrings into a single 3D Mesh for rendering. Updating some Marker-related styles causes the layer to rebuild the Mesh, and frequent operations may cause performance issues. See the [performance optimization for vector layers](/en/api/vt-performance) document for details.
@@ -22,7 +22,7 @@ It is an indirect subclass of [maptalks.OverlayLayer](https://maptalks.org/mapta
 ## Constructor
 
 ```js
-import { LineStringLayer } from '@maptalks/gl-layers';
+import { LineStringLayer } from 'maptalks-gl';
 
 const layer = new LineStringLayer('line0');
 ```
@@ -165,9 +165,9 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 
 <!--@include: ./includes/js-events-example.md-->
 
-> Note: The renderer also fires rendering events such as `buildlinemesh`, `updatemesh`, `partialupdate`, `removegeo`, and `iblupdated` (verified in 2026).
+> Note: The renderer also fires rendering events such as `buildlinemesh`, `updatemesh`, `partialupdate`, `removegeo`, and `iblupdated`.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code
 
 <!-- api-gen:start -->
 ### Events Inherited from Vector3DLayer

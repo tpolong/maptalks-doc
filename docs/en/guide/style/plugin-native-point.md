@@ -79,7 +79,7 @@ Default: square
 
 Default: 10
 
-> Note: per the 2026 source code, the default value is 10 (NativePointPainter DEFAULT_UNIFORMS.markerSize); the old documentation wrote 1.
+> Note: per the source code, the default value is 10 (NativePointPainter DEFAULT_UNIFORMS.markerSize); the old documentation wrote 1.
 
 **Number** — the point size. The valid range is determined by the platform, and native point sizes may vary across platforms.
 
@@ -97,4 +97,4 @@ Default: 1
 
 **Number** — point opacity, range 0-1.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

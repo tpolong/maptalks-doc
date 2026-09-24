@@ -8,14 +8,14 @@ GLTFLayer是基于WebGL图形技术的[GLTF三维模型](../guide/gltf)绘制图
 
 GLTFLayer仅支持添加[GLTFMarker](./gltf-marker)和[MultiGLTFMarker](./multi-gltf-marker)，添加其他数据时会报错。
 
-它是[maptalks.OverlayLayer](https://maptalks.org/maptalks.js/api/0.x/OverlayLayer.html)的子类，继承了 OverlayLayer 上所有的方法。
+它是[maptalks.OverlayLayer](/api/overlay-layer)的子类，继承了 OverlayLayer 上所有的方法。
 
-> 注：2026 源码中 GLTFLayer 的实际继承链为 `GLTFLayer → MaskLayerMixin(AbstractGLTFLayer) → maptalks.OverlayLayer`，构造函数签名支持 `new GLTFLayer(id, geometries?, options?)`，省略 geometries 时 options 可作为第二参数传入（2026 核对）
+> 注：源码中 GLTFLayer 的实际继承链为 `GLTFLayer → MaskLayerMixin(AbstractGLTFLayer) → maptalks.OverlayLayer`，构造函数签名支持 `new GLTFLayer(id, geometries?, options?)`，省略 geometries 时 options 可作为第二参数传入
 
 ## 构造函数
 
 ```js
-import { GLTFLayer } from '@maptalks/gl-layers';
+import { GLTFLayer } from 'maptalks-gl';
 
 const layer = new GLTFLayer('gltf0');
 ```
@@ -30,7 +30,7 @@ const layer = new GLTFLayer('gltf0');
 |  ------             | :----:  | ----                      |   :-----------:  |
 <!--@include: ./includes/layer-options.md-->
 
-GLTFLayer 特有的配置项（2026 源码补充）：
+GLTFLayer 特有的配置项（源码补充）：
 
 | 配置名               |  类型   |  描述                     | 默认值 |
 |  ------             | :----:  | ----                      |   :-----------:  |
@@ -117,10 +117,10 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 <!--@include: ./includes/api/layer-statics.md-->
 <!-- api-gen:end -->
 
-## 方法（2026 源码补充）
+## 方法（源码补充）
 
 > [!NOTE]
-> 以下 GLTFLayer 专属方法在 @maptalks/gl-layers 2026 源码中提供，旧版文档未收录：
+> 以下 GLTFLayer 专属方法在 maptalks-gl 源码中提供，旧版文档未收录：
 
 | 方法 | 简化签名 | 说明 |
 | --- | --- | --- |
@@ -141,14 +141,14 @@ const layerCopied = maptalks.Layer.fromJSON(json);
 
 <!--@include: ./includes/js-events-example.md-->
 
-> [!NOTE] 事件核对（2026 源码）
+> [!NOTE] 事件核对（源码）
 > - `modelload`：所有模型加载完成，参数为 `{ models: url 列表 }`
 > - `modelerror`：模型加载出错，参数为 `{ url, info }`
 > - `setstyle`：设置 style 后触发，参数 `{ style }`
 > - `updatesymbol`：更新 symbol 后触发，参数 `{ index, symbol }`
 > - `load` / `add`：marker 模型加载完成 / 添加时在 marker 上触发（含 layer 引用）
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 <!-- api-gen:start -->
 ### GLTFLayer 的其他事件

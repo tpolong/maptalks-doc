@@ -8,7 +8,7 @@ A 3DTiles rendering layer plugin used to load Cesium's 3DTiles data.
 
 If you find any bugs or have suggestions, you can submit them to the dev team [here](https://github.com/fuzhenn/3dtiles-issues/).
 
-> Note: The 3DTiles rendering capability has been merged into the `@maptalks/gl-layers` package and is no longer distributed as a standalone plugin (verified 2026).
+> Note: The 3DTiles rendering capability has been merged into the `maptalks-gl` package and is no longer distributed as a standalone plugin.
 
 Features:
 * Small footprint: only about 100 KB before gzip compression (currently a bit over 200 KB because source code formatting is enabled)
@@ -27,11 +27,11 @@ Supported features:
 - [X] CRN image texture format
 - [X] [KTX2 image texture format](https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_texture_basisu/README.md)
 
-> Note: In addition to the formats above, the 2026 source also supports the i3s and s3m data formats (api-notes-others.md, verified 2026).
+> Note: In addition to the formats above, the source also supports the i3s and s3m data formats.
 
-It is a subclass of [maptalks.Layer](https://maptalks.org/maptalks.js/api/0.x/Layer.html) and inherits all methods on Layer.
+It is a subclass of [maptalks.Layer](/en/api/layer) and inherits all methods on Layer.
 
-> Note: In the 2026 source, Geo3DTilesLayer mixes in masking/clipping capability through MaskLayerMixin, supporting interfaces such as setMask / removeMask / getMasks (verified 2026).
+> Note: In the source, Geo3DTilesLayer mixes in masking/clipping capability through MaskLayerMixin, supporting interfaces such as setMask / removeMask / getMasks.
 
 ## Example Code
 
@@ -41,7 +41,7 @@ It is a subclass of [maptalks.Layer](https://maptalks.org/maptalks.js/api/0.x/La
 <head>
 <title>3dtiles viewer</title>
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@maptalks/gl-layers/dist/maptalks-gl-layers.js"></script>
+<script type="text/javascript" src="https://unpkg.com/maptalks-gl/dist/maptalks-gl.js"></script>
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.draco/dist/transcoders.draco.js"></script>
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.crn/dist/transcoders.crn.js"></script>
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.ktx2/dist/transcoders.ktx2.js"></script>
@@ -96,12 +96,12 @@ layer.once('loadtileset', e => {
 
 ## npm Installation
 ```
-npm i @maptalks/gl-layers
+npm i maptalks-gl
 ```
 ### Usage
 With ESM:
 ```js
-import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
+import { GroupGLLayer, Geo3DTilesLayer } from 'maptalks-gl';
 // 可选的draco插件
 // import '@maptalks/transcoders.draco';
 // 可选的crn纹理解析插件
@@ -111,7 +111,7 @@ import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
 ```
 With CommonJS:
 ```js
-const { GroupGLLayer, Geo3DTilesLayer } = require('@maptalks/gl-layers');
+const { GroupGLLayer, Geo3DTilesLayer } = require('maptalks-gl');
 // 可选的draco插件
 // require('@maptalks/transcoders.draco');
 // require('@maptalks/transcoders.crn');
@@ -168,7 +168,7 @@ KHR_draco_mesh_compression is required but @maptalks/transcoders.draco is not lo
 Just load the draco decoder plugin at this point.
 ```html
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@maptalks/gl-layers/dist/maptalks-gl-layers.js"></script>
+<script type="text/javascript" src="https://unpkg.com/maptalks-gl/dist/maptalks-gl.js"></script>
 <!-- draco插件，必须写在gl后面，其他插件的前面，es方式加载时同理 -->
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.draco/dist/transcoders.draco.js"></script>
 ```
@@ -178,12 +178,12 @@ npm i @maptalks/transcoders.draco
 ```
 With ESM:
 ```js
-import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
+import { GroupGLLayer, Geo3DTilesLayer } from 'maptalks-gl';
 import '@maptalks/transcoders.draco';
 ```
 With CommonJS:
 ```js
-const { GroupGLLayer, Geo3DTilesLayer } = require('@maptalks/gl-layers');
+const { GroupGLLayer, Geo3DTilesLayer } = require('maptalks-gl');
 require('@maptalks/transcoders.draco');
 ```
 ## CRN Texture Support
@@ -191,7 +191,7 @@ Like Draco, crn textures are also implemented as a universal plugin; just add th
 Because the crn plugin is in UMD format, loading it with ESM requires webpack's or rollup's commonjs plugin support.
 ```html
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@maptalks/gl-layers/dist/maptalks-gl-layers.js"></script>
+<script type="text/javascript" src="https://unpkg.com/maptalks-gl/dist/maptalks-gl.js"></script>
 <!-- crn插件，必须写在gl后面，其他插件的前面，es方式加载时同理 -->
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.crn/dist/transcoders.crn.js"></script>
 ```
@@ -201,12 +201,12 @@ npm i @maptalks/transcoders.crn
 ```
 Loading with ESM:
 ```js
-import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
+import { GroupGLLayer, Geo3DTilesLayer } from 'maptalks-gl';
 import '@maptalks/transcoders.crn';
 ```
 With CommonJS:
 ```js
-const { GroupGLLayer, Geo3DTilesLayer } = require('@maptalks/gl-layers');
+const { GroupGLLayer, Geo3DTilesLayer } = require('maptalks-gl');
 require('@maptalks/transcoders.crn');
 ```
 ## KTX2 Texture Support
@@ -214,7 +214,7 @@ Like Draco, ktx2 textures are also implemented as a universal plugin; just add t
 Because the ktx2 plugin is in UMD format, loading it with ESM requires webpack's or rollup's commonjs plugin support.
 ```html
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@maptalks/gl-layers/dist/maptalks-gl-layers.js"></script>
+<script type="text/javascript" src="https://unpkg.com/maptalks-gl/dist/maptalks-gl.js"></script>
 <!-- ktx2插件，必须写在gl后面，其他插件的前面，es方式加载时同理 -->
 <script type="text/javascript" src="https://unpkg.com/@maptalks/transcoders.ktx2/dist/transcoders.ktx2.js"></script>
 ```
@@ -224,12 +224,12 @@ npm i @maptalks/transcoders.ktx2
 ```
 Loading with ESM:
 ```js
-import { GroupGLLayer, Geo3DTilesLayer } from '@maptalks/gl-layers';
+import { GroupGLLayer, Geo3DTilesLayer } from 'maptalks-gl';
 import '@maptalks/transcoders.ktx2';
 ```
 With CommonJS:
 ```js
-const { GroupGLLayer, Geo3DTilesLayer } = require('@maptalks/gl-layers');
+const { GroupGLLayer, Geo3DTilesLayer } = require('maptalks-gl');
 require('@maptalks/transcoders.ktx2');
 ```
 ## Anti-aliasing
@@ -275,27 +275,27 @@ Parameters:
 
 | Option                     |   Type   |   Description                     | Default |
 |  ------                   | :----:  | ----                      |   :-----------:  |
-|maxGPUMemory               | Number  | Maximum cache size, in MB. 2026 source defaults: 32 on mobile, 1536 on desktop | 32 mobile / 1536 desktop |
-|retireInterval             | Number  | Tile retirement/reclamation check interval (ms, added after cross-checking the 2026 source code) | 2000 |
+|maxGPUMemory               | Number  | Maximum cache size, in MB. source defaults: 32 on mobile, 1536 on desktop | 32 mobile / 1536 desktop |
+|retireInterval             | Number  | Tile retirement/reclamation check interval (ms, added after cross-checking the source code) | 2000 |
 |loadingLimitOnInteracting  | Number  | Maximum number of tile requests per frame while the map is being interacted with (pan/zoom) | 5 |
 |loadingLimit               | Number  | Maximum number of tiles loaded per frame | 10 |
-|debug                      | Boolean | Whether to enable debug display (verified against 2026 source) | false |
-|meshLimitPerFrame          | Number  | Maximum number of meshes created per frame (verified against 2026 source) | 2 |
-|i3sNodepageLimitPerFrame   | Number  | Maximum number of i3s nodepages loaded per frame (verified against 2026 source) | 1 |
-|enableI3SCompressedGeometry | Boolean | Whether to enable compressed i3s geometry (verified against 2026 source) | true |
-|forceI3SCompressedGeometry | Boolean | Whether to force the use of compressed i3s geometry (verified against 2026 source) | true |
-|onlyCacheNoContentTileWhenError | Boolean | Whether to only cache tiles without content on error (verified against 2026 source) | true |
-|picking                    | Boolean | Whether to enable picking (verified against 2026 source) | true |
-|pickingPoint               | Boolean | Whether picking returns the intersection coordinates (verified against 2026 source) | true |
-|geometryEvents             | Boolean | Whether to fire geometry events (disabled by default as it affects performance, verified against 2026 source) | false |
-|alwaysShowTopTiles         | Boolean | Whether to always show the top-level tiles (verified against 2026 source) | true |
-|antialias                  | Boolean | Whether to enable anti-aliasing (verified against 2026 source) | false |
+|debug                      | Boolean | Whether to enable debug display (verified against the source) | false |
+|meshLimitPerFrame          | Number  | Maximum number of meshes created per frame (verified against the source) | 2 |
+|i3sNodepageLimitPerFrame   | Number  | Maximum number of i3s nodepages loaded per frame (verified against the source) | 1 |
+|enableI3SCompressedGeometry | Boolean | Whether to enable compressed i3s geometry (verified against the source) | true |
+|forceI3SCompressedGeometry | Boolean | Whether to force the use of compressed i3s geometry (verified against the source) | true |
+|onlyCacheNoContentTileWhenError | Boolean | Whether to only cache tiles without content on error (verified against the source) | true |
+|picking                    | Boolean | Whether to enable picking (verified against the source) | true |
+|pickingPoint               | Boolean | Whether picking returns the intersection coordinates (verified against the source) | true |
+|geometryEvents             | Boolean | Whether to fire geometry events (disabled by default as it affects performance, verified against source) | false |
+|alwaysShowTopTiles         | Boolean | Whether to always show the top-level tiles (verified against the source) | true |
+|antialias                  | Boolean | Whether to enable anti-aliasing (verified against the source) | false |
 |offset                     | Number/Function | Draw offset of the model; if a function, it will be called dynamically to compute the offset, with the model's reference coordinate as the argument: function (center) { } | [0, 0] |
-|renderer                   | String  | Renderer (gl / gpu, both registered as Geo3DTilesRenderer, verified against 2026 source) | 'gl' |
-|forceRenderOnZooming / Moving / Rotating | Boolean | Whether to force redraw when zooming / moving / rotating (verified against 2026 source) | true |
+|renderer                   | String  | Renderer (gl / gpu, both registered as Geo3DTilesRenderer, verified against source) | 'gl' |
+|forceRenderOnZooming / Moving / Rotating | Boolean | Whether to force redraw when zooming / moving / rotating (verified against the source) | true |
 |services                   | Object[]  | 3dtiles data source definitions             | [] |
 
-> Note: The default values of maxGPUMemory, loadingLimit and loadingLimitOnInteracting have been adjusted in the new version (verified 2026): maxGPUMemory is 32 on mobile / 1536 on desktop, loadingLimit is 10, and loadingLimitOnInteracting is 5.
+> Note: The default values of maxGPUMemory, loadingLimit and loadingLimitOnInteracting have been adjusted in the new version: maxGPUMemory is 32 on mobile / 1536 on desktop, loadingLimit is 10, and loadingLimitOnInteracting is 5.
 
 Configuration of each item in services (Geo3DTilesService):
 
@@ -303,32 +303,32 @@ Configuration of each item in services (Geo3DTilesService):
 |  ------                   | :----:  | ----                      |   :-----------:  |
 |services.url               | String    | URL of the root json file of the 3dtiles dataset     | null |
 |services.maximumScreenSpaceError | Number | Maximum screen space error, default 8. When a model tile's on-screen size exceeds the setting, the next level of tiles is requested; the smaller the number, the more detailed the requested model tiles | 8 |
-|services.maxExtent         | Extent    | Service extent (verified against 2026 source) | null |
-|services.scale             | Number/[x,y,z] | Model scale (verified against 2026 source) | null |
-|services.coordOffset       | Number[]  | Offset of the model on the xy plane, consistent with the map's coordinate system (verified against 2026 source) | null |
+|services.maxExtent         | Extent    | Service extent (verified against the source) | null |
+|services.scale             | Number/[x,y,z] | Model scale (verified against the source) | null |
+|services.coordOffset       | Number[]  | Offset of the model on the xy plane, consistent with the map's coordinate system (verified against the source) | null |
 |services.heightOffset      | Number    | Height offset of the data, in meters; can be used to raise or lower the model | 0 |
-|services.rotation          | Number[]  | Rotation angles of the model around the xyz axes, in degrees, ranging from -180 to 180 (verified against 2026 source) | null |
-|services.ecefTransform     | Number[]  | 4x4 transformation matrix of the model in the ECEF coordinate system; takes precedence over rotation / scale / coordOffset / heightOffset (verified against 2026 source) | null |
-|services.subdomains        | String[]  | List of service subdomains, used to replace {s} in the url (verified against 2026 source) | null |
-|services.urlParams         | String    | Extra url request parameters (still supported in the 2026 source worker) | null |
+|services.rotation          | Number[]  | Rotation angles of the model around the xyz axes, in degrees, ranging from -180 to 180 (verified against the source) | null |
+|services.ecefTransform     | Number[]  | 4x4 transformation matrix of the model in the ECEF coordinate system; takes precedence over rotation / scale / coordOffset / heightOffset (verified against the source) | null |
+|services.subdomains        | String[]  | List of service subdomains, used to replace {s} in the url (verified against the source) | null |
+|services.urlParams         | String    | Extra url request parameters (still supported in the source worker) | null |
 |services.fetchOptions      | Object    | fetch request [parameters](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)        | null |
-|services.opacity           | Number    | Opacity, ranging from 0 to 1 (verified against 2026 source) | null |
-|services.visible           | Boolean   | Whether it is visible (verified against 2026 source) | null |
-|services.debug             | Boolean   | Whether debug is enabled for this service (verified against 2026 source) | false |
-|services.alphaTest         | Number    | The alphaTest threshold in the material (verified against 2026 source) | 0.1 |
-|services.pointSize         | Number/Function | pointSize (in pixels) for point clouds (pnts); supports zoom-level function-type (verified against 2026 source) | null |
-|services.pointOpacity      | Number/Function | Point cloud opacity, 0~1; supports zoom-level function-type (verified against 2026 source) | null |
-|services.unlit             | Boolean   | Render the model as unlit, ignoring global lighting; suitable for models that already contain lighting information, such as oblique photography (verified against 2026 source) | null |
-|services.doubleSided       | Boolean   | Whether the model is drawn double-sided (verified against 2026 source) | false |
-|services.maxTextureSize     | Number    | Maximum texture size for the model (verified against 2026 source) | 1024 |
-|services.material           | Object    | Preset values for the material's uniform variables (verified against 2026 source) | null |
-|services.ambientLight       | Number[]  | A 3-component normalized array; manually sets the ambient light value of the model, which can be used to brighten or darken the model; when not set, the map's ambient light value is used by default. In the 2026 source it is kept for backward compatibility (compatibility code for the old ambientLight setting in TileMeshPainter); the new version recommends using environmentExposure instead | null |
-|services.environmentExposure | Number   | Ambient light exposure parameter (verified against 2026 source) | null |
-|services.createNormalIfMissed | Boolean  | Automatically create normal attributes when the model lacks them (verified against 2026 source) | null |
-|services.polygonFill        | Number[]  | Fill color of the model (verified against 2026 source) | null |
-|services.polygonOffset      | Object/Function | Manually set the model's [polygon offset](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/polygonOffset), which can be used to resolve z-fighting; still supported in the 2026 source (though not declared in the TS types), and a function can be passed for dynamic computation | { factor: 0, units: 0 } |
+|services.opacity           | Number    | Opacity, ranging from 0 to 1 (verified against the source) | null |
+|services.visible           | Boolean   | Whether it is visible (verified against the source) | null |
+|services.debug             | Boolean   | Whether debug is enabled for this service (verified against the source) | false |
+|services.alphaTest         | Number    | The alphaTest threshold in the material (verified against the source) | 0.1 |
+|services.pointSize         | Number/Function | pointSize (in pixels) for point clouds (pnts); supports zoom-level function-type (verified against the source) | null |
+|services.pointOpacity      | Number/Function | Point cloud opacity, 0~1; supports zoom-level function-type (verified against the source) | null |
+|services.unlit             | Boolean   | Render the model as unlit, ignoring global lighting; suitable for models that already contain lighting information, such as oblique photography (verified against the source) | null |
+|services.doubleSided       | Boolean   | Whether the model is drawn double-sided (verified against the source) | false |
+|services.maxTextureSize     | Number    | Maximum texture size for the model (verified against the source) | 1024 |
+|services.material           | Object    | Preset values for the material's uniform variables (verified against the source) | null |
+|services.ambientLight       | Number[]  | A 3-component normalized array; manually sets the ambient light value of the model, which can be used to brighten or darken the model; when not set, the map's ambient light value is used by default. In the source it is kept for backward compatibility (compatibility code for the old ambientLight setting in TileMeshPainter); the new version recommends using environmentExposure instead | null |
+|services.environmentExposure | Number   | Ambient light exposure parameter (verified against the source) | null |
+|services.createNormalIfMissed | Boolean  | Automatically create normal attributes when the model lacks them (verified against the source) | null |
+|services.polygonFill        | Number[]  | Fill color of the model (verified against the source) | null |
+|services.polygonOffset      | Object/Function | Manually set the model's [polygon offset](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/polygonOffset), which can be used to resolve z-fighting; still supported in the source (though not declared in the TS types), and a function can be passed for dynamic computation | { factor: 0, units: 0 } |
 
-> Note: The default value of services.maximumScreenSpaceError has been adjusted to 8 in the new version; the 24.0 / 16.0 used in the example code are the recommended larger values — the smaller the value, the more detailed the loaded models and the larger the data volume (verified 2026).
+> Note: The default value of services.maximumScreenSpaceError has been adjusted to 8 in the new version; the 24.0 / 16.0 used in the example code are the recommended larger values — the smaller the value, the more detailed the loaded models and the larger the data volume.
 </div>
 </details>
 
@@ -371,7 +371,7 @@ Returns:
 </div>
 </details>
 
-> Note: The following methods were added when cross-checking the 2026 source code (api-notes-others.md).
+> Note: The following methods were added when cross-checking the source code.
 
 <details><summary>addService(info)</summary>
 <div>
@@ -685,7 +685,7 @@ Returns:
 <div>
 <br/>
 
-Computes the ENU (East-North-Up) transformation matrix at the given longitude/latitude coordinate (added after cross-checking the 2026 source code).
+Computes the ENU (East-North-Up) transformation matrix at the given longitude/latitude coordinate (added after cross-checking the source code).
 
 Parameters:
 
@@ -789,7 +789,7 @@ Properties:
 <div>
 <br/>
 
-Event fired after tiles are drawn each frame (added after cross-checking the 2026 source code).
+Event fired after tiles are drawn each frame (added after cross-checking the source code).
 
 Properties:
 
@@ -814,7 +814,7 @@ Properties:
 |  ------         | :----:  | ----  |
 |type     | String          |   "canvasisdirty"  |
 |target   | Geo3DTilesLayer |   this     |
-|renderCount | Number        |   the number of tiles drawn in this frame (added after cross-checking the 2026 source code) |
+|renderCount | Number        |   the number of tiles drawn in this frame (added after cross-checking the source code) |
 
 </div>
 </details>
@@ -823,7 +823,7 @@ Properties:
 <div>
 <br/>
 
-GL context creation event (added after cross-checking the 2026 source code).
+GL context creation event (added after cross-checking the source code).
 
 Properties:
 
@@ -841,7 +841,7 @@ Properties:
 <div>
 <br/>
 
-3dtiles worker ready event (added after cross-checking the 2026 source code).
+3dtiles worker ready event (added after cross-checking the source code).
 
 Properties:
 
@@ -853,7 +853,7 @@ Properties:
 </div>
 </details>
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source
 
 <!-- api-gen:start -->
 ### Events Inherited from Layer

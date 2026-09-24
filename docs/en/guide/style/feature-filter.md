@@ -159,4 +159,4 @@ Comparison and set membership filters use strong typing, i.e. the values must be
 ]
 ```
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

@@ -108,4 +108,4 @@ heatmapWeight支持 [function-type](/guide/style/function-type) 表达式，可�
 
 **Number**，热力图中每个点的权重，支持[function-type](/guide/style/function-type)表达式。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

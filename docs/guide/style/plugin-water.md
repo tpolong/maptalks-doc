@@ -98,7 +98,7 @@ water渲染插件中的symbol属性不支持动态样式
 
 默认值：false
 
-**Boolean** 是否开启水体的动画（2026 源码 WaterPainter 中 symbol.animation 缺省时不启用动画，旧文档写作 true）。
+**Boolean** 是否开启水体的动画（源码 WaterPainter 中 symbol.animation 缺省时不启用动画，旧文档写作 true）。
 
 -----------
 ### contrast
@@ -128,4 +128,4 @@ water渲染插件中的symbol属性不支持动态样式
 
 **Number** 水流速度，配合 animation 使用，值越大流动越快。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

@@ -12,7 +12,7 @@ For the available render plugins and the style definition of each plugin, refer 
 
 Because VectorTileLayer has a rich set of style properties, you can use the [MapTalks IDE](https://studio.maptalks.com) to customize the style of VectorTileLayer in a WYSIWYG way, and then load it in your program.
 
-It is a subclass of [TileLayer](https://maptalks.org/maptalks.js/api/0.x/TileLayer.html) of the core [maptalks](https://maptalks.org) library, inheriting the methods and options of TileLayer.
+It is a subclass of [TileLayer](/en/api/tile-layer) of the core [maptalks](https://maptalks.org) library, inheriting the methods and options of TileLayer.
 
 > [!NOTE]
 > A \* on a parameter or option name means the parameter or option is required. For example, the \* after id below means the parameter id is required:
@@ -24,10 +24,10 @@ It is a subclass of [TileLayer](https://maptalks.org/maptalks.js/api/0.x/TileLay
 ## Constructor
 
 ```js
-import { VectorTileLayer } from '@maptalks/gl-layers';
+import { VectorTileLayer } from 'maptalks-gl';
 
 new VectorTileLayer('vt0', {
-  urlTemplate: 'https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt'
+  urlTemplate: 'https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt'
 });
 ```
 <details><summary>Details</summary>
@@ -515,7 +515,7 @@ Properties:
 </div>
 </details>
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code
 
 <!-- api-gen:start -->
 ### Other Events of VectorTileLayer

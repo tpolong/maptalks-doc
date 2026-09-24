@@ -79,4 +79,4 @@ Default: false
 
 **Boolean** — whether to enable the bloom post-processing effect.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

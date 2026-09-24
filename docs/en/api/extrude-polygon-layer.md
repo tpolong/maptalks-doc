@@ -11,7 +11,7 @@ It is a subclass of [Vector3DLayer](./line-string-layer), inheriting all methods
 ## Constructor
 
 ```js
-import { ExtrudePolygonLayer } from '@maptalks/gl-layers';
+import { ExtrudePolygonLayer } from 'maptalks-gl';
 
 const layer = new ExtrudePolygonLayer('extrude');
 ```
@@ -125,7 +125,7 @@ Symbol properties supported by ExtrudePolygonLayer:
 
 For special geometries such as Circle, Ellipse, Sector and Rectangle, the layer automatically computes the oriented minimum bounding box (OMBB), converts them to polygons, and then extrudes them.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code
 
 ## Static Methods
 

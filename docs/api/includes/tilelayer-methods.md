@@ -1,6 +1,6 @@
 ## 继承自TileLayer的方法
 
-具体可以参考[父类TileLayer的API文档](https://maptalks.org/maptalks.js/api/0.x/TileLayer.html)。
+具体可以参考[父类TileLayer的API文档](/api/tile-layer)。
 
 <details><summary>getTileSize()</summary>
 <div>

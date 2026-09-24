@@ -12,7 +12,7 @@ WebGPU 是地图的渲染器之一，默认渲染器列表为 `['canvas','gl','g
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, VectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, VectorTileLayer } from "maptalks-gl";
 
 // 1. 地图使用 WebGPU 渲染器
 const map = new Map("map", {
@@ -25,7 +25,7 @@ const map = new Map("map", {
 
 // 2. 三维图层放入同一个 GroupGLLayer
 const vt = new VectorTileLayer("vt", {
-  urlTemplate: "https://tiles.maptalks.com/test/{z}/{x}/{y}.mvt",
+  urlTemplate: "https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt",
 });
 const groupLayer = new GroupGLLayer("group", [vt]).addTo(map);
 ```

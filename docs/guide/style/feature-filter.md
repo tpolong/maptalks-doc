@@ -158,4 +158,4 @@ key必须是一个字符串类型的feature属性名，或者下列特殊的属�
 ]
 ```
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

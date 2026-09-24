@@ -10,12 +10,12 @@ MultiGLTFMarker can use symbol to set the state of the model, such as scale, opa
 
 MultiGLTFMarker uses WebGL instancing for rendering, improving WebGL rendering performance when drawing models in batch.
 
-> Note: The 2026 source code confirms the inheritance as `class MultiGLTFMarker extends GLTFMarker` (verified against 2026 source code).
+> Note: The source code confirms the inheritance as `class MultiGLTFMarker extends GLTFMarker` (verified against source code).
 
 ## Constructor
 
 ```js
-import { MultiGLTFMarker } from '@maptalks/gl-layers';
+import { MultiGLTFMarker } from 'maptalks-gl';
 
 const multiGLTFMarker = new MultiGLTFMarker([
   {
@@ -56,8 +56,8 @@ Parameters:
 </div>
 </details>
 
-> [!NOTE] Additional data fields (verified against 2026 source code)
-> In the 2026 source code, each data item also supports: `visible` (visibility), `outline` (outline), `bloom` (bloom), `highlightColor` (highlight color), `modelHeight` (adaptive scaling by model height), `markerPixelHeight` (fixed pixel height)
+> [!NOTE] Additional data fields (verified against source code)
+> In the source code, each data item also supports: `visible` (visibility), `outline` (outline), `bloom` (bloom), `highlightColor` (highlight color), `modelHeight` (adaptive scaling by model height), `markerPixelHeight` (fixed pixel height)
 
 ## Symbol Description
 
@@ -65,7 +65,7 @@ Like GLTFMarker, the `options.symbol` of MultiGLTFMarker contains the following 
 
 <!--@include: ./includes/gltf-marker-symbols.md-->
 
-> Note: The symbol fields are the same as [GLTFMarker](./gltf-marker); see that page for the field verification against the 2026 source code (verified against 2026 source code).
+> Note: The symbol fields are the same as [GLTFMarker](./gltf-marker); see that page for the field verification against the source code (verified against source code).
 
 ## Methods
 
@@ -172,7 +172,7 @@ Returns:
 
 Updates the property value of all data items.
 
-`value` is an array, and `value[i]` is the new value of the i-th data item (verified against 2026 source code: `updateAllData` internally reads `value[i]` by the data item index).
+`value` is an array, and `value[i]` is the new value of the i-th data item (verified against source code: `updateAllData` internally reads `value[i]` by the data item index).
 
 ```js
 const multiGLTFMarker = new MultiGLTFMarker([
@@ -239,7 +239,7 @@ Returns:
 </div>
 </details>
 
-> [!NOTE] Additional methods (verified against 2026 source code)
+> [!NOTE] Additional methods (verified against source code)
 > - `getAllData()`: read all instance data
 > - `removeAllData()`: clear all instance data
 > - `openInfoWindow(index?)`: open the info window (centered by default; an instance index can be specified)
@@ -304,7 +304,7 @@ The following methods are provided by the parent class [Geometry](/en/api/geomet
 
 <!--@include: ./includes/js-events-example.md-->
 
-> This document has been verified against the 2026 source code of @maptalks/gl-layers (api-notes-others.md)
+> This document has been verified against the source code of maptalks-gl 0.124.4
 
 <!-- api-gen:start -->
 ### Events Inherited from GLTFMarker

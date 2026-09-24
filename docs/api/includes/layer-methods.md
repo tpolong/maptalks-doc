@@ -1,6 +1,6 @@
 ## 继承自Layer的方法
 
-具体可以参考[父类Layer的API文档](https://maptalks.org/maptalks.js/api/0.x/Layer.html)。
+具体可以参考[父类Layer的API文档](/api/layer)。
 
 <details><summary>getId()</summary>
 <div>

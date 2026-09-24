@@ -4,7 +4,7 @@ title: API 参考
 
 # API 参考
 
-本参考以 maptalks 最新源码为准整理，覆盖核心库 `maptalks` 与 WebGL 扩展 `@maptalks/gl-layers`。共 117 个类与参考条目，中英双语页面一一对应，左侧按类的性质（而非使用频率）分组。
+本参考以 maptalks 最新源码为准整理，覆盖核心库 `maptalks`、三维汇总包 `maptalks-gl` 与空间分析包 `@maptalks/analysis`。共 117 个类与参考条目，中英双语页面一一对应，左侧按类的性质（而非使用频率）分组。
 
 ## 导入约定
 
@@ -13,7 +13,8 @@ title: API 参考
 import { Map, TileLayer, VectorLayer, Marker, Polygon } from "maptalks";
 
 // WebGL 扩展：矢量瓦片、WebGL 矢量图层、三维场景、空间分析
-import { VectorTileLayer, PointLayer, GroupGLLayer, ViewshedAnalysis } from "@maptalks/gl-layers";
+import { VectorTileLayer, PointLayer, GroupGLLayer } from "maptalks-gl";
+import { ViewshedAnalysis } from "@maptalks/analysis";
 ```
 
 > 站内[示例中心](/examples/)的 REPL 使用同一套导入约定，页面中的代码可直接复制运行。

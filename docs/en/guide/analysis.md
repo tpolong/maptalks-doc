@@ -12,20 +12,11 @@ Most analysis classes inherit from the `Analysis` base class, with the exception
 
 ## Common usage
 
-All analysis classes are imported from `@maptalks/gl-layers`:
+All analysis classes are imported from `@maptalks/analysis`:
 
 ```js
 import { Map } from "maptalks";
-import {
-  CutAnalysis,
-  CrossCutAnalysis,
-  ExcavateAnalysis,
-  FloodAnalysis,
-  HeightLimitAnalysis,
-  InSightAnalysis,
-  SkylineAnalysis,
-  ViewshedAnalysis
-} from "@maptalks/gl-layers";
+import { CutAnalysis, CrossCutAnalysis, ExcavateAnalysis, FloodAnalysis, HeightLimitAnalysis, InSightAnalysis, SkylineAnalysis, ViewshedAnalysis } from "@maptalks/analysis";
 ```
 
 The `Analysis` base class provides unified lifecycle management for each analysis task. Common methods:
@@ -54,7 +45,8 @@ Use a cutting region defined by `position` / `rotation` / `scale` to cut the mod
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GLTFLayer, GLTFMarker, CutAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker } from "maptalks-gl";
+import { CutAnalysis } from "@maptalks/analysis";
 
 const map = new Map("map", {
   center: [108.9605239272878, 34.21955775963946],
@@ -104,7 +96,8 @@ API: [Analysis](../api/analysis) · Example: [Cut analysis](/en/examples/#analys
 
 ```js
 import { Map, Polygon } from "maptalks";
-import { GroupGLLayer, GLTFLayer, ExcavateAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer } from "maptalks-gl";
+import { ExcavateAnalysis } from "@maptalks/analysis";
 
 const map = new Map("map", {
   center: [108.9605239272878, 34.21955775963946],
@@ -159,7 +152,8 @@ Render the flooded area according to a given water altitude: regions below the w
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, Geo3DTilesLayer, FloodAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, Geo3DTilesLayer } from "maptalks-gl";
+import { FloodAnalysis } from "@maptalks/analysis";
 
 const map = new Map("map", {
   center: [108.95965, 34.21776],
@@ -169,7 +163,7 @@ const map = new Map("map", {
 const layer = new Geo3DTilesLayer("3dtiles", {
   services: [
     {
-      url: "http://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
+      url: "https://resource.dvgis.cn/data/3dtiles/dayanta/tileset.json",
       heightOffset: -400
     }
   ]
@@ -214,7 +208,8 @@ Height limit (over-height detection) analysis: model parts exceeding `limitHeigh
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, Geo3DTilesLayer, HeightLimitAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, Geo3DTilesLayer } from "maptalks-gl";
+import { HeightLimitAnalysis } from "@maptalks/analysis";
 
 // map / layer / groupGLLayer：3dtiles 场景搭建同上文「淹没 Flood」
 const heightLimitAnalysis = new HeightLimitAnalysis({
@@ -243,7 +238,7 @@ Draw a line between the viewpoint (from) and the target point (to) to determine 
 
 ```js
 import { Map } from "maptalks";
-import { InSightAnalysis } from "@maptalks/gl-layers";
+import { InSightAnalysis } from "@maptalks/analysis";
 
 // map / groupGLLayer：三维场景搭建见上文「淹没 Flood」
 const center = map.getCenter();
@@ -285,7 +280,8 @@ Render the model silhouette (skyline) against the sky background, exportable as 
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, Geo3DTilesLayer, SkylineAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, Geo3DTilesLayer } from "maptalks-gl";
+import { SkylineAnalysis } from "@maptalks/analysis";
 
 // map / layer / groupGLLayer：3dtiles 场景搭建同上文「淹没 Flood」
 const skylineAnalysis = new SkylineAnalysis({
@@ -321,7 +317,8 @@ From a viewpoint (`eyePos`) toward a target point (`lookPoint`), a four-sided py
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, Geo3DTilesLayer, ViewshedAnalysis } from "@maptalks/gl-layers";
+import { GroupGLLayer, Geo3DTilesLayer } from "maptalks-gl";
+import { ViewshedAnalysis } from "@maptalks/analysis";
 
 // map / layer / groupGLLayer：3dtiles 场景搭建同上文「淹没 Flood」
 let lookPoint = [108.95948541183475, 34.21971441232435, 67.59082];

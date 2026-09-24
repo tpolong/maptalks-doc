@@ -41,6 +41,6 @@ Therefore, to optimize performance, full Mesh updates should be avoided as much 
 |topPolygonFill           | 🆗           |   ❗    |
 |bottomPolygonFill        | 🆗           |   ❗    |
 
-> Note: The `textStyle` and `textWeight` properties in the old documentation have been removed in the new version of @maptalks/gl-layers (commented out in the 2026 source code) and no longer trigger Mesh rebuilds; `topPolygonFill` and `bottomPolygonFill` are properties newly added for the 3D extrusion layer (ExtrudePolygonLayer) (verified in 2026).
+> Note: The `textStyle` and `textWeight` properties in the old documentation have been removed in the new version of maptalks-gl (commented out in the source code) and no longer trigger Mesh rebuilds; `topPolygonFill` and `bottomPolygonFill` are properties newly added for the 3D extrusion layer (ExtrudePolygonLayer).
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

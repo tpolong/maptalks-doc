@@ -36,7 +36,7 @@ function-type用于在symbol上定义动态的样式属性，即能根据不同�
 
 ## Feature属性
 
-function-type中用于计算的是GeoJSON Feature的properties, 矢量瓦片Feature的properties或者[Geometry](https://maptalks.org/maptalks.js/api/0.x/Geometry.html) getProperties方法返回的值。
+function-type中用于计算的是GeoJSON Feature的properties, 矢量瓦片Feature的properties或者[Geometry](/api/geometry) getProperties方法返回的值。
 
 ## 属性
 
@@ -120,4 +120,4 @@ class属性为motorway时用白色，而class属性为countyway时用浅白。
 }
 ```
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

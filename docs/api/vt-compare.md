@@ -26,4 +26,4 @@ title: 矢量瓦片与3DTiles的比较
 
 但对于点云和倾斜摄影数据，3DTiles依然是最好的技术方案，是矢量瓦片无法替代的。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

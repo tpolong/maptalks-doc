@@ -6,12 +6,12 @@ title: InSightAnalysis
 
 A spatial analysis object for insight (line-of-sight) analysis, used to perform insight analysis on a 3D scene.
 
-It draws a line between the viewpoint (`from`) and the target point (`to`) and checks whether the line is blocked by the model: the visible segment is colored with `visibleColor`, the invisible segment with `invisibleColor`, and the objects intersected by the insight lines can be returned (based on RayCaster ray casting, added after cross-checking the 2026 source code).
+It draws a line between the viewpoint (`from`) and the target point (`to`) and checks whether the line is blocked by the model: the visible segment is colored with `visibleColor`, the invisible segment with `invisibleColor`, and the objects intersected by the insight lines can be returned (based on RayCaster ray casting, added after cross-checking the source code).
 
 ## Constructor
 
 ```js
-import { InSightAnalysis } from '@maptalks/gl-layers';
+import { InSightAnalysis } from '@maptalks/analysis';
 
 const insightAnalysis = new InSightAnalysis({
   lines: [
@@ -35,7 +35,7 @@ Parameters:
 
 | Option   |   Type    |   Description                     | Default |
 |  ------ | :----:   | ----                      |   :-----------:  |
-|lines    | Object[] | The array of insight lines, each item is `{ from, to }` (coordinate arrays or Coordinate, added after cross-checking the 2026 source code) | [] |
+|lines    | Object[] | The array of insight lines, each item is `{ from, to }` (coordinate arrays or Coordinate, added after cross-checking the source code) | [] |
 |visibleColor | Number[] | A 4-component normalized array; the color of the visible segment (green) | [0, 1, 0, 1] |
 |invisibleColor | Number[] | A 4-component normalized array; the color of the invisible segment (red) | [1, 0, 0, 1] |
 |excludeLayers | String[] | The list of layer ids to ignore (not involved in occlusion detection) | null |
@@ -128,7 +128,7 @@ Returns:
 
 Gets all objects intersected by the insight lines, with the structure `[{ inSightLine, intersects: [{ data: maptalks object (such as a gltfmarker or polygon), coordinates: [{ coordinate, indices }] }] }]`.
 
-> Note: the method name follows the spelling `getIntersetction` in the source code (verified against the 2026 source).
+> Note: the method name follows the spelling `getIntersetction` in the source code (verified against the source).
 
 Returns:
 
@@ -155,4 +155,4 @@ This class gains the following method groups from mixins; see the linked pages f
 
 ## Methods Inherited from Analysis
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source

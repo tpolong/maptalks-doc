@@ -48,11 +48,11 @@ The PBR material parameters are as follows:
 |uvRotation         | Number      | Texture rotation angle in degrees, 0-360                          | 0            |
 |uvOffsetAnim       | Number[2]   | Offset animation along the uv directions. Animation starts when the value is not 1; the larger the absolute value, the faster the animation, and negative values animate in the opposite direction | [0, 0] |
 
-> Note: bumpTexture, bumpScale, occlusionTexture, noiseTexture and clearCoat* (clearCoatThickness / clearCoatFactor / clearCoatIor / clearCoatRoughnessFactor) have been removed from the LitMaterial type interface in the 2026 source code (no longer declared in `vt/src/types/index.ts`; the runtime StandardMaterial still keeps bumpTexture / occlusionTexture / noiseTexture etc. for compatibility, while the clearCoat* series has no corresponding defaults).
+> Note: bumpTexture, bumpScale, occlusionTexture, noiseTexture and clearCoat* (clearCoatThickness / clearCoatFactor / clearCoatIor / clearCoatRoughnessFactor) have been removed from the LitMaterial type interface in the source code (no longer declared in `vt/src/types/index.ts`; the runtime StandardMaterial still keeps bumpTexture / occlusionTexture / noiseTexture etc. for compatibility, while the clearCoat* series has no corresponding defaults).
 >
-> Note: roughnessFactor and metallicFactor are typed as Number[] in the 2026 source code (2026 cross-check).
+> Note: roughnessFactor and metallicFactor are typed as Number[] in the source code.
 >
-> Note: per the 2026 source code, the emitMultiplicative default is 1 (StandardMaterial DEFAULT_UNIFORMS); the old documentation wrote 0.
+> Note: per the source code, the emitMultiplicative default is 1 (StandardMaterial DEFAULT_UNIFORMS); the old documentation wrote 0.
 
 Example:
 
@@ -112,7 +112,7 @@ Phong lighting requires no WebGL extensions, giving it the best compatibility.
 |uvOffset           | Number[2]   | uv offset; 0 means no offset, 1 means exactly one texture size.        | [0, 0]       |
 |extrusionOpacityRange| Number[2] | Range of the side opacity variation. If the maximum exceeds 1, the top portion is fully opaque. | [0, 1.8]     |
 
-> Note: ambientStrength no longer exists in the 2026 source code (neither PhongMaterial nor PhongShader has this property), so it has been removed from the old documentation; environmentExposure and extrusionOpacity are PhongMaterial defaults in the 2026 source code (2026 cross-check).
+> Note: ambientStrength no longer exists in the source code (neither PhongMaterial nor PhongShader has this property), so it has been removed from the old documentation; environmentExposure and extrusionOpacity are PhongMaterial defaults in the source code.
 
 
 Example:
@@ -137,4 +137,4 @@ Example:
 }
 ```
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

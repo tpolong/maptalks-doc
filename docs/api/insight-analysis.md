@@ -6,12 +6,12 @@ title: InSightAnalysis
 
 通视空间分析对象，用于对三维场景实现通视分析。
 
-在视点（from）与目标点（to）之间连线，判断连线是否被模型遮挡：可见段用 visibleColor 着色，不可见段用 invisibleColor 着色，并可返回与通视线相交的对象（基于 RayCaster 射线检测，2026 源码核对补充）。
+在视点（from）与目标点（to）之间连线，判断连线是否被模型遮挡：可见段用 visibleColor 着色，不可见段用 invisibleColor 着色，并可返回与通视线相交的对象（基于 RayCaster 射线检测，源码核对补充）。
 
 ## 构造函数
 
 ```js
-import { InSightAnalysis } from '@maptalks/gl-layers';
+import { InSightAnalysis } from '@maptalks/analysis';
 
 const insightAnalysis = new InSightAnalysis({
   lines: [
@@ -35,7 +35,7 @@ insightAnalysis.addTo(groupGLLayer);
 
 | 配置名   |  类型    |  描述                     | 默认值 |
 |  ------ | :----:   | ----                      |   :-----------:  |
-|lines    | Object[] | 通视线数组，每项为 `{ from, to }`（坐标数组或 Coordinate，2026 源码核对补充） | [] |
+|lines    | Object[] | 通视线数组，每项为 `{ from, to }`（坐标数组或 Coordinate，源码核对补充） | [] |
 |visibleColor | Number[] | 四位归一化数组，可见段颜色（绿） | [0, 1, 0, 1] |
 |invisibleColor | Number[] | 四位归一化数组，不可见段颜色（红） | [1, 0, 0, 1] |
 |excludeLayers | String[] | 忽略的图层id列表（不参与遮挡判断） | null |
@@ -128,7 +128,7 @@ insightAnalysis.addTo(groupGLLayer);
 
 获取所有与通视线相交的对象，结构为 `[{ inSightLine, intersects: [{ data: maptalks 对象（如 gltfmarker、polygon）, coordinates: [{ coordinate, indices }] }] }]`。
 
-> 注：方法名为源码中的拼写 `getIntersetction`（2026 源码核对）。
+> 注：方法名为源码中的拼写 `getIntersetction`（源码核对）。
 
 返回：
 
@@ -155,4 +155,4 @@ insightAnalysis.addTo(groupGLLayer);
 
 ## 继承自Analysis的方法
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

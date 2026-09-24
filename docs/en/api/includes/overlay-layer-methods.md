@@ -1,6 +1,6 @@
 ## Methods Inherited from OverlayLayer
 
-See the [API documentation of the parent class OverlayLayer](https://maptalks.org/maptalks.js/api/0.x/OverlayLayer.html) for details.
+See the [API documentation of the parent class OverlayLayer](/en/api/overlay-layer) for details.
 
 <details><summary>getGeometryById(id)</summary>
 <div>

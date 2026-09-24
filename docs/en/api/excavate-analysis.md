@@ -8,12 +8,12 @@ A spatial analysis object for excavate analysis, used to perform excavate analys
 
 It delimits a region with a polygon boundary (`boundary`), "digs out" part of the model, and reveals the bottom face (textured with `textureUrl` at a given `height`).
 
-> Note: ExcavateAnalysis does **not** extend Analysis. It extends ExtrudePolygonLayer from `@maptalks/vt` (with the ExcavateRenderer registered as both the `gl` and `gpu` renderers), so it is itself a WebGL layer: it is added to a GroupGLLayer with `addTo(groupGLLayer)`, and `excavate(layers)` is used to specify the layers to be excavated (verified against the 2026 source).
+> Note: ExcavateAnalysis does **not** extend Analysis. It extends ExtrudePolygonLayer from `@maptalks/vt` (with the ExcavateRenderer registered as both the `gl` and `gpu` renderers), so it is itself a WebGL layer: it is added to a GroupGLLayer with `addTo(groupGLLayer)`, and `excavate(layers)` is used to specify the layers to be excavated (verified against the source).
 
 ## Constructor
 
 ```js
-import { ExcavateAnalysis } from '@maptalks/gl-layers';
+import { ExcavateAnalysis } from '@maptalks/analysis';
 
 const excavateAnalysis = new ExcavateAnalysis('excavate', {
   boundary: [
@@ -39,7 +39,7 @@ Parameters:
 
 | Option   |   Type    |   Description                     | Default |
 |  ------ | :----:   | ----                      |   :-----------:  |
-|boundary*| Array\<Array\> | The coordinate rings of the excavate boundary (added after cross-checking the 2026 source code) | null |
+|boundary*| Array\<Array\> | The coordinate rings of the excavate boundary (added after cross-checking the source code) | null |
 |textureUrl| String   | The url of the texture of the excavate bottom (mentioned in the README) | null |
 |height   | Number   | Excavate height in meters (`z || 0` in the source's altitudeToDistance) | 0 |
 
@@ -155,7 +155,7 @@ This class gains the following method groups from mixins; see the linked pages f
 
 ExcavateAnalysis inherits all layer methods and options of [ExtrudePolygonLayer](./extrude-polygon-layer) (and further of [PolygonLayer](./polygon-layer)).
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source
 
 ## Static Methods
 

@@ -10,12 +10,12 @@ MultiGLTFMarker能够用symbol设置模型的状态，例如缩放比例，透�
 
 MultiGLTFMarker利用了WebGL的instancing技术绘制，以提升批量绘制模型时的WebGL渲染性能。
 
-> 注：2026 源码确认继承关系为 `class MultiGLTFMarker extends GLTFMarker`（2026 核对）
+> 注：源码确认继承关系为 `class MultiGLTFMarker extends GLTFMarker`
 
 ## 构造函数
 
 ```js
-import { MultiGLTFMarker } from '@maptalks/gl-layers';
+import { MultiGLTFMarker } from 'maptalks-gl';
 
 const multiGLTFMarker = new MultiGLTFMarker([
   {
@@ -56,8 +56,8 @@ const multiGLTFMarker = new MultiGLTFMarker([
 </div>
 </details>
 
-> [!NOTE] data 字段补充（2026 源码核对）
-> 2026 源码中每个数据项还支持：`visible`（是否可见）、`outline`（描边）、`bloom`（泛光）、`highlightColor`（高亮色）、`modelHeight`（按模型高度自适应缩放）、`markerPixelHeight`（固定像素高度）
+> [!NOTE] data 字段补充（源码核对）
+> 源码中每个数据项还支持：`visible`（是否可见）、`outline`（描边）、`bloom`（泛光）、`highlightColor`（高亮色）、`modelHeight`（按模型高度自适应缩放）、`markerPixelHeight`（固定像素高度）
 
 ## 样式说明
 
@@ -65,7 +65,7 @@ MultiGLTFMarker的options.symbol和GLTFMarker一样，包含以下的设置和�
 
 <!--@include: ./includes/gltf-marker-symbols.md-->
 
-> 注：symbol 字段与 [GLTFMarker](./gltf-marker) 相同，2026 源码的字段核对见该页说明（2026 核对）
+> 注：symbol 字段与 [GLTFMarker](./gltf-marker) 相同，源码的字段核对见该页说明
 
 ## 成员函数
 
@@ -172,7 +172,7 @@ multiGLTFMarker.updateData(0, 'color', [0, 1, 0, 1]);
 
 更新所有数据项的属性值。
 
-value 是数组，value[i] 为第 i 个数据项的新值（2026 源码核对：`updateAllData` 内部按数据项索引取 value[i]）。
+value 是数组，value[i] 为第 i 个数据项的新值（源码核对：`updateAllData` 内部按数据项索引取 value[i]）。
 
 ```js
 const multiGLTFMarker = new MultiGLTFMarker([
@@ -239,7 +239,7 @@ pickingId是用identify或identifyAtPoint方法选取出的数据中，标识数
 </div>
 </details>
 
-> [!NOTE] 方法补充（2026 源码核对）
+> [!NOTE] 方法补充（源码核对）
 > - `getAllData()`：读取所有实例数据
 > - `removeAllData()`：清空所有实例数据
 > - `openInfoWindow(index?)`：打开信息窗口（默认在中心，可指定实例索引）
@@ -304,7 +304,7 @@ pickingId是用identify或identifyAtPoint方法选取出的数据中，标识数
 
 <!--@include: ./includes/js-events-example.md-->
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 <!-- api-gen:start -->
 ### 继承自 GLTFMarker 的事件

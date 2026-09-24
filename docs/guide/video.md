@@ -109,7 +109,7 @@ VideoSurface 是视频图层的基本单元：一组坐标（通常 4 个角点�
 ```html
 <script type="module">
   import { Map } from "maptalks";
-  import { GroupGLLayer, VideoLayer, VideoSurface } from "@maptalks/gl-layers";
+  import { GroupGLLayer, VideoLayer, VideoSurface } from "maptalks-gl";
 
   const map = new Map("map", {
     center: [-74.01026733935669, 40.710726717547544],
@@ -197,7 +197,7 @@ VideoSurface 是视频图层的基本单元：一组坐标（通常 4 个角点�
 <button id="btn-pause">暂停</button>
 
 <style>
-  @import "https://maptalks.com/api/maptalks.css";
+  @import "https://unpkg.com/maptalks/dist/maptalks.css";
 
   html,
   body {
@@ -219,5 +219,5 @@ VideoSurface 是视频图层的基本单元：一组坐标（通常 4 个角点�
 
 ## 相关说明
 
-- VideoLayer / VideoSurface 的 API 详情见 `@maptalks/gl-layers` 包（新站 API 文档整理中，暂未提供独立 API 页）。
+- VideoLayer / VideoSurface 的 API 详情见 `@maptalks/video-layer` 包（新站 API 文档整理中，暂未提供独立 API 页）。
 - 视频图层与 GLTF 图层等三维图层一样，需要挂载到 GroupGLLayer 中才能渲染。

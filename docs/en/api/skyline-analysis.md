@@ -9,7 +9,7 @@ A spatial analysis object for skyline analysis, used to perform skyline analysis
 ## Constructor
 
 ```js
-import { SkylineAnalysis } from '@maptalks/gl-layers';
+import { SkylineAnalysis } from '@maptalks/analysis';
 
 const skylineAnalysis = new SkylineAnalysis({
   lineColor: [1, 0, 0],
@@ -38,7 +38,7 @@ Parameters:
 <div>
 <br/>
 
-Exports the skyline image (with a transparent background) and returns a dataURL (added after cross-checking the 2026 source code).
+Exports the skyline image (with a transparent background) and returns a dataURL (added after cross-checking the source code).
 
 Parameters:
 
@@ -73,4 +73,4 @@ This class gains the following method groups from mixins; see the linked pages f
 
 ## Methods Inherited from Analysis
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source (api-notes-others.md / api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source

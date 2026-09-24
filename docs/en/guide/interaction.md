@@ -8,7 +8,7 @@ maptalks' maps, layers, geometries and various tools all inherit from a unified 
 
 > [!NOTE] Import notes
 > - 2D capabilities (map, layers, geometries, DrawTool/DistanceTool/AreaTool, etc.) are imported from the core package `maptalks`
-> - WebGL layer classes (`GroupGLLayer`, `VectorTileLayer`, `GeoJSONVectorTileLayer`, `GLTFLayer`, `GLTFMarker`, etc.) and `TransformControl` are imported from `@maptalks/gl-layers`
+> - WebGL layer classes (`GroupGLLayer`, `VectorTileLayer`, `GeoJSONVectorTileLayer`, `GLTFLayer`, `GLTFMarker`, etc.) and `TransformControl` are imported from `maptalks-gl`
 
 ## Event listening
 
@@ -25,7 +25,7 @@ const map = new Map("map", {
   baseLayer: new TileLayer("base", {
     urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
-      "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
 });
 
@@ -91,7 +91,7 @@ layer.addGeometry(marker);
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GLTFLayer, GLTFMarker } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker } from "maptalks-gl";
 
 const gltfLayer = new GLTFLayer("gltf");
 const gltfMarker = new GLTFMarker(map.getCenter(), {
@@ -164,7 +164,7 @@ map.on("click", function (e) {
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GeoJSONVectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, GeoJSONVectorTileLayer } from "maptalks-gl";
 
 const geo = new GeoJSONVectorTileLayer("geo", {
   data: "{res}/geojson/area.geojson",
@@ -188,7 +188,7 @@ When identifying model layers (such as `GLTFLayer`) inside a `GroupGLLayer`, cal
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GLTFLayer, GLTFMarker } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker } from "maptalks-gl";
 
 const gltfLayer = new GLTFLayer("gltf");
 const gltfMarker = new GLTFMarker(map.getCenter(), {
@@ -264,7 +264,7 @@ Polygon layers such as `PolygonLayer` support outline highlighting based on post
 
 ```js
 import { Map, Polygon } from "maptalks";
-import { GroupGLLayer, PolygonLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, PolygonLayer } from "maptalks-gl";
 
 const layer = new PolygonLayer("polygon");
 new Polygon(
@@ -348,7 +348,7 @@ The following draw modes are supported by default:
 
 Completed geometries can be added directly to a layer with `addGeometry`, entering the normal event and identify flow.
 
-Related example: [Draw tool](/en/examples/#vector2d/interaction/draw-tool), API reference: [DrawTool](https://maptalks.org/maptalks.js/api/0.x/DrawTool.html)
+Related example: [Draw tool](/en/examples/#vector2d/interaction/draw-tool), API reference: [DrawTool](/en/api/draw-tool)
 
 ## Measurement tools (DistanceTool / AreaTool)
 
@@ -452,20 +452,15 @@ const areaTool = new AreaTool({
 }).addTo(map);
 ```
 
-Related examples: [Distance measurement](/en/examples/#vector2d/interaction/distance-tool), [Area measurement](/en/examples/#vector2d/interaction/area-tool), API reference: [DistanceTool](https://maptalks.org/maptalks.js/api/0.x/DistanceTool.html) · [AreaTool](https://maptalks.org/maptalks.js/api/0.x/AreaTool.html)
+Related examples: [Distance measurement](/en/examples/#vector2d/interaction/distance-tool), [Area measurement](/en/examples/#vector2d/interaction/area-tool), API reference: [DistanceTool](/en/api/distance-tool) · [AreaTool](/en/api/area-tool)
 
 ## Model transform (TransformControl)
 
-`TransformControl` is a 3D transform control exported by `@maptalks/gl-layers`, providing translation, rotation and scaling handles for models (such as `GLTFMarker`). The typical flow: click the map to identify a model → `transform(target)` binds the target and shows the handles → drag the handles to transform.
+`TransformControl` is a 3D transform control exported by `maptalks-gl`, providing translation, rotation and scaling handles for models (such as `GLTFMarker`). The typical flow: click the map to identify a model → `transform(target)` binds the target and shows the handles → drag the handles to transform.
 
 ```js
 import { Map } from "maptalks";
-import {
-  GroupGLLayer,
-  GLTFLayer,
-  GLTFMarker,
-  TransformControl,
-} from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker, TransformControl } from "maptalks-gl";
 
 const transformControl = new TransformControl();
 transformControl.addTo(map);

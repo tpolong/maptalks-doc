@@ -8,12 +8,12 @@ title: ExcavateAnalysis
 
 用多边形边界（boundary）框定区域"挖"掉模型的一部分，露出底面（贴 textureUrl 纹理、指定 height）。
 
-> 注：ExcavateAnalysis **不继承 Analysis**，而是继承 `@maptalks/vt` 的 ExtrudePolygonLayer（注册了 gl / gpu 两个渲染器 ExcavateRenderer），因此它本身是一个 WebGL 图层，通过 `addTo(groupGLLayer)` 添加到 GroupGLLayer，并用 `excavate(layers)` 指定被挖方的图层（2026 源码核对）。
+> 注：ExcavateAnalysis **不继承 Analysis**，而是继承 `@maptalks/vt` 的 ExtrudePolygonLayer（注册了 gl / gpu 两个渲染器 ExcavateRenderer），因此它本身是一个 WebGL 图层，通过 `addTo(groupGLLayer)` 添加到 GroupGLLayer，并用 `excavate(layers)` 指定被挖方的图层（源码核对）。
 
 ## 构造函数
 
 ```js
-import { ExcavateAnalysis } from '@maptalks/gl-layers';
+import { ExcavateAnalysis } from '@maptalks/analysis';
 
 const excavateAnalysis = new ExcavateAnalysis('excavate', {
   boundary: [
@@ -39,7 +39,7 @@ excavateAnalysis.addTo(groupGLLayer);
 
 | 配置名   |  类型    |  描述                     | 默认值 |
 |  ------ | :----:   | ----                      |   :-----------:  |
-|boundary*| Array\<Array\> | 挖方边界的坐标环（2026 源码核对补充） | null |
+|boundary*| Array\<Array\> | 挖方边界的坐标环（源码核对补充） | null |
 |textureUrl| String   | 挖方底面的纹理 url（README 提及） | null |
 |height   | Number   | 挖方高度（米，源码 altitudeToDistance 中 z \|\| 0） | 0 |
 
@@ -155,7 +155,7 @@ excavateAnalysis.addTo(groupGLLayer);
 
 ExcavateAnalysis 继承 [ExtrudePolygonLayer](./extrude-polygon-layer)（进而继承 [PolygonLayer](./polygon-layer)）的所有图层方法与选项。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 ## 静态方法
 

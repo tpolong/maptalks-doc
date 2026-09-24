@@ -6,13 +6,13 @@ title: PolygonLayer
 
 PolygonLayer is a layer for rendering polygon data based on WebGL graphics technology. PolygonLayer uses the same rendering logic as [VectorTileLayer](/en/api/vector-tile-layer) and shares the same Symbol styles.
 
-PolygonLayer is used exactly like [VectorLayer](https://maptalks.org/maptalks.js/api/0.x/VectorLayer.html) in the core maptalks library, but benefits from WebGL technology for significantly better performance.
+PolygonLayer is used exactly like [VectorLayer](/en/api/vector-layer) in the core maptalks library, but benefits from WebGL technology for significantly better performance.
 
-PolygonLayer only supports adding [Polygon](https://maptalks.org/maptalks.js/api/0.x/Polygon.html) and [MultiPolygon](https://maptalks.org/maptalks.js/api/0.x/MultiPolygon.html). Adding other data will raise an error.
+PolygonLayer only supports adding [Polygon](/en/api/polygon) and [MultiPolygon](/en/api/multi-polygon). Adding other data will raise an error.
 
 PolygonLayer supports all marker, text, line and polygon styles of the Symbol styles. The line style is used to specify the border style of polygons; the marker and text styles are mainly used to draw icons at the pole of inaccessibility of a polygon, or text along its outline.
 
-It is an indirect subclass of [maptalks.OverlayLayer](https://maptalks.org/maptalks.js/api/0.x/OverlayLayer.html) (directly inheriting from Vector3DLayer) and inherits all methods of Vector3DLayer.
+It is an indirect subclass of [maptalks.OverlayLayer](/en/api/overlay-layer) (directly inheriting from Vector3DLayer) and inherits all methods of Vector3DLayer.
 
 > [!INFO]
 > By default, PolygonLayer assembles all Polygons into a single 3D Mesh for rendering. Updating some Marker-related styles causes the layer to rebuild the Mesh, and frequent operations may cause performance issues. See the [performance optimization for vector layers](/en/api/vt-performance) document for details.
@@ -20,7 +20,7 @@ It is an indirect subclass of [maptalks.OverlayLayer](https://maptalks.org/mapta
 ## Constructor
 
 ```js
-import { PolygonLayer } from '@maptalks/gl-layers';
+import { PolygonLayer } from 'maptalks-gl';
 
 const layer = new PolygonLayer('polygon0');
 ```
@@ -162,9 +162,9 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 
 <!--@include: ./includes/js-events-example.md-->
 
-> Note: The renderer also fires rendering events such as `buildmesh`, `updatemesh`, `partialupdate`, `removegeo`, and `iblupdated` (verified in 2026).
+> Note: The renderer also fires rendering events such as `buildmesh`, `updatemesh`, `partialupdate`, `removegeo`, and `iblupdated`.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code
 
 <!-- api-gen:start -->
 ### Events Inherited from Vector3DLayer

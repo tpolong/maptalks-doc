@@ -8,14 +8,14 @@ GLTFLayer is a layer for drawing [GLTF 3D models](../guide/gltf) based on WebGL.
 
 GLTFLayer only supports adding [GLTFMarker](./gltf-marker) and [MultiGLTFMarker](./multi-gltf-marker); adding any other data will throw an error.
 
-It is a subclass of [maptalks.OverlayLayer](https://maptalks.org/maptalks.js/api/0.x/OverlayLayer.html) and inherits all the methods of OverlayLayer.
+It is a subclass of [maptalks.OverlayLayer](/en/api/overlay-layer) and inherits all the methods of OverlayLayer.
 
-> Note: In the 2026 source code, the actual inheritance chain of GLTFLayer is `GLTFLayer → MaskLayerMixin(AbstractGLTFLayer) → maptalks.OverlayLayer`, and the constructor signature supports `new GLTFLayer(id, geometries?, options?)`; when `geometries` is omitted, `options` can be passed as the second argument (verified against 2026 source code).
+> Note: In the source code, the actual inheritance chain of GLTFLayer is `GLTFLayer → MaskLayerMixin(AbstractGLTFLayer) → maptalks.OverlayLayer`, and the constructor signature supports `new GLTFLayer(id, geometries?, options?)`; when `geometries` is omitted, `options` can be passed as the second argument (verified against source code).
 
 ## Constructor
 
 ```js
-import { GLTFLayer } from '@maptalks/gl-layers';
+import { GLTFLayer } from 'maptalks-gl';
 
 const layer = new GLTFLayer('gltf0');
 ```
@@ -30,7 +30,7 @@ Parameters:
 |  ------             | :----:  | ----                      |   :-----------:  |
 <!--@include: ./includes/layer-options.md-->
 
-GLTFLayer-specific options (supplemented from 2026 source code):
+GLTFLayer-specific options (supplemented from source code):
 
 | Option               |   Type   |  Description             | Default |
 |  ------             | :----:  | ----                      |   :-----------:  |
@@ -117,10 +117,10 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 <!--@include: ./includes/api/layer-statics.md-->
 <!-- api-gen:end -->
 
-## Methods (supplemented from 2026 source code)
+## Methods (supplemented from source code)
 
 > [!NOTE]
-> The following GLTFLayer-specific methods are provided in the 2026 source code of @maptalks/gl-layers and were not documented in older docs:
+> The following GLTFLayer-specific methods are provided in the source code of maptalks-gl 0.124.4 and were not documented in older docs:
 
 | Method | Simplified signature | Description |
 | --- | --- | --- |
@@ -141,14 +141,14 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 
 <!--@include: ./includes/js-events-example.md-->
 
-> [!NOTE] Event verification (2026 source code)
+> [!NOTE] Event verification (source code)
 > - `modelload`: fired when all models are loaded; parameters: `{ models: url list }`
 > - `modelerror`: fired when a model fails to load; parameters: `{ url, info }`
 > - `setstyle`: fired after setting the style; parameters: `{ style }`
 > - `updatesymbol`: fired after updating a symbol; parameters: `{ index, symbol }`
 > - `load` / `add`: fired on the marker when the model is loaded / when the marker is added (including the layer reference)
 
-> This document has been verified against the 2026 source code of @maptalks/gl-layers (api-notes-others.md)
+> This document has been verified against the source code of maptalks-gl 0.124.4
 
 <!-- api-gen:start -->
 ### Other Events of GLTFLayer

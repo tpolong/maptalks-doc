@@ -8,7 +8,7 @@ maptalks 的地图、图层、几何与各类工具都继承自统一的事件�
 
 > [!NOTE] 导入说明
 > - 二维能力（地图、图层、几何、DrawTool/DistanceTool/AreaTool 等）从核心包 `maptalks` 导入
-> - WebGL 图层类（`GroupGLLayer`、`VectorTileLayer`、`GeoJSONVectorTileLayer`、`GLTFLayer`、`GLTFMarker` 等）与 `TransformControl` 从 `@maptalks/gl-layers` 导入
+> - WebGL 图层类（`GroupGLLayer`、`VectorTileLayer`、`GeoJSONVectorTileLayer`、`GLTFLayer`、`GLTFMarker` 等）与 `TransformControl` 从 `maptalks-gl` 导入
 
 ## 事件监听
 
@@ -25,7 +25,7 @@ const map = new Map("map", {
   baseLayer: new TileLayer("base", {
     urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
-      "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
 });
 
@@ -91,7 +91,7 @@ WebGL 图层中的 `GLTFMarker` 也支持完整的事件，并可通过 `setUnif
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GLTFLayer, GLTFMarker } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker } from "maptalks-gl";
 
 const gltfLayer = new GLTFLayer("gltf");
 const gltfMarker = new GLTFMarker(map.getCenter(), {
@@ -164,7 +164,7 @@ map.on("click", function (e) {
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GeoJSONVectorTileLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, GeoJSONVectorTileLayer } from "maptalks-gl";
 
 const geo = new GeoJSONVectorTileLayer("geo", {
   data: "{res}/geojson/area.geojson",
@@ -188,7 +188,7 @@ map.on("click", (e) => {
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GLTFLayer, GLTFMarker } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker } from "maptalks-gl";
 
 const gltfLayer = new GLTFLayer("gltf");
 const gltfMarker = new GLTFMarker(map.getCenter(), {
@@ -264,7 +264,7 @@ map.on("click", (e) => {
 
 ```js
 import { Map, Polygon } from "maptalks";
-import { GroupGLLayer, PolygonLayer } from "@maptalks/gl-layers";
+import { GroupGLLayer, PolygonLayer } from "maptalks-gl";
 
 const layer = new PolygonLayer("polygon");
 new Polygon(
@@ -348,7 +348,7 @@ drawTool.disable();
 
 绘制完成的几何可以直接 `addGeometry` 到图层，进入正常的事件、拾取流程。
 
-相关示例：[绘制工具](/examples/#vector2d/interaction/draw-tool)，API 参考：[DrawTool](https://maptalks.org/maptalks.js/api/0.x/DrawTool.html)
+相关示例：[绘制工具](/examples/#vector2d/interaction/draw-tool)，API 参考：[DrawTool](/api/draw-tool)
 
 ## 测量工具（DistanceTool / AreaTool）
 
@@ -452,20 +452,15 @@ const areaTool = new AreaTool({
 }).addTo(map);
 ```
 
-相关示例：[距离测量](/examples/#vector2d/interaction/distance-tool)、[面积测量](/examples/#vector2d/interaction/area-tool)，API 参考：[DistanceTool](https://maptalks.org/maptalks.js/api/0.x/DistanceTool.html) · [AreaTool](https://maptalks.org/maptalks.js/api/0.x/AreaTool.html)
+相关示例：[距离测量](/examples/#vector2d/interaction/distance-tool)、[面积测量](/examples/#vector2d/interaction/area-tool)，API 参考：[DistanceTool](/api/distance-tool) · [AreaTool](/api/area-tool)
 
 ## 模型变换（TransformControl）
 
-`TransformControl` 是 `@maptalks/gl-layers` 导出的三维变换控件，为模型（如 `GLTFMarker`）提供平移、旋转、缩放交互手柄。典型用法是：点击地图拾取模型 → `transform(target)` 绑定目标并显示手柄 → 拖动手柄变换。
+`TransformControl` 是 `maptalks-gl` 导出的三维变换控件，为模型（如 `GLTFMarker`）提供平移、旋转、缩放交互手柄。典型用法是：点击地图拾取模型 → `transform(target)` 绑定目标并显示手柄 → 拖动手柄变换。
 
 ```js
 import { Map } from "maptalks";
-import {
-  GroupGLLayer,
-  GLTFLayer,
-  GLTFMarker,
-  TransformControl,
-} from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker, TransformControl } from "maptalks-gl";
 
 const transformControl = new TransformControl();
 transformControl.addTo(map);

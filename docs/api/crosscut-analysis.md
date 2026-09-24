@@ -11,7 +11,7 @@ title: CrossCutAnalysis
 ## 构造函数
 
 ```js
-import { CrossCutAnalysis } from '@maptalks/gl-layers';
+import { CrossCutAnalysis } from '@maptalks/analysis';
 
 const crosscutAnalysis = new CrossCutAnalysis({
   cutLine: [
@@ -33,7 +33,7 @@ crosscutAnalysis.addTo(groupGLLayer);
 | 配置名   |  类型    |  描述                     | 默认值 |
 |  ------ | :----:   | ----                      |   :-----------:  |
 |cutLine* | Array\<Array\> | 切割线坐标数组，构成一条折线 | null |
-|cutLineColor | Number[] | 切面填充色（源码默认值 DEFAULT_WATER_COLOR，2026 核对） | [0.8451, 0.2588, 0.4863] |
+|cutLineColor | Number[] | 切面填充色（源码默认值 DEFAULT_WATER_COLOR） | [0.8451, 0.2588, 0.4863] |
 |textureUrl| String   | 切面纹理 url（README 提及） | null |
 
 </div>
@@ -45,7 +45,7 @@ crosscutAnalysis.addTo(groupGLLayer);
 <div>
 <br/>
 
-沿切割线等距采样 count 个点，返回每个采样点的坐标与沿线距离，可用来绘制剖面线或量测断面高程（2026 源码核对补充）。
+沿切割线等距采样 count 个点，返回每个采样点的坐标与沿线距离，可用来绘制剖面线或量测断面高程（源码核对补充）。
 
 参数：
 
@@ -76,4 +76,4 @@ crosscutAnalysis.addTo(groupGLLayer);
 
 ## 继承自Analysis的方法
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md / api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

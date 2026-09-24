@@ -12,7 +12,7 @@ gltf（GL Transmission Format）是三维场景中传输模型的通用格式。
 
 ```js
 import { Map } from "maptalks";
-import { GroupGLLayer, GLTFLayer, GLTFMarker } from "@maptalks/gl-layers";
+import { GroupGLLayer, GLTFLayer, GLTFMarker } from "maptalks-gl";
 
 const map = new Map("map", {
   center: [-74.01252272617671, 40.70709931736744],

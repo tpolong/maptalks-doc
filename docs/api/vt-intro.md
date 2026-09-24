@@ -48,4 +48,4 @@ title: 矢量瓦片概述
 
 MapTalks解决方案提供了VTS服务端软件，用于亿级数据的矢量瓦片实时切片，您可以在这里获得详细信息。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-vt-gl.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

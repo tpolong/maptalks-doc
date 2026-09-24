@@ -52,4 +52,4 @@ filter 数据过滤条件的具体说明请点击[这里](/guide/style/feature-f
 
 terrain-flat-mask渲染插件没有symbol样式属性，symbol可以设为空对象 `{}`。
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对

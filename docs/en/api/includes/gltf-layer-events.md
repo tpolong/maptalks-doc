@@ -20,7 +20,7 @@ Event properties:
 <div>
 <br/>
 
-Fired after the Layer's style is set (supplemented from 2026 source code).
+Fired after the Layer's style is set (supplemented from source code).
 
 Event properties:
 

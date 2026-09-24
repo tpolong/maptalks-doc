@@ -4,16 +4,16 @@ title: GLTFMarker
 
 # GLTFMarker
 
-GLTFMarker是[Marker](https://maptalks.org/maptalks.js/api/0.x/Marker.html)的子类，用于在指定地理坐标上添加GLTF模型和进行交互。
+GLTFMarker是[Marker](/api/marker)的子类，用于在指定地理坐标上添加GLTF模型和进行交互。
 
 GLTFMarker能够用symbol设置模型的状态，例如缩放比例，透明度，旋转角度等，同时提供了方法用于更新模型，更新模型状态，开启暂停动画等。
 
-> 注：2026 源码确认继承关系为 `class GLTFMarker extends Marker`（maptalks.Marker，自带事件、infoWindow 等能力）（2026 核对）
+> 注：源码确认继承关系为 `class GLTFMarker extends Marker`（maptalks.Marker，自带事件、infoWindow 等能力）
 
 ## 构造函数
 
 ```js
-import { GLTFMarker } from '@maptalks/gl-layers';
+import { GLTFMarker } from 'maptalks-gl';
 
 const gltfMarker = new GLTFMarker([0, 0], {
   symbol: {
@@ -42,15 +42,15 @@ GLTFMarker的options.symbol中包含以下的设置和属性。
 
 <!--@include: ./includes/gltf-marker-symbols.md-->
 
-> [!NOTE] symbol 字段核对（2026 源码）
+> [!NOTE] symbol 字段核对（源码）
 > - 上表字段均有效；`url` 默认值为 `'pyramid'`（内置模型）
-> - 2026 源码还支持：`modelHeight`（按模型高度自适应缩放，单位米）、`markerPixelHeight`（固定像素高度）、`translationX/Y/Z`、`rotationX/Y/Z`、`scaleX/Y/Z`（单轴设置）、`anchorZ` 的可取值扩展为 `'center' | 'bottom' | 'top'`、`doubleSided`（双面渲染）、`animationNodes`（限定动画节点）
-> - 模型透明度通过 `uniforms.polygonOpacity`（pbr/phong）或 `uniforms.lineOpacity`（wireframe）控制，`symbol.opacity` 不存在于 2026 源码（2026 核对）
+> - 源码还支持：`modelHeight`（按模型高度自适应缩放，单位米）、`markerPixelHeight`（固定像素高度）、`translationX/Y/Z`、`rotationX/Y/Z`、`scaleX/Y/Z`（单轴设置）、`anchorZ` 的可取值扩展为 `'center' | 'bottom' | 'top'`、`doubleSided`（双面渲染）、`animationNodes`（限定动画节点）
+> - 模型透明度通过 `uniforms.polygonOpacity`（pbr/phong）或 `uniforms.lineOpacity`（wireframe）控制，`symbol.opacity` 不存在于源码
 
 ## 成员函数
 
-> [!NOTE] 方法核对（2026 源码）
-> 旧版文档未收录、但 2026 源码中提供的方法：
+> [!NOTE] 方法核对（源码）
+> 旧版文档未收录、但源码中提供的方法：
 > - `setUniform(key, value, nodeIndex?)` / `getUniforms()`：按 key 设置 / 批量读取材质 uniform
 > - `setModelHeight(h)` / `getModelHeight()`：按模型高度（米）自适应缩放
 > - `cancelMarkerPixelHeight()`：取消固定像素高度，恢复按需缩放
@@ -91,7 +91,7 @@ GLTFMarker的options.symbol中包含以下的设置和属性。
 
 ## 静态方法
 
-> [!NOTE] 静态方法补充（2026 源码）
+> [!NOTE] 静态方法补充（源码）
 > - `static getGLTFAnchorsAlongLineString(coordinates, bboxWidth, map, options)`：沿线生成批量模型锚点（options: gapLength / count / rotateAlongLine / snapToEndVertexes / scaleEndModel）
 > - `static combineGLTFBoundingBox(markers): {min, max}`：合并多个 marker 的包围盒
 
@@ -111,12 +111,12 @@ GLTFMarker的options.symbol中包含以下的设置和属性。
 
 <!--@include: ./includes/js-events-example.md-->
 
-> [!NOTE] 事件补充（2026 源码核对）
+> [!NOTE] 事件补充（源码核对）
 > - `meshcreate`：网格创建完成（在 marker 上触发，图层通过 geometry 事件同步接收）
 > - `modelerror`：模型加载出错
 > - `positionchange`：坐标变化
 
-> 本文档已与 @maptalks/gl-layers 2026 源码核对（api-notes-others.md）
+> 本文档已与 maptalks-gl 0.124.4 源码核对
 
 <!-- api-gen:start -->
 ### GLTFMarker 的其他事件

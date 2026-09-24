@@ -26,4 +26,4 @@ Therefore, for rendering 3D white-model buildings, we believe vector tiles are t
 
 However, for point cloud and oblique photography data, 3DTiles remains the best technical solution and cannot be replaced by vector tiles.
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code

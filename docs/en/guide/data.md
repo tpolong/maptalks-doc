@@ -26,7 +26,7 @@ const map = new Map("map", {
   baseLayer: new TileLayer("base", {
     urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
-      "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
   layers: [new VectorLayer("v")],
 });
@@ -83,7 +83,7 @@ const map = new Map("map", {
   baseLayer: new TileLayer("base", {
     urlTemplate: "https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     attribution:
-      "&copy; <a href='http://osm.org'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
+      "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, &copy; <a href='https://carto.com/'>CARTO</a>",
   }),
   layers: [new VectorLayer("v")],
 });
@@ -223,7 +223,7 @@ Related examples: [Map to JSON](/en/examples/#vector2d/json/map-to-json), [JSON 
 
 ## Related APIs
 
-- [GeoJSON](https://maptalks.org/maptalks.js/api/0.x/GeoJSON.html) · [Geometry](https://maptalks.org/maptalks.js/api/0.x/Geometry.html) · [VectorLayer](https://maptalks.org/maptalks.js/api/0.x/VectorLayer.html)
-- [Layer](https://maptalks.org/maptalks.js/api/0.x/Layer.html) · [Map](https://maptalks.org/maptalks.js/api/0.x/Map.html)
+- [GeoJSON](/en/api/geojson) · [Geometry](/en/api/geometry) · [VectorLayer](/en/api/vector-layer)
+- [Layer](/en/api/layer) · [Map](/en/api/map)
 
-> This document has been cross-checked against the maptalks 2026 source (maptalks.js packages/maptalks core package)
+> This document has been cross-checked against the maptalks 1.12.1 source (maptalks.js packages/maptalks core package)

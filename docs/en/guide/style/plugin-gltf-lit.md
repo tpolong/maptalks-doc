@@ -48,4 +48,4 @@ For more on the filter data filtering conditions, see [feature-filter](/en/guide
 
 <!--@include: ./includes/plugin-gltf-content.md-->
 
-> This document has been cross-checked against the @maptalks/gl-layers 2026 source code (api-notes-vt-gl.md)
+> This document has been cross-checked against the maptalks-gl 0.124.4 source code
