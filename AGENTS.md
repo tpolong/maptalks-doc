@@ -94,6 +94,8 @@ API 页的**继承成员与方法/事件清单由源码自动生成**，不要�
   3. `@maptalks/regl` 映射到**本地** `/lib/regl-esm.mjs`（因为 npm 的 regl 无 `createREGL` 命名导出）。
   - **新增裸依赖**：在 `imports` 加映射 + 在 `config.ts` 的 `vite.optimizeDeps.exclude` 加该模块（见上）。
 - 示例代码里 `{res}` / `{urlTemplate}` / `{attribution}` 是**占位符**，由 `ExampleRepl.vue` 运行时替换；`{res}` → `/examples/resources`。不要直接改掉这些占位符逻辑。
+- **旧站按钮写法**：不少示例的按钮写成 `<a href="javascript:fn()">`，而 `fn` 定义在示例 JS 的**模块作用域**里（旧站是普通脚本，函数会落到全局）。预览层 `exposeLegacyHandlers()` 会把「HTML 里确实被 `javascript:` 调用、且 JS 里有顶层 `function` 声明」的名字挂到 `window` 上，按钮才点得动。**新增这类按钮时不要再往示例里加 `window.fn = fn`**（保持源码与旧站一致，由预览层兜住）；若按钮点了没反应，先看控制台是否 `ReferenceError: fn is not defined`。
+- 示例 HTML 里的 `<script src="...">`（mt.gui / d3 / echarts / suncalc / jquery-ui / draco 等）在预览里**不会执行**（HTML 是 innerHTML 注入的）。这些库靠 `ExampleRepl.vue` 的 import map + `ensureImports()` 自动 import 提供：`d3` 是 v7、d3 v3 的示例要显式 `import d3 from "d3v3"`，`jquery-ui`、`suncalc`、`draco` 也要显式 import。
 - 示例常依赖**外部瓦片/数据服务与公开测试 token**（Mapbox、MapTiler、高德、dvgis 等）。可用性以实测为准：
   `https://tile.maptalks.com/test/planet-single/{z}/{x}/{y}.mvt` 可用，`https://tiles.maptalks.com/**` 不可达。
   REPL 渲染失败优先排查是否外部服务/网络问题，再怀疑示例代码。

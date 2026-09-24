@@ -312,6 +312,23 @@ function ensureImports(code: string): string {
   return out;
 }
 
+/**
+ * 旧站示例的按钮写成 `<a href="javascript:fn()">`。
+ * 在旧站里示例脚本是普通脚本，顶层的 `function fn(){}` 会落到全局，链接找得到；
+ * 本站预览要支持 import，把示例脚本当 module 执行，函数只存在于**模块作用域**，
+ * 点按钮就抛 `ReferenceError: fn is not defined`（表现为"按钮失灵"）。
+ *
+ * 这里只把「HTML 里确实被 javascript: 调用」且「JS 里确有顶层函数声明」的名字
+ * 挂到 window 上：既修好按钮，又不用改 36 个示例的源码（源码保持与旧站一致）。
+ */
+function exposeLegacyHandlers(js: string, html: string): string {
+  const names = [
+    ...new Set([...html.matchAll(/javascript:\s*([A-Za-z_$][\w$]*)\s*\(/g)].map((m) => m[1])),
+  ].filter((n) => new RegExp(`(?:^|\\n)\\s*(?:async\\s+)?function\\s+${n}\\s*\\(`).test(js));
+  if (!names.length) return js;
+  return `${js}\n;Object.assign(window, { ${names.join(", ")} });\n`;
+}
+
 function inlineIndexJs(files: Record<string, string>) {
   const html = files["index.html"] ?? "";
   if (!html) return;
@@ -322,7 +339,7 @@ function inlineIndexJs(files: Record<string, string>) {
   if (hasInlineCode) return;
   const raw = files["index.js"];
   if (!raw) return;
-  const js = ensureImports(raw);
+  const js = exposeLegacyHandlers(ensureImports(raw), html);
   const refPattern = /<script[^>]*\btype=["']module["'][^>]*\bsrc=["']\.?\/?index\.js["'][^>]*><\/script>/i;
   if (refPattern.test(html)) {
     files["index.html"] = html.replace(
