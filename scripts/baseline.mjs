@@ -20,7 +20,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from '
 import { join, dirname } from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { ROOT, CACHE, DEFAULT_SRC, log } from './api/lib.mjs';
+import { ROOT, CACHE, DEFAULT_SRC, log, canonicalModel } from './api/lib.mjs';
 
 const argv = process.argv.slice(2);
 const arg = (k, d) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : d; };
@@ -56,19 +56,7 @@ function apiModelDigest() {
   const model = join(CACHE, 'api-model.json');
   if (!existsSync(model)) return null;
   const m = JSON.parse(readFileSync(model, 'utf8'));
-  const byName = (a, b) => a.name.localeCompare(b.name);
-  const ms = (list) => [...(list || [])].sort((a, b) => a.n.localeCompare(b.n)).map((x) => [x.n, x.sig || '', x.zh || '', x.en || '']);
-  const canon = {
-    classes: [...m.classes].sort(byName).map((c) => ({
-      name: c.name, pkg: c.pkg, parent: c.parent || null,
-      mixins: [...(c.mixins || [])].sort(), chain: c.chain || [],
-      methods: ms(c.methods), statics: ms(c.statics),
-    })),
-    namespaces: [...m.namespaces].sort(byName).map((n) => ({ name: n.name, members: ms(n.members) })),
-    events: [...m.events].map((e) => [e.owner || '', e.name || e.n || '', e.file || '', e.type || '', e.zh || '', e.en || '', (e.props || []).map(String)]).sort((a, b) => `${a[0]}#${a[1]}`.localeCompare(`${b[0]}#${b[1]}`)),
-    functionFiles: [...m.functionFiles].map((f) => ({ file: f.file, fns: ms(f.fns) })).sort((a, b) => a.file.localeCompare(b.file)),
-    options: [...m.options].map((o) => [o.file, JSON.stringify(o.list || [])]).sort((a, b) => a[0].localeCompare(b[0])),
-  };
+  const canon = canonicalModel(m);
   return { digest: sha(JSON.stringify(canon)), counts: { classes: canon.classes.length, members: canon.classes.reduce((a, c) => a + c.methods.length, 0), namespaces: canon.namespaces.length, events: canon.events.length } };
 }
 

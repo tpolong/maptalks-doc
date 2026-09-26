@@ -17,7 +17,9 @@
     "docs:pins": "node scripts/check-pins.mjs",
     "docs:assets": "node scripts/check-assets.mjs",
     "docs:baseline": "node scripts/baseline.mjs --check",
-    "docs:portable": "node scripts/check-gen-portable.mjs"
+    "docs:portable": "node scripts/check-gen-portable.mjs",
+    "docs:examples-index": "node scripts/examples-index.mjs",
+    "docs:archive": "node scripts/archive-baseline.mjs"
   },
   "dependencies": {
     "@vue/repl": "^4.7.2",

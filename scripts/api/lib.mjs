@@ -844,6 +844,25 @@ export function documentedBySection(txt) {
   };
 }
 
+/** 模型的规范化投影：排序 + 只保留稳定字段（跨平台、跨抽取顺序都稳定）。
+ *  基线摘要（baseline.mjs）与影响分析（impact.mjs）共用，避免两处口径漂移。 */
+export function canonicalModel(m) {
+  const byName = (a, b) => String(a.name).localeCompare(String(b.name));
+  const ms = (list) => [...(list || [])].sort((a, b) => String(a.n).localeCompare(String(b.n))).map((x) => [x.n, x.sig || '', x.zh || '', x.en || '']);
+  return {
+    classes: [...(m.classes || [])].sort(byName).map((c) => ({
+      name: c.name, pkg: c.pkg, parent: c.parent || null,
+      mixins: [...(c.mixins || [])].sort(), chain: c.chain || [],
+      methods: ms(c.methods), statics: ms(c.statics),
+    })),
+    namespaces: [...(m.namespaces || [])].sort(byName).map((n) => ({ name: n.name, members: ms(n.members) })),
+    events: [...(m.events || [])].map((e) => [e.owner || '', e.name || e.n || '', e.file || '', e.type || '', e.zh || '', e.en || '', (e.props || []).map(String)])
+      .sort((a, b) => `${a[0]}#${a[1]}`.localeCompare(`${b[0]}#${b[1]}`)),
+    functionFiles: [...(m.functionFiles || [])].map((f) => ({ file: f.file, fns: ms(f.fns) })).sort((a, b) => String(a.file).localeCompare(String(b.file))),
+    options: [...(m.options || [])].map((o) => [o.file, JSON.stringify(o.list || [])]).sort((a, b) => String(a[0]).localeCompare(String(b[0]))),
+  };
+}
+
 export function writeJson(file, obj) {
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, JSON.stringify(obj, null, 1), 'utf8');
