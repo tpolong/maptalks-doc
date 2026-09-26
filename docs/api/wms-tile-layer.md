@@ -56,10 +56,6 @@ new WMSTileLayer(id, options)
 
 - `WMSTileLayer.fromJSON(layerJSON): WMSTileLayer | null` — 从 JSON 还原图层
 
-
-
-
-
 <!-- api-gen:start -->
 ### WMSTileLayer 的其他静态方法
 
@@ -75,10 +71,6 @@ new WMSTileLayer(id, options)
 ## 成员方法
 
 - `getTileUrl(x, y, z): string` — 获取瓦片 `(x,y,z)` 的 WMS 请求 URL
-
-
-
-
 
 <!-- api-gen:start -->
 ### WMSTileLayer 的其他公开方法
@@ -105,8 +97,6 @@ new WMSTileLayer(id, options)
 ## 事件
 
 瓦片事件与图层通用事件见 [TileLayer](/api/tile-layer) / [Layer](/api/layer)。
-
-
 
 <!-- api-gen:start -->
 ### 继承自 TileLayer 的事件

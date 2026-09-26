@@ -11,7 +11,7 @@
  */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname, resolve, basename } from 'node:path';
-import { ROOT, CACHE, loadPageMap, pageList, documentedBySection, writtenNames } from './lib.mjs';
+import { ROOT, CACHE, loadPageMap, pageList, documentedBySection, writtenNames, readText } from './lib.mjs';
 
 const MODEL = JSON.parse(readFileSync(join(CACHE, 'api-model.json'), 'utf8'));
 const MAP = loadPageMap();
@@ -32,12 +32,12 @@ const enPages = new Set(readdirSync(join(ROOT, 'docs', 'en', 'api')).filter((f) 
 const problems = { link: [], include: [], unknownMember: [], missingMember: [], parity: [] };
 
 function expand(pageFile, lang) {
-  let txt = readFileSync(pageFile, 'utf8');
+  let txt = readText(pageFile);
   const parts = [{ file: pageFile, txt }];
   for (const m of [...txt.matchAll(/<!--@include:\s*([^\s>]+?)\s*-->/g)]) {
     const p = resolve(dirname(pageFile), m[1]);
     if (!existsSync(p)) { problems.include.push(`${lang}/${basename(pageFile)}: ${m[1]}`); continue; }
-    const inc = readFileSync(p, 'utf8');
+    const inc = readText(p);
     parts.push({ file: p, txt: inc });
     txt = txt.replace(m[0], inc);
   }

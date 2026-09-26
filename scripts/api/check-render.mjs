@@ -12,7 +12,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { resolve, join, dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createMarkdownRenderer } from 'vitepress';
-import { ROOT, pageList } from './lib.mjs';
+import { ROOT, pageList, readText } from './lib.mjs';
 
 function loadCompilerDom() {
   const store = resolve(ROOT, 'node_modules/.pnpm');
@@ -25,12 +25,12 @@ const { baseParse } = await loadCompilerDom();
 const md = await createMarkdownRenderer(ROOT, { html: true, linkify: true }, '/');
 
 function expand(absPath) {
-  let txt = readFileSync(absPath, 'utf8');
+  let txt = readText(absPath);
   const missing = [];
   for (const m of [...txt.matchAll(/<!--@include:\s*([^\s>]+?)\s*-->/g)]) {
     const p = resolve(dirname(absPath), m[1]);
     if (!existsSync(p)) { missing.push(m[1]); continue; }
-    txt = txt.replace(m[0], readFileSync(p, 'utf8'));
+    txt = txt.replace(m[0], readText(p));
   }
   return { txt, missing };
 }

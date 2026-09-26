@@ -14,7 +14,7 @@ import { join } from 'node:path';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import {
   CACHE, DEFAULT_SRC, ROOT, buildModel, extractRaw, findAstGrep, log, pageList, writeJson, loadPageMap,
-  expandIncludes, writtenNames,
+  expandIncludes, writtenNames, readText,
 } from './lib.mjs';
 
 const argv = process.argv.slice(2);
@@ -48,7 +48,7 @@ if (argv.includes('--no-extract') && existsSync(join(RAW, 'ts-methods.jsonl'))) 
 }
 
 log('建模…');
-const M = buildModel(raw);
+const M = buildModel(raw, SRC);
 log(`  类 ${M.classes.length}；成员 ${M.members.length}；事件 ${M.events.size}；命名空间 ${M.namespaces.size}；函数文件 ${M.functions.size}；options 定义 ${M.optionsOf.size}`);
 const FN_BY_REL = new Map([...M.functions.entries()].map(([f, list]) => [relToPackages(f), list]));
 
@@ -99,7 +99,7 @@ for (const p of pageList()) {
   }
   rows.push({ page: p, kind: e.kind || '?', target: e.target || '', lines: txt.split('\n').length,
     enLines: enTxt ? enTxt.split('\n').length : 0, chain, own, ownZh, ownEn, ownNo, inh, evOwn, evInh,
-    written: written.size, incs: (readFileSync(pageFile, 'utf8').match(/<!--@include:/g) || []).length, missing });
+    written: written.size, incs: (readText(pageFile).match(/<!--@include:/g) || []).length, missing });
 }
 
 const T = [];

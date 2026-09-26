@@ -14,7 +14,7 @@
  */
 import { mkdirSync, writeFileSync, readFileSync, existsSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
-import { ROOT, CACHE, loadPageMap, pageList, log, renderMethod, renderEvent, expandIncludes, writtenNames, slug, documentedBySection, writeJson } from './lib.mjs';
+import { ROOT, CACHE, loadPageMap, pageList, log, renderMethod, renderEvent, expandIncludes, writtenNames, slug, documentedBySection, writeJson, readText, writeText } from './lib.mjs';
 
 const DRY = process.argv.includes('--dry');
 const MODEL = JSON.parse(readFileSync(join(CACHE, 'api-model.json'), 'utf8'));
@@ -101,7 +101,7 @@ const withTextEvent = (e, lang) => {
 const written = [];
 const write = (dirIdx, file, content) => {
   written.push({ file, size: content.length });
-  if (!DRY) writeFileSync(join(outDirs[dirIdx], file), content + '\n', 'utf8');
+  if (!DRY) writeText(join(outDirs[dirIdx], file), content + '\n');
 };
 
 // ---- 需要产出的实体集合 ----
@@ -175,13 +175,13 @@ function documentedFor(page, lang) {
   const dir = lang === 'zh' ? join(ROOT, 'docs', 'api') : join(ROOT, 'docs', 'en', 'api');
   const pageFile = join(dir, `${page}.md`);
   if (!existsSync(pageFile)) return { methods: new Set(), statics: new Set(), events: new Set() };
-  let txt = readFileSync(pageFile, 'utf8');
+  let txt = readText(pageFile);
   const own = OWN_SNIPPETS(page);
   for (const m of [...txt.matchAll(/<!--@include:\s*([^\s>]+?)\s*-->/g)]) {
     const raw = m[1];
     if (own.some((o) => raw.endsWith(o))) continue;
     const p = join(dir, raw.replace(/^\.\//, ''));
-    if (existsSync(p)) txt += '\n' + readFileSync(p, 'utf8');
+    if (existsSync(p)) txt += '\n' + readText(p);
   }
   return documentedBySection(txt);
 }

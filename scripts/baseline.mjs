@@ -65,9 +65,9 @@ function apiModelDigest() {
       methods: ms(c.methods), statics: ms(c.statics),
     })),
     namespaces: [...m.namespaces].sort(byName).map((n) => ({ name: n.name, members: ms(n.members) })),
-    events: [...m.events].map((e) => [e.owner || '', e.name || e.n || '']).sort(),
+    events: [...m.events].map((e) => [e.owner || '', e.name || e.n || '', e.file || '', e.type || '', e.zh || '', e.en || '', (e.props || []).map(String)]).sort((a, b) => `${a[0]}#${a[1]}`.localeCompare(`${b[0]}#${b[1]}`)),
     functionFiles: [...m.functionFiles].map((f) => ({ file: f.file, fns: ms(f.fns) })).sort((a, b) => a.file.localeCompare(b.file)),
-    options: [...m.options].map((o) => o.file).sort(),
+    options: [...m.options].map((o) => [o.file, JSON.stringify(o.list || [])]).sort((a, b) => a[0].localeCompare(b[0])),
   };
   return { digest: sha(JSON.stringify(canon)), counts: { classes: canon.classes.length, members: canon.classes.reduce((a, c) => a + c.methods.length, 0), namespaces: canon.namespaces.length, events: canon.events.length } };
 }

@@ -56,10 +56,6 @@ Other tile options (`urlTemplate`, `tileSize`, `spatialReference`, etc.) — see
 
 - `WMSTileLayer.fromJSON(layerJSON): WMSTileLayer | null` — restore a layer from JSON
 
-
-
-
-
 <!-- api-gen:start -->
 ### Other Static Methods of WMSTileLayer
 
@@ -75,10 +71,6 @@ The following methods are provided by the parent class [Layer](/en/api/layer) an
 ## Member Methods
 
 - `getTileUrl(x, y, z): string` — get the WMS request URL for tile `(x,y,z)`
-
-
-
-
 
 <!-- api-gen:start -->
 ### Other Public Methods of WMSTileLayer
@@ -105,8 +97,6 @@ This class gains the following method groups from mixins; see the linked pages f
 ## Events
 
 Tile events and common layer events — see [TileLayer](/en/api/tile-layer) / [Layer](/en/api/layer).
-
-
 
 <!-- api-gen:start -->
 ### Events Inherited from TileLayer

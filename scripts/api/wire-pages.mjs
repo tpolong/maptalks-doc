@@ -13,7 +13,7 @@
  */
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, basename } from 'node:path';
-import { ROOT, CACHE, loadPageMap, pageList, log, slug } from './lib.mjs';
+import { ROOT, CACHE, loadPageMap, pageList, log, slug, readText, writeText } from './lib.mjs';
 
 const DRY = process.argv.includes('--dry');
 const MODEL = JSON.parse(readFileSync(join(CACHE, 'api-model.json'), 'utf8'));
@@ -226,7 +226,7 @@ for (const page of pageList()) {
   for (const lang of ['zh', 'en']) {
     const file = join(ROOT, lang === 'zh' ? 'docs' : 'docs/en', 'api', `${page}.md`);
     if (!existsSync(file)) { log(`  !! 缺文件 ${file}`); continue; }
-    let txt = readFileSync(file, 'utf8');
+    let txt = readText(file);
     const original = txt;
     txt = stripSupersededLegacy(txt);          // 旧片段先清掉，之后由生成片段接管
     const includes = includeNames(txt);
@@ -236,7 +236,7 @@ for (const page of pageList()) {
     const out = lines.join('\n').replace(/\n{3,}/g, '\n\n').replace(/\n*$/, '\n');
     if (out !== original) {
       changed++;
-      if (!DRY) writeFileSync(file, out, 'utf8');
+      if (!DRY) writeText(file, out);
     }
   }
 }

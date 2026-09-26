@@ -99,4 +99,19 @@ jobs:
         run: |
           node scripts/api/gen-includes.mjs
           node scripts/api/wire-pages.mjs
+          git diff --stat -- docs/api docs/en/api >> gen-wire.stat.txt || true
+          git diff -- docs/api docs/en/api > gen-wire.diff || true
+          cat gen-wire.stat.txt
           git diff --exit-code -- docs/api docs/en/api
+
+      - name: 失败时收集证据（生成差异 + CI 抽出的模型）
+        # Actions 日志接口需要鉴权，读不到日志；因此把差异与模型作为 artifact 上传，便于逐字定位
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gen-wire-evidence
+          path: |
+            gen-wire.diff
+            gen-wire.stat.txt
+            .vitepress/cache/api/api-model.json
+          if-no-files-found: warn

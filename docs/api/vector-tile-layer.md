@@ -331,10 +331,6 @@ layer.setFeatureState({ id: 'feature-1', layer: 'layer-name' }, { hot: true });
 </div>
 </details>
 
-
-
-
-
 <!-- api-gen:start -->
 ### VectorTileLayer 的其他公开方法
 
@@ -455,10 +451,6 @@ const layer = await VectorTileLayer.loadFrom(url, {});
 </div>
 </details>
 
-
-
-
-
 <!-- api-gen:start -->
 ### 继承自 Layer 的静态方法
 
@@ -522,8 +514,6 @@ GL上下文创建事件。
 </details>
 
 > 本文档已与 maptalks-gl 0.124.4 源码核对
-
-
 
 <!-- api-gen:start -->
 ### VectorTileLayer 的其他事件

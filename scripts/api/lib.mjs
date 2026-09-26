@@ -72,6 +72,9 @@ export function sg(bin, outFile, args, srcRoot, lang = 'ts') {
     if (!line.trim().startsWith('{')) continue;
     try { out.push(JSON.parse(line)); } catch { /* 忽略半行 */ }
   }
+  // 路径规范化为本机绝对路径：ast-grep 的 file 字段与 walkSource 的拼写可能不同，
+  // 不统一会导致同一文件在集合里出现两次（options/事件被重复统计）
+  for (const r of out) if (r.file) r.file = resolve(r.file);
   return sortRecs(out);
 }
 
@@ -89,7 +92,7 @@ export function walkSource(srcRoot = DEFAULT_SRC) {
       const p = join(dir, e.name);
       if (SKIP.test(p)) continue;
       if (e.isDirectory()) rec(p, depth + 1);
-      else if (/\.(ts|tsx|js|jsx)$/.test(e.name) && !/\.config\.js$/.test(e.name)) out.push(p);
+      else if (/\.(ts|tsx|js|jsx)$/.test(e.name) && !/\.config\.js$/.test(e.name)) out.push(resolve(p));
     }
   };
   rec(srcRoot);
@@ -134,10 +137,24 @@ export function extractRaw(bin, srcRoot, rawDir) {
 // ---------------------------------------------------------------- JSDoc
 
 const fileCache = new Map();
+/** 读文本并归一为 LF：源码与页面在 Windows 上是 CRLF，不归一会让"按行处理 + 正则"的结果依赖平台
+ *  （已踩过的坑：CRLF 下 `/\n{3,}/` 折叠不到 `\n\r\n\r\n`，生成物多出空行，CI 在 LF 下折叠正常 → diff） */
+export const readText = (f) => {
+  try { return readFileSync(f, 'utf8').replace(/\r\n?/g, '\n'); } catch { return ''; }
+};
 export const fileText = (f) => {
-  if (!fileCache.has(f)) { try { fileCache.set(f, readFileSync(f, 'utf8')); } catch { fileCache.set(f, ''); } }
+  if (!fileCache.has(f)) fileCache.set(f, readText(f));
   return fileCache.get(f);
 };
+
+/** 写文本前断言不含 CR：生成物必须是纯 LF，否则跨平台比较必然漂移 */
+export function writeText(file, content) {
+  const i = content.indexOf('\r');
+  if (i >= 0) {
+    throw new Error(`生成物含 CR —— 行尾归一失效：${file}\n  @${i}: ${JSON.stringify(content.slice(Math.max(0, i - 60), i + 20))}`);
+  }
+  writeFileSync(file, content, 'utf8');
+}
 const offsCache = new Map();
 export function lineOffsets(f) {
   if (!offsCache.has(f)) {
@@ -277,7 +294,7 @@ export const isMixinFactory = (f) => {
   return mixinFileCache.get(f);
 };
 
-export function buildModel(raw) {
+export function buildModel(raw, srcRoot = DEFAULT_SRC) {
   const classes = [];
   const seenDecl = new Set();
   const push = (name, parentText, j, extra = {}) => {
@@ -418,13 +435,13 @@ export function buildModel(raw) {
   // 事件定义常常写在没有任何类/方法的文件里（如 map/handler/Map.GeometryEvents.ts），
   // 因此必须扫描**全部源文件**，不能只扫有类/成员的文件的。
   const events = new Map();
-  const files = new Set([...walkSource(), ...members.map((m) => m.file), ...classes.map((c) => c.file)]);
+  const files = new Set([...walkSource(srcRoot), ...members.map((m) => m.file), ...classes.map((c) => c.file)]);
   for (const f of files) {
     const t = fileText(f);
     for (const m of t.matchAll(/@(event|fires)\s+([\w.$]+)#([\w:-]+)/g)) {
       const key = `${m[2]}#${m[3]}`;
       const prev = events.get(key) || {
-        owner: m[2].split('.').pop(), name: m[3], zh: '', en: '', props: [], type: '', defined: false, file: f.replace(/^.*packages[\\/]/, ''),
+        owner: m[2].split('.').pop(), name: m[3], zh: '', en: '', props: [], type: '', defined: false, file: REL(f),
       };
       if (m[1] === 'event') {
         const d = parseDoc(docEnclosingIndex(f, m.index)?.raw);
@@ -751,12 +768,12 @@ export function loadPageMap() {
 /** 页面正文 + 其 `<!--@include: ...-->` 片段内容（判断"已写成员"必须展开 include，否则会误判为缺） */
 export function expandIncludes(pageFile) {
   if (!existsSync(pageFile)) return '';
-  const txt = readFileSync(pageFile, 'utf8');
+  const txt = readText(pageFile);
   const dir = dirname(pageFile);
   const parts = [txt];
   for (const m of txt.matchAll(/<!--@include:\s*([^\s>]+?)\s*-->/g)) {
     const p = resolve(dir, m[1]);
-    if (existsSync(p)) parts.push(readFileSync(p, 'utf8'));
+    if (existsSync(p)) parts.push(readText(p));
   }
   return parts.join('\n');
 }

@@ -13,7 +13,11 @@
     "api:verify": "node scripts/api/verify.mjs",
     "api:check": "node scripts/api/check-render.mjs",
     "api:sync": "node scripts/api/inventory.mjs && node scripts/api/gen-includes.mjs && node scripts/api/wire-pages.mjs && node scripts/api/verify.mjs && node scripts/api/check-render.mjs",
-    "docs:links": "node scripts/check-guide-links.mjs"
+    "docs:links": "node scripts/check-guide-links.mjs",
+    "docs:pins": "node scripts/check-pins.mjs",
+    "docs:assets": "node scripts/check-assets.mjs",
+    "docs:baseline": "node scripts/baseline.mjs --check",
+    "docs:portable": "node scripts/check-gen-portable.mjs"
   },
   "dependencies": {
     "@vue/repl": "^4.7.2",

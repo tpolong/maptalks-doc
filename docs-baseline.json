@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-09-26 04:49",
+  "updatedAt": "2026-09-26 05:33",
   "engine": {
     "@maptalks/3dtiles": "0.124.4",
     "@maptalks/analysis": "0.124.4",
@@ -48,7 +48,7 @@
     "dirty": true
   },
   "digests": {
-    "apiModel": "sha256:2a2908db72256655950c115732f9d402",
+    "apiModel": "sha256:79fde652c9add1eb99cded31f76f15f8",
     "modelCounts": {
       "classes": 464,
       "members": 2970,
