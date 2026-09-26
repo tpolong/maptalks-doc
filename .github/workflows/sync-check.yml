@@ -1,0 +1,157 @@
+# 引擎发版 → 文档/示例跟进
+#
+# 触发：每天定时轮询（UTC 06:17，避开整点）+ 手动 workflow_dispatch（可指定 engine_ref）
+# 流程：capture（npm/tags + git 区间） → 无变化则静默退出
+#                                  → 有变化则 impact（影响分析）→ 机械修复 → 开 sync/v<ver> 分支
+#                                    + 草稿 PR（正文=影响报告）+ issue + artifact
+#
+# 边界（避免误读）：
+#   - 本工作流不跑运行时复测（393 例需要 GPU）；PR 门禁由 docs-ci 负责。
+#   - 只自动提交"可机械修复"的部分（重生成片段、基线、pin）；示例代码与叙述留给人。
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+    inputs:
+      engine_ref:
+        description: 要分析的引擎 ref（tag / commit）；留空用上游最新稳定 tag
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: sync-check
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: 抓取与影响分析
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.20.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: 安装 ast-grep
+        run: npm i -g @ast-grep/cli
+
+      - name: 稀疏检出引擎仓库（带 tags，供区间分析）
+        run: |
+          git clone --filter=blob:none --sparse https://github.com/maptalks/maptalks.js engine
+          cd engine
+          git sparse-checkout set packages
+          git fetch --tags --quiet
+
+      - name: 抓取上游变更（L1 发布信号 + L2 源码区间）
+        id: capture
+        run: |
+          ARGS=(--src "$PWD/engine/packages" --out capture.json --print)
+          REF="${{ github.event.inputs.engine_ref }}"
+          if [ -n "$REF" ]; then ARGS+=(--engine-ref "$REF"); fi
+          node scripts/capture.mjs "${ARGS[@]}"
+          node -e "const c=require('./capture.json');const fs=require('fs');fs.appendFileSync(process.env.GITHUB_OUTPUT,'up_to_date='+String(c.upToDate)+'\n');fs.appendFileSync(process.env.GITHUB_OUTPUT,'to='+c.to+'\n');fs.appendFileSync(process.env.GITHUB_OUTPUT,'ref='+c.ref+'\n');"
+
+      - name: 已是最新则结束
+        if: steps.capture.outputs.up_to_date == 'true'
+        run: echo "up-to-date（引擎未变化），静默退出"
+
+      - name: 抽取新版本模型（供影响分析与 gen/wire 复用）
+        if: steps.capture.outputs.up_to_date == 'false'
+        run: node scripts/api/inventory.mjs --src "$PWD/engine/packages"
+
+      - name: 示例符号索引
+        if: steps.capture.outputs.up_to_date == 'false'
+        run: node scripts/examples-index.mjs --out .vitepress/cache/examples-symbol-index.json
+
+      - name: 影响分析（③ L3 模型字段级 diff + 四层反查）
+        if: steps.capture.outputs.up_to_date == 'false'
+        id: impact
+        run: |
+          set +e
+          node scripts/impact.mjs \
+            --src "$PWD/engine/packages" \
+            --no-extract \
+            --out-json impact-report.json \
+            --out-md impact-report.md \
+            --print
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: 生成机械修复（重生成片段 / 更新基线）
+        if: steps.capture.outputs.up_to_date == 'false'
+        run: |
+          node scripts/api/gen-includes.mjs
+          node scripts/api/wire-pages.mjs
+          node scripts/baseline.mjs --write --src "$PWD/engine/packages" --offline || true
+
+      - uses: actions/upload-artifact@v4
+        if: steps.capture.outputs.up_to_date == 'false'
+        with:
+          name: sync-report
+          path: |
+            capture.json
+            impact-report.md
+            impact-report.json
+          if-no-files-found: warn
+
+      - name: 开同步分支 + 草稿 PR + issue
+        if: steps.capture.outputs.up_to_date == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ENGINE_TO: ${{ steps.capture.outputs.to }}
+          IMPACT_CODE: ${{ steps.impact.outputs.code }}
+        run: |
+          VER=$(node -e "try{console.log(require('./engine/packages/maptalks-gl/package.json').version)}catch{console.log('unknown')}")
+          BR="sync/v${VER}"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git checkout -B "$BR"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "没有可机械修复的改动，仅登记 issue"
+          else
+            git commit -qm "chore(sync): 引擎 ${VER} 的机械修复（重生成片段/基线）"
+            git push -f origin "$BR"
+          fi
+
+          {
+            echo "## 影响报告（自动生成）"
+            echo
+            cat impact-report.md
+            echo
+            echo "## 机器已做"
+            echo "- 重生成 API 片段与页面块、更新 docs-baseline.json（若软件层面可机械修复）"
+            echo
+            echo "## 人工必做（勾完再合并）"
+            echo "- [ ] 复核④待人工清单里的 guide 页"
+            echo "- [ ] 示例代码修复（报告③点名的示例）"
+            echo "- [ ] 本地跑 \`pnpm docs:portable\`、\`pnpm api:sync\` 幂等、\`pnpm repl:smoke <受影响示例>\`"
+            echo
+            echo "引擎区间：\`${{ steps.capture.outputs.ref }}\`（到 \`${ENGINE_TO}\`）"
+            echo "影响分析退出码：${IMPACT_CODE}（非 0 表示有阻塞项）"
+          } > pr-body.md
+
+          gh pr create --draft --base main --head "$BR" \
+            --title "sync: 引擎 ${VER} → 文档与示例跟进" \
+            --body-file pr-body.md \
+            --label "sync/needs-human" 2>/dev/null || \
+          gh pr create --draft --base main --head "$BR" \
+            --title "sync: 引擎 ${VER} → 文档与示例跟进" \
+            --body-file pr-body.md
+
+          gh issue create \
+            --title "sync: 引擎 ${VER} 需要人工跟进（影响分析退出码 ${IMPACT_CODE}）" \
+            --body-file pr-body.md || true

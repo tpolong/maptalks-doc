@@ -11,6 +11,23 @@ pnpm build          # 生产构建，输出到 .vitepress/dist/
 pnpm preview        # 本地预览构建产物
 ```
 
+**文档站门禁与工具**（改内容前后都该跑；CI 里与 `pnpm build` 一起作为必过项）：
+
+| 命令 | 作用 | 期望输出 |
+| --- | --- | --- |
+| `pnpm api:sync` | **含 `api:inventory` 的完整生成链**（抽取 → 生成片段 → 接线 → 校验 → 渲染门禁） | 各步 0 失败 |
+| `pnpm api:check` / `pnpm api:verify` | 页面渲染门禁 / 页面↔源码一致性 | `失败 0，告警 0` / `missingMember:0` |
+| `pnpm docs:links` | 站内链接 / 锚点 / include / 示例深链 | `全部通过。` |
+| `pnpm docs:pins` | import map 版本 pin 与基线一致、示例裸导入可解析、`optimizeDeps.exclude` 覆盖 | `版本 pin 与依赖映射：全部通过。` |
+| `pnpm docs:assets` | 示例 ↔ 缩略图 1:1、taxonomy 双向一致 | `资产一致性：全部通过。` |
+| `pnpm docs:baseline` | 基线与现状一致（引擎版本/commit/模型摘要） | `基线一致：...` |
+| `pnpm docs:portable` | **生成器跨平台一致性**（LF 等价环境跑 gen/wire 并要求零差异） | `portable: OK` |
+| `pnpm docs:examples-index` | 生成示例符号索引（影响分析的反查表） | `已写 .vitepress/cache/examples-symbol-index.json` |
+| `pnpm docs:archive` | 把模型/报告归档到孤儿分支 `baselines/<引擎版本>` | `已提交 N 个文件` |
+
+> `pnpm docs:portable` 是**行尾与工作区状态的回归防线**：历史上有两个坑——CRLF 让空行折叠正则失效、
+> `walkSource` 用了默认源码根（CI 上不存在）——都只有它能本地复现。
+
 - 示例库大，构建内存不足时用 `NODE_OPTIONS=--max-old-space-size=8192 pnpm build`。
 - 包管理器为 **pnpm**（仓库有 `pnpm-lock.yaml`、`pnpm-workspace.yaml`）。
 
@@ -125,6 +142,38 @@ guide 与示例大量由 maptalks.com 旧站迁移而来，最容易出问题的
   用 `split('\n')` 配 `/^#{1,6}\s+(.*)$/` 会一条标题都匹配不到（锚点检查会全部假报缺失）。
 - 示例的 `@import "https://…/maptalks.css"` 之类的片段在 REPL 里**不会**被注入（REPL 只执行 JS），
   但示例目录下的 `index.html` 是可被直接打开的，地址仍须有效。
+
+## 发版同步（引擎变更 → 文档/示例跟进）
+
+**基线**：`docs-baseline.json` 是"这批文档按哪个引擎版本核对"的唯一机器可读来源
+（引擎 18 包版本 + 源码 commit + 模型摘要 + 示例/缩略图计数）。改完引擎相关内容后跑
+`node scripts/baseline.mjs --write` 更新，并**单独打 tag `docs-v<引擎版本>`**——tag 的语义是
+"本提交的文档已与该引擎版本核对"。线上站点即对应某个 tag，`git diff docs-vA..docs-vB -- docs/` 就是一次发版的全貌。
+
+**影响分析链**（把"引擎变了什么"映射成"要改哪几处"）：
+
+| 命令 | 作用 |
+| --- | --- |
+| `node scripts/capture.mjs --print` | 抓取上游变更：npm dist-tags（只认 `latest`）+ 上游稳定 tag + `from(基线 commit)..to(新 ref)` 的提交与文件列表 |
+| `node scripts/examples-index.mjs --print` | 示例符号索引（`bySymbol`/`byPackage`/`byVersion` 反查表），影响分析的示例面依据 |
+| `node scripts/impact.mjs --src <引擎 packages> [--no-extract] [--base baselines/<ver>] --print` | 模型字段级 diff + 四层反查 → `impact-report.{json,md}`（API/页面/示例/待人工 四段）；**阻塞项退出码 1** |
+| `node scripts/archive-baseline.mjs [--push]` / `--get <ver>` / `--list` | 把模型/报告归档到孤儿分支 `baselines/<引擎版本>`（影响分析的"上一版模型"基准） |
+
+**CI 两个工作流的职责与边界**：
+
+- `docs-ci.yml`（PR / push main）：`gates`（渲染门禁、链接、pins、assets、build）+ `api-model`
+  （按基线 commit 稀疏检出引擎 → 重抽模型 → `verify` → 基线核对 → gen/wire 幂等）。
+  **不跑运行时复测**：393 例需要 GPU，headless WebGL 判定不可靠 —— CI 绿灯 ≠ 示例全部正常。
+- `sync-check.yml`（每日定时 + 手动）：capture → 无变化静默退出；有变化则 impact → 机械修复 →
+  开 `sync/v<ver>` 分支 + 草稿 PR（正文=影响报告）+ issue。只自动提交可机械修复的部分，示例代码与叙述留给人。
+
+**两条硬规则（踩坑得来，别绕开）**：
+
+1. **读文本一律走归一入口**：引擎源码用 `lib.fileText()`，页面用 `lib.readText()`，写生成物用 `lib.writeText()`
+   （写前断言不含 CR）。工作区行尾是 CRLF/LF/mixed 混杂，不归一就会出现"本地看不见、CI 看得见"的差异
+   （CRLF 让 `/\n{3,}/` 折叠失效，生成物多空行）。
+2. **生成器只依赖 `(模型, 页面文本, 固定常量)`**：不得依赖工作区既有产物或输入行尾；模型侧唯一事实源是
+   `lib.canonicalModel()`（基线摘要与影响分析共用同一口径）。改完用 `pnpm docs:portable` 验证。
 
 ## 构建与部署
 
