@@ -1,51 +1,3 @@
-<details><summary>touchactstart</summary>
-<div>
-<br/>
-
-touchactstart event
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | touchactstart |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
-<details><summary>touchacting</summary>
-<div>
-<br/>
-
-touchacting event
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | touchacting |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
-<details><summary>touchactend</summary>
-<div>
-<br/>
-
-touchactend event
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | touchactend |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
 <details><summary>animating</summary>
 <div>
 <br/>
@@ -539,6 +491,78 @@ Event properties:
 </div>
 </details>
 
+<details><summary>viewchange</summary>
+<div>
+<br/>
+
+viewchange event
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | viewchange |
+| target | `Map` | map fires the event |
+| old | `Object` | old view |
+| new | `Point` | new view |
+
+</div>
+</details>
+
+<details><summary>zoomstart</summary>
+<div>
+<br/>
+
+zoomstart event
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | zoomstart |
+| target | `Map` | the map fires event |
+| from | `Number` | zoom level zooming from |
+| to | `Number` | zoom level zooming to |
+
+</div>
+</details>
+
+<details><summary>zooming</summary>
+<div>
+<br/>
+
+zooming event
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | zooming |
+| target | `Map` | the map fires event |
+| from | `Number` | zoom level zooming from |
+| to | `Number` | zoom level zooming to |
+
+</div>
+</details>
+
+<details><summary>zoomend</summary>
+<div>
+<br/>
+
+zoomend event
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | zoomend |
+| target | `Map` | the map fires event |
+| from | `Number` | zoom level zooming from |
+| to | `Number` | zoom level zooming to |
+
+</div>
+</details>
+
 <details><summary>spatialreferencechange</summary>
 <div>
 <br/>
@@ -807,74 +831,50 @@ Event properties:
 </div>
 </details>
 
-<details><summary>viewchange</summary>
+<details><summary>touchactstart</summary>
 <div>
 <br/>
 
-viewchange event
+touchactstart event
 
 Event properties:
 
 | Property | Type | Value |
 | --- | :-: | --- |
-| type | `String` | viewchange |
-| target | `Map` | map fires the event |
-| old | `Object` | old view |
-| new | `Point` | new view |
+| type | `String` | touchactstart |
+| target | `Map` | the map fires event |
 
 </div>
 </details>
 
-<details><summary>zoomstart</summary>
+<details><summary>touchacting</summary>
 <div>
 <br/>
 
-zoomstart event
+touchacting event
 
 Event properties:
 
 | Property | Type | Value |
 | --- | :-: | --- |
-| type | `String` | zoomstart |
+| type | `String` | touchacting |
 | target | `Map` | the map fires event |
-| from | `Number` | zoom level zooming from |
-| to | `Number` | zoom level zooming to |
 
 </div>
 </details>
 
-<details><summary>zooming</summary>
+<details><summary>touchactend</summary>
 <div>
 <br/>
 
-zooming event
+touchactend event
 
 Event properties:
 
 | Property | Type | Value |
 | --- | :-: | --- |
-| type | `String` | zooming |
+| type | `String` | touchactend |
 | target | `Map` | the map fires event |
-| from | `Number` | zoom level zooming from |
-| to | `Number` | zoom level zooming to |
-
-</div>
-</details>
-
-<details><summary>zoomend</summary>
-<div>
-<br/>
-
-zoomend event
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | zoomend |
-| target | `Map` | the map fires event |
-| from | `Number` | zoom level zooming from |
-| to | `Number` | zoom level zooming to |
 
 </div>
 </details>

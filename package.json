@@ -12,7 +12,8 @@
     "api:wire": "node scripts/api/wire-pages.mjs",
     "api:verify": "node scripts/api/verify.mjs",
     "api:check": "node scripts/api/check-render.mjs",
-    "api:sync": "node scripts/api/gen-includes.mjs && node scripts/api/wire-pages.mjs && node scripts/api/verify.mjs && node scripts/api/check-render.mjs"
+    "api:sync": "node scripts/api/inventory.mjs && node scripts/api/gen-includes.mjs && node scripts/api/wire-pages.mjs && node scripts/api/verify.mjs && node scripts/api/check-render.mjs",
+    "docs:links": "node scripts/check-guide-links.mjs"
   },
   "dependencies": {
     "@vue/repl": "^4.7.2",

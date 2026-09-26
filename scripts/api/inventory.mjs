@@ -22,6 +22,9 @@ const arg = (k, d) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] :
 const SRC = arg('--src', DEFAULT_SRC);
 const RAW = join(CACHE, 'raw');
 
+// 源码路径 → 相对 packages/ 的 POSIX 路径（两端平台一致，page-map 的 file 字段即此形态）
+const relToPackages = (p) => String(p).replace(/\\/g, '/').replace(/^.*\/packages\//, '');
+
 log(`源码根：${SRC}`);
 let raw;
 if (argv.includes('--no-extract') && existsSync(join(RAW, 'ts-methods.jsonl'))) {
@@ -47,6 +50,7 @@ if (argv.includes('--no-extract') && existsSync(join(RAW, 'ts-methods.jsonl'))) 
 log('建模…');
 const M = buildModel(raw);
 log(`  类 ${M.classes.length}；成员 ${M.members.length}；事件 ${M.events.size}；命名空间 ${M.namespaces.size}；函数文件 ${M.functions.size}；options 定义 ${M.optionsOf.size}`);
+const FN_BY_REL = new Map([...M.functions.entries()].map(([f, list]) => [relToPackages(f), list]));
 
 const MAP = loadPageMap();
 if (!MAP) log('!! 未找到 scripts/api/page-map.json（先跑 node scripts/api/init-page-map.mjs --write）');
@@ -89,7 +93,7 @@ for (const p of pageList()) {
     for (const mg of e.merge || []) { const mn = nsByName.get(mg); if (mn) inh += mn.members.filter((m) => !m.isPrivate).length; }
     missing = n ? uniq(n.members.filter((m) => !m.isPrivate && !written.has(m.name)).map((m) => m.name)) : [];
   } else if (e.kind === 'functions') {
-    const fns = M.functions.get(join(SRC, e.file.replace(/\//g, '\\'))) || [];
+    const fns = FN_BY_REL.get(relToPackages(e.file)) || [];
     own = fns.length; ownZh = fns.filter((f) => f.doc?.zh).length; ownEn = fns.filter((f) => f.doc && !f.doc.zh).length;
     missing = uniq(fns.filter((f) => !written.has(f.name)).map((f) => f.name));
   }

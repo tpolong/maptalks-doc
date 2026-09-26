@@ -100,6 +100,69 @@ Returns:
 </div>
 </details>
 
+<details><summary>getArrayBuffer(url, cb)</summary>
+<div>
+<br/>
+
+Requests a binary resource as an array buffer.
+
+Parameters:
+
+* url `Any`
+* cb `Any`
+
+</div>
+</details>
+
+<details><summary>get(url, options, cb)</summary>
+<div>
+<br/>
+
+Performs an HTTP GET request and returns the response text or an error through the callback.
+
+Parameters:
+
+* url `Any`
+* options `Any`
+* cb `Any`
+
+</div>
+</details>
+
+<details><summary>get(url, options = {}, urlModifier)</summary>
+<div>
+<br/>
+
+Performs an HTTP GET request and returns the response text or an error through the callback.
+
+Parameters:
+
+* url `String` resource url
+* options = {} `Any`
+* urlModifier `Any`
+
+Returns:
+
+* `Ajax` Ajax
+
+</div>
+</details>
+
+<details><summary>getArrayBuffer(url, options = {}?, urlModifier)</summary>
+<div>
+<br/>
+
+Requests a binary resource as an array buffer.
+
+Parameters:
+
+* url `String` url
+* options = {} (optional) `Object` =null] - options, same as Ajax.get
+* urlModifier `Function` callback function when completed.
+
+</div>
+</details>
+
 <details><summary>jsonp(url, callback)</summary>
 <div>
 <br/>
@@ -145,69 +208,6 @@ Parameters:
 * url `String` url
 * options (optional) `Object` =null] - options, same as Ajax.get
 * cb `Function` callback function when completed.
-
-</div>
-</details>
-
-<details><summary>get(url, options = {}, urlModifier)</summary>
-<div>
-<br/>
-
-Performs an HTTP GET request and returns the response text or an error through the callback.
-
-Parameters:
-
-* url `String` resource url
-* options = {} `Any`
-* urlModifier `Any`
-
-Returns:
-
-* `Ajax` Ajax
-
-</div>
-</details>
-
-<details><summary>getArrayBuffer(url, options = {}?, urlModifier)</summary>
-<div>
-<br/>
-
-Requests a binary resource as an array buffer.
-
-Parameters:
-
-* url `String` url
-* options = {} (optional) `Object` =null] - options, same as Ajax.get
-* urlModifier `Function` callback function when completed.
-
-</div>
-</details>
-
-<details><summary>getArrayBuffer(url, cb)</summary>
-<div>
-<br/>
-
-Requests a binary resource as an array buffer.
-
-Parameters:
-
-* url `Any`
-* cb `Any`
-
-</div>
-</details>
-
-<details><summary>get(url, options, cb)</summary>
-<div>
-<br/>
-
-Performs an HTTP GET request and returns the response text or an error through the callback.
-
-Parameters:
-
-* url `Any`
-* options `Any`
-* cb `Any`
 
 </div>
 </details>

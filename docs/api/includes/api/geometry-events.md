@@ -14,6 +14,199 @@ geometry 位置改变时触发
 </div>
 </details>
 
+<details><summary>add</summary>
+<div>
+<br/>
+
+add 事件
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | add |
+| target | `Geometry` | geometry |
+| layer | `Layer` | the layer added to. |
+
+</div>
+</details>
+
+<details><summary>idchange</summary>
+<div>
+<br/>
+
+图形的 id 改变后触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | idchange |
+| target | `Geometry` | the geometry fires the event |
+| old | `String|Number` | value of the old id |
+| new | `String|Number` | value of the new id |
+
+</div>
+</details>
+
+<details><summary>propertieschange</summary>
+<div>
+<br/>
+
+图形的 properties 改变后触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | propertieschange |
+| target | `Geometry` | the geometry fires the event |
+| old | `String|Number` | value of the old properties |
+| new | `String|Number` | value of the new properties |
+
+</div>
+</details>
+
+<details><summary>symbolchange</summary>
+<div>
+<br/>
+
+geometry 的 symbol 更新后触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | symbolchange |
+| target | `Geometry` | the geometry fires the event |
+| properties | `Object` | symbol properties to update if has |
+
+</div>
+</details>
+
+<details><summary>show</summary>
+<div>
+<br/>
+
+geometry 被显示时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | show |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>hide</summary>
+<div>
+<br/>
+
+geometry 被隐藏时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | hide |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>zindexchange</summary>
+<div>
+<br/>
+
+层级改变事件，当几何图形层级发生改变将会触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | zindexchange |
+| target | `Geometry` | the geometry fires the event |
+| old | `Number` | old zIndex |
+| new | `Number` | new zIndex |
+
+</div>
+</details>
+
+<details><summary>shapechange</summary>
+<div>
+<br/>
+
+geometry 形状改变时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | shapechange |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>removestart</summary>
+<div>
+<br/>
+
+geometry 开始从 layer 中移除时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | removestart |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>remove</summary>
+<div>
+<br/>
+
+geometry 从 layer 中移除后触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | remove |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>removeend</summary>
+<div>
+<br/>
+
+geometry 从 layer 上移除完成后触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | removeend |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>shapechange</summary>
+<div>
+<br/>
+
+geometry 形状改变时触发
+
+</div>
+</details>
+
 <details><summary>handledragstart</summary>
 <div>
 <br/>
@@ -278,199 +471,6 @@ geometry 编辑取消后触发
 | --- | :-: | --- |
 | type | `String` | canceledit |
 | target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>add</summary>
-<div>
-<br/>
-
-add 事件
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | add |
-| target | `Geometry` | geometry |
-| layer | `Layer` | the layer added to. |
-
-</div>
-</details>
-
-<details><summary>idchange</summary>
-<div>
-<br/>
-
-图形的 id 改变后触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | idchange |
-| target | `Geometry` | the geometry fires the event |
-| old | `String|Number` | value of the old id |
-| new | `String|Number` | value of the new id |
-
-</div>
-</details>
-
-<details><summary>propertieschange</summary>
-<div>
-<br/>
-
-图形的 properties 改变后触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | propertieschange |
-| target | `Geometry` | the geometry fires the event |
-| old | `String|Number` | value of the old properties |
-| new | `String|Number` | value of the new properties |
-
-</div>
-</details>
-
-<details><summary>symbolchange</summary>
-<div>
-<br/>
-
-geometry 的 symbol 更新后触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | symbolchange |
-| target | `Geometry` | the geometry fires the event |
-| properties | `Object` | symbol properties to update if has |
-
-</div>
-</details>
-
-<details><summary>show</summary>
-<div>
-<br/>
-
-geometry 被显示时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | show |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>hide</summary>
-<div>
-<br/>
-
-geometry 被隐藏时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | hide |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>zindexchange</summary>
-<div>
-<br/>
-
-层级改变事件，当几何图形层级发生改变将会触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | zindexchange |
-| target | `Geometry` | the geometry fires the event |
-| old | `Number` | old zIndex |
-| new | `Number` | new zIndex |
-
-</div>
-</details>
-
-<details><summary>shapechange</summary>
-<div>
-<br/>
-
-geometry 形状改变时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | shapechange |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>removestart</summary>
-<div>
-<br/>
-
-geometry 开始从 layer 中移除时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | removestart |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>remove</summary>
-<div>
-<br/>
-
-geometry 从 layer 中移除后触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | remove |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>removeend</summary>
-<div>
-<br/>
-
-geometry 从 layer 上移除完成后触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | removeend |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>shapechange</summary>
-<div>
-<br/>
-
-geometry 形状改变时触发
 
 </div>
 </details>

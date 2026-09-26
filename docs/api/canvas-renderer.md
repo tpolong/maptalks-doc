@@ -42,11 +42,11 @@ CanvasRenderer 自身没有独立的配置项，渲染相关配置通过所渲�
 
 <!--@include: ./includes/api/canvas-renderer-missing.md-->
 
-### 继承自 TileLayerCanvasRenderer 的方法
+### 继承自 LayerAbstractRenderer 的方法
 
-下列方法由父类 TileLayerCanvasRenderer 提供，本类的实例同样可以调用。
+下列方法由父类 LayerAbstractRenderer 提供，本类的实例同样可以调用。
 
-<!--@include: ./includes/api/tile-layer-canvas-renderer-methods.md-->
+<!--@include: ./includes/api/layer-abstract-renderer-methods.md-->
 <!-- api-gen:end -->
 
 ## 事件
@@ -57,3 +57,9 @@ CanvasRenderer 自身没有独立的配置项，渲染相关配置通过所渲�
 - `renderstart` — 图层开始渲染时触发，事件参数含 `context` 与 `gl`。
 - `renderend` — 图层渲染完成时触发。
 - `resourceload` — 图层资源加载完成时触发。
+
+<!-- api-gen:start -->
+### 继承自 LayerAbstractRenderer 的事件
+
+<!--@include: ./includes/api/layer-abstract-renderer-events.md-->
+<!-- api-gen:end -->

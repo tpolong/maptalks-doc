@@ -14,6 +14,199 @@ Event properties:
 </div>
 </details>
 
+<details><summary>add</summary>
+<div>
+<br/>
+
+add event.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | add |
+| target | `Geometry` | geometry |
+| layer | `Layer` | the layer added to. |
+
+</div>
+</details>
+
+<details><summary>idchange</summary>
+<div>
+<br/>
+
+idchange event.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | idchange |
+| target | `Geometry` | the geometry fires the event |
+| old | `String|Number` | value of the old id |
+| new | `String|Number` | value of the new id |
+
+</div>
+</details>
+
+<details><summary>propertieschange</summary>
+<div>
+<br/>
+
+propertieschange event, thrown when geometry's properties is changed.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | propertieschange |
+| target | `Geometry` | the geometry fires the event |
+| old | `String|Number` | value of the old properties |
+| new | `String|Number` | value of the new properties |
+
+</div>
+</details>
+
+<details><summary>symbolchange</summary>
+<div>
+<br/>
+
+symbolchange event.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | symbolchange |
+| target | `Geometry` | the geometry fires the event |
+| properties | `Object` | symbol properties to update if has |
+
+</div>
+</details>
+
+<details><summary>show</summary>
+<div>
+<br/>
+
+show event
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | show |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>hide</summary>
+<div>
+<br/>
+
+hide event
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | hide |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>zindexchange</summary>
+<div>
+<br/>
+
+zindexchange event, fired when geometry's zIndex is changed.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | zindexchange |
+| target | `Geometry` | the geometry fires the event |
+| old | `Number` | old zIndex |
+| new | `Number` | new zIndex |
+
+</div>
+</details>
+
+<details><summary>shapechange</summary>
+<div>
+<br/>
+
+Fired when the shape of a geometry changes.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | shapechange |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>removestart</summary>
+<div>
+<br/>
+
+removestart event.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | removestart |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>remove</summary>
+<div>
+<br/>
+
+remove event.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | remove |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>removeend</summary>
+<div>
+<br/>
+
+removeend event.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | removeend |
+| target | `Geometry` | the geometry fires the event |
+
+</div>
+</details>
+
+<details><summary>shapechange</summary>
+<div>
+<br/>
+
+Fired when the shape of a geometry changes.
+
+</div>
+</details>
+
 <details><summary>handledragstart</summary>
 <div>
 <br/>
@@ -278,199 +471,6 @@ Event properties:
 | --- | :-: | --- |
 | type | `String` | canceledit |
 | target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>add</summary>
-<div>
-<br/>
-
-add event.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | add |
-| target | `Geometry` | geometry |
-| layer | `Layer` | the layer added to. |
-
-</div>
-</details>
-
-<details><summary>idchange</summary>
-<div>
-<br/>
-
-idchange event.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | idchange |
-| target | `Geometry` | the geometry fires the event |
-| old | `String|Number` | value of the old id |
-| new | `String|Number` | value of the new id |
-
-</div>
-</details>
-
-<details><summary>propertieschange</summary>
-<div>
-<br/>
-
-propertieschange event, thrown when geometry's properties is changed.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | propertieschange |
-| target | `Geometry` | the geometry fires the event |
-| old | `String|Number` | value of the old properties |
-| new | `String|Number` | value of the new properties |
-
-</div>
-</details>
-
-<details><summary>symbolchange</summary>
-<div>
-<br/>
-
-symbolchange event.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | symbolchange |
-| target | `Geometry` | the geometry fires the event |
-| properties | `Object` | symbol properties to update if has |
-
-</div>
-</details>
-
-<details><summary>show</summary>
-<div>
-<br/>
-
-show event
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | show |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>hide</summary>
-<div>
-<br/>
-
-hide event
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | hide |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>zindexchange</summary>
-<div>
-<br/>
-
-zindexchange event, fired when geometry's zIndex is changed.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | zindexchange |
-| target | `Geometry` | the geometry fires the event |
-| old | `Number` | old zIndex |
-| new | `Number` | new zIndex |
-
-</div>
-</details>
-
-<details><summary>shapechange</summary>
-<div>
-<br/>
-
-Fired when the shape of a geometry changes.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | shapechange |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>removestart</summary>
-<div>
-<br/>
-
-removestart event.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | removestart |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>remove</summary>
-<div>
-<br/>
-
-remove event.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | remove |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>removeend</summary>
-<div>
-<br/>
-
-removeend event.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | removeend |
-| target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>shapechange</summary>
-<div>
-<br/>
-
-Fired when the shape of a geometry changes.
 
 </div>
 </details>

@@ -1,0 +1,98 @@
+# 文档站 CI 门禁
+#
+# 两个 job：
+#   gates      不需要引擎源码的静态门禁（渲染 / 链接 / 版本 pin / 资产 / 构建）
+#   api-model  检出 **基线里记录的引擎 commit**，重抽模型后校验"页面 ↔ 源码"一致性、
+#              基线与引擎是否一致、以及生成片段（gen/wire）是否已是最新
+#
+# 注意：
+#   - 这里**不跑运行时复测**（393 例需要 GPU，headless WebGL 判定不可靠）；
+#     运行时复测在本地跑，报告归档到 baselines 分支。CI 绿灯 ≠ 示例全部正常。
+#   - api-model 依赖 docs-baseline.json 的 source.commit；换引擎版本时先更新基线。
+name: docs-ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: docs-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    name: 静态门禁
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: 页面渲染门禁（md → Vue 解析）
+        run: node scripts/api/check-render.mjs
+
+      - name: 站内链接 / 锚点 / include / 示例深链
+        run: node scripts/check-guide-links.mjs
+
+      - name: 版本 pin 与依赖映射（import map / optimizeDeps.exclude）
+        run: node scripts/check-pins.mjs
+
+      - name: 示例与静态资产一致性（缩略图 1:1 / taxonomy 覆盖）
+        run: node scripts/check-assets.mjs
+
+      - name: 构建（VitePress，死链即失败）
+        run: pnpm build
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+
+  api-model:
+    name: API 模型门禁（需要引擎源码）
+    needs: gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: 安装 ast-grep
+        run: npm i -g @ast-grep/cli
+
+      - name: 读基线里的引擎 commit
+        id: baseline
+        run: |
+          node -e "const b=require('./docs-baseline.json');if(!b.source||!b.source.commit){console.error('docs-baseline.json 缺 source.commit');process.exit(1)};console.log('commit='+b.source.commit)" >> "$GITHUB_OUTPUT"
+
+      - name: 稀疏检出引擎源码（基线 commit）
+        run: |
+          git clone --filter=blob:none --no-checkout https://github.com/maptalks/maptalks.js engine
+          cd engine
+          git sparse-checkout set packages
+          git fetch --depth 1 origin "${{ steps.baseline.outputs.commit }}"
+          git checkout "${{ steps.baseline.outputs.commit }}"
+
+      - name: 抽取源码结构 + 建模
+        run: node scripts/api/inventory.mjs --src "$PWD/engine/packages"
+
+      - name: 页面 ↔ 源码一致性（缺失/错写/中英对照）
+        run: node scripts/api/verify.mjs
+
+      - name: 基线与引擎是否一致
+        # apiModel 摘要是规范化投影的哈希（不含平台路径），跨平台应当一致；
+        # 若此步在 Linux 上首次失败，优先检查抽取结果是否有平台差异。
+        run: node scripts/baseline.mjs --check --src "$PWD/engine/packages" --offline
+
+      - name: 生成片段是否已最新（gen / wire 幂等）
+        run: |
+          node scripts/api/gen-includes.mjs
+          node scripts/api/wire-pages.mjs
+          git diff --exit-code -- docs/api docs/en/api

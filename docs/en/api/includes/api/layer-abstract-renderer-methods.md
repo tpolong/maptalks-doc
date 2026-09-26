@@ -39,6 +39,19 @@ Parameters:
 </div>
 </details>
 
+<details><summary>needToRedraw()</summary>
+<div>
+<br/>
+
+Ask whether the layer renderer needs to redraw
+
+Returns:
+
+* `boolean`
+
+</div>
+</details>
+
 <details><summary>onSkipDrawOnInteracting()</summary>
 <div>
 <br/>
@@ -109,7 +122,7 @@ Remove the renderer, will be called when layer is removed
 <div>
 <br/>
 
-Callback on renderer removal; it clears the canvas and releases the tile caches.
+No prose description in source; parameters and return type come from the type signature.
 
 </div>
 </details>
@@ -132,6 +145,15 @@ Get map
 Returns:
 
 * `any`
+
+</div>
+</details>
+
+<details><summary>clear()</summary>
+<div>
+<br/>
+
+Clear canvas
 
 </div>
 </details>
@@ -235,6 +257,21 @@ Returns:
 </div>
 </details>
 
+<details><summary>prepareCanvas()</summary>
+<div>
+<br/>
+
+Prepare the canvas for rendering. <br/>
+1. Clear the canvas to blank. <br/>
+2. Clip the canvas by mask if there is any and return the mask's extent
+
+Returns:
+
+* `PointExtent` mask's extent of current zoom's 2d point.
+
+</div>
+</details>
+
 <details><summary>initContext()</summary>
 <div>
 <br/>
@@ -254,6 +291,15 @@ No prose description in source; parameters and return type come from the type si
 </details>
 
 <details><summary>clearContext()</summary>
+<div>
+<br/>
+
+No prose description in source; parameters and return type come from the type signature.
+
+</div>
+</details>
+
+<details><summary>createContext()</summary>
 <div>
 <br/>
 
@@ -375,6 +421,19 @@ Parameters:
 </div>
 </details>
 
+<details><summary>onResize(param)</summary>
+<div>
+<br/>
+
+onResize
+
+Parameters:
+
+* param `any`
+
+</div>
+</details>
+
 <details><summary>onDragRotateStart(param)</summary>
 <div>
 <br/>
@@ -464,6 +523,15 @@ Returns:
 </div>
 </details>
 
+<details><summary>clearCanvas()</summary>
+<div>
+<br/>
+
+No prose description in source; parameters and return type come from the type signature.
+
+</div>
+</details>
+
 <details><summary>createCanvas()</summary>
 <div>
 <br/>
@@ -501,7 +569,7 @@ Parameters:
 <div>
 <br/>
 
-Clip the canvas by the layer mask when maskClip is on, returning whether clipping occurred.
+Only for MapCanvasRenderer
 
 Parameters:
 

@@ -1,51 +1,3 @@
-<details><summary>touchactstart</summary>
-<div>
-<br/>
-
-touchactstart event
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | touchactstart |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
-<details><summary>touchacting</summary>
-<div>
-<br/>
-
-touchacting event
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | touchacting |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
-<details><summary>touchactend</summary>
-<div>
-<br/>
-
-touchactend event
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | touchactend |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
 <details><summary>mousedown</summary>
 <div>
 <br/>
@@ -376,6 +328,54 @@ Event properties:
 | --- | :-: | --- |
 | type | `String` | baselayerremove |
 | target | `Map` | map |
+
+</div>
+</details>
+
+<details><summary>touchactstart</summary>
+<div>
+<br/>
+
+touchactstart event
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | touchactstart |
+| target | `Map` | the map fires event |
+
+</div>
+</details>
+
+<details><summary>touchacting</summary>
+<div>
+<br/>
+
+touchacting event
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | touchacting |
+| target | `Map` | the map fires event |
+
+</div>
+</details>
+
+<details><summary>touchactend</summary>
+<div>
+<br/>
+
+touchactend event
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | touchactend |
+| target | `Map` | the map fires event |
 
 </div>
 </details>

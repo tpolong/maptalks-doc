@@ -1,51 +1,3 @@
-<details><summary>touchactstart</summary>
-<div>
-<br/>
-
-双指触摸手势在 map 上开始时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | touchactstart |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
-<details><summary>touchacting</summary>
-<div>
-<br/>
-
-双指触摸缩放或旋转进行时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | touchacting |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
-<details><summary>touchactend</summary>
-<div>
-<br/>
-
-双指触摸操作结束时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | touchactend |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
 <details><summary>mousedown</summary>
 <div>
 <br/>
@@ -376,6 +328,54 @@
 | --- | :-: | --- |
 | type | `String` | baselayerremove |
 | target | `Map` | map |
+
+</div>
+</details>
+
+<details><summary>touchactstart</summary>
+<div>
+<br/>
+
+双指触摸手势在 map 上开始时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | touchactstart |
+| target | `Map` | the map fires event |
+
+</div>
+</details>
+
+<details><summary>touchacting</summary>
+<div>
+<br/>
+
+双指触摸缩放或旋转进行时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | touchacting |
+| target | `Map` | the map fires event |
+
+</div>
+</details>
+
+<details><summary>touchactend</summary>
+<div>
+<br/>
+
+双指触摸操作结束时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | touchactend |
+| target | `Map` | the map fires event |
 
 </div>
 </details>

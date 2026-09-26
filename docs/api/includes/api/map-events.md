@@ -1,51 +1,3 @@
-<details><summary>touchactstart</summary>
-<div>
-<br/>
-
-双指触摸手势在 map 上开始时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | touchactstart |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
-<details><summary>touchacting</summary>
-<div>
-<br/>
-
-双指触摸缩放或旋转进行时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | touchacting |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
-<details><summary>touchactend</summary>
-<div>
-<br/>
-
-双指触摸操作结束时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | touchactend |
-| target | `Map` | the map fires event |
-
-</div>
-</details>
-
 <details><summary>animating</summary>
 <div>
 <br/>
@@ -539,6 +491,78 @@ map 取消全屏后触发
 </div>
 </details>
 
+<details><summary>viewchange</summary>
+<div>
+<br/>
+
+地图视图变化并记录到视图历史时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | viewchange |
+| target | `Map` | map fires the event |
+| old | `Object` | old view |
+| new | `Point` | new view |
+
+</div>
+</details>
+
+<details><summary>zoomstart</summary>
+<div>
+<br/>
+
+地图开始缩放时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | zoomstart |
+| target | `Map` | the map fires event |
+| from | `Number` | zoom level zooming from |
+| to | `Number` | zoom level zooming to |
+
+</div>
+</details>
+
+<details><summary>zooming</summary>
+<div>
+<br/>
+
+地图正在缩放时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | zooming |
+| target | `Map` | the map fires event |
+| from | `Number` | zoom level zooming from |
+| to | `Number` | zoom level zooming to |
+
+</div>
+</details>
+
+<details><summary>zoomend</summary>
+<div>
+<br/>
+
+地图缩放结束时触发
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | zoomend |
+| target | `Map` | the map fires event |
+| from | `Number` | zoom level zooming from |
+| to | `Number` | zoom level zooming to |
+
+</div>
+</details>
+
 <details><summary>spatialreferencechange</summary>
 <div>
 <br/>
@@ -807,74 +831,50 @@ map 移动结束时触发
 </div>
 </details>
 
-<details><summary>viewchange</summary>
+<details><summary>touchactstart</summary>
 <div>
 <br/>
 
-地图视图变化并记录到视图历史时触发
+双指触摸手势在 map 上开始时触发
 
 参数属性：
 
 | 属性名 | 类型 | 值 |
 | --- | :-: | --- |
-| type | `String` | viewchange |
-| target | `Map` | map fires the event |
-| old | `Object` | old view |
-| new | `Point` | new view |
+| type | `String` | touchactstart |
+| target | `Map` | the map fires event |
 
 </div>
 </details>
 
-<details><summary>zoomstart</summary>
+<details><summary>touchacting</summary>
 <div>
 <br/>
 
-地图开始缩放时触发
+双指触摸缩放或旋转进行时触发
 
 参数属性：
 
 | 属性名 | 类型 | 值 |
 | --- | :-: | --- |
-| type | `String` | zoomstart |
+| type | `String` | touchacting |
 | target | `Map` | the map fires event |
-| from | `Number` | zoom level zooming from |
-| to | `Number` | zoom level zooming to |
 
 </div>
 </details>
 
-<details><summary>zooming</summary>
+<details><summary>touchactend</summary>
 <div>
 <br/>
 
-地图正在缩放时触发
+双指触摸操作结束时触发
 
 参数属性：
 
 | 属性名 | 类型 | 值 |
 | --- | :-: | --- |
-| type | `String` | zooming |
+| type | `String` | touchactend |
 | target | `Map` | the map fires event |
-| from | `Number` | zoom level zooming from |
-| to | `Number` | zoom level zooming to |
-
-</div>
-</details>
-
-<details><summary>zoomend</summary>
-<div>
-<br/>
-
-地图缩放结束时触发
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | zoomend |
-| target | `Map` | the map fires event |
-| from | `Number` | zoom level zooming from |
-| to | `Number` | zoom level zooming to |
 
 </div>
 </details>

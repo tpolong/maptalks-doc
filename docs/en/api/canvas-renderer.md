@@ -42,11 +42,11 @@ CanvasRenderer has no standalone options; rendering-related configuration is con
 
 <!--@include: ./includes/api/canvas-renderer-missing.md-->
 
-### Methods Inherited from TileLayerCanvasRenderer
+### Methods Inherited from LayerAbstractRenderer
 
-The following methods are provided by the parent class TileLayerCanvasRenderer and are available on instances of this class.
+The following methods are provided by the parent class LayerAbstractRenderer and are available on instances of this class.
 
-<!--@include: ./includes/api/tile-layer-canvas-renderer-methods.md-->
+<!--@include: ./includes/api/layer-abstract-renderer-methods.md-->
 <!-- api-gen:end -->
 
 ## Events
@@ -57,3 +57,9 @@ The renderer fires the following layer events via `layer.fire`:
 - `renderstart` — Fired when the layer starts rendering; the event payload includes `context` and `gl`.
 - `renderend` — Fired when the layer finishes rendering.
 - `resourceload` — Fired when the layer finishes loading resources.
+
+<!-- api-gen:start -->
+### Events Inherited from LayerAbstractRenderer
+
+<!--@include: ./includes/api/layer-abstract-renderer-events.md-->
+<!-- api-gen:end -->

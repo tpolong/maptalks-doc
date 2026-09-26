@@ -99,6 +99,69 @@
 </div>
 </details>
 
+<details><summary>getArrayBuffer(url, cb)</summary>
+<div>
+<br/>
+
+以 arraybuffer 形式请求二进制资源
+
+参数：
+
+* url `Any`
+* cb `Any`
+
+</div>
+</details>
+
+<details><summary>get(url, options, cb)</summary>
+<div>
+<br/>
+
+以 HTTP GET 请求远程资源，回调返回响应文本或错误
+
+参数：
+
+* url `Any`
+* options `Any`
+* cb `Any`
+
+</div>
+</details>
+
+<details><summary>get(url, options = {}, urlModifier)</summary>
+<div>
+<br/>
+
+以 HTTP GET 请求远程资源，回调返回响应文本或错误
+
+参数：
+
+* url `String` resource url
+* options = {} `Any`
+* urlModifier `Any`
+
+返回：
+
+* `Ajax` Ajax
+
+</div>
+</details>
+
+<details><summary>getArrayBuffer(url, options = {}?, urlModifier)</summary>
+<div>
+<br/>
+
+以 arraybuffer 形式请求二进制资源
+
+参数：
+
+* url `String` url
+* options = {}（可选） `Object` =null] - options, same as Ajax.get
+* urlModifier `Function` callback function when completed.
+
+</div>
+</details>
+
 <details><summary>jsonp(url, callback)</summary>
 <div>
 <br/>
@@ -143,69 +206,6 @@
 * url `String` url
 * options（可选） `Object` =null] - options, same as Ajax.get
 * cb `Function` callback function when completed.
-
-</div>
-</details>
-
-<details><summary>get(url, options = {}, urlModifier)</summary>
-<div>
-<br/>
-
-以 HTTP GET 请求远程资源，回调返回响应文本或错误
-
-参数：
-
-* url `String` resource url
-* options = {} `Any`
-* urlModifier `Any`
-
-返回：
-
-* `Ajax` Ajax
-
-</div>
-</details>
-
-<details><summary>getArrayBuffer(url, options = {}?, urlModifier)</summary>
-<div>
-<br/>
-
-以 arraybuffer 形式请求二进制资源
-
-参数：
-
-* url `String` url
-* options = {}（可选） `Object` =null] - options, same as Ajax.get
-* urlModifier `Function` callback function when completed.
-
-</div>
-</details>
-
-<details><summary>getArrayBuffer(url, cb)</summary>
-<div>
-<br/>
-
-以 arraybuffer 形式请求二进制资源
-
-参数：
-
-* url `Any`
-* cb `Any`
-
-</div>
-</details>
-
-<details><summary>get(url, options, cb)</summary>
-<div>
-<br/>
-
-以 HTTP GET 请求远程资源，回调返回响应文本或错误
-
-参数：
-
-* url `Any`
-* options `Any`
-* cb `Any`
 
 </div>
 </details>

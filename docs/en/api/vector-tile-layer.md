@@ -332,6 +332,9 @@ Clears the tile data.
 </details>
 
 
+
+
+
 <!-- api-gen:start -->
 ### Other Public Methods of VectorTileLayer
 
@@ -453,6 +456,9 @@ Returns:
 </details>
 
 
+
+
+
 <!-- api-gen:start -->
 ### Static Methods Inherited from Layer
 
@@ -516,6 +522,8 @@ Properties:
 </details>
 
 > This document has been cross-checked against the maptalks-gl 0.124.4 source code
+
+
 
 <!-- api-gen:start -->
 ### Other Events of VectorTileLayer

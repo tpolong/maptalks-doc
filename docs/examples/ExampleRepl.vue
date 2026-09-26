@@ -37,7 +37,9 @@ function replacePlaceholders(src: string): string {
 
 const importMap = {
   imports: {
-    maptalks: "https://unpkg.com/maptalks/dist/maptalks.es.js",
+    // maptalks 核心：**必须 pin 版本**——不 pin 会跟随 unpkg latest，与基线（docs-baseline.json）
+    // 悄悄漂移；版本一致性由 node scripts/check-pins.mjs 把关。
+    maptalks: "https://unpkg.com/maptalks@1.12.1/dist/maptalks.es.js",
     // @maptalks/transcoders.draco 只有 UMD 发布，作为 ESM 导入会失败；用本地 ESM
     // shim 包装（见 docs/public/lib/draco.mjs）按副作用注册解码器
     draco: "/lib/draco.mjs",

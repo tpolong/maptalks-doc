@@ -1,3 +1,20 @@
+<details><summary>add</summary>
+<div>
+<br/>
+
+add event.
+
+Event properties:
+
+| Property | Type | Value |
+| --- | :-: | --- |
+| type | `String` | add |
+| target | `Geometry` | geometry |
+| layer | `Layer` | the layer added to. |
+
+</div>
+</details>
+
 <details><summary>handledragstart</summary>
 <div>
 <br/>
@@ -262,23 +279,6 @@ Event properties:
 | --- | :-: | --- |
 | type | `String` | canceledit |
 | target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>add</summary>
-<div>
-<br/>
-
-add event.
-
-Event properties:
-
-| Property | Type | Value |
-| --- | :-: | --- |
-| type | `String` | add |
-| target | `Geometry` | geometry |
-| layer | `Layer` | the layer added to. |
 
 </div>
 </details>

@@ -12,9 +12,12 @@
 import { spawnSync } from 'node:child_process';
 import { openSync, closeSync, readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-export const ROOT = 'D:\\code\\maptalks-docs';
-export const DEFAULT_SRC = 'D:\\code\\maptalks\\maptalks.js\\packages';
+// 仓库根由本文件位置推导（scripts/api/ → 上两级），不依赖绝对路径与当前工作目录
+export const ROOT = fileURLToPath(new URL('../../', import.meta.url)).replace(/[\\/]+$/, '');
+// 引擎源码根：CI 用 MAPTALKS_SRC 指向检出目录，本地沿用默认位置
+export const DEFAULT_SRC = process.env.MAPTALKS_SRC || 'D:\\code\\maptalks\\maptalks.js\\packages';
 export const CACHE = join(ROOT, '.vitepress', 'cache', 'api');
 
 export const log = (...a) => console.log(...a);
@@ -22,12 +25,16 @@ export const log = (...a) => console.log(...a);
 // ---------------------------------------------------------------- ast-grep
 
 export function findAstGrep() {
-  const cand = ['ast-grep', 'C:\\Users\\13698\\.local\\bin\\ast-grep.exe'];
+  const cand = [
+    process.env.AST_GREP,
+    'ast-grep',
+    join(process.env.USERPROFILE || '', '.local', 'bin', 'ast-grep.exe'),
+  ].filter(Boolean);
   for (const c of cand) {
     const r = spawnSync(c, ['--version'], { stdio: 'ignore', shell: false });
     if (!r.error && r.status === 0) return c;
   }
-  throw new Error('未找到 ast-grep，请先安装（本机: C:\\Users\\13698\\.local\\bin\\ast-grep.exe）');
+  throw new Error('未找到 ast-grep，请先安装（npm i -g @ast-grep/cli，或用 AST_GREP 指定可执行文件路径）');
 }
 
 /**
@@ -38,6 +45,17 @@ export const GLOBS = [
   '!**/node_modules/**', '!**/dist/**', '!**/build/**', '!**/lib/**', '!**/*.min.js', '!**/*.d.ts',
   '!**/demo/**', '!**/test/**', '!**/karma.conf.js', '!**/rollup.config.js', '!**/babel.config.js',
 ];
+
+/** ast-grep 的遍历顺序不稳定 → 按 文件 → 行 → 列 排序，保证同一份源码产出同一个模型
+ *  （模型里有"同名类先到先得"之类的逻辑，不排序会出现同一源码两次抽出不同模型） */
+const sortRecs = (arr) => [...arr].sort((a, b) => {
+  const fa = String(a.file || '').replace(/\\/g, '/');
+  const fb = String(b.file || '').replace(/\\/g, '/');
+  if (fa !== fb) return fa < fb ? -1 : 1;
+  const ra = (a.range && a.range.start) || {};
+  const rb = (b.range && b.range.start) || {};
+  return (ra.line - rb.line) || (ra.column - rb.column) || ((ra.index || 0) - (rb.index || 0));
+});
 
 export function sg(bin, outFile, args, srcRoot, lang = 'ts') {
   mkdirSync(dirname(outFile), { recursive: true });
@@ -54,7 +72,7 @@ export function sg(bin, outFile, args, srcRoot, lang = 'ts') {
     if (!line.trim().startsWith('{')) continue;
     try { out.push(JSON.parse(line)); } catch { /* 忽略半行 */ }
   }
-  return out;
+  return sortRecs(out);
 }
 
 export const LANGS = ['ts', 'js'];
@@ -75,7 +93,10 @@ export function walkSource(srcRoot = DEFAULT_SRC) {
     }
   };
   rec(srcRoot);
-  return out;
+  return out.sort((a, b) => {
+    const x = a.replace(/\\/g, '/'), y = b.replace(/\\/g, '/');
+    return x < y ? -1 : x > y ? 1 : 0;
+  });
 }
 
 export function extractRaw(bin, srcRoot, rawDir) {

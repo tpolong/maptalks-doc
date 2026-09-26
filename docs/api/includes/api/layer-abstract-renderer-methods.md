@@ -5,9 +5,9 @@
 Render the layer.
 Call checkResources
 
-Parameters:
+参数：
 
-* framestamp (optional) `number`
+* framestamp（可选） `number`
 
 </div>
 </details>
@@ -16,9 +16,9 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
-Returns:
+返回：
 
 * `number`
 
@@ -29,12 +29,25 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
-Parameters:
+参数：
 
 * drawFn `Any`
 * args `Any`
+
+</div>
+</details>
+
+<details><summary>needToRedraw()</summary>
+<div>
+<br/>
+
+Ask whether the layer renderer needs to redraw
+
+返回：
+
+* `boolean`
 
 </div>
 </details>
@@ -52,9 +65,9 @@ A callback for overriding when drawOnInteracting is skipped due to low fps
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
-Returns:
+返回：
 
 * `boolean`
 
@@ -65,9 +78,9 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
-Returns:
+返回：
 
 * `boolean`
 
@@ -80,7 +93,7 @@ Returns:
 
 Whether must call render instead of drawOnInteracting when map is interacting
 
-Returns:
+返回：
 
 * `boolean`
 
@@ -109,7 +122,7 @@ Remove the renderer, will be called when layer is removed
 <div>
 <br/>
 
-Callback on renderer removal; it clears the canvas and releases the tile caches.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
 </div>
 </details>
@@ -118,7 +131,7 @@ Callback on renderer removal; it clears the canvas and releases the tile caches.
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
 </div>
 </details>
@@ -129,9 +142,18 @@ No prose description in source; parameters and return type come from the type si
 
 Get map
 
-Returns:
+返回：
 
 * `any`
+
+</div>
+</details>
+
+<details><summary>clear()</summary>
+<div>
+<br/>
+
+Clear canvas
 
 </div>
 </details>
@@ -143,7 +165,7 @@ Returns:
 A method to help improve performance.
 If you are sure that layer's canvas is blank, returns true to save unnecessary layer works of maps.
 
-Returns:
+返回：
 
 * `boolean`
 
@@ -174,9 +196,9 @@ Hide the layer
 
 Set z-index of layer
 
-Parameters:
+参数：
 
-* _z (optional) `number`
+* _z（可选） `number`
 
 </div>
 </details>
@@ -187,14 +209,14 @@ Parameters:
 
 渲染结果区域截图,主要用于事件检测处理
 
-Parameters:
+参数：
 
 * x `number`
 * y `number`
 * width `number`
 * height `number`
 
-Returns:
+返回：
 
 * `CanvasRenderingContext2D | null`
 
@@ -207,11 +229,11 @@ Returns:
 
 Detect if there is anything painted on the given point
 
-Parameters:
+参数：
 
 * point `Point` containerPoint
 
-Returns:
+返回：
 
 * `boolean`
 
@@ -224,13 +246,28 @@ Returns:
 
 loadResource from resourceUrls
 
-Parameters:
+参数：
 
 * resourceUrls `string[][]` Array of urls to load
 
-Returns:
+返回：
 
 * `Promise[]`
+
+</div>
+</details>
+
+<details><summary>prepareCanvas()</summary>
+<div>
+<br/>
+
+Prepare the canvas for rendering. <br/>
+1. Clear the canvas to blank. <br/>
+2. Clip the canvas by mask if there is any and return the mask's extent
+
+返回：
+
+* `PointExtent` mask's extent of current zoom's 2d point.
 
 </div>
 </details>
@@ -239,7 +276,7 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
 </div>
 </details>
@@ -248,7 +285,7 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
 </div>
 </details>
@@ -257,7 +294,16 @@ No prose description in source; parameters and return type come from the type si
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
+
+</div>
+</details>
+
+<details><summary>createContext()</summary>
+<div>
+<br/>
+
+源码未提供文字说明，参数与返回类型取自类型签名。
 
 </div>
 </details>
@@ -268,7 +314,7 @@ No prose description in source; parameters and return type come from the type si
 
 Get renderer's current view extent in 2d point
 
-Returns:
+返回：
 
 * `Object` view.extent, view.maskExtent, view.zoom, view.middleWest
 
@@ -290,7 +336,7 @@ call when rendering completes, this will fire necessary events and call setCanva
 
 Get renderer's event map registered on the map
 
-Returns:
+返回：
 
 * `Object` events
 
@@ -303,7 +349,7 @@ Returns:
 
 onZoomStart
 
-Parameters:
+参数：
 
 * param `any`
 
@@ -316,7 +362,7 @@ Parameters:
 
 onZoomEnd
 
-Parameters:
+参数：
 
 * param `any`
 
@@ -329,7 +375,7 @@ Parameters:
 
 onZooming
 
-Parameters:
+参数：
 
 * param `any`
 
@@ -342,7 +388,7 @@ Parameters:
 
 onMoveStart
 
-Parameters:
+参数：
 
 * param `any`
 
@@ -355,7 +401,7 @@ Parameters:
 
 onMoving
 
-Parameters:
+参数：
 
 * param `any`
 
@@ -368,7 +414,20 @@ Parameters:
 
 onMoveEnd
 
-Parameters:
+参数：
+
+* param `any`
+
+</div>
+</details>
+
+<details><summary>onResize(param)</summary>
+<div>
+<br/>
+
+onResize
+
+参数：
 
 * param `any`
 
@@ -381,7 +440,7 @@ Parameters:
 
 onDragRotateStart
 
-Parameters:
+参数：
 
 * param `any`
 
@@ -394,7 +453,7 @@ Parameters:
 
 onDragRotating
 
-Parameters:
+参数：
 
 * param `any`
 
@@ -407,7 +466,7 @@ Parameters:
 
 onDragRotateEnd
 
-Parameters:
+参数：
 
 * param `any`
 
@@ -420,7 +479,7 @@ Parameters:
 
 onSpatialReferenceChange
 
-Parameters:
+参数：
 
 * param `any`
 
@@ -433,7 +492,7 @@ Parameters:
 
 Get ellapsed time of previous drawing
 
-Returns:
+返回：
 
 * `Number`
 
@@ -457,9 +516,18 @@ Mark layer's canvas updated
 Only for MapCanvasRenderer
 Get renderer's Canvas image object
 
-Returns:
+返回：
 
 * `any`
+
+</div>
+</details>
+
+<details><summary>clearCanvas()</summary>
+<div>
+<br/>
+
+源码未提供文字说明，参数与返回类型取自类型签名。
 
 </div>
 </details>
@@ -478,7 +546,7 @@ Create renderer's Canvas
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
 </div>
 </details>
@@ -490,9 +558,9 @@ No prose description in source; parameters and return type come from the type si
 Only for MapCanvasRenderer
 Resize the canvas
 
-Parameters:
+参数：
 
-* canvasSize (optional) `SizeLike` the size resizing to
+* canvasSize（可选） `SizeLike` the size resizing to
 
 </div>
 </details>
@@ -501,9 +569,9 @@ Parameters:
 <div>
 <br/>
 
-Clip the canvas by the layer mask when maskClip is on, returning whether clipping occurred.
+Only for MapCanvasRenderer
 
-Parameters:
+参数：
 
 * context `CanvasRenderingContext2D`
 
@@ -514,9 +582,9 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
-Parameters:
+参数：
 
 * args `any[]`
 
@@ -527,9 +595,9 @@ Parameters:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
-Returns:
+返回：
 
 * `any[]`
 
@@ -540,9 +608,9 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
-Returns:
+返回：
 
 * `ImageData`
 
@@ -553,9 +621,9 @@ Returns:
 <div>
 <br/>
 
-No prose description in source; parameters and return type come from the type signature.
+源码未提供文字说明，参数与返回类型取自类型签名。
 
-Parameters:
+参数：
 
 * args `any[]`
 

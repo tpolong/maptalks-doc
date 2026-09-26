@@ -1,3 +1,20 @@
+<details><summary>add</summary>
+<div>
+<br/>
+
+add 事件
+
+参数属性：
+
+| 属性名 | 类型 | 值 |
+| --- | :-: | --- |
+| type | `String` | add |
+| target | `Geometry` | geometry |
+| layer | `Layer` | the layer added to. |
+
+</div>
+</details>
+
 <details><summary>handledragstart</summary>
 <div>
 <br/>
@@ -262,23 +279,6 @@ geometry 编辑取消后触发
 | --- | :-: | --- |
 | type | `String` | canceledit |
 | target | `Geometry` | the geometry fires the event |
-
-</div>
-</details>
-
-<details><summary>add</summary>
-<div>
-<br/>
-
-add 事件
-
-参数属性：
-
-| 属性名 | 类型 | 值 |
-| --- | :-: | --- |
-| type | `String` | add |
-| target | `Geometry` | geometry |
-| layer | `Layer` | the layer added to. |
 
 </div>
 </details>
