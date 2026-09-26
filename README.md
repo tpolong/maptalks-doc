@@ -7,4 +7,4 @@
 - `impact-report.json` / `repl-report.json`：若当时有则一并归档
 
 用法：`node scripts/archive-baseline.mjs --get 0.124.4 --out <file>`
-归档时间：2026-09-26T05:49:47.199Z
+归档时间：2026-09-26T05:50:04.722Z
