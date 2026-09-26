@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-09-26 05:33",
+  "engine": {
+    "@maptalks/3dtiles": "0.124.4",
+    "@maptalks/analysis": "0.124.4",
+    "@maptalks/fusiongl": "0.124.4",
+    "@maptalks/gl": "0.124.4",
+    "@maptalks/gltf-layer": "0.124.4",
+    "@maptalks/gltf-loader": "0.124.4",
+    "@maptalks/gpu": "0.124.4",
+    "@maptalks/traffic": "0.124.4",
+    "@maptalks/transcoders.crn": "0.124.4",
+    "@maptalks/transcoders.draco": "0.124.4",
+    "@maptalks/transcoders.ktx2": "0.124.4",
+    "@maptalks/transform-control": "0.124.4",
+    "@maptalks/video-layer": "0.124.4",
+    "@maptalks/vt": "0.124.4",
+    "@maptalks/vt-plugin": "0.124.4",
+    "maptalks": "1.12.1",
+    "maptalks-gl": "0.124.4",
+    "maptalks-gpu": "0.124.4"
+  },
+  "published": {
+    "@maptalks/3dtiles": "0.124.4",
+    "@maptalks/analysis": "0.124.4",
+    "@maptalks/fusiongl": "0.124.4",
+    "@maptalks/gl": "0.124.4",
+    "@maptalks/gltf-layer": "0.124.4",
+    "@maptalks/gltf-loader": "0.124.4",
+    "@maptalks/gpu": "0.124.4",
+    "@maptalks/traffic": "0.124.4",
+    "@maptalks/transcoders.crn": "0.124.4",
+    "@maptalks/transcoders.draco": "0.124.4",
+    "@maptalks/transcoders.ktx2": "0.124.4",
+    "@maptalks/transform-control": "0.124.4",
+    "@maptalks/video-layer": "0.124.4",
+    "@maptalks/vt": "0.124.4",
+    "@maptalks/vt-plugin": "0.124.4",
+    "maptalks": "1.12.1",
+    "maptalks-gl": "0.124.4",
+    "maptalks-gpu": "0.124.4"
+  },
+  "source": {
+    "path": "D:\\code\\maptalks\\maptalks.js\\packages",
+    "commit": "876a2eb80b125bc0d5657ca80d4e8bd878e40274",
+    "branch": "master",
+    "dirty": true
+  },
+  "digests": {
+    "apiModel": "sha256:79fde652c9add1eb99cded31f76f15f8",
+    "modelCounts": {
+      "classes": 464,
+      "members": 2970,
+      "namespaces": 440,
+      "events": 368
+    },
+    "thumbnails": "sha256:5f0f770e2396f33e74465c6417fd1953"
+  },
+  "examples": {
+    "total": 393,
+    "byCategory": {
+      "analysis": 12,
+      "gltf": 43,
+      "glvec": 67,
+      "map": 43,
+      "scene3d": 35,
+      "tile": 27,
+      "vector2d": 98,
+      "vt": 68
+    },
+    "thumbnails": 393
+  },
+  "verified": null
+}
