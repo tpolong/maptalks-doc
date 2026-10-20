@@ -181,8 +181,20 @@ guide 与示例大量由 maptalks.com 旧站迁移而来，最容易出问题的
 ## 构建与部署
 
 1. `pnpm build` → 静态站 `.vitepress/dist/`。
-2. 部署到静态托管（GitHub Pages / Vercel / Netlify 等）。
-3. 用 GitHub Pages 时在仓库根放 `.nojekyll` 文件以跳过 Jekyll 处理。
+2. **正式发布**：打 tag `docs-v<引擎版本>` 并推送，`deploy.yml` 自动执行：
+   tag ↔ 基线一致性门禁（`scripts/check-release-tag.mjs`）→ 四道静态门禁 → 构建 →
+   用 `scripts/deploy-pages.mjs` 以 dist 为准镜像（删旧文件、保留 `.git`/`.nojekyll`）到
+   `tpolong.github.io` 的 `master` → 线上抽查。
+   **前置 secret**：`PAGES_TOKEN`（fine-grained PAT，仅授权 `tpolong/tpolong.github.io`，Contents: Read and write；
+   `GITHUB_TOKEN` 不能跨仓库推送）。
+3. **本地应急/手工发布**：
+   ```bash
+   pnpm build
+   node scripts/deploy-pages.mjs --src .vitepress/dist --dest ../tpolong.github.io
+   git -C ../tpolong.github.io add -A && git -C ../tpolong.github.io commit -m "deploy: ..." && git -C ../tpolong.github.io push origin master
+   ```
+   不要用 robocopy（Git Bash 里 `/MIR` 会被当成路径；且脚本是幂等的，重复跑报"产物无变化"）。
+4. `.nojekyll` 由镜像脚本保证存在，无需手工维护。
 
 ## Git 约定
 

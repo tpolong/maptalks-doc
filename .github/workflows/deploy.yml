@@ -1,0 +1,105 @@
+# 发布自动化：打 tag 即部署
+#
+# 触发：push tag `docs-v*`（或手动 dispatch 指定 tag）
+# 流程：校验 tag ↔ 基线一致 → 静态门禁 → 构建 → 镜像到产物仓库 tpolong.github.io → 推送 master → 线上抽查
+#
+# 前置（一次性）：
+#   仓库 Secrets 里配置 PAGES_TOKEN —— fine-grained PAT，仅授权 tpolong/tpolong.github.io，
+#   权限 Contents: Read and write。GITHUB_TOKEN 无法跨仓库推送，所以必须有它。
+#
+# 边界：本工作流只做"已提交内容的构建与发布"；内容正确性由 docs-ci 与人工复核保证。
+name: deploy-pages
+
+on:
+  push:
+    tags: ['docs-v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 要部署的 tag（形如 docs-v0.126.0；留空则用当前 ref）
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: 构建并发布
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.tag || github.ref }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.20.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: 发布门禁（tag 与基线一致、提交在 main 上）
+        env:
+          TAG: ${{ github.event.inputs.tag || github.ref_name }}
+        run: node scripts/check-release-tag.mjs --tag "$TAG"
+
+      - name: 静态门禁（构建前必过）
+        run: |
+          node scripts/api/check-render.mjs
+          node scripts/check-guide-links.mjs
+          node scripts/check-pins.mjs
+          node scripts/check-assets.mjs
+
+      - name: 构建
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+        run: pnpm build
+
+      - name: 检出产物仓库（需要 PAGES_TOKEN）
+        env:
+          PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
+        run: |
+          if [ -z "$PAGES_TOKEN" ]; then
+            echo "::error title=缺少 PAGES_TOKEN::请创建 fine-grained PAT（仅 tpolong/tpolong.github.io，Contents: Read and write），并在仓库 Secrets 中命名为 PAGES_TOKEN"
+            exit 1
+          fi
+          git clone "https://x-access-token:${PAGES_TOKEN}@github.com/tpolong/tpolong.github.io.git" pages
+
+      - name: 镜像产物（以 dist 为准，先删后拷）
+        run: node scripts/deploy-pages.mjs --src .vitepress/dist --dest pages
+
+      - name: 提交并推送产物仓库
+        env:
+          TAG: ${{ github.event.inputs.tag || github.ref_name }}
+        run: |
+          cd pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "产物无变化，跳过提交"
+            exit 0
+          fi
+          git commit -qm "deploy: ${TAG}（${GITHUB_SHA::7}）"
+          git push origin HEAD:master
+
+      - name: 线上抽查（Pages 发布有延迟，最多等 2 分钟）
+        run: |
+          code=000
+          for i in $(seq 1 12); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 https://tpolong.github.io/ || true)
+            echo "check $i: $code"
+            [ "$code" = "200" ] && break
+            sleep 10
+          done
+          if [ "$code" != "200" ]; then
+            echo "::warning title=线上未就绪::首页未在 2 分钟内返回 200（GitHub Pages 可能有延迟，稍后手动确认）"
+          fi
