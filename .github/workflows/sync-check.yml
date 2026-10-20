@@ -118,7 +118,11 @@ jobs:
       - name: 开同步分支 + 草稿 PR + issue
         if: steps.capture.outputs.up_to_date == 'false'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 优先用 SYNC_PAT（fine-grained PAT，需 contents/pull requests/issues 写权限）：
+          # 仓库设置「Allow GitHub Actions to create and approve pull requests」关闭时，
+          # GITHUB_TOKEN 建 PR 会被拒（GraphQL: not permitted to create or approve pull requests）。
+          # 未配置 SYNC_PAT 时回退 GITHUB_TOKEN（此时仍能推分支、开 issue，只是建不了 PR）。
+          GH_TOKEN: ${{ secrets.SYNC_PAT || secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           ENGINE_TO: ${{ steps.capture.outputs.to }}
           IMPACT_CODE: ${{ steps.impact.outputs.code }}

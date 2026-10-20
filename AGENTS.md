@@ -166,6 +166,9 @@ guide 与示例大量由 maptalks.com 旧站迁移而来，最容易出问题的
   **不跑运行时复测**：393 例需要 GPU，headless WebGL 判定不可靠 —— CI 绿灯 ≠ 示例全部正常。
 - `sync-check.yml`（每日定时 + 手动）：capture → 无变化静默退出；有变化则 impact → 机械修复 →
   开 `sync/v<ver>` 分支 + 草稿 PR（正文=影响报告）+ issue。只自动提交可机械修复的部分，示例代码与叙述留给人。
+  建 PR 的令牌优先取 `secrets.SYNC_PAT`（fine-grained PAT，需 contents / pull requests / issues 写权限），
+  否则用 `GITHUB_TOKEN`——后者只有在仓库开启「Allow GitHub Actions to create and approve pull requests」时才能建 PR；
+  两者都不可用时仍会推分支、开 issue（报告不丢）。
 
 **两条硬规则（踩坑得来，别绕开）**：
 
