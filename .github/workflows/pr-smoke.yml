@@ -1,0 +1,48 @@
+name: pr-smoke
+on:
+  push:
+    branches: ['rehearse/pr-permission']
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: 创建草稿 PR 并回报完整证据
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          BR="${GITHUB_REF_NAME}"
+          set +e
+          WF_SETTING=$(gh api repos/$GITHUB_REPOSITORY/actions/permissions/workflow 2>&1)
+          WF_CODE=$?
+          REPO_PERM=$(gh api repos/$GITHUB_REPOSITORY --jq '.permissions' 2>&1)
+          gh label create sync/needs-human --color FBCA04 --description "机器人开的同步 PR，等待人工处理" >/dev/null 2>&1
+          OUT=$(gh pr create --draft --base main --head "$BR" \
+            --title "rehearse: Actions PR 权限自检（自动关闭）" \
+            --body "一次性自检。" --label sync/needs-human 2>&1)
+          CODE=$?
+          set -e
+          PR=$(gh pr list --head "$BR" --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$PR" ]; then gh pr comment "$PR" --body "权限自检通过。" || true; gh pr close "$PR" || true; fi
+          git checkout -B pr-smoke-result
+          {
+            echo "branch=$BR"
+            echo "pr_create_exit=$CODE"
+            echo "created_pr=${PR:-none}"
+            echo "workflow_permissions_api_exit=$WF_CODE"
+            echo "workflow_permissions_api=$WF_SETTING"
+            echo "token_permissions=$REPO_PERM"
+            echo "--- pr create output ---"
+            echo "$OUT"
+          } > PR-SMOKE-RESULT.txt
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add PR-SMOKE-RESULT.txt
+          git commit -qm "chore(rehearse): PR 权限自检结果"
+          git push -f origin pr-smoke-result
