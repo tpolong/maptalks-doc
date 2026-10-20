@@ -39,7 +39,7 @@ const importMap = {
   imports: {
     // maptalks 核心：**必须 pin 版本**——不 pin 会跟随 unpkg latest，与基线（docs-baseline.json）
     // 悄悄漂移；版本一致性由 node scripts/check-pins.mjs 把关。
-    maptalks: "https://unpkg.com/maptalks@1.12.1/dist/maptalks.es.js",
+    maptalks: "https://unpkg.com/maptalks@1.13.0/dist/maptalks.es.js",
     // @maptalks/transcoders.draco 只有 UMD 发布，作为 ESM 导入会失败；用本地 ESM
     // shim 包装（见 docs/public/lib/draco.mjs）按副作用注册解码器
     draco: "/lib/draco.mjs",
@@ -47,44 +47,44 @@ const importMap = {
     // REPL 里 "gl-layers" 统一指向本地汇总入口：合并 maptalks-gl（核心 + gl 扩展）
     // 与 @maptalks/analysis（空间分析类）。0.124.4 起分析类不再包含在 gl 包里。
     "gl-layers": "/lib/gl-layers.mjs",
-    "maptalks-gl": "https://unpkg.com/maptalks-gl@0.124.4/index.js",
+    "maptalks-gl": "https://unpkg.com/maptalks-gl@0.126.0/index.js",
     // maptalks-gl 的 ESM 入口 re-export maptalks 核心与全部子包；版本对齐官方 CDN
-    // 打包版（maptalks-gl 0.124.4 + maptalks 1.12.1）。
+    // 打包版（maptalks-gl 0.126.0 + maptalks 1.13.0）。
     // 原先用的 @maptalks/gl-layers@0.34.1 停更于 2024-03，其子包依赖停留在 0.97.4，
     // 与官网（0.124.4）行为不一致（例：3D 测量工具 Tool.addTo 报错、拾取出 NaN 坐标）。
-    "@maptalks/gl": "https://unpkg.com/@maptalks/gl@0.124.4/dist/maptalksgl.es.js",
-    "@maptalks/vt": "https://unpkg.com/@maptalks/vt@0.124.4/dist/maptalks.vt.es.js",
+    "@maptalks/gl": "https://unpkg.com/@maptalks/gl@0.126.0/dist/maptalksgl.es.js",
+    "@maptalks/vt": "https://unpkg.com/@maptalks/vt@0.126.0/dist/maptalks.vt.es.js",
     "@maptalks/3dtiles":
-      "https://unpkg.com/@maptalks/3dtiles@0.124.4/dist/maptalks.3dtiles.es.js",
+      "https://unpkg.com/@maptalks/3dtiles@0.126.0/dist/maptalks.3dtiles.es.js",
     "@maptalks/gltf-layer":
-      "https://unpkg.com/@maptalks/gltf-layer@0.124.4/dist/maptalks.gltf.es.js",
+      "https://unpkg.com/@maptalks/gltf-layer@0.126.0/dist/maptalks.gltf.es.js",
     "@maptalks/analysis":
-      "https://unpkg.com/@maptalks/analysis@0.124.4/dist/maptalks.analysis.es.js",
+      "https://unpkg.com/@maptalks/analysis@0.126.0/dist/maptalks.analysis.es.js",
     "@maptalks/video-layer":
-      "https://unpkg.com/@maptalks/video-layer@0.124.4/dist/maptalks.video.es.js",
+      "https://unpkg.com/@maptalks/video-layer@0.126.0/dist/maptalks.video.es.js",
     "@maptalks/transform-control":
-      "https://unpkg.com/@maptalks/transform-control@0.124.4/dist/transform-control.es.js",
+      "https://unpkg.com/@maptalks/transform-control@0.126.0/dist/transform-control.es.js",
     "@maptalks/msd-json-loader":
       "https://unpkg.com/@maptalks/msd-json-loader@0.1.0/dist/MSDJSONLoader.mjs",
     // regl 官方只有 CJS/UMD，用本地 wrapper 提供 default + createREGL 双导出
     "@maptalks/regl": "/lib/regl-esm.mjs",
     // @maptalks 子包在 npm 上有原生 ESM（module 字段），直接 unpkg 直连：
     // 单请求、无 esm.sh 重定向链，加载更快更稳；内部 import 的裸标识符由本
-    // import map 解析。版本按 0.124.4 依赖树（gl@0.124.4 的 dependencies）对齐。
+    // import map 解析。版本按 0.126.0 依赖树（gl@0.126.0 的 dependencies）对齐。
     "@maptalks/fusiongl":
-      "https://unpkg.com/@maptalks/fusiongl@0.124.4/dist/fusiongl.es.js",
+      "https://unpkg.com/@maptalks/fusiongl@0.126.0/dist/fusiongl.es.js",
     "@maptalks/feature-filter":
       "https://unpkg.com/@maptalks/feature-filter@1.3.0/index.js",
     "@maptalks/function-type":
       "https://unpkg.com/@maptalks/function-type@1.4.1/index.js",
     "@maptalks/gltf-loader":
-      "https://unpkg.com/@maptalks/gltf-loader@0.124.4/dist/gltf-loader.es.js",
+      "https://unpkg.com/@maptalks/gltf-loader@0.126.0/dist/gltf-loader.es.js",
     "@maptalks/tbn-packer":
       "https://unpkg.com/@maptalks/tbn-packer@1.4.5/index.js",
     "@maptalks/vector-packer":
       "https://unpkg.com/@maptalks/vector-packer@0.96.4/dist/vector-packer.es.js",
     "@maptalks/vt-plugin":
-      "https://unpkg.com/@maptalks/vt-plugin@0.124.4/index.js",
+      "https://unpkg.com/@maptalks/vt-plugin@0.126.0/index.js",
     "@maptalks/martini": "https://esm.sh/@maptalks/martini@0.4.0",
     "@maptalks/geojson-vt": "https://esm.sh/@maptalks/geojson-vt@3.5.0",
     "@maptalks/geojson-bbox": "https://esm.sh/@maptalks/geojson-bbox@1.0.4",
@@ -95,7 +95,7 @@ const importMap = {
     "@mapbox/vector-tile": "https://esm.sh/@mapbox/vector-tile@1.3.1",
     quickselect: "https://esm.sh/quickselect@1.0.0",
     tinyqueue: "https://esm.sh/tinyqueue@2.0.3",
-    // 其余小依赖走 esm.sh 转换（CJS 兼容转换，按 0.124.4 依赖版本 pin）
+    // 其余小依赖走 esm.sh 转换（CJS 兼容转换，按 0.126.0 依赖版本 pin）
     "gl-matrix": "https://esm.sh/gl-matrix@3.4.0",
     "animation-easings": "https://esm.sh/animation-easings",
     color: "https://esm.sh/color@3.0.0",
@@ -148,8 +148,8 @@ const importMap = {
     // 从而绕开上面的裸标识符映射、加载出第二个 maptalks 实例（重复导入报错）。
     // 这里把那些绝对 URL 统一重映射到同一个 unpkg 实例。
     "https://esm.sh/maptalks": "https://unpkg.com/maptalks/dist/maptalks.es.js",
-    "https://esm.sh/maptalks@1.12.1": "https://unpkg.com/maptalks/dist/maptalks.es.js",
-    "https://esm.sh/maptalks@1.12.1/es2022/maptalks.mjs":
+    "https://esm.sh/maptalks@1.13.0": "https://unpkg.com/maptalks/dist/maptalks.es.js",
+    "https://esm.sh/maptalks@1.13.0/es2022/maptalks.mjs":
       "https://unpkg.com/maptalks/dist/maptalks.es.js",
   },
 };
@@ -398,7 +398,7 @@ function inlineCss(files: Record<string, string>) {
  * 控件就会渲染成带圆点的裸 `<ul>`（如 vector2d/interaction/map-on-off 的 Toolbar）。
  * 这里统一补一条 `<link>`，已自带该引用的示例不重复加；版本与 import map 的 maptalks 对齐。
  */
-const MAPTALKS_CSS_URL = "https://unpkg.com/maptalks@1.12.1/dist/maptalks.css";
+const MAPTALKS_CSS_URL = "https://unpkg.com/maptalks@1.13.0/dist/maptalks.css";
 function inlineMaptalksCss(files: Record<string, string>) {
   const html = files["index.html"] ?? "";
   if (!html || html.includes("maptalks.css")) return;

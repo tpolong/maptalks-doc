@@ -32,6 +32,7 @@ Parameters:
 | `eventsPropagation` | `Boolean` | Whether UI events are propagated | `false` |
 | `eventsToStop` | `Array` | Events whose bubbling is blocked (effective when `eventsPropagation` is true) | `null` |
 | `autoPan` | `Boolean` | Whether to auto-pan the map to fit the component when shown | `false` |
+| `autoAdjustAnchor` | `Boolean` | Whether to adjust the anchor (`horizontalAlignment` / `verticalAlignment`) from the component's DOM position, so it is not clipped by the viewport edge | `false` |
 | `dx` | `Number` | Horizontal offset | `0` |
 | `dy` | `Number` | Vertical offset | `0` |
 | `collision` | `Boolean` | Whether the component participates in collision detection | `false` |

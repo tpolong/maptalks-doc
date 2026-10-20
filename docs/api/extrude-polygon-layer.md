@@ -42,6 +42,8 @@ ExtrudePolygonLayer 在 Vector3DLayer 的选项基础上追加以下配置：
 
 即：要素的 `height` 属性决定拉伸高度，`min_height` 决定底部高度，未设置时默认拉伸 20 米。
 
+> 逐顶点高度：把 `perPositionHeight` 设为 `true` 时，每个顶点使用自身 z 值（或 `altitudeProperty` 指定的属性）作为高度，而不是整个要素共用一个高度，适合带高差的复杂屋面。
+
 ## 成员方法
 
 <details><summary>updateMaterial(material)</summary>

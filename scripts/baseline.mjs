@@ -25,6 +25,10 @@ import { ROOT, CACHE, DEFAULT_SRC, log, canonicalModel } from './api/lib.mjs';
 const argv = process.argv.slice(2);
 const arg = (k, d) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : d; };
 const SRC = arg('--src', DEFAULT_SRC);
+// 记录用（可选）：--source-path 写入基线的源码路径（默认同 --src），
+// --source-ref 写入可读的 ref 名（默认分支名）。用于"从发布 tag 的临时检出抽取、但记录本地路径"的场景。
+const SOURCE_PATH = arg('--source-path', null);
+const SOURCE_REF = arg('--source-ref', null);
 const OFFLINE = argv.includes('--offline');
 const FILE = join(ROOT, 'docs-baseline.json');
 const sha = (s) => 'sha256:' + createHash('sha256').update(s).digest('hex').slice(0, 32);
@@ -48,7 +52,12 @@ function engineVersions() {
 function sourceInfo() {
   const repo = dirname(SRC);
   const g = (a) => { const r = spawnSync('git', ['-C', repo, ...a], { encoding: 'utf8' }); return r.status === 0 ? r.stdout.trim() : null; };
-  return { path: SRC, commit: g(['rev-parse', 'HEAD']), branch: g(['rev-parse', '--abbrev-ref', 'HEAD']), dirty: !!g(['status', '--porcelain']) };
+  return {
+    path: SOURCE_PATH || SRC,
+    commit: g(['rev-parse', 'HEAD']),
+    branch: SOURCE_REF || g(['rev-parse', '--abbrev-ref', 'HEAD']),
+    dirty: !!g(['status', '--porcelain']),
+  };
 }
 
 /** 规范化投影：排序 + 只保留稳定字段，避免抽取顺序/空白导致假变化 */

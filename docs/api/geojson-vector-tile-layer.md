@@ -58,17 +58,24 @@ new GeoJSONVectorTileLayer('geojson0', {
 
 ## 成员方法
 
-<details><summary>getData()</summary>
+<details><summary>getData([callback])</summary>
 <div>
 <br/>
 
-获取GeoJSON数据。
+获取 GeoJSON 数据。不传 `callback` 时同步返回当前已加载的数据（尚未加载完成时可能为 `null`）；
+传入 `callback` 时，数据已就绪会立即回调，否则按 `options.data`（URL 或 `{ url }`）异步获取后回调，
+获取失败时回调 `null`。两种方式都会返回当前已加载的数据。
 
 ```js
 const layer = new GeoJSONVectorTileLayer('vt0', {
   data: 'path/to/example.geojson'
 });
+// 同步取当前数据
 const data = layer.getData();
+// 等数据就绪再取（URL 数据源会先加载）
+layer.getData((geojson) => {
+  console.log(geojson);
+});
 ```
 
 返回：

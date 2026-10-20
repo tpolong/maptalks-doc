@@ -68,6 +68,14 @@ jobs:
         if: steps.capture.outputs.up_to_date == 'true'
         run: echo "up-to-date（引擎未变化），静默退出"
 
+      - name: 检出到目标引擎 commit（必须是发布点，不能用 master HEAD）
+        if: steps.capture.outputs.up_to_date == 'false'
+        run: |
+          cd engine
+          git fetch --depth 1 origin "${{ steps.capture.outputs.to }}" || true
+          git checkout --detach "${{ steps.capture.outputs.to }}"
+          node -e "console.log('engine HEAD ->', require('./packages/maptalks-gl/package.json').version)"
+
       - name: 抽取新版本模型（供影响分析与 gen/wire 复用）
         if: steps.capture.outputs.up_to_date == 'false'
         run: node scripts/api/inventory.mjs --src "$PWD/engine/packages"
@@ -95,7 +103,7 @@ jobs:
         run: |
           node scripts/api/gen-includes.mjs
           node scripts/api/wire-pages.mjs
-          node scripts/baseline.mjs --write --src "$PWD/engine/packages" --offline || true
+          node scripts/baseline.mjs --write --src "$PWD/engine/packages" --source-ref "${{ steps.capture.outputs.ref }}"
 
       - uses: actions/upload-artifact@v4
         if: steps.capture.outputs.up_to_date == 'false'
@@ -111,20 +119,25 @@ jobs:
         if: steps.capture.outputs.up_to_date == 'false'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
           ENGINE_TO: ${{ steps.capture.outputs.to }}
           IMPACT_CODE: ${{ steps.impact.outputs.code }}
         run: |
+          set -x
           VER=$(node -e "try{console.log(require('./engine/packages/maptalks-gl/package.json').version)}catch{console.log('unknown')}")
           BR="sync/v${VER}"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git checkout -B "$BR"
-          git add -A
+          # 只提交内容与脚本；engine/、capture.json、impact-report.* 是临时产物（见 .gitignore）
+          git add -- docs docs-baseline.json package.json scripts
+          PUSHED=0
           if git diff --cached --quiet; then
-            echo "没有可机械修复的改动，仅登记 issue"
+            echo "没有可机械修复的改动"
           else
             git commit -qm "chore(sync): 引擎 ${VER} 的机械修复（重生成片段/基线）"
             git push -f origin "$BR"
+            PUSHED=1
           fi
 
           {
@@ -133,7 +146,7 @@ jobs:
             cat impact-report.md
             echo
             echo "## 机器已做"
-            echo "- 重生成 API 片段与页面块、更新 docs-baseline.json（若软件层面可机械修复）"
+            echo "- 重生成 API 片段与页面块、更新 docs-baseline.json"
             echo
             echo "## 人工必做（勾完再合并）"
             echo "- [ ] 复核④待人工清单里的 guide 页"
@@ -144,13 +157,23 @@ jobs:
             echo "影响分析退出码：${IMPACT_CODE}（非 0 表示有阻塞项）"
           } > pr-body.md
 
-          gh pr create --draft --base main --head "$BR" \
-            --title "sync: 引擎 ${VER} → 文档与示例跟进" \
-            --body-file pr-body.md \
-            --label "sync/needs-human" 2>/dev/null || \
-          gh pr create --draft --base main --head "$BR" \
-            --title "sync: 引擎 ${VER} → 文档与示例跟进" \
-            --body-file pr-body.md
+          gh label create sync/needs-human --color FBCA04 --description "机器人开的同步 PR，等待人工处理" || true
+
+          if [ "$PUSHED" = "1" ]; then
+            EXIST=$(gh pr list --head "$BR" --json number --jq '.[0].number' 2>/dev/null || true)
+            if [ -n "$EXIST" ]; then
+              echo "PR #$EXIST 已存在，跳过创建"
+            else
+              gh pr create --draft --base main --head "$BR" \
+                --title "sync: 引擎 ${VER} → 文档与示例跟进" \
+                --body-file pr-body.md \
+                --label "sync/needs-human" || \
+              gh pr create --draft --base main --head "$BR" \
+                --title "sync: 引擎 ${VER} → 文档与示例跟进" \
+                --body-file pr-body.md || \
+              echo "::warning title=PR 创建失败::若为权限问题，请在仓库 Settings → Actions → General 勾选「Allow GitHub Actions to create and approve pull requests」；报告已随 issue 提交"
+            fi
+          fi
 
           gh issue create \
             --title "sync: 引擎 ${VER} 需要人工跟进（影响分析退出码 ${IMPACT_CODE}）" \

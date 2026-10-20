@@ -152,12 +152,11 @@ node scripts/convert-maplibre-style.mjs https://tiles.openfreemap.org/styles/lib
 转换器会把样式的 sprite 图集写进 `sprites` 字段，并把 `icon-image` 映射成 `markerFile: "$<前缀><图标名>"`（前缀按样式来源自动取 `ofm` / `mb`，再用 `sourceName` 把图集注册到 maptalks 的 `ResourceProxy`）：
 
 ```js
-import { ResourceProxy } from "maptalks";
-
 const style = await fetch("{res}/styles/mapbox/streets-v12.json").then((r) => r.json());
-// 当前 CDN 版本（maptalks-gl 0.124.4）还不会自动读取 style.sprites，
-// 手动把图集注入 ResourceProxy，$<前缀><名字> 才能取到图标；更新的版本会自动处理
-await Promise.all(style.sprites.map((sprite) => ResourceProxy.loadSprite(sprite)));
+// 0.126.0 起 VectorTileLayer 会自动加载 style.sprites，无需再手动注册；
+// ≤0.125.x 需要自己注册：
+//   import { ResourceProxy } from "maptalks";
+//   await Promise.all(style.sprites.map((sprite) => ResourceProxy.loadSprite(sprite)));
 new VectorTileLayer("vt", { urlTemplate, style }).addTo(map);
 ```
 

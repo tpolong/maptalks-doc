@@ -77,6 +77,24 @@ const layer = new GroupGLLayer('group', [layer0, layer1, layer2], options);
 </div>
 </details>
 
+## 地形配置（TerrainOptions）
+
+`terrain` 选项与 `setTerrain(info)` 接收的 TerrainOptions：
+
+| 配置名 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| `type` | `String` | 地形服务类型：`mapbox` / `tianditu` / `cesium` / `cesium-ion` | — |
+| `urlTemplate` | `String` | 地形瓦片地址模板 | — |
+| `errorScale` | `Number` \| `Function` | 瓦片误差系数；支持按 zoom 的 function-type 表达式 | `1` |
+| `colors` | `Array` | 地形着色颜色数组，内置 shader 会用它为地形着色（空数组表示不着色） | `[]` |
+| `hasSkirts` | `Boolean` | 是否为地形块生成侧边裙边，遮住块间缝隙 | `true` |
+| `skinScale` | `Number` | 地形贴图（skin）相对地形网格的分辨率倍数 | `1` |
+| `exaggeration` | `Number` | 高程夸张系数 | `1` |
+| `shader` | `String` | 地形着色器 | `'default'` |
+| `terrainTileMode` | `Boolean` | 是否使用地形瓦片模式 | `true` |
+| `tileRetryCount` | `Number` | 瓦片加载失败重试次数 | `0` |
+| `currentTilesFirst` | `Boolean` | 是否优先渲染当前层级瓦片 | `false` |
+
 ## SceneConfig配置说明
 
 SceneConfig的示例和配置说明如下：

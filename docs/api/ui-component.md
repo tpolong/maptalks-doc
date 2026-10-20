@@ -32,6 +32,7 @@ new UIComponent(options)
 | `eventsPropagation` | `Boolean` | 是否传播 UI 事件 | `false` |
 | `eventsToStop` | `Array` | 需要阻断冒泡的事件列表（在 `eventsPropagation` 为 true 时生效） | `null` |
 | `autoPan` | `Boolean` | 显示时是否自动平移地图以容纳组件 | `false` |
+| `autoAdjustAnchor` | `Boolean` | 是否根据组件 DOM 在视口内的位置自动调整锚点（`horizontalAlignment` / `verticalAlignment`），避免被视口边缘裁切 | `false` |
 | `dx` | `Number` | 水平偏移 | `0` |
 | `dy` | `Number` | 垂直偏移 | `0` |
 | `collision` | `Boolean` | 是否参与碰撞检测 | `false` |

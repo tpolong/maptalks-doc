@@ -42,6 +42,8 @@ ExtrudePolygonLayer adds the following options on top of the Vector3DLayer optio
 
 That is, the `height` property of a feature determines the extrusion height, `min_height` determines the bottom height, and the default extrusion is 20 meters when it is not set.
 
+> Per-vertex height: when `perPositionHeight` is `true`, each vertex uses its own z value (or the property named by `altitudeProperty`) as its height instead of a single height for the whole feature. Useful for roofs with varying elevations.
+
 ## Methods
 
 <details><summary>updateMaterial(material)</summary>

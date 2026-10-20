@@ -152,12 +152,11 @@ The conversion keeps each layer's visible zoom range (written into `minZoom`/`ma
 The converter writes the style's sprite atlas into `sprites` and maps `icon-image` to `markerFile: "$<prefix><icon name>"` (the prefix is inferred from the style source — `ofm` / `mb` — and `sourceName` registers the atlas in maptalks' `ResourceProxy`):
 
 ```js
-import { ResourceProxy } from "maptalks";
-
 const style = await fetch("{res}/styles/mapbox/streets-v12.json").then((r) => r.json());
-// the CDN build (maptalks-gl 0.124.4) does not read style.sprites automatically yet,
-// so register the atlas into ResourceProxy yourself; newer builds do it for you
-await Promise.all(style.sprites.map((sprite) => ResourceProxy.loadSprite(sprite)));
+// Since 0.126.0 VectorTileLayer loads style.sprites automatically, so no manual
+// registration is needed; on ≤0.125.x you still need:
+//   import { ResourceProxy } from "maptalks";
+//   await Promise.all(style.sprites.map((sprite) => ResourceProxy.loadSprite(sprite)));
 new VectorTileLayer("vt", { urlTemplate, style }).addTo(map);
 ```
 

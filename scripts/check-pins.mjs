@@ -48,7 +48,7 @@ const pinnedVersion = (url) => {
 
 // 站点本地 shim（/lib/*）没有可解析的 URL 版本，在此声明其打包来源版本并与基线核对
 const SHIM_SOURCE_VERSION = {
-  '@maptalks/traffic': '0.124.4', // docs/public/lib/maptalks.traffic.es.js 的来源版本
+  '@maptalks/traffic': '0.126.0', // docs/public/lib/maptalks.traffic.es.js 的来源版本
 };
 
 // 1) 引擎包必须与基线同版本

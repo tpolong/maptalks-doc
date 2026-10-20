@@ -19,3 +19,11 @@ Thumbs.db
 # Editor / IDE
 .idea/
 .vscode/
+
+# 发版同步流水线的临时产物（由 sync-check 生成，不进仓库）
+/engine/
+capture.json
+impact-report.json
+impact-report.md
+gen-wire.diff
+gen-wire.stat.txt

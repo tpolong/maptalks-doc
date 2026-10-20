@@ -77,6 +77,24 @@ The default optionalExtensions:
 </div>
 </details>
 
+## Terrain Options (TerrainOptions)
+
+Options accepted by the `terrain` option and `setTerrain(info)`:
+
+| Name | Type | Description | Default |
+| --- | --- | --- | --- |
+| `type` | `String` | Terrain service type: `mapbox` / `tianditu` / `cesium` / `cesium-ion` | — |
+| `urlTemplate` | `String` | Terrain tile URL template | — |
+| `errorScale` | `Number` \| `Function` | Tile error scale; accepts a function-type expression over zoom | `1` |
+| `colors` | `Array` | Colors used by the built-in shader to color the terrain (empty array means no coloring) | `[]` |
+| `hasSkirts` | `Boolean` | Whether to generate skirts around terrain tiles to hide seams | `true` |
+| `skinScale` | `Number` | Resolution multiplier of the terrain skin texture relative to the mesh | `1` |
+| `exaggeration` | `Number` | Elevation exaggeration factor | `1` |
+| `shader` | `String` | Terrain shader | `'default'` |
+| `terrainTileMode` | `Boolean` | Whether to use terrain tile mode | `true` |
+| `tileRetryCount` | `Number` | Retry count for failed tile requests | `0` |
+| `currentTilesFirst` | `Boolean` | Whether to render tiles of the current zoom first | `false` |
+
 ## SceneConfig Configuration
 
 An example of SceneConfig and its configuration description are as follows:

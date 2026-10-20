@@ -58,17 +58,25 @@ Parameters:
 
 ## Methods
 
-<details><summary>getData()</summary>
+<details><summary>getData([callback])</summary>
 <div>
 <br/>
 
-Gets the GeoJSON data.
+Gets the GeoJSON data. Without `callback` it returns the data already loaded synchronously
+(which may be `null` before loading finishes). With `callback`, it invokes the callback immediately
+when the data is ready, otherwise it loads `options.data` (a URL or `{ url }`) and invokes the callback
+afterwards; on failure the callback receives `null`. Both forms return the currently loaded data.
 
 ```js
 const layer = new GeoJSONVectorTileLayer('vt0', {
   data: 'path/to/example.geojson'
 });
+// Synchronous access to the loaded data
 const data = layer.getData();
+// Wait until the data is ready (URL sources are loaded first)
+layer.getData((geojson) => {
+  console.log(geojson);
+});
 ```
 
 Returns:
