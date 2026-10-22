@@ -44,6 +44,8 @@ ExtrudePolygonLayer 在 Vector3DLayer 的选项基础上追加以下配置：
 
 > 逐顶点高度：把 `perPositionHeight` 设为 `true` 时，每个顶点使用自身 z 值（或 `altitudeProperty` 指定的属性）作为高度，而不是整个要素共用一个高度，适合带高差的复杂屋面。
 
+示例：[/examples/#glvec/extrude/per-position-height](/examples/#glvec/extrude/per-position-height)（面板里可开关 `perPositionHeight` 对比平顶与斜面）。
+
 ## 成员方法
 
 <details><summary>updateMaterial(material)</summary>

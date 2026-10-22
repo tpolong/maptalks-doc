@@ -44,6 +44,8 @@ That is, the `height` property of a feature determines the extrusion height, `mi
 
 > Per-vertex height: when `perPositionHeight` is `true`, each vertex uses its own z value (or the property named by `altitudeProperty`) as its height instead of a single height for the whole feature. Useful for roofs with varying elevations.
 
+Example: [/en/examples/#glvec/extrude/per-position-height](/en/examples/#glvec/extrude/per-position-height) (toggle `perPositionHeight` in the panel to compare a flat top with a sloped one).
+
 ## Methods
 
 <details><summary>updateMaterial(material)</summary>

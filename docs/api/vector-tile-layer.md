@@ -51,7 +51,7 @@ new VectorTileLayer('vt0', {
 |tileLimitPerFrame| Number          | 每帧最多处理的瓦片数量        | 1 |
 |loadingLimit     | Number          | 普通状态下每帧加载瓦片数上限（0为不限） | 0 |
 |glyphSdfLimitPerFrame | Number     | 每帧每瓦片最多绘制的SDF字形数量 | 15 |
-|sdfURL           | String          | SDF字体纹理地址             | null |
+|sdfURL           | String          | 远程 SDF 字形服务地址模板（含 `{fontstack}` / `{range}`，如 Mapbox glyph PBF）；[示例](/examples/#vt/style/sdf-font) | null |
 |workerGlyph      | Boolean         | 是否在worker中处理字形（有urlModifier时自动关闭） | true |
 <!--@include: ./includes/layer-options.md-->
 

@@ -34,7 +34,7 @@ const layer = new PointLayer('point0');
 | 配置名               |  类型   |  描述                     | 默认值 |
 |  ------             | :----:  | ----                      |   :-----------:  |
 |iconErrorUrl         | String  | 出现错误的图标替代图标       | null |
-|collision            | Boolean | 是否开启碰撞检测            | false |
+|collision            | Boolean | 是否开启碰撞检测（[示例](/examples/#glvec/point/collision)） | false |
 |collisionFrameLimit  | Number  | 每帧参与碰撞检测计算的时间限制，单位ms | 1 |
 |sceneConfig          | Object  | 点渲染程序的sceneConfig     | 默认配置 |
 |sceneConfig.collision | Boolean | 点渲染程序的碰撞检测开关 | true |

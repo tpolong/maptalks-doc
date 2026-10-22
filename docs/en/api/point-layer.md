@@ -34,7 +34,7 @@ Parameters:
 | Option | Type | Description | Default |
 |  ------             | :----:  | ----                      |   :-----------:  |
 |iconErrorUrl         | String  | The fallback icon for icons that fail to load | null |
-|collision            | Boolean | Whether to enable collision detection | false |
+|collision            | Boolean | Whether to enable collision detection ([example](/en/examples/#glvec/point/collision)) | false |
 |collisionFrameLimit  | Number  | The time limit for collision detection calculation per frame, in ms | 1 |
 |sceneConfig          | Object  | The sceneConfig of the point rendering program | default config |
 |sceneConfig.collision | Boolean | The collision detection switch of the point rendering program | true |

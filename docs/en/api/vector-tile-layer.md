@@ -51,7 +51,7 @@ Parameters:
 |tileLimitPerFrame| Number          | The maximum number of tiles processed per frame | 1 |
 |loadingLimit     | Number          | The maximum number of tiles loaded per frame in normal state (0 means unlimited) | 0 |
 |glyphSdfLimitPerFrame | Number     | The maximum number of SDF glyphs drawn per tile per frame | 15 |
-|sdfURL           | String          | The URL of the SDF font texture | null |
+|sdfURL           | String          | URL template of a remote SDF glyph service (`{fontstack}` / `{range}`, e.g. Mapbox glyph PBF); [example](/en/examples/#vt/style/sdf-font) | null |
 |workerGlyph      | Boolean         | Whether to process glyphs in the worker (automatically disabled when a urlModifier is set) | true |
 <!--@include: ./includes/layer-options.md-->
 

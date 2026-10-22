@@ -180,6 +180,23 @@ node scripts/convert-maplibre-style.mjs streets-v12.json \
 
 Classic v8 styles such as streets-v12 / outdoors-v12 / light-v11 / dark-v11 / navigation-day-v1 all convert; **Mapbox Standard (`mapbox://styles/mapbox/standard`) does not** — it relies on v3 features such as `slot`, `model` and `raster-array` that the maptalks vector tile style has no equivalent for.
 
+#### Text and SDF fonts
+
+`VectorTileLayer`'s `sdfURL` accepts a **Mapbox glyph PBF service** (the template must contain `{fontstack}` and `{range}`):
+
+```js
+const layer = new VectorTileLayer("vt", {
+  urlTemplate,
+  style,
+  // OpenFreeMap's public glyph service; Noto Sans Regular covers both Latin and CJK
+  sdfURL: "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf"
+});
+```
+
+Without it, glyphs are generated locally in the browser (TinySDF). With it, pre-generated glyphs are reused,
+which is more complete for CJK/multi-language text and avoids per-device rasterization.
+Example: [Remote SDF fonts](/en/examples/#vt/style/sdf-font) (toggle it in the panel to compare).
+
 ## Vector tiles in 3D scenes
 
 Vector tiles join a 3D scene through `GroupGLLayer`. Because the vector data in the tiles is rendered in real time on the browser side, it can be seamlessly overlaid with other 3D layers (gltf models, 3dtiles, etc.), and combined with scene configuration (lighting, environment, shadow) for more realistic 3D results. A complete example:

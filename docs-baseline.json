@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-20 12:34",
+  "updatedAt": "2026-10-22 05:59",
   "engine": {
     "@maptalks/3dtiles": "0.126.0",
     "@maptalks/analysis": "0.126.0",
@@ -55,21 +55,21 @@
       "namespaces": 440,
       "events": 368
     },
-    "thumbnails": "sha256:5f0f770e2396f33e74465c6417fd1953"
+    "thumbnails": "sha256:00c562d33410af31e2d0bfcef724a318"
   },
   "examples": {
-    "total": 393,
+    "total": 395,
     "byCategory": {
       "analysis": 12,
       "gltf": 43,
-      "glvec": 67,
+      "glvec": 68,
       "map": 43,
       "scene3d": 35,
       "tile": 27,
       "vector2d": 98,
-      "vt": 68
+      "vt": 69
     },
-    "thumbnails": 393
+    "thumbnails": 395
   },
   "verified": null
 }

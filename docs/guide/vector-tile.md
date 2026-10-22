@@ -180,6 +180,22 @@ node scripts/convert-maplibre-style.mjs streets-v12.json \
 
 streets-v12 / outdoors-v12 / light-v11 / dark-v11 / navigation-day-v1 这类经典 v8 样式都能转换；**Mapbox Standard（`mapbox://styles/mapbox/standard`）不能转换**，它用到 v3 的 `slot`、`model`、`raster-array` 等特性，maptalks 矢量瓦片样式没有对应能力。
 
+#### 文字与 SDF 字体
+
+`VectorTileLayer` 的 `sdfURL` 可以指定 **Mapbox glyph PBF 服务**（模板必须包含 `{fontstack}` 与 `{range}`）：
+
+```js
+const layer = new VectorTileLayer("vt", {
+  urlTemplate,
+  style,
+  // OpenFreeMap 的公开字形服务；Noto Sans Regular 同时含 Latin 与 CJK 字形
+  sdfURL: "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf"
+});
+```
+
+不设置时由浏览器本地生成字形（TinySDF）；设置后复用服务端预生成的字形，中文/多语言场景更完整，也省去每台设备的栅格化开销。
+示例：[远程 SDF 字体](/examples/#vt/style/sdf-font)（面板里可开关对比）。
+
 ## 三维场景中的矢量瓦片
 
 矢量瓦片通过 `GroupGLLayer` 加入三维场景。因为瓦片中的矢量数据在浏览器端实时渲染，可以与其他三维图层（gltf 模型、3dtiles 等）无缝叠加，也可以结合场景配置（光照、环境、阴影）获得更真实的三维效果。一个完整的示例：

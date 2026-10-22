@@ -75,6 +75,7 @@ export const SUBCATEGORIES: SubCategoryDef[] = [
   { cat: "glvec", sub: "point", zh: "点图层", en: "Point Layer" },
   { cat: "glvec", sub: "line", zh: "线图层", en: "Line Layer" },
   { cat: "glvec", sub: "polygon", zh: "面图层", en: "Polygon Layer" },
+  { cat: "glvec", sub: "extrude", zh: "拉伸面", en: "Extruded Polygons" },
   // GLTF 模型
   { cat: "gltf", sub: "layer", zh: "图层", en: "Layer" },
   { cat: "gltf", sub: "marker", zh: "标记", en: "Marker" },
